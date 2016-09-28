@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAF84522-66B8-415B-B68C-A16920507C06}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AplicacionesGM_MVC</RootNamespace>
+    <AssemblyName>AplicacionesGM_MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Content\images\iconos\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Clientes\ClientesAreaRegistration.cs" />
+    <Compile Include="Areas\Clientes\Controllers\ClientesController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\CausasController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\RequerimientosDeCalidadController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\IntrumentosDePesajeController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\TiposDeVehiculoController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\MediosDeDescargaController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\MaterialesXEmpresaController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\TiposDeClienteController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\EmpresasController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\FormasDePagoController.cs" />
+    <Compile Include="Areas\Clientes\Controllers\TiposDeViaController.cs" />
+    <Compile Include="Areas\Clientes\Models\BDClientesSQL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDClientesSQL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clientes\Models\ClientesModel.cs" />
+    <Compile Include="Areas\Clientes\Models\CustomValidationsModel.cs" />
+    <Compile Include="Areas\Clientes\Models\DSas400.cs">
+      <DependentUpon>DSas400.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Areas\Clientes\Models\DSas400.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSas400.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clientes\Models\FormasDePagoModel.cs" />
+    <Compile Include="Areas\Clientes\Models\LocalizacionesModel.cs" />
+    <Compile Include="Areas\Clientes\Models\BDPlanificacionTransportes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDPlanificacionTransportes.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clientes\Models\ZonasModel.cs" />
+    <Compile Include="Areas\Reuniones\ReunionesAreaRegistration.cs" />
+    <Compile Include="Areas\Reuniones\Controllers\AccionesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Reuniones\Controllers\DelegacionesController.cs" />
+    <Compile Include="Areas\Reuniones\Controllers\DepartamentosController.cs" />
+    <Compile Include="Controllers\CommonFunctionsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Reuniones\Controllers\OrigenesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CheckBoxModel.cs" />
+    <Compile Include="Models\AplicacionesGM_MVC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AplicacionesGM_MVC.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommonModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Clientes\Scripts\funcionesClientes.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Clientes\Views\Causas\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\Causas\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\Causas\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\Causas\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\Clientes\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\Clientes\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\Clientes\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\Clientes\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\Clientes\YaCreados.aspx" />
+    <Content Include="Areas\Clientes\Views\Empresas\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\Empresas\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\Empresas\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\Empresas\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\FormasDePago\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\FormasDePago\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\InstrumentosDePesaje\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\InstrumentosDePesaje\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\InstrumentosDePesaje\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\InstrumentosDePesaje\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\MaterialesXEmpresa\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\MaterialesXEmpresa\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\MaterialesXEmpresa\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\MaterialesXEmpresa\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\MediosDeDescarga\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\MediosDeDescarga\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\MediosDeDescarga\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\MediosDeDescarga\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\RequerimientosDeCalidad\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\RequerimientosDeCalidad\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\RequerimientosDeCalidad\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\RequerimientosDeCalidad\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDecliente\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDecliente\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDecliente\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDecliente\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVehiculo\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVehiculo\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVehiculo\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVehiculo\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVia\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVia\Delete.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVia\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\TiposDeVia\Index.aspx" />
+    <Content Include="Content\bootstrap-3.3.6-dist\css\bootstrap-multiselect.css" />
+    <Content Include="Content\bootstrap-3.3.6-dist\css\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap-3.3.6-dist\js\bootstrap-multiselect.js" />
+    <Content Include="Content\bootstrap-3.3.6-dist\js\bootstrap.min.js" />
+    <Content Include="Content\images\iconos\down.gif" />
+    <Content Include="Content\images\iconos\entrar_a_reunion.jpg" />
+    <Content Include="Content\images\iconos\excel.png" />
+    <Content Include="Content\images\iconos\guardar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\iconos\informes.jpg" />
+    <Content Include="Content\images\iconos\nueva_reunion.png" />
+    <Content Include="Content\images\iconos\nuevo_registro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\iconos\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\logoGM.png" />
+    <Content Include="Content\jquery-ui.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\jquery.qtip.css" />
+    <Content Include="Content\menus.css" />
+    <Content Include="Content\MvcMembership.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\datepicker-es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-1.12.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery-ui.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Reuniones\Views\Acciones\Create.aspx" />
+    <Content Include="Areas\Reuniones\Views\Acciones\Delete.aspx" />
+    <Content Include="Areas\Reuniones\Views\Acciones\Edit.aspx" />
+    <Content Include="Areas\Reuniones\Views\Acciones\Historico.aspx" />
+    <Content Include="Areas\Reuniones\Views\Acciones\Index.aspx" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\jquery.qtip.min.js" />
+    <Content Include="Scripts\jquery.qtip.validation.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\menus.js" />
+    <Content Include="Views\Account\Admin.aspx" />
+    <Content Include="Views\Account\Create.aspx" />
+    <Content Include="Views\Account\Edit.aspx" />
+    <Content Include="Areas\Reuniones\Views\Delegaciones\Create.aspx" />
+    <Content Include="Areas\Reuniones\Views\Delegaciones\Delete.aspx" />
+    <Content Include="Areas\Reuniones\Views\Delegaciones\Edit.aspx" />
+    <Content Include="Areas\Reuniones\Views\Delegaciones\Index.aspx" />
+    <Content Include="Areas\Reuniones\Views\Departamentos\Create.aspx" />
+    <Content Include="Areas\Reuniones\Views\Departamentos\Delete.aspx" />
+    <Content Include="Areas\Reuniones\Views\Departamentos\Edit.aspx" />
+    <Content Include="Areas\Reuniones\Views\Departamentos\Index.aspx" />
+    <Content Include="Areas\Reuniones\Views\Origenes\Create.aspx" />
+    <Content Include="Areas\Reuniones\Views\Origenes\Delete.aspx" />
+    <Content Include="Areas\Reuniones\Views\Origenes\Edit.aspx" />
+    <Content Include="Areas\Reuniones\Views\Origenes\Index.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Areas\Reuniones\Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Reuniones\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\AplicacionesGM_MVC.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AplicacionesGM_MVC.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Reuniones\Views\Web.config" />
+    <Content Include="Areas\Clientes\Views\Web.config" />
+    <Content Include="Areas\Clientes\Views\Shared\Site.Master" />
+    <EntityDeploy Include="Areas\Clientes\Models\BDClientesSQL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDClientesSQL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Areas\Clientes\Models\DSas400.xsc">
+      <DependentUpon>DSas400.xsd</DependentUpon>
+    </None>
+    <None Include="Areas\Clientes\Models\DSas400.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSas400.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\Clientes\Models\DSas400.xss">
+      <DependentUpon>DSas400.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="Areas\Clientes\Models\BDPlanificacionTransportes.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDPlanificacionTransportes.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Content\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2893</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/ReunionesMVC</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../Content/images/iconos/favicon.ico" />
+    <link href="../../../../Content/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Content/menus.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../Scripts/jquery-1.12.2.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/jquery-migrate-1.2.1.js" type="text/javascript"></script> <!--compatibilidad con todos los navegadores!-->
+    <script src="../../../../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/datepicker-es.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/jquery.qtip.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/jquery.qtip.validation.js" type="text/javascript"></script>
+    <script src="../../../../Areas/Clientes/Scripts/funcionesClientes.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/menus.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                        <a href="/Clientes/Clientes"><img alt="logoGM" class="logo" longdesc="logoGM.png" src="../../../../Content/images/logoGM.png" /> </a>
+                        <h2>Gestión de Clientes</h2>
+                
+            </div>
+              
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <% if (Page.User.Identity.IsAuthenticated) { %>
+                <div class="chromestyle" id="chromemenu">
+                    <ul>
+                     <% if (((Array)Session["AplicacionesGM"]).Length > 1)
+                        { %>
+                            <li><%: Html.ActionLink("Cambiar de Aplicación", "Index", "Home", new { area = "" },null)%></li>
+                     <% } %>
+                            <li><%: Html.ActionLink("Clientes", "Index", "Clientes")%></li>
+                     <% if (Page.User.IsInRole("Gestor") || Page.User.IsInRole("Administrador"))
+                        { %>
+                            <li><a href="#" rel="dropmenu1">Maestros</a></li>
+                     <% } %>
+                     <% if (Page.User.IsInRole("Administrador"))
+                        { %>
+                            <li><%: Html.ActionLink("Administrar Usuarios", "Admin", "Account", new { area = "" },null)%></li>
+                     <% } %>
+                    </ul>
+                </div>
+                <!-- drop down menu maestros-->
+                <div id="dropmenu1" class="dropmenudiv">
+                    <%: Html.ActionLink("Causas", "Index", "Causas")%>
+                    <%: Html.ActionLink("Empresas/Materiales", "Index", "Empresas")%>
+                    <%: Html.ActionLink("Formas de Pago", "Index", "FormasDePago")%>
+                    <%: Html.ActionLink("Instrumentos de Pesaje", "Index", "InstrumentosDePesaje")%>
+                    <%: Html.ActionLink("Medios de descarga", "Index", "MediosDeDescarga")%>
+                    <%: Html.ActionLink("Requerimientos de Calidad", "Index", "RequerimientosDeCalidad")%>
+                    <%: Html.ActionLink("Tipos de Cliente", "Index", "TiposDeCliente")%>
+                    <%: Html.ActionLink("Tipos de Vehículos", "Index", "TiposDeVehiculo")%>
+                    <%: Html.ActionLink("Tipos de Vía", "Index", "TiposDeVia")%>
+                </div>
+            <% } %>
+        </div>
+
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+                &copy; <%= DateTime.Now.Year.ToString() %> - Grupo Mora
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.date').datepicker();
+            $.datepicker.setDefaults($.datepicker.regional["es"]);
+            $('#panelFiltros').toggle();
+            $('#filtros').click(function () {
+                $('#panelFiltros').toggle();
+            });
+            cssdropdown.startchrome("chromemenu");
+        });
+    </script>
+</body>
+</html>
+

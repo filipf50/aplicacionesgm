@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PlanificacionTransportesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PlanificacionTransportesModelStoreContainer">
+          <EntitySet Name="Excepciones cliente" EntityType="PlanificacionTransportesModel.Store.Excepciones cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Maestro Delegaciones" EntityType="PlanificacionTransportesModel.Store.Maestro Delegaciones" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Excepciones cliente">
+          <Key>
+            <PropertyRef Name="DELEGACION" />
+            <PropertyRef Name="codigoQS" />
+          </Key>
+          <Property Name="DELEGACION" Type="int" Nullable="false" />
+          <Property Name="codigoQS" Type="int" Nullable="false" />
+          <Property Name="cliente" Type="nvarchar" MaxLength="35" />
+          <Property Name="camionConPluma" Type="bit" />
+          <Property Name="tipoCamion" Type="smallint" />
+          <Property Name="medioDescarga" Type="smallint" />
+          <Property Name="noAbiertoTardes" Type="bit" />
+          <Property Name="horario" Type="nvarchar" MaxLength="255" />
+          <Property Name="horarioVerano" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Maestro Delegaciones">
+          <Key>
+            <PropertyRef Name="DELEGACION" />
+          </Key>
+          <Property Name="DELEGACION" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="char" MaxLength="30" />
+          <Property Name="BIBLIOTECA" Type="char" MaxLength="10" />
+          <Property Name="DESDEALMACEN" Type="int" />
+          <Property Name="HASTAALMACEN" Type="int" />
+          <Property Name="EMPRESA" Type="char" MaxLength="20" />
+          <Property Name="DESDEZONA" Type="int" />
+          <Property Name="HASTAZONA" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlanificacionTransportesModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BDPlanificacionTransportesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Excepciones_cliente" EntityType="PlanificacionTransportesModel.Excepciones_cliente" />
+          <EntitySet Name="Maestro_Delegaciones" EntityType="PlanificacionTransportesModel.Maestro_Delegaciones" />
+        </EntityContainer>
+        <EntityType Name="Excepciones_cliente">
+          <Key>
+            <PropertyRef Name="DELEGACION" />
+            <PropertyRef Name="codigoQS" />
+          </Key>
+          <Property Name="DELEGACION" Type="Int32" Nullable="false" />
+          <Property Name="codigoQS" Type="Int32" Nullable="false" />
+          <Property Name="cliente" Type="String" MaxLength="35" Unicode="true" FixedLength="false" />
+          <Property Name="camionConPluma" Type="Boolean" />
+          <Property Name="tipoCamion" Type="Int16" />
+          <Property Name="medioDescarga" Type="Int16" />
+          <Property Name="noAbiertoTardes" Type="Boolean" />
+          <Property Name="horario" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="horarioVerano" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Maestro_Delegaciones">
+          <Key>
+            <PropertyRef Name="DELEGACION" />
+          </Key>
+          <Property Type="Int32" Name="DELEGACION" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="BIBLIOTECA" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="DESDEALMACEN" />
+          <Property Type="Int32" Name="HASTAALMACEN" />
+          <Property Type="String" Name="EMPRESA" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="DESDEZONA" />
+          <Property Type="Int32" Name="HASTAZONA" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlanificacionTransportesModelStoreContainer" CdmEntityContainer="BDPlanificacionTransportesEntities">
+          <EntitySetMapping Name="Excepciones_cliente">
+            <EntityTypeMapping TypeName="PlanificacionTransportesModel.Excepciones_cliente">
+              <MappingFragment StoreEntitySet="Excepciones cliente">
+                <ScalarProperty Name="DELEGACION" ColumnName="DELEGACION" />
+                <ScalarProperty Name="codigoQS" ColumnName="codigoQS" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="camionConPluma" ColumnName="camionConPluma" />
+                <ScalarProperty Name="tipoCamion" ColumnName="tipoCamion" />
+                <ScalarProperty Name="medioDescarga" ColumnName="medioDescarga" />
+                <ScalarProperty Name="noAbiertoTardes" ColumnName="noAbiertoTardes" />
+                <ScalarProperty Name="horario" ColumnName="horario" />
+                <ScalarProperty Name="horarioVerano" ColumnName="horarioVerano" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maestro_Delegaciones">
+            <EntityTypeMapping TypeName="PlanificacionTransportesModel.Maestro_Delegaciones">
+              <MappingFragment StoreEntitySet="Maestro Delegaciones">
+                <ScalarProperty Name="HASTAZONA" ColumnName="HASTAZONA" />
+                <ScalarProperty Name="DESDEZONA" ColumnName="DESDEZONA" />
+                <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+                <ScalarProperty Name="HASTAALMACEN" ColumnName="HASTAALMACEN" />
+                <ScalarProperty Name="DESDEALMACEN" ColumnName="DESDEALMACEN" />
+                <ScalarProperty Name="BIBLIOTECA" ColumnName="BIBLIOTECA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DELEGACION" ColumnName="DELEGACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="PlanificacionTransportesModel.Excepciones_cliente" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlanificacionTransportesModel.Maestro_Delegaciones" Width="1.5" PointX="3.375" PointY="0.75" Height="2.5571907552083326" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
