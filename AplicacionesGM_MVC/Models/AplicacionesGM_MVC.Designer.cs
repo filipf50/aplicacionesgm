@@ -38,6 +38,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_MediosDeDescarga", "aspnet_MediosDeDescarga", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_MediosDeDescarga), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_TiposDeVehiculo", "aspnet_TiposDeVehiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_TiposDeVehiculo), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK__aspnet_Pr__UserI__38996AB5", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Users), "aspnet_Profile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Profile), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Delegaciones), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 
 #endregion
 
@@ -1656,7 +1657,8 @@ namespace AplicacionesGM_MVC.Models
         /// <param name="tieneFichaLogistica">Valor inicial de la propiedad TieneFichaLogistica.</param>
         /// <param name="esBorrador">Valor inicial de la propiedad EsBorrador.</param>
         /// <param name="cAERevisada">Valor inicial de la propiedad CAERevisada.</param>
-        public static aspnet_Clientes Createaspnet_Clientes(global::System.Decimal id, global::System.Boolean esDeExposicion, global::System.String empresas, global::System.String nIF, global::System.Decimal cP, global::System.DateTime fechaDeAlta, global::System.Guid usuarioDeAlta, global::System.Boolean tieneMail, global::System.Decimal tieneEmpresasVinculadas, global::System.Decimal tieneSocios, global::System.Boolean noAdmiteFacturacionElectronica, global::System.Boolean existePedidoEnFirme, global::System.Boolean noTieneVtosFijos, global::System.Boolean necesitaCamionConPluma, global::System.Boolean medioDeTransportePropio, global::System.Boolean pesaElMaterial, global::System.Boolean espacioParaAlmacenar, global::System.Boolean cAEFirmada, global::System.Boolean tieneFichaLogistica, global::System.Boolean esBorrador, global::System.Boolean cAERevisada)
+        /// <param name="delegacionID">Valor inicial de la propiedad DelegacionID.</param>
+        public static aspnet_Clientes Createaspnet_Clientes(global::System.Decimal id, global::System.Boolean esDeExposicion, global::System.String empresas, global::System.String nIF, global::System.Decimal cP, global::System.DateTime fechaDeAlta, global::System.Guid usuarioDeAlta, global::System.Boolean tieneMail, global::System.Decimal tieneEmpresasVinculadas, global::System.Decimal tieneSocios, global::System.Boolean noAdmiteFacturacionElectronica, global::System.Boolean existePedidoEnFirme, global::System.Boolean noTieneVtosFijos, global::System.Boolean necesitaCamionConPluma, global::System.Boolean medioDeTransportePropio, global::System.Boolean pesaElMaterial, global::System.Boolean espacioParaAlmacenar, global::System.Boolean cAEFirmada, global::System.Boolean tieneFichaLogistica, global::System.Boolean esBorrador, global::System.Boolean cAERevisada, global::System.Int32 delegacionID)
         {
             aspnet_Clientes aspnet_Clientes = new aspnet_Clientes();
             aspnet_Clientes.ID = id;
@@ -1680,6 +1682,7 @@ namespace AplicacionesGM_MVC.Models
             aspnet_Clientes.TieneFichaLogistica = tieneFichaLogistica;
             aspnet_Clientes.EsBorrador = esBorrador;
             aspnet_Clientes.CAERevisada = cAERevisada;
+            aspnet_Clientes.DelegacionID = delegacionID;
             return aspnet_Clientes;
         }
 
@@ -4209,6 +4212,30 @@ namespace AplicacionesGM_MVC.Models
         private Nullable<global::System.DateTime> _FechaDeOriginalCAE;
         partial void OnFechaDeOriginalCAEChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaDeOriginalCAEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DelegacionID
+        {
+            get
+            {
+                return _DelegacionID;
+            }
+            set
+            {
+                OnDelegacionIDChanging(value);
+                ReportPropertyChanging("DelegacionID");
+                _DelegacionID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DelegacionID");
+                OnDelegacionIDChanged();
+            }
+        }
+        private global::System.Int32 _DelegacionID;
+        partial void OnDelegacionIDChanging(global::System.Int32 value);
+        partial void OnDelegacionIDChanged();
 
         #endregion
 
@@ -4666,6 +4693,44 @@ namespace AplicacionesGM_MVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones")]
+        public aspnet_Delegaciones aspnet_Delegaciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Delegaciones>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Delegaciones>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Delegaciones> aspnet_DelegacionesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Delegaciones>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Delegaciones>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -4928,6 +4993,32 @@ namespace AplicacionesGM_MVC.Models
         #endregion
 
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Clientes")]
+        public EntityCollection<aspnet_Clientes> aspnet_Clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Clientes", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>

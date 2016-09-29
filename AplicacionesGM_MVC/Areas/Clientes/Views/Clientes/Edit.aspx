@@ -75,6 +75,15 @@
                             <%: Html.DropDownListFor(model => model.IDAgenteQSECA, (SelectList)ViewData["AgentesECA"],"--Sin Agente--", new { @class = "textbox20" })%>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="editor-label required noborder td20">
+                            Delegación
+                        </td>
+                        <td class="editor-field noborder td80">
+                            <%: Html.DropDownListFor(model => model.DelegacionID, (SelectList)ViewData["Delegaciones"], "--Seleccione un valor--", null)%>
+                            <%: Html.ValidationMessageFor(model => model.DelegacionID, true)%>
+                        </td>
+                    </tr>
                     <tr id="panelExposicion">
                         <td class="editor-label required noborder td20">
                             ¿Es un cliente de exposición?

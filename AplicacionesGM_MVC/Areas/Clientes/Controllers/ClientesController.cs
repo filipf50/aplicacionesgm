@@ -581,6 +581,9 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             else
             {
                 clientes = clientes.Where(c => c.EsBorrador == false || c.UsuarioDeAlta == currentUserId);
+
+                //Solo mostramos los clientes que corresponden a alguna de las delegaciones de que gestiona el usuario
+                clientes = clientes.Where(c => profile["Delegaciones"].ToString().Split(',').Contains(c.DelegacionID.ToString()));
             }
 
 
@@ -859,6 +862,9 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             ViewData["Materiales"] = lstMatXEmpresa;
             
             //Cargo los Desplegables
+            //Cargo las Delegaciones
+            ViewData["Delegaciones"]=new SelectList((db.aspnet_Delegaciones.Select(d=>new {d.DelegacionID, d.Descripcion}).AsEnumerable().OrderBy(d=>d.Descripcion)),"DelegacionID","Descripcion");
+
             //Cargo los tipos de vía
             var tiposDeVia = db.aspnet_TiposDeVia.Select(tc => new { tc.IDTipoVia, tc.Nombre });
             list = new SelectList(tiposDeVia.AsEnumerable().OrderBy(tc => tc.Nombre), "IDTipoVia", "Nombre");
@@ -943,6 +949,9 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
         {
             CustomValidations Validations = new CustomValidations();
             string ErrMessage = "";
+            
+            //Reiniciamos el estado para quitar los posibles mensajes generados por MVC
+            ModelState.Clear();
 
             //Validación campos del cliente obligatorios
             if (modified.EsBorrador == false)
@@ -951,6 +960,12 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 {
                     ModelState.AddModelError("Empresas", "Es obligatorio indicar, al menos, una empresa para el cliente.");
                 }
+
+                if (modified.DelegacionID == 0)
+                {
+                    ModelState.AddModelError("DelegacionID","Es obligatorio indicar la delegación a la que va a pertenecer el cliente");
+                }
+
                 if ((modified.Nombre ?? "").ToString() == "")
                 {
                     ModelState.AddModelError("Nombre", "Es obligatorio indicar el nombre del cliente.");

@@ -17,8 +17,8 @@
             <div class="chromestyle" id="chromemenu">
                 <ul>
                     <li><%: Html.ActionLink("Volver", "Index")%></li>
-                    <li><a>Guardar Borrador</a></li>
-                    <li><a>Guardar</a></li>
+                    <li><a id="borrador">Guardar Borrador</a></li>
+                    <li><a id="submit">Guardar</a></li>
                 </ul>
             </div>
         <fieldset>
@@ -63,6 +63,15 @@
                             <%: Html.DropDownListFor(model => model.IDAgenteQSHMA, (SelectList)ViewData["AgentesHMA"], "--Sin Agente--", new { @class = "textbox20" })%>
                             <label for="FormaContacto" class="display-label" id="lblAgenteECA">ECA</label>
                             <%: Html.DropDownListFor(model => model.IDAgenteQSECA, (SelectList)ViewData["AgentesECA"],"--Sin Agente--", new { @class = "textbox20" })%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label required noborder td20">
+                            Delegación
+                        </td>
+                        <td class="editor-field noborder td80">
+                            <%: Html.DropDownListFor(model => model.DelegacionID, (SelectList)ViewData["Delegaciones"], "--Seleccione un valor--", new { @class = "textbox20" })%>
+                            <%: Html.ValidationMessageFor(model => model.DelegacionID, true)%>
                         </td>
                     </tr>
                     <tr id="panelExposicion">

@@ -63,6 +63,10 @@
             <End Role="aspnet_Causas" EntitySet="aspnet_Causas" />
             <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
           </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Delegaciones" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_Delegaciones">
+            <End Role="aspnet_Delegaciones" EntitySet="aspnet_Delegaciones" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
           <AssociationSet Name="FK_aspnet_Clientes_aspnet_FormasDePago" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_FormasDePago">
             <End Role="aspnet_FormasDePago" EntitySet="aspnet_FormasDePago" />
             <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
@@ -169,6 +173,7 @@
           </Key>
           <Property Name="ID" Type="numeric" Nullable="false" Precision="10" StoreGeneratedPattern="Identity" />
           <Property Name="QSID" Type="numeric" Precision="10" />
+          <Property Name="DelegacionID" Type="int" Nullable="false" />
           <Property Name="EsDeExposicion" Type="bit" Nullable="false" />
           <Property Name="TieneMail" Type="bit" Nullable="false" />
           <Property Name="Empresas" Type="varchar" MaxLength="50" />
@@ -255,7 +260,7 @@
           <Property Name="FicheroCAE" Type="nvarchar" MaxLength="255" />
           <Property Name="FicheroCAEanterior" Type="nvarchar" MaxLength="255" />
           <Property Name="IDCausaNoFirmaCAE" Type="int" />
-          <Property Name="CAERevisada" Type="bit" />
+          <Property Name="CAERevisada" Type="bit" Nullable="false" />
           <Property Name="FechaDeOriginalCAE" Type="smalldatetime" />
           <Property Name="CobroDePortesPorEnvio" Type="nvarchar" MaxLength="50" />
           <Property Name="EsBorrador" Type="bit" Nullable="false" />
@@ -532,6 +537,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Delegaciones">
+          <End Role="aspnet_Delegaciones" Type="AplicacionesGM_MVCModel.Store.aspnet_Delegaciones" Multiplicity="1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Delegaciones">
+              <PropertyRef Name="DelegacionID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="DelegacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_aspnet_Clientes_aspnet_FormasDePago">
           <End Role="aspnet_FormasDePago" Type="AplicacionesGM_MVCModel.Store.aspnet_FormasDePago" Multiplicity="0..1" />
           <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
@@ -789,6 +806,10 @@
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
           </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Delegaciones" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones">
+            <End Role="aspnet_Delegaciones" EntitySet="aspnet_Delegaciones" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="aspnet_Acciones">
           <Key>
@@ -816,6 +837,7 @@
           <Property Name="DelegacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="Siglas" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones" FromRole="aspnet_Delegaciones" ToRole="aspnet_Clientes" />
         </EntityType>
         <EntityType Name="aspnet_Departamentos">
           <Key>
@@ -1031,6 +1053,8 @@
           <Property Type="Int32" Name="IDDelegacion" />
           <Property Type="Boolean" Name="CAERevisada" Nullable="false" />
           <Property Type="DateTime" Name="FechaDeOriginalCAE" />
+          <Property Type="Int32" Name="DelegacionID" Nullable="false" />
+          <NavigationProperty Name="aspnet_Delegaciones" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones" FromRole="aspnet_Clientes" ToRole="aspnet_Delegaciones" />
         </EntityType>
         <EntityType Name="aspnet_Empresas">
           <Key>
@@ -1360,6 +1384,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Delegaciones">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Delegaciones" Role="aspnet_Delegaciones" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Delegaciones">
+              <PropertyRef Name="DelegacionID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="DelegacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1445,6 +1481,7 @@
           <EntitySetMapping Name="aspnet_Clientes">
             <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Clientes">
               <MappingFragment StoreEntitySet="aspnet_Clientes">
+                <ScalarProperty Name="DelegacionID" ColumnName="DelegacionID" />
                 <ScalarProperty Name="FechaDeOriginalCAE" ColumnName="FechaDeOriginalCAE" />
                 <ScalarProperty Name="CAERevisada" ColumnName="CAERevisada" />
                 <ScalarProperty Name="IDDelegacion" ColumnName="IDDelegacion" />
@@ -1724,7 +1761,7 @@
           <ConnectorPoint PointX="9.625" PointY="4.5862939453125" />
           <ConnectorPoint PointX="7.875" PointY="4.5862939453125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_AplicacionesGM" Width="1.5" PointX="7.875" PointY="0.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_AplicacionesGM" Width="1.75" PointX="7.875" PointY="0.75" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_FormasDePago" Width="1.5" PointX="9.75" PointY="0.75" Height="1.9802864583333339" />
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Clientes" Width="2.375" PointX="12" PointY="0.75" Height="23.325745442708335" />
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Empresas" Width="1.5" PointX="3.375" PointY="12.375" Height="1.5956835937500031" />
@@ -1739,12 +1776,12 @@
           <ConnectorPoint PointX="12" PointY="13.143992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users" >
-          <ConnectorPoint PointX="7.875" PointY="6.3887198176932749" />
-          <ConnectorPoint PointX="12" PointY="6.3887198176932749" />
+          <ConnectorPoint PointX="7.875" PointY="6.3887348271937974" />
+          <ConnectorPoint PointX="12" PointY="6.3887348271937974" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1" >
-          <ConnectorPoint PointX="7.875" PointY="5.9994038541591372" />
-          <ConnectorPoint PointX="12" PointY="5.9994038541591372" />
+          <ConnectorPoint PointX="7.875" PointY="5.9994113589093985" />
+          <ConnectorPoint PointX="12" PointY="5.9994113589093985" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas" >
           <ConnectorPoint PointX="4.875" PointY="13.206492513020834" />
@@ -1801,13 +1838,19 @@
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVehiculo" >
           <ConnectorPoint PointX="5.25" PointY="9.845683593749996" />
-          <ConnectorPoint PointX="5.25" PointY="23.054464518229167" />
-          <ConnectorPoint PointX="12" PointY="23.054464518229167" />
+          <ConnectorPoint PointX="5.25" PointY="23.535218098958335" />
+          <ConnectorPoint PointX="12" PointY="23.535218098958335" />
         </AssociationConnector>
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Profile" Width="1.5" PointX="2.875" PointY="3.5" Height="2.172587890624996" />
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5" >
           <ConnectorPoint PointX="5.25" PointY="4.586293945312498" />
           <ConnectorPoint PointX="4.375" PointY="4.586293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones" >
+          <ConnectorPoint PointX="7.25" PointY="0.75115284615384592" />
+          <ConnectorPoint PointX="7.6261528461538468" PointY="0.375" />
+          <ConnectorPoint PointX="11.626825923076924" PointY="0.375" />
+          <ConnectorPoint PointX="12.001825923076924" PointY="0.75" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

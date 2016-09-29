@@ -59,7 +59,8 @@ namespace AplicacionesGM_MVC.Controllers
             IEnumerable<aspnet_Users> usuarios = from u in db.aspnet_Users select u;
             IEnumerable<aspnet_Origenes> origenes = from o in db.aspnet_Origenes select o;
             IEnumerable<aspnet_AplicacionesGM> aplicaciones = from a in db.aspnet_AplicacionesGM select a;
-            
+            IEnumerable<aspnet_Delegaciones> delegaciones = from d in db.aspnet_Delegaciones select d;
+
             ProfileBase profile = ProfileBase.Create(user.UserName);
 
             //Agentes de Moraval
@@ -95,7 +96,8 @@ namespace AplicacionesGM_MVC.Controllers
                                     : AccountEditViewModel.StatusEnum.Offline,
                 Subordinados=new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>()),
                 Origenes = new CheckBoxModel(origenes.AsEnumerable().OrderBy(o => o.Descripcion).ToDictionary(o => o.OrigenID.ToString(), o => o.Descripcion), new List<string>()),
-                Aplicaciones= new CheckBoxModel(aplicaciones.AsEnumerable().OrderBy(a=> a.Nombre).ToDictionary(a => a.AplicacionesGMID.ToString(), a=>a.Nombre), new List<string>())
+                Aplicaciones= new CheckBoxModel(aplicaciones.AsEnumerable().OrderBy(a=> a.Nombre).ToDictionary(a => a.AplicacionesGMID.ToString(), a=>a.Nombre), new List<string>()),
+                Delegaciones= new CheckBoxModel(delegaciones.AsEnumerable().OrderBy(d=> d.Descripcion).ToDictionary(d=> d.DelegacionID.ToString(), d=>d.Descripcion), new List<string>())
             });
         }
 
@@ -217,6 +219,17 @@ namespace AplicacionesGM_MVC.Controllers
         {
             ProfileBase profile = ProfileBase.Create(userName);
             profile["AplicacionesGM"] = formData["arrAplicacionesGM"].Replace("false,", "").Replace(",false", "").Replace("false", "");
+            profile.Save();
+
+            return RedirectToAction("Admin");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult GuardarDelegaciones(string userName, FormCollection formData)
+        {
+            ProfileBase profile = ProfileBase.Create(userName);
+            profile["Delegaciones"] = formData["arrDelegaciones"].Replace("false,", "").Replace(",false", "").Replace("false", "");
             profile.Save();
 
             return RedirectToAction("Admin");

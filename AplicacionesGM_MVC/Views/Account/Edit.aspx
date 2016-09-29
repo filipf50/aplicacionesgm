@@ -40,28 +40,7 @@
         </fieldset>
 	</div>
     
-    <h3>Código de Agente en QS</h3>
-	<div class="mvcMembership-emailAndComments">
-        <%  using (Html.BeginForm("GuardarAgenteQS", "Account", new { userName = Model.User.UserName }))
-            {
-                %>
-		<fieldset>
-			<p>
-                <dl>
-                    <dt><label for="IDAgenteQSMV">Cód. Agente MV:</label></dt>
-				    <dd><%: Html.DropDownList("IDAgenteQSMV", (SelectList)ViewData["AgentesMV"], "--Seleccione un valor--", new { @class = "textbox30" })%></dd>
-                    <dt><label for="IDAgenteQSHMA">Cód. Agente HMA:</label></dt>
-				    <dd><%: Html.DropDownList("IDAgenteQSHMA", (SelectList)ViewData["AgentesHMA"], "--Seleccione un valor--", new { @class = "textbox30" })%></dd>
-                    <dt><label for="IDAgenteQSECA">Cód. Agente ECA:</label></dt>
-				    <dd><%: Html.DropDownList("IDAgenteQSECA", (SelectList)ViewData["AgentesECA"], "--Seleccione un valor--", new { @class = "textbox30" })%></dd>
-                </dl>
-			</p>
-			<input type="submit" value="Guardar código de Agente" />
-		</fieldset>
-		<% } %>
-	</div>
-
-	<h3>Dirección de Email y observaciones</h3>
+    <h3>Dirección de Email y observaciones</h3>
 	<div class="mvcMembership-emailAndComments">
 		<% using(Html.BeginForm("Edit", "Account", new{ userName = Model.User.UserName })){ %>
 		<fieldset>
@@ -219,6 +198,57 @@
                 </div>
                 <input type="submit" value="Guadar Aplicaciones" />
             <% } %>
+        </fieldset>
+    </div>
+    <div>
+        <h3>Parámetros aplicación clientes</h3>
+        <fieldset>
+            <h3>Código de Agente en QS</h3>
+	        <div>
+                <%  using (Html.BeginForm("GuardarAgenteQS", "Account", new { userName = Model.User.UserName }))
+                    {
+                        %>
+		        <fieldset>
+			        <p>
+                        <dl>
+                            <dt><label for="IDAgenteQSMV">Cód. Agente MV:</label></dt>
+				            <dd><%: Html.DropDownList("IDAgenteQSMV", (SelectList)ViewData["AgentesMV"], "--Seleccione un valor--", new { @class = "textbox30" })%></dd>
+                            <dt><label for="IDAgenteQSHMA">Cód. Agente HMA:</label></dt>
+				            <dd><%: Html.DropDownList("IDAgenteQSHMA", (SelectList)ViewData["AgentesHMA"], "--Seleccione un valor--", new { @class = "textbox30" })%></dd>
+                            <dt><label for="IDAgenteQSECA">Cód. Agente ECA:</label></dt>
+				            <dd><%: Html.DropDownList("IDAgenteQSECA", (SelectList)ViewData["AgentesECA"], "--Seleccione un valor--", new { @class = "textbox30" })%></dd>
+                        </dl>
+			        </p>
+			        <input type="submit" value="Guardar código de Agente" />
+		        </fieldset>
+		        <% } %>
+	        </div>
+            <h3>Delegaciones que gestiona</h3>
+            <div>
+                <fieldset>
+			        <%using (Html.BeginForm("GuardarDelegaciones", "Account", new { userName = Model.User.UserName }))
+                      { %>
+                        <div class="editor-field checkboxlist">
+                            <% AplicacionesGM_MVC.Models.CheckBoxModel chkDelegaciones = (AplicacionesGM_MVC.Models.CheckBoxModel)Model.Delegaciones;
+                               ProfileBase profile = ProfileBase.Create(Model.User.UserName);
+                               foreach (var info in chkDelegaciones.lstValores)
+                               {
+                                   bool blnChecked = false;
+                                   if (profile["Delegaciones"].ToString().Contains(info.Key.ToString()))
+                                   {
+                                       blnChecked = true;
+                                   }
+                                   %>
+                                    <div>
+                                        <%: Html.CheckBox("arrDelegaciones", blnChecked, new { value = info.Key.ToString() })%>
+                                        <%: info.Value%>
+                                    </div>
+                            <% } %>
+                        </div>
+                        <input type="submit" value="Guadar Delegaciones" />
+                    <% } %>
+		        </fieldset>
+	        </div>
         </fieldset>
     </div>
     </form>

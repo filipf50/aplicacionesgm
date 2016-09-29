@@ -97,6 +97,7 @@ namespace AplicacionesGM_MVC.Models
         public CheckBoxModel Subordinados { get; set; }
         public CheckBoxModel Origenes { get; set; }
         public CheckBoxModel Aplicaciones { get; set; }
+        public CheckBoxModel Delegaciones { get; set; }
     }
     #endregion
 
