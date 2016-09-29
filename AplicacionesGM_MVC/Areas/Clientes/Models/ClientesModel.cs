@@ -54,7 +54,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             {
                 //Ficha del cliente
                 #region TABLA CLNCL
-                string strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNCL(CLCDG,CLNIF,CLNBR,CLSGL,CLVIA,CLNMR,CLAMP,CLMNC,CLCDP,CLPAI,CLPRV,CLAG1,CLTF1,CLTF2,CLTFX,CLMAIL,CLURL,CLACT,CLTCL,CLTTR,CLFPG,CLDTPP,CLRCG,CLDF1,CLDF2,CLDF3,CLZON,CLOBS,CLFALC,CLRGO,CLRGOP,CLBLQ,CLTAL,CLTIPT,CLDIV,CLDIVC,CLCCN,CLRCO) ";
+                string strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNCL(CLCDG,CLNIF,CLNBR,CLSGL,CLVIA,CLNMR,CLAMP,CLMNC,CLCDP,CLPAI,CLPRV,CLAG1,CLTF1,CLTF2,CLTFX,CLURL,CLACT,CLTCL,CLTTR,CLFPG,CLDTPP,CLRCG,CLDF1,CLDF2,CLDF3,CLZON,CLOBS,CLFALC,CLRGO,CLRGOP,CLBLQ,CLTAL,CLTIPT,CLDIV,CLDIVC,CLCCN,CLRCO,CLMAIL) ";
                 string strValores = "";
                 strValores = "VALUES (" + objCliente.QSID.ToString();
                 strValores += ",'" + objCliente.NIF.ToString() + "'";
@@ -71,7 +71,6 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += "," + (objCliente.Telefono1 ?? 0).ToString();
                 strValores += "," + (objCliente.Telefono2 ?? 0).ToString();
                 strValores += "," + (objCliente.Fax ?? 0).ToString();
-                strValores += ",'" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'");
                 strValores += ",'" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
                 strValores += ",'" + objCliente.IDActividadQS.ToString() + "'";
                 strValores += ",'" + objCliente.TipoCliente.ToString() + "'";
@@ -112,8 +111,13 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 {
                     strValores += ", 43000" + objCliente.QSID.ToString();
                 }
-                strValores += ", " + (strEmpresa == "003" || strEmpresa == "033" ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa == "044" ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString())) + ")";
+                strValores += ", " + (strEmpresa == "003" || strEmpresa == "033" ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa == "044" ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString())) ;
+                
+                //Lo pasamos todo a mayúsculas excepto el mail
+                strValores = strValores.ToUpper();
 
+                strValores += ",'" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'") + ")";
+                
                 strQuery += strValores;
                 con.Open();
                 command.Connection = con;
@@ -325,7 +329,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                     strValores += ", OBFB2='" + (objCliente.DirEnvioFactura ?? "").ToString() + "' ";
                     strValores += "WHERE OBCDG=" + objCliente.QSID.ToString();
                 }
-                strQuery += strValores;
+                strQuery += strValores.ToUpper();
                 if (con.State == System.Data.ConnectionState.Closed)
                 {
                     con.Open();
@@ -434,7 +438,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             #region TABLA BDGPR
             if (!existePresuntoClienteQS(strEmpresa, objCliente))
             {
-                strQuery = "INSERT INTO MRVBQSF" + strEmpresa + ".BDGPR (PRCDG, PRCSG,PRCLN,PRNBR,PRCIF,PRSGL,PRVIA,PRNMR,PRAMP,PRMNC,PRCDP,PRPAI,PRPRV,PRTF1,PRTF2,PRFAX,PRMAIL,PRURL,PRDIVC,PRAGT,PRCMA1,PRCMA2,PRCMA3,PRCMN1,PRCMN2) ";
+                strQuery = "INSERT INTO MRVBQSF" + strEmpresa + ".BDGPR (PRCDG, PRCSG,PRCLN,PRNBR,PRCIF,PRSGL,PRVIA,PRNMR,PRAMP,PRMNC,PRCDP,PRPAI,PRPRV,PRTF1,PRTF2,PRFAX,PRURL,PRDIVC,PRAGT,PRCMA1,PRCMA2,PRCMA3,PRCMN1,PRCMN2,PRMAIL) ";
                 strValores = " VALUES (" + objCliente.QSID.ToString();
                 strValores += "," + objCliente.QSID.ToString();
                 strValores += "," + objCliente.QSID.ToString();
@@ -451,7 +455,6 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += "," + (objCliente.Telefono1 ?? 0).ToString();
                 strValores += "," + (objCliente.Telefono2 ?? 0).ToString();
                 strValores += "," + (objCliente.Fax ?? 0).ToString();
-                strValores += ",'" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'");
                 strValores += ",'" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
                 strValores += ",'ESP'";
                 strValores += "," + (strEmpresa == "003" || strEmpresa == "033" ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa == "044" ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString()));
@@ -459,7 +462,13 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ",'" + objCliente.DiasVisita.ToString() + "'";
                 strValores += ",'" + objCliente.FormaContacto.ToString() + "'";
                 strValores += "," + objCliente.ConsumoPotencial.ToString().Replace(",", ".");
-                strValores += "," + objCliente.PrevisionAnual.ToString().Replace(",", ".") + ")";
+                strValores += "," + objCliente.PrevisionAnual.ToString().Replace(",", ".");
+
+                //Pasamos todo a mayúsculas excepto el mail
+                strValores = strValores.ToUpper();
+
+                strValores += ",'" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'") + ")";
+                
             }
             else
             {
@@ -479,7 +488,6 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ", PRTF1=" + (objCliente.Telefono1 ?? 0).ToString();
                 strValores += ", PRTF2=" + (objCliente.Telefono2 ?? 0).ToString();
                 strValores += ", PRFAX=" + (objCliente.Fax ?? 0).ToString();
-                strValores += ", PRMAIL='" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'");
                 strValores += ", PRURL='" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
                 strValores += ", PRDIVC='ESP'";
                 strValores += ", PRAGT=" + (strEmpresa == "003" || strEmpresa == "033" ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa == "044" ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString()));
@@ -488,6 +496,11 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ", PRCMA3='" + objCliente.FormaContacto.ToString() + "'";
                 strValores += ", PRCMN1=" + objCliente.ConsumoPotencial.ToString().Replace(",", ".");
                 strValores += ", PRCMN2=" + objCliente.PrevisionAnual.ToString().Replace(",", ".");
+
+                //Pasamos todo a mayúsculas excepto el mail
+                strValores = strValores.ToUpper();
+
+                strValores += ", PRMAIL='" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'");
                 strValores += " WHERE PRCDG=" + objCliente.QSID.ToString();
             }
             strQuery += strValores;
