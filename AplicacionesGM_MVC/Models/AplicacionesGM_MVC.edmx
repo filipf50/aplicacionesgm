@@ -1,0 +1,2086 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AplicacionesGM_MVCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AplicacionesGM_MVCModelStoreContainer">
+          <EntitySet Name="aspnet_Accionariado" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Accionariado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Acciones" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Acciones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_AplicacionesGM" EntityType="AplicacionesGM_MVCModel.Store.aspnet_AplicacionesGM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Aseguradoras" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Aseguradoras" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_BancosCliente" EntityType="AplicacionesGM_MVCModel.Store.aspnet_BancosCliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Clientes" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Clientes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_ClientesDirEnv" EntityType="AplicacionesGM_MVCModel.Store.aspnet_ClientesDirEnv" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_ClientesHabituales" EntityType="AplicacionesGM_MVCModel.Store.aspnet_ClientesHabituales" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Delegaciones" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Delegaciones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Departamentos" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Departamentos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Empresas" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Empresas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_FormasDePago" EntityType="AplicacionesGM_MVCModel.Store.aspnet_FormasDePago" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_InstrumentosDePesaje" EntityType="AplicacionesGM_MVCModel.Store.aspnet_InstrumentosDePesaje" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_MaterialesEmpresa" EntityType="AplicacionesGM_MVCModel.Store.aspnet_MaterialesEmpresa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_MediosDeDescarga" EntityType="AplicacionesGM_MVCModel.Store.aspnet_MediosDeDescarga" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Origenes" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Origenes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_PersonasRetiradaMat" EntityType="AplicacionesGM_MVCModel.Store.aspnet_PersonasRetiradaMat" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Profile" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_ProveedoresHabituales" EntityType="AplicacionesGM_MVCModel.Store.aspnet_ProveedoresHabituales" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_RequerimientosDeCalidad" EntityType="AplicacionesGM_MVCModel.Store.aspnet_RequerimientosDeCalidad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Roles" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_SociedadesVinculadas" EntityType="AplicacionesGM_MVCModel.Store.aspnet_SociedadesVinculadas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_TiposDeCliente" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeCliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_TiposDeVehiculo" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeVehiculo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_TiposDeVia" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeVia" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_UsersInRoles" EntityType="AplicacionesGM_MVCModel.Store.aspnet_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__aspnet_Pr__UserI__38996AB5" Association="AplicacionesGM_MVCModel.Store.FK__aspnet_Pr__UserI__38996AB5">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__RoleI__4AB81AF0" Association="AplicacionesGM_MVCModel.Store.FK__aspnet_Us__RoleI__4AB81AF0">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__UserI__49C3F6B7" Association="AplicacionesGM_MVCModel.Store.FK__aspnet_Us__UserI__49C3F6B7">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Accionariado_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Accionariado_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_Accionariado" EntitySet="aspnet_Accionariado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Acciones_aspnet_Departamentos" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Acciones_aspnet_Departamentos">
+            <End Role="aspnet_Departamentos" EntitySet="aspnet_Departamentos" />
+            <End Role="aspnet_Acciones" EntitySet="aspnet_Acciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Acciones_aspnet_Origenes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Acciones_aspnet_Origenes">
+            <End Role="aspnet_Origenes" EntitySet="aspnet_Origenes" />
+            <End Role="aspnet_Acciones" EntitySet="aspnet_Acciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_BancosCliente_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_BancosCliente_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_BancosCliente" EntitySet="aspnet_BancosCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Aseguradoras" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_Aseguradoras">
+            <End Role="aspnet_Aseguradoras" EntitySet="aspnet_Aseguradoras" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Delegaciones" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_Delegaciones">
+            <End Role="aspnet_Delegaciones" EntitySet="aspnet_Delegaciones" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_FormasDePago" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_FormasDePago">
+            <End Role="aspnet_FormasDePago" EntitySet="aspnet_FormasDePago" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_InstrumentosDePesaje" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_InstrumentosDePesaje">
+            <End Role="aspnet_InstrumentosDePesaje" EntitySet="aspnet_InstrumentosDePesaje" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_MediosDeDescarga" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_MediosDeDescarga">
+            <End Role="aspnet_MediosDeDescarga" EntitySet="aspnet_MediosDeDescarga" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_TiposDeCliente" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_TiposDeCliente">
+            <End Role="aspnet_TiposDeCliente" EntitySet="aspnet_TiposDeCliente" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_TiposDeVehiculo" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_TiposDeVehiculo">
+            <End Role="aspnet_TiposDeVehiculo" EntitySet="aspnet_TiposDeVehiculo" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_TiposDeVia" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_TiposDeVia">
+            <End Role="aspnet_TiposDeVia" EntitySet="aspnet_TiposDeVia" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Users" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Users1" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Clientes_aspnet_Users1">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_ClientesDirEnv_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_ClientesDirEnv_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_ClientesDirEnv" EntitySet="aspnet_ClientesDirEnv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_ClientesHabituales_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_ClientesHabituales_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_ClientesHabituales" EntitySet="aspnet_ClientesHabituales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_MaterialesEmpresa_aspnet_Empresas" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_MaterialesEmpresa_aspnet_Empresas">
+            <End Role="aspnet_Empresas" EntitySet="aspnet_Empresas" />
+            <End Role="aspnet_MaterialesEmpresa" EntitySet="aspnet_MaterialesEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_PersonasRetiradaMat_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_PersonasRetiradaMat" EntitySet="aspnet_PersonasRetiradaMat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_ProveedoresHabituales_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_ProveedoresHabituales_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_ProveedoresHabituales" EntitySet="aspnet_ProveedoresHabituales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_SociedadesVinculadas_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_SociedadesVinculadas_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_SociedadesVinculadas" EntitySet="aspnet_SociedadesVinculadas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aspnet_Accionariado">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="CIF" Type="nvarchar" MaxLength="15" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Porcentaje" Type="int" />
+        </EntityType>
+        <EntityType Name="aspnet_Acciones">
+          <Key>
+            <PropertyRef Name="AccionesID" />
+          </Key>
+          <Property Name="AccionesID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DepartamentoID" Type="int" Nullable="false" />
+          <Property Name="OrigenID" Type="int" Nullable="false" />
+          <Property Name="Delegaciones" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Responsables" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFinPrev" Type="date" />
+          <Property Name="FechaFinReal" Type="date" />
+          <Property Name="FechaSeguimiento" Type="date" />
+          <Property Name="Accion" Type="text" />
+          <Property Name="Objetivo" Type="text" />
+          <Property Name="Resultado" Type="text" />
+        </EntityType>
+        <EntityType Name="aspnet_AplicacionesGM">
+          <Key>
+            <PropertyRef Name="AplicacionesGMID" />
+          </Key>
+          <Property Name="AplicacionesGMID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Aseguradoras">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_BancosCliente">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sucursal" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Clientes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Nullable="false" Precision="10" StoreGeneratedPattern="Identity" />
+          <Property Name="QSID" Type="numeric" Precision="10" />
+          <Property Name="DelegacionID" Type="int" Nullable="false" />
+          <Property Name="EsDeExposicion" Type="bit" Nullable="false" />
+          <Property Name="TieneMail" Type="bit" Nullable="false" />
+          <Property Name="Empresas" Type="varchar" MaxLength="50" />
+          <Property Name="TipoDocumento" Type="int" Nullable="false" />
+          <Property Name="NIF" Type="nvarchar" MaxLength="15" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="30" />
+          <Property Name="TipoDeVia" Type="nvarchar" MaxLength="2" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="25" />
+          <Property Name="Numero" Type="numeric" Precision="5" />
+          <Property Name="Piso" Type="nvarchar" MaxLength="15" />
+          <Property Name="IDMunicipioQS" Type="numeric" Precision="4" />
+          <Property Name="Municipio" Type="nvarchar" MaxLength="25" />
+          <Property Name="CP" Type="numeric" Precision="5" />
+          <Property Name="IDPaisQS" Type="numeric" Precision="3" />
+          <Property Name="IDProvinciaQS" Type="numeric" Precision="2" />
+          <Property Name="IDAgenteQSMV" Type="numeric" Precision="10" />
+          <Property Name="IDAgenteQSHMA" Type="numeric" Precision="10" />
+          <Property Name="IDAgenteQSECA" Type="numeric" Precision="10" />
+          <Property Name="Telefono1" Type="numeric" Precision="10" />
+          <Property Name="Telefono2" Type="numeric" Precision="10" />
+          <Property Name="Fax" Type="numeric" Precision="10" />
+          <Property Name="MailDeContacto" Type="nvarchar" MaxLength="40" />
+          <Property Name="MailDeFacturacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoAdmiteFacturacionElectronica" Type="bit" Nullable="false" />
+          <Property Name="Web" Type="nvarchar" MaxLength="60" />
+          <Property Name="IDActividadQS" Type="nvarchar" MaxLength="4" />
+          <Property Name="Gerente" Type="nvarchar" MaxLength="50" />
+          <Property Name="TieneSocios" Type="numeric" Nullable="false" Precision="1" />
+          <Property Name="GrupoEmpresarial" Type="nvarchar" MaxLength="50" />
+          <Property Name="TieneEmpresasVinculadas" Type="numeric" Nullable="false" Precision="1" />
+          <Property Name="FormaContacto" Type="nvarchar" MaxLength="3" />
+          <Property Name="TipoCliente" Type="nvarchar" MaxLength="1" />
+          <Property Name="DiasVisita" Type="nvarchar" MaxLength="3" />
+          <Property Name="FrecuenciaVisita" Type="nvarchar" MaxLength="3" />
+          <Property Name="Antguedad" Type="nvarchar" MaxLength="10" />
+          <Property Name="ConsumoPotencial" Type="numeric" Precision="8" />
+          <Property Name="PrevisionAnual" Type="numeric" Precision="8" />
+          <Property Name="Tarifa" Type="numeric" Precision="2" />
+          <Property Name="FormaDePago" Type="numeric" Precision="2" />
+          <Property Name="FormaDePagoSolicitada" Type="nvarchar" MaxLength="30" />
+          <Property Name="DtoPP" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="RecargoFinanciero" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="ExistePedidoEnFirme" Type="bit" Nullable="false" />
+          <Property Name="IBANSIGLAS" Type="nvarchar" MaxLength="2" />
+          <Property Name="IBANCODE" Type="nvarchar" MaxLength="2" />
+          <Property Name="IBANENTIDAD" Type="nvarchar" MaxLength="4" />
+          <Property Name="IBANSUCURSAL" Type="nvarchar" MaxLength="4" />
+          <Property Name="IBANDC" Type="nvarchar" MaxLength="2" />
+          <Property Name="IBANCCC" Type="nvarchar" MaxLength="10" />
+          <Property Name="OficinasA" Type="nvarchar" MaxLength="20" />
+          <Property Name="OficinasP" Type="nvarchar" MaxLength="20" />
+          <Property Name="NavesA" Type="nvarchar" MaxLength="20" />
+          <Property Name="NavesP" Type="nvarchar" MaxLength="20" />
+          <Property Name="TerrenosA" Type="nvarchar" MaxLength="20" />
+          <Property Name="TerrenosP" Type="nvarchar" MaxLength="20" />
+          <Property Name="VehiculosA" Type="nvarchar" MaxLength="20" />
+          <Property Name="VehiculosP" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaquinariaA" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaquinariaP" Type="nvarchar" MaxLength="20" />
+          <Property Name="IDAseguradora" Type="int" />
+          <Property Name="NumTrabajadores" Type="int" />
+          <Property Name="Consume" Type="nvarchar" MaxLength="200" />
+          <Property Name="LimitePropuesto" Type="int" />
+          <Property Name="LimiteAsignadoMV" Type="int" />
+          <Property Name="LimiteAsignadoHMA" Type="int" />
+          <Property Name="LimiteAsignadoECA" Type="int" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="60" />
+          <Property Name="DiaVtoFijo1" Type="numeric" Precision="2" />
+          <Property Name="DiaVtoFijo2" Type="numeric" Precision="2" />
+          <Property Name="DiaVtoFijo3" Type="numeric" Precision="2" />
+          <Property Name="Zona" Type="numeric" Precision="5" />
+          <Property Name="NoTieneVtosFijos" Type="bit" Nullable="false" />
+          <Property Name="Horario" Type="nvarchar" MaxLength="60" />
+          <Property Name="HorarioDeVerano" Type="nvarchar" MaxLength="60" />
+          <Property Name="PersonaDeDescarga" Type="nvarchar" MaxLength="60" />
+          <Property Name="IDMedioDeDescarga" Type="int" />
+          <Property Name="NecesitaCamionConPluma" Type="bit" Nullable="false" />
+          <Property Name="IDTipoVehiculoServicio" Type="int" />
+          <Property Name="MedioDeTransportePropio" Type="bit" Nullable="false" />
+          <Property Name="PesaElMaterial" Type="bit" Nullable="false" />
+          <Property Name="IDInstrumentoDePesaje" Type="int" />
+          <Property Name="EspacioParaAlmacenar" Type="bit" Nullable="false" />
+          <Property Name="RequerimientosDeCalidad" Type="nvarchar(max)" />
+          <Property Name="RequerimientosDePrevencion" Type="nvarchar" MaxLength="50" />
+          <Property Name="CAEFirmada" Type="bit" Nullable="false" />
+          <Property Name="FicheroCAE" Type="nvarchar" MaxLength="255" />
+          <Property Name="FicheroCAEanterior" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDCausaNoFirmaCAE" Type="nvarchar" MaxLength="3" />
+          <Property Name="CAERevisada" Type="bit" Nullable="false" />
+          <Property Name="FechaDeOriginalCAE" Type="smalldatetime" />
+          <Property Name="CobroDePortesPorEnvio" Type="bit" Nullable="false" />
+          <Property Name="ImportePortesPorEnvio" Type="int" />
+          <Property Name="EsBorrador" Type="bit" Nullable="false" />
+          <Property Name="FechaDeAlta" Type="smalldatetime" Nullable="false" />
+          <Property Name="UsuarioDeAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UltimaModificación" Type="smalldatetime" />
+          <Property Name="UsuarioUltimaModificacion" Type="uniqueidentifier" />
+          <Property Name="FechaVolcadoQS" Type="smalldatetime" />
+          <Property Name="UsuarioVolcadoQS" Type="uniqueidentifier" />
+          <Property Name="FechaValidacionCreditos" Type="smalldatetime" />
+          <Property Name="UsuarioValidacionCreditos" Type="uniqueidentifier" />
+          <Property Name="FechaValidacionLogistica" Type="smalldatetime" />
+          <Property Name="UsuarioValidacionLogistica" Type="uniqueidentifier" />
+          <Property Name="FechaValidacionPrevencion" Type="smalldatetime" />
+          <Property Name="UsuarioValidacionPrevencion" Type="uniqueidentifier" />
+          <Property Name="TienePersonasAutorizadasRetMat" Type="bit" Nullable="false" />
+          <Property Name="VentaSujetaAContrato" Type="bit" Nullable="false" />
+          <Property Name="TipoDeViaFacturacion" Type="nvarchar" MaxLength="2" />
+          <Property Name="DomicilioFacturacion" Type="nvarchar" MaxLength="25" />
+          <Property Name="NumeroFacturacion" Type="numeric" Precision="5" />
+          <Property Name="PisoFacturacion" Type="nvarchar" MaxLength="15" />
+          <Property Name="IDMunicipioQSFacturacion" Type="numeric" Precision="4" />
+          <Property Name="MunicipioFacturacion" Type="nvarchar" MaxLength="25" />
+          <Property Name="CPFacturacion" Type="numeric" Precision="5" />
+          <Property Name="IDPaisQSFacturacion" Type="numeric" Precision="3" />
+          <Property Name="IDProvinciaQSFacturacion" Type="numeric" Precision="2" />
+          <Property Name="TieneApartadoPostalFacturacion" Type="bit" Nullable="false" />
+          <Property Name="ApatadoDeCorreosFacturacion" Type="int" />
+          <Property Name="EsClienteParticular" Type="bit" Nullable="false" />
+          <Property Name="RecogeEnNuestrasInstalaciones" Type="bit" Nullable="false" />
+          <Property Name="TieneDireccionesDeEnvio" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_ClientesDirEnv">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="30" />
+          <Property Name="TipoDeVía" Type="nvarchar" MaxLength="2" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="25" />
+          <Property Name="Numero" Type="numeric" Precision="5" />
+          <Property Name="Piso" Type="nvarchar" MaxLength="15" />
+          <Property Name="IDMunicipioQS" Type="numeric" Precision="4" />
+          <Property Name="Municipio" Type="nvarchar" MaxLength="25" />
+          <Property Name="CP" Type="numeric" Precision="5" />
+          <Property Name="IDPaisQS" Type="numeric" Precision="3" />
+          <Property Name="IDProvinciaQS" Type="numeric" Precision="2" />
+          <Property Name="Telefono" Type="numeric" Precision="10" />
+          <Property Name="Fax" Type="numeric" Precision="10" />
+        </EntityType>
+        <EntityType Name="aspnet_ClientesHabituales">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="NombreCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="NombreCliente" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NIF" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="aspnet_Delegaciones">
+          <Key>
+            <PropertyRef Name="DelegacionID" />
+          </Key>
+          <Property Name="DelegacionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Siglas" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="aspnet_Departamentos">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="aspnet_Empresas">
+          <Key>
+            <PropertyRef Name="QSID" />
+          </Key>
+          <Property Name="QSID" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_FormasDePago">
+          <Key>
+            <PropertyRef Name="QSID" />
+          </Key>
+          <Property Name="QSID" Type="numeric" Nullable="false" Precision="2" />
+          <Property Name="DtoPP" Type="numeric" Nullable="false" Scale="2" />
+          <Property Name="RecargoFinanciero" Type="numeric" Nullable="false" Scale="2" />
+          <Property Name="RequiereDocSEPA" Type="bit" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="DisponibleParaExposicion" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_InstrumentosDePesaje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_MaterialesEmpresa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="QSIDEmpresa" Type="nvarchar" MaxLength="3" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_MediosDeDescarga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Origenes">
+          <Key>
+            <PropertyRef Name="OrigenID" />
+          </Key>
+          <Property Name="OrigenID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="aspnet_PersonasRetiradaMat">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="NIF" />
+          </Key>
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="NIF" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyNames" Type="ntext" Nullable="false" />
+          <Property Name="PropertyValuesString" Type="ntext" Nullable="false" />
+          <Property Name="PropertyValuesBinary" Type="image" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_ProveedoresHabituales">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="NombreProveedor" />
+          </Key>
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="NombreProveedor" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NIF" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="aspnet_RequerimientosDeCalidad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredRoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="aspnet_SociedadesVinculadas">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Name="IDCliente" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="CIF" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeCliente">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrdenDeVisualizacion" Type="int" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeVia">
+          <Key>
+            <PropertyRef Name="IDTipoVia" />
+          </Key>
+          <Property Name="IDTipoVia" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__aspnet_Pr__UserI__38996AB5">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="AplicacionesGM_MVCModel.Store.aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__RoleI__4AB81AF0">
+          <End Role="aspnet_Roles" Type="AplicacionesGM_MVCModel.Store.aspnet_Roles" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="AplicacionesGM_MVCModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__UserI__49C3F6B7">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="AplicacionesGM_MVCModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Accionariado_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_Accionariado" Type="AplicacionesGM_MVCModel.Store.aspnet_Accionariado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Accionariado">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Acciones_aspnet_Departamentos">
+          <End Role="aspnet_Departamentos" Type="AplicacionesGM_MVCModel.Store.aspnet_Departamentos" Multiplicity="1" />
+          <End Role="aspnet_Acciones" Type="AplicacionesGM_MVCModel.Store.aspnet_Acciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Departamentos">
+              <PropertyRef Name="DepartamentoID" />
+            </Principal>
+            <Dependent Role="aspnet_Acciones">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Acciones_aspnet_Origenes">
+          <End Role="aspnet_Origenes" Type="AplicacionesGM_MVCModel.Store.aspnet_Origenes" Multiplicity="1" />
+          <End Role="aspnet_Acciones" Type="AplicacionesGM_MVCModel.Store.aspnet_Acciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Origenes">
+              <PropertyRef Name="OrigenID" />
+            </Principal>
+            <Dependent Role="aspnet_Acciones">
+              <PropertyRef Name="OrigenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_BancosCliente_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_BancosCliente" Type="AplicacionesGM_MVCModel.Store.aspnet_BancosCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_BancosCliente">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Aseguradoras">
+          <End Role="aspnet_Aseguradoras" Type="AplicacionesGM_MVCModel.Store.aspnet_Aseguradoras" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Aseguradoras">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDAseguradora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Delegaciones">
+          <End Role="aspnet_Delegaciones" Type="AplicacionesGM_MVCModel.Store.aspnet_Delegaciones" Multiplicity="1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Delegaciones">
+              <PropertyRef Name="DelegacionID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="DelegacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_FormasDePago">
+          <End Role="aspnet_FormasDePago" Type="AplicacionesGM_MVCModel.Store.aspnet_FormasDePago" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_FormasDePago">
+              <PropertyRef Name="QSID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="FormaDePago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_InstrumentosDePesaje">
+          <End Role="aspnet_InstrumentosDePesaje" Type="AplicacionesGM_MVCModel.Store.aspnet_InstrumentosDePesaje" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_InstrumentosDePesaje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDInstrumentoDePesaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_MediosDeDescarga">
+          <End Role="aspnet_MediosDeDescarga" Type="AplicacionesGM_MVCModel.Store.aspnet_MediosDeDescarga" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_MediosDeDescarga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDMedioDeDescarga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_TiposDeCliente">
+          <End Role="aspnet_TiposDeCliente" Type="AplicacionesGM_MVCModel.Store.aspnet_TiposDeCliente" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeCliente">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="TipoCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_TiposDeVehiculo">
+          <End Role="aspnet_TiposDeVehiculo" Type="AplicacionesGM_MVCModel.Store.aspnet_TiposDeVehiculo" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeVehiculo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDTipoVehiculoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_TiposDeVia">
+          <End Role="aspnet_TiposDeVia" Type="AplicacionesGM_MVCModel.Store.aspnet_TiposDeVia" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeVia">
+              <PropertyRef Name="IDTipoVia" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="TipoDeVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Users">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="UsuarioDeAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Users1">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="0..1" />
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="UsuarioUltimaModificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_ClientesDirEnv_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_ClientesDirEnv" Type="AplicacionesGM_MVCModel.Store.aspnet_ClientesDirEnv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_ClientesDirEnv">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_ClientesHabituales_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_ClientesHabituales" Type="AplicacionesGM_MVCModel.Store.aspnet_ClientesHabituales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_ClientesHabituales">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_MaterialesEmpresa_aspnet_Empresas">
+          <End Role="aspnet_Empresas" Type="AplicacionesGM_MVCModel.Store.aspnet_Empresas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_MaterialesEmpresa" Type="AplicacionesGM_MVCModel.Store.aspnet_MaterialesEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Empresas">
+              <PropertyRef Name="QSID" />
+            </Principal>
+            <Dependent Role="aspnet_MaterialesEmpresa">
+              <PropertyRef Name="QSIDEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_PersonasRetiradaMat_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_PersonasRetiradaMat" Type="AplicacionesGM_MVCModel.Store.aspnet_PersonasRetiradaMat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_PersonasRetiradaMat">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_ProveedoresHabituales_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_ProveedoresHabituales" Type="AplicacionesGM_MVCModel.Store.aspnet_ProveedoresHabituales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_ProveedoresHabituales">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_SociedadesVinculadas_aspnet_Clientes">
+          <End Role="aspnet_Clientes" Type="AplicacionesGM_MVCModel.Store.aspnet_Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnet_SociedadesVinculadas" Type="AplicacionesGM_MVCModel.Store.aspnet_SociedadesVinculadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_SociedadesVinculadas">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AplicacionesGM_MVCModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AplicacionesGM_MVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aspnet_Acciones" EntityType="AplicacionesGM_MVCModel.aspnet_Acciones" />
+          <EntitySet Name="aspnet_Delegaciones" EntityType="AplicacionesGM_MVCModel.aspnet_Delegaciones" />
+          <EntitySet Name="aspnet_Departamentos" EntityType="AplicacionesGM_MVCModel.aspnet_Departamentos" />
+          <EntitySet Name="aspnet_Origenes" EntityType="AplicacionesGM_MVCModel.aspnet_Origenes" />
+          <EntitySet Name="aspnet_Users" EntityType="AplicacionesGM_MVCModel.aspnet_Users" />
+          <AssociationSet Name="FK_aspnet_Acciones_aspnet_Departamentos" Association="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Departamentos">
+            <End Role="aspnet_Departamentos" EntitySet="aspnet_Departamentos" />
+            <End Role="aspnet_Acciones" EntitySet="aspnet_Acciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Acciones_aspnet_Origenes" Association="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Origenes">
+            <End Role="aspnet_Origenes" EntitySet="aspnet_Origenes" />
+            <End Role="aspnet_Acciones" EntitySet="aspnet_Acciones" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_Roles" EntityType="AplicacionesGM_MVCModel.aspnet_Roles" />
+          <AssociationSet Name="aspnet_UsersInRoles" Association="AplicacionesGM_MVCModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_AplicacionesGM" EntityType="AplicacionesGM_MVCModel.aspnet_AplicacionesGM" />
+          <EntitySet Name="aspnet_FormasDePago" EntityType="AplicacionesGM_MVCModel.aspnet_FormasDePago" />
+          <EntitySet Name="aspnet_Clientes" EntityType="AplicacionesGM_MVCModel.aspnet_Clientes" />
+          <EntitySet Name="aspnet_Empresas" EntityType="AplicacionesGM_MVCModel.aspnet_Empresas" />
+          <EntitySet Name="aspnet_MaterialesEmpresa" EntityType="AplicacionesGM_MVCModel.aspnet_MaterialesEmpresa" />
+          <EntitySet Name="aspnet_TiposDeCliente" EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeCliente" />
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_FormasDePago" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_FormasDePago">
+            <End Role="aspnet_FormasDePago" EntitySet="aspnet_FormasDePago" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_TiposDeCliente" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeCliente">
+            <End Role="aspnet_TiposDeCliente" EntitySet="aspnet_TiposDeCliente" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Users" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Users1" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_MaterialesEmpresa_aspnet_Empresas" Association="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas">
+            <End Role="aspnet_Empresas" EntitySet="aspnet_Empresas" />
+            <End Role="aspnet_MaterialesEmpresa" EntitySet="aspnet_MaterialesEmpresa" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_TiposDeVia" EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeVia" />
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_TiposDeVia" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVia">
+            <End Role="aspnet_TiposDeVia" EntitySet="aspnet_TiposDeVia" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_Accionariado" EntityType="AplicacionesGM_MVCModel.aspnet_Accionariado" />
+          <AssociationSet Name="FK_aspnet_Accionariado_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_Accionariado_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_Accionariado" EntitySet="aspnet_Accionariado" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_ClientesHabituales" EntityType="AplicacionesGM_MVCModel.aspnet_ClientesHabituales" />
+          <AssociationSet Name="FK_aspnet_ClientesHabituales_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_ClientesHabituales_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_ClientesHabituales" EntitySet="aspnet_ClientesHabituales" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_ProveedoresHabituales" EntityType="AplicacionesGM_MVCModel.aspnet_ProveedoresHabituales" />
+          <AssociationSet Name="FK_aspnet_ProveedoresHabituales_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_ProveedoresHabituales_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_ProveedoresHabituales" EntitySet="aspnet_ProveedoresHabituales" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_SociedadesVinculadas" EntityType="AplicacionesGM_MVCModel.aspnet_SociedadesVinculadas" />
+          <AssociationSet Name="FK_aspnet_SociedadesVinculadas_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_SociedadesVinculadas_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_SociedadesVinculadas" EntitySet="aspnet_SociedadesVinculadas" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_BancosCliente" EntityType="AplicacionesGM_MVCModel.aspnet_BancosCliente" />
+          <AssociationSet Name="FK_aspnet_BancosCliente_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_BancosCliente_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_BancosCliente" EntitySet="aspnet_BancosCliente" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_InstrumentosDePesaje" EntityType="AplicacionesGM_MVCModel.aspnet_InstrumentosDePesaje" />
+          <EntitySet Name="aspnet_MediosDeDescarga" EntityType="AplicacionesGM_MVCModel.aspnet_MediosDeDescarga" />
+          <EntitySet Name="aspnet_RequerimientosDeCalidad" EntityType="AplicacionesGM_MVCModel.aspnet_RequerimientosDeCalidad" />
+          <EntitySet Name="aspnet_TiposDeVehiculo" EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeVehiculo" />
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_InstrumentosDePesaje" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_InstrumentosDePesaje">
+            <End Role="aspnet_InstrumentosDePesaje" EntitySet="aspnet_InstrumentosDePesaje" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_MediosDeDescarga" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_MediosDeDescarga">
+            <End Role="aspnet_MediosDeDescarga" EntitySet="aspnet_MediosDeDescarga" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_TiposDeVehiculo" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVehiculo">
+            <End Role="aspnet_TiposDeVehiculo" EntitySet="aspnet_TiposDeVehiculo" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_Profile" EntityType="AplicacionesGM_MVCModel.aspnet_Profile" />
+          <AssociationSet Name="FK__aspnet_Pr__UserI__38996AB5" Association="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Delegaciones" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones">
+            <End Role="aspnet_Delegaciones" EntitySet="aspnet_Delegaciones" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_Aseguradoras" EntityType="AplicacionesGM_MVCModel.aspnet_Aseguradoras" />
+          <EntitySet Name="aspnet_ClientesDirEnv" EntityType="AplicacionesGM_MVCModel.aspnet_ClientesDirEnv" />
+          <EntitySet Name="aspnet_PersonasRetiradaMat" EntityType="AplicacionesGM_MVCModel.aspnet_PersonasRetiradaMat" />
+          <AssociationSet Name="FK_aspnet_Clientes_aspnet_Aseguradoras" Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras">
+            <End Role="aspnet_Aseguradoras" EntitySet="aspnet_Aseguradoras" />
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_ClientesDirEnv_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_ClientesDirEnv" EntitySet="aspnet_ClientesDirEnv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_PersonasRetiradaMat_aspnet_Clientes" Association="AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes">
+            <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
+            <End Role="aspnet_PersonasRetiradaMat" EntitySet="aspnet_PersonasRetiradaMat" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="aspnet_Acciones">
+          <Key>
+            <PropertyRef Name="AccionesID" />
+          </Key>
+          <Property Name="AccionesID" Type="Int64" Nullable="false" />
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" />
+          <Property Name="OrigenID" Type="Int32" Nullable="false" />
+          <Property Name="Delegaciones" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Responsables" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="FechaInicio" Type="DateTime" />
+          <Property Name="FechaFinPrev" Type="DateTime" />
+          <Property Name="FechaFinReal" Type="DateTime" />
+          <Property Name="FechaSeguimiento" Type="DateTime" />
+          <Property Name="Accion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Objetivo" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Resultado" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Departamentos" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Departamentos" FromRole="aspnet_Acciones" ToRole="aspnet_Departamentos" />
+          <NavigationProperty Name="aspnet_Origenes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Origenes" FromRole="aspnet_Acciones" ToRole="aspnet_Origenes" />
+        </EntityType>
+        <EntityType Name="aspnet_Delegaciones">
+          <Key>
+            <PropertyRef Name="DelegacionID" />
+          </Key>
+          <Property Name="DelegacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Siglas" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones" FromRole="aspnet_Delegaciones" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <EntityType Name="aspnet_Departamentos">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Acciones" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Departamentos" FromRole="aspnet_Departamentos" ToRole="aspnet_Acciones" />
+        </EntityType>
+        <EntityType Name="aspnet_Origenes">
+          <Key>
+            <PropertyRef Name="OrigenID" />
+          </Key>
+          <Property Name="OrigenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Acciones" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Origenes" FromRole="aspnet_Origenes" ToRole="aspnet_Acciones" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="AplicacionesGM_MVCModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users" FromRole="aspnet_Users" ToRole="aspnet_Clientes" />
+          <NavigationProperty Name="aspnet_Clientes1" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1" FromRole="aspnet_Users" ToRole="aspnet_Clientes" />
+          <NavigationProperty Name="aspnet_Profile" Relationship="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+        </EntityType>
+        <Association Name="FK_aspnet_Acciones_aspnet_Departamentos">
+          <End Role="aspnet_Departamentos" Type="AplicacionesGM_MVCModel.aspnet_Departamentos" Multiplicity="1" />
+          <End Role="aspnet_Acciones" Type="AplicacionesGM_MVCModel.aspnet_Acciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Departamentos">
+              <PropertyRef Name="DepartamentoID" />
+            </Principal>
+            <Dependent Role="aspnet_Acciones">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Acciones_aspnet_Origenes">
+          <End Role="aspnet_Origenes" Type="AplicacionesGM_MVCModel.aspnet_Origenes" Multiplicity="1" />
+          <End Role="aspnet_Acciones" Type="AplicacionesGM_MVCModel.aspnet_Acciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Origenes">
+              <PropertyRef Name="OrigenID" />
+            </Principal>
+            <Dependent Role="aspnet_Acciones">
+              <PropertyRef Name="OrigenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+          <Property Type="Guid" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoweredRoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AplicacionesGM_MVCModel.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="aspnet_UsersInRoles">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+        </Association>
+        <EntityType Name="aspnet_AplicacionesGM">
+          <Key>
+            <PropertyRef Name="AplicacionesGMID" />
+          </Key>
+          <Property Type="Int32" Name="AplicacionesGMID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Area" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="aspnet_FormasDePago">
+          <Key>
+            <PropertyRef Name="QSID" />
+          </Key>
+          <Property Type="Decimal" Name="QSID" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="RecargoFinanciero" Nullable="false" Precision="2" Scale="2" Type="Decimal" DefaultValue="0" />
+          <Property Type="Boolean" Name="RequiereDocSEPA" Nullable="false" />
+          <Property Type="Boolean" Name="Visible" Nullable="false" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_FormasDePago" FromRole="aspnet_FormasDePago" ToRole="aspnet_Clientes" />
+          <Property Name="DtoPP" Nullable="false" Precision="2" Scale="2" Type="Decimal" DefaultValue="0" />
+          <Property Type="Boolean" Name="DisponibleParaExposicion" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Clientes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="QSID" Precision="10" Scale="0" />
+          <Property Type="Boolean" Name="EsDeExposicion" Nullable="false" />
+          <Property Type="String" Name="Empresas" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NIF" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" MaxLength="30" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="String" Name="TipoDeVia" MaxLength="2" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="String" Name="Domicilio" MaxLength="25" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="Decimal" Name="Numero" Precision="5" Scale="0" Nullable="true" />
+          <Property Type="Decimal" Name="CP" Precision="5" Scale="0" Nullable="false" />
+          <Property Type="Decimal" Name="IDPaisQS" Nullable="true" Precision="3" Scale="0" />
+          <Property Type="Decimal" Name="IDProvinciaQS" Nullable="true" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="Telefono1" Precision="10" Scale="0" Nullable="true" />
+          <Property Type="Decimal" Name="Telefono2" Precision="10" Scale="0" Nullable="true" />
+          <Property Type="Decimal" Name="Fax" Precision="10" Scale="0" Nullable="true" />
+          <Property Type="String" Name="MailDeContacto" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MailDeFacturacion" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Web" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IDActividadQS" Nullable="true" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Gerente" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GrupoEmpresarial" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FormaContacto" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TipoCliente" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DiasVisita" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FrecuenciaVisita" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Antguedad" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ConsumoPotencial" Precision="8" Scale="0" />
+          <Property Type="Decimal" Name="PrevisionAnual" Precision="8" Scale="0" />
+          <Property Type="Decimal" Name="Tarifa" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="FormaDePago" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="DtoPP" Precision="4" Scale="2" />
+          <Property Type="String" Name="OficinasA" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OficinasP" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NavesA" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NavesP" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TerrenosA" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TerrenosP" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VehiculosA" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VehiculosP" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MaquinariaA" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MaquinariaP" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="NumTrabajadores" />
+          <Property Type="String" Name="Consume" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LimitePropuesto" />
+          <Property Type="String" Name="Observaciones" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FechaDeAlta" Nullable="false" />
+          <Property Type="Guid" Name="UsuarioDeAlta" Nullable="false" />
+          <Property Type="DateTime" Name="UltimaModificación" />
+          <Property Type="Guid" Name="UsuarioUltimaModificacion" />
+          <NavigationProperty Name="aspnet_FormasDePago" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_FormasDePago" FromRole="aspnet_Clientes" ToRole="aspnet_FormasDePago" />
+          <NavigationProperty Name="aspnet_TiposDeCliente" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeCliente" FromRole="aspnet_Clientes" ToRole="aspnet_TiposDeCliente" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users" FromRole="aspnet_Clientes" ToRole="aspnet_Users" />
+          <NavigationProperty Name="aspnet_Users1" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1" FromRole="aspnet_Clientes" ToRole="aspnet_Users" />
+          <Property Type="Decimal" Name="RecargoFinanciero" Precision="4" Scale="2" />
+          <Property Type="Boolean" Name="TieneMail" Nullable="false" />
+          <Property Type="Decimal" Name="TieneEmpresasVinculadas" Nullable="false" Scale="0" Precision="1" DefaultValue="2" />
+          <Property Type="Decimal" Name="TieneSocios" Nullable="false" Scale="0" Precision="1" DefaultValue="2" />
+          <Property Type="Boolean" Name="NoAdmiteFacturacionElectronica" Nullable="false" />
+          <Property Type="String" Name="Piso" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="ExistePedidoEnFirme" Nullable="false" />
+          <Property Type="String" Name="Contacto" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="DiaVtoFijo1" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="DiaVtoFijo2" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="DiaVtoFijo3" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="Zona" Precision="5" Scale="0" />
+          <Property Type="Boolean" Name="NoTieneVtosFijos" Nullable="false" />
+          <NavigationProperty Name="aspnet_TiposDeVia" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVia" FromRole="aspnet_Clientes" ToRole="aspnet_TiposDeVia" />
+          <NavigationProperty Name="aspnet_Accionariado" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Accionariado_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_Accionariado" />
+          <NavigationProperty Name="aspnet_ClientesHabituales" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ClientesHabituales_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_ClientesHabituales" />
+          <NavigationProperty Name="aspnet_ProveedoresHabituales" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ProveedoresHabituales_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_ProveedoresHabituales" />
+          <NavigationProperty Name="aspnet_SociedadesVinculadas" Relationship="AplicacionesGM_MVCModel.FK_aspnet_SociedadesVinculadas_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_SociedadesVinculadas" />
+          <Property Type="String" Name="FormaDePagoSolicitada" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_BancosCliente" Relationship="AplicacionesGM_MVCModel.FK_aspnet_BancosCliente_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_BancosCliente" />
+          <Property Type="String" Name="Horario" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HorarioDeVerano" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonaDeDescarga" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IDMedioDeDescarga" />
+          <Property Type="Boolean" Name="NecesitaCamionConPluma" Nullable="false" />
+          <Property Type="Int32" Name="IDTipoVehiculoServicio" />
+          <Property Type="Boolean" Name="MedioDeTransportePropio" Nullable="false" />
+          <Property Type="Boolean" Name="PesaElMaterial" Nullable="false" />
+          <Property Type="Int32" Name="IDInstrumentoDePesaje" />
+          <Property Type="Boolean" Name="EspacioParaAlmacenar" Nullable="false" />
+          <Property Type="String" Name="RequerimientosDeCalidad" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequerimientosDePrevencion" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="CAEFirmada" Nullable="false" />
+          <Property Type="String" Name="FicheroCAE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IDCausaNoFirmaCAE" />
+          <Property Type="Boolean" Name="CobroDePortesPorEnvio" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="aspnet_InstrumentosDePesaje" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_InstrumentosDePesaje" FromRole="aspnet_Clientes" ToRole="aspnet_InstrumentosDePesaje" />
+          <NavigationProperty Name="aspnet_MediosDeDescarga" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_MediosDeDescarga" FromRole="aspnet_Clientes" ToRole="aspnet_MediosDeDescarga" />
+          <NavigationProperty Name="aspnet_TiposDeVehiculo" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVehiculo" FromRole="aspnet_Clientes" ToRole="aspnet_TiposDeVehiculo" />
+          <Property Type="String" Name="FicheroCAEanterior" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="EsBorrador" Nullable="false" />
+          <Property Type="DateTime" Name="FechaVolcadoQS" />
+          <Property Type="Guid" Name="UsuarioVolcadoQS" />
+          <Property Type="DateTime" Name="FechaValidacionCreditos" />
+          <Property Type="Guid" Name="UsuarioValidacionCreditos" />
+          <Property Type="DateTime" Name="FechaValidacionLogistica" />
+          <Property Type="Guid" Name="UsuarioValidacionLogistica" />
+          <Property Type="DateTime" Name="FechaValidacionPrevencion" />
+          <Property Type="Decimal" Name="IDAgenteQSMV" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="IDAgenteQSHMA" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="IDAgenteQSECA" Precision="10" Scale="0" />
+          <Property Type="Int32" Name="LimiteAsignadoMV" />
+          <Property Type="Int32" Name="LimiteAsignadoHMA" />
+          <Property Type="Int32" Name="LimiteAsignadoECA" />
+          <Property Name="UsuarioValidacionPrevencion" Type="Guid" />
+          <Property Type="Boolean" Name="CAERevisada" Nullable="false" />
+          <Property Type="DateTime" Name="FechaDeOriginalCAE" />
+          <Property Type="Int32" Name="DelegacionID" Nullable="false" />
+          <NavigationProperty Name="aspnet_Delegaciones" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones" FromRole="aspnet_Clientes" ToRole="aspnet_Delegaciones" />
+          <Property Type="Int32" Name="IDAseguradora" />
+          <NavigationProperty Name="aspnet_Aseguradoras" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras" FromRole="aspnet_Clientes" ToRole="aspnet_Aseguradoras" />
+          <NavigationProperty Name="aspnet_ClientesDirEnv" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_ClientesDirEnv" />
+          <NavigationProperty Name="aspnet_PersonasRetiradaMat" Relationship="AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes" FromRole="aspnet_Clientes" ToRole="aspnet_PersonasRetiradaMat" />
+          <Property Type="Decimal" Name="IDMunicipioQS" Precision="4" Scale="0" />
+          <Property Type="Boolean" Name="TienePersonasAutorizadasRetMat" Nullable="false" />
+          <Property Type="String" Name="Municipio" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ImportePortesPorEnvio" />
+          <Property Type="Boolean" Name="VentaSujetaAContrato" Nullable="false" />
+          <Property Type="String" Name="TipoDeViaFacturacion" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DomicilioFacturacion" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="NumeroFacturacion" Precision="5" Scale="0" />
+          <Property Type="String" Name="PisoFacturacion" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MunicipioFacturacion" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="CPFacturacion" Precision="5" Scale="0" />
+          <Property Type="Decimal" Name="IDMunicipioQSFacturacion" Precision="4" Scale="0" />
+          <Property Type="Decimal" Name="IDPaisQSFacturacion" Precision="3" Scale="0" />
+          <Property Type="Decimal" Name="IDProvinciaQSFacturacion" Precision="2" Scale="0" />
+          <Property Type="Boolean" Name="TieneApartadoPostalFacturacion" Nullable="false" />
+          <Property Type="Int32" Name="ApatadoDeCorreosFacturacion" />
+          <Property Type="Boolean" Name="EsClienteParticular" Nullable="false" />
+          <Property Type="Boolean" Name="RecogeEnNuestrasInstalaciones" Nullable="false" />
+          <Property Type="Boolean" Name="TieneDireccionesDeEnvio" Nullable="false" />
+          <Property Type="String" Name="IBANSIGLAS" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IBANCODE" />
+          <Property Type="String" Name="IBANENTIDAD" />
+          <Property Type="String" Name="IBANSUCURSAL" />
+          <Property Type="String" Name="IBANDC" />
+          <Property Type="String" Name="IBANCCC" />
+          <Property Type="Int32" Name="TipoDocumento" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Empresas">
+          <Key>
+            <PropertyRef Name="QSID" />
+          </Key>
+          <Property Type="String" Name="QSID" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_MaterialesEmpresa" Relationship="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas" FromRole="aspnet_Empresas" ToRole="aspnet_MaterialesEmpresa" />
+          <Property Type="Boolean" Name="Visible" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_MaterialesEmpresa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="QSIDEmpresa" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Empresas" Relationship="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas" FromRole="aspnet_MaterialesEmpresa" ToRole="aspnet_Empresas" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeCliente">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeCliente" FromRole="aspnet_TiposDeCliente" ToRole="aspnet_Clientes" />
+          <Property Type="Int32" Name="OrdenDeVisualizacion" />
+        </EntityType>
+        <Association Name="FK_aspnet_Clientes_aspnet_FormasDePago">
+          <End Type="AplicacionesGM_MVCModel.aspnet_FormasDePago" Role="aspnet_FormasDePago" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_FormasDePago">
+              <PropertyRef Name="QSID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="FormaDePago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_TiposDeCliente">
+          <End Type="AplicacionesGM_MVCModel.aspnet_TiposDeCliente" Role="aspnet_TiposDeCliente" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeCliente">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="TipoCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Users">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="UsuarioDeAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Users1">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="UsuarioUltimaModificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_MaterialesEmpresa_aspnet_Empresas">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Empresas" Role="aspnet_Empresas" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_MaterialesEmpresa" Role="aspnet_MaterialesEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Empresas">
+              <PropertyRef Name="QSID" />
+            </Principal>
+            <Dependent Role="aspnet_MaterialesEmpresa">
+              <PropertyRef Name="QSIDEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_TiposDeVia">
+          <Key>
+            <PropertyRef Name="IDTipoVia" />
+          </Key>
+          <Property Type="String" Name="IDTipoVia" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVia" FromRole="aspnet_TiposDeVia" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_Clientes_aspnet_TiposDeVia">
+          <End Type="AplicacionesGM_MVCModel.aspnet_TiposDeVia" Role="aspnet_TiposDeVia" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeVia">
+              <PropertyRef Name="IDTipoVia" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="TipoDeVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_Accionariado">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="CIF" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Porcentaje" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Accionariado_aspnet_Clientes" FromRole="aspnet_Accionariado" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_Accionariado_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Accionariado" Role="aspnet_Accionariado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Accionariado">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_ClientesHabituales">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="NombreCliente" />
+          </Key>
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NIF" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ClientesHabituales_aspnet_Clientes" FromRole="aspnet_ClientesHabituales" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_ClientesHabituales_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_ClientesHabituales" Role="aspnet_ClientesHabituales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_ClientesHabituales">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_ProveedoresHabituales">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="NombreProveedor" />
+          </Key>
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="NombreProveedor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NIF" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ProveedoresHabituales_aspnet_Clientes" FromRole="aspnet_ProveedoresHabituales" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_ProveedoresHabituales_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_ProveedoresHabituales" Role="aspnet_ProveedoresHabituales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_ProveedoresHabituales">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_SociedadesVinculadas">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="CIF" />
+          </Key>
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="CIF" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_SociedadesVinculadas_aspnet_Clientes" FromRole="aspnet_SociedadesVinculadas" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_SociedadesVinculadas_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_SociedadesVinculadas" Role="aspnet_SociedadesVinculadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_SociedadesVinculadas">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_BancosCliente">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sucursal" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_BancosCliente_aspnet_Clientes" FromRole="aspnet_BancosCliente" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_BancosCliente_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_BancosCliente" Role="aspnet_BancosCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_BancosCliente">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_InstrumentosDePesaje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_InstrumentosDePesaje" FromRole="aspnet_InstrumentosDePesaje" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <EntityType Name="aspnet_MediosDeDescarga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_MediosDeDescarga" FromRole="aspnet_MediosDeDescarga" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <EntityType Name="aspnet_RequerimientosDeCalidad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVehiculo" FromRole="aspnet_TiposDeVehiculo" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_Clientes_aspnet_InstrumentosDePesaje">
+          <End Type="AplicacionesGM_MVCModel.aspnet_InstrumentosDePesaje" Role="aspnet_InstrumentosDePesaje" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_InstrumentosDePesaje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDInstrumentoDePesaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_MediosDeDescarga">
+          <End Type="AplicacionesGM_MVCModel.aspnet_MediosDeDescarga" Role="aspnet_MediosDeDescarga" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_MediosDeDescarga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDMedioDeDescarga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_TiposDeVehiculo">
+          <End Type="AplicacionesGM_MVCModel.aspnet_TiposDeVehiculo" Role="aspnet_TiposDeVehiculo" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeVehiculo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDTipoVehiculoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="LastUpdatedDate" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Profile" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK__aspnet_Pr__UserI__38996AB5">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Profile" Role="aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Clientes_aspnet_Delegaciones">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Delegaciones" Role="aspnet_Delegaciones" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Delegaciones">
+              <PropertyRef Name="DelegacionID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="DelegacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_Aseguradoras">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras" FromRole="aspnet_Aseguradoras" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <EntityType Name="aspnet_ClientesDirEnv">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="Nombre" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TipoDeVía" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Domicilio" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Numero" Precision="5" Scale="0" />
+          <Property Type="String" Name="Piso" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Municipio" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="CP" Precision="5" Scale="0" />
+          <Property Type="Decimal" Name="IDPaisQS" Precision="3" Scale="0" />
+          <Property Type="Decimal" Name="IDProvinciaQS" Precision="2" Scale="0" />
+          <Property Type="Decimal" Name="Telefono" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="Fax" Precision="10" Scale="0" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes" FromRole="aspnet_ClientesDirEnv" ToRole="aspnet_Clientes" />
+          <Property Type="Decimal" Name="IDMunicipioQS" Precision="4" Scale="0" />
+        </EntityType>
+        <EntityType Name="aspnet_PersonasRetiradaMat">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="NIF" />
+          </Key>
+          <Property Type="Decimal" Name="IDCliente" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="NIF" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes" FromRole="aspnet_PersonasRetiradaMat" ToRole="aspnet_Clientes" />
+        </EntityType>
+        <Association Name="FK_aspnet_Clientes_aspnet_Aseguradoras">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Aseguradoras" Role="aspnet_Aseguradoras" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Aseguradoras">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_Clientes">
+              <PropertyRef Name="IDAseguradora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_ClientesDirEnv_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_ClientesDirEnv" Role="aspnet_ClientesDirEnv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_ClientesDirEnv">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_PersonasRetiradaMat_aspnet_Clientes">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Clientes" Role="aspnet_Clientes" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_PersonasRetiradaMat" Role="aspnet_PersonasRetiradaMat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="aspnet_PersonasRetiradaMat">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AplicacionesGM_MVCModelStoreContainer" CdmEntityContainer="AplicacionesGM_MVCEntities">
+          <EntitySetMapping Name="aspnet_Acciones"><EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Acciones"><MappingFragment StoreEntitySet="aspnet_Acciones">
+            <ScalarProperty Name="AccionesID" ColumnName="AccionesID" />
+            <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+            <ScalarProperty Name="OrigenID" ColumnName="OrigenID" />
+            <ScalarProperty Name="Delegaciones" ColumnName="Delegaciones" />
+            <ScalarProperty Name="Responsables" ColumnName="Responsables" />
+            <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+            <ScalarProperty Name="FechaFinPrev" ColumnName="FechaFinPrev" />
+            <ScalarProperty Name="FechaFinReal" ColumnName="FechaFinReal" />
+            <ScalarProperty Name="FechaSeguimiento" ColumnName="FechaSeguimiento" />
+            <ScalarProperty Name="Accion" ColumnName="Accion" />
+            <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+            <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Delegaciones"><EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Delegaciones"><MappingFragment StoreEntitySet="aspnet_Delegaciones">
+            <ScalarProperty Name="DelegacionID" ColumnName="DelegacionID" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+            <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Departamentos"><EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Departamentos"><MappingFragment StoreEntitySet="aspnet_Departamentos">
+            <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Origenes"><EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Origenes"><MappingFragment StoreEntitySet="aspnet_Origenes">
+            <ScalarProperty Name="OrigenID" ColumnName="OrigenID" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users"><EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Users"><MappingFragment StoreEntitySet="aspnet_Users">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+            <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+            <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+            <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Roles">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Roles">
+              <MappingFragment StoreEntitySet="aspnet_Roles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LoweredRoleName" ColumnName="LoweredRoleName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="AplicacionesGM_MVCModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="aspnet_AplicacionesGM">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_AplicacionesGM">
+              <MappingFragment StoreEntitySet="aspnet_AplicacionesGM">
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="AplicacionesGMID" ColumnName="AplicacionesGMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_FormasDePago">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_FormasDePago">
+              <MappingFragment StoreEntitySet="aspnet_FormasDePago">
+                <ScalarProperty Name="DisponibleParaExposicion" ColumnName="DisponibleParaExposicion" />
+                <ScalarProperty Name="DtoPP" ColumnName="DtoPP" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="RequiereDocSEPA" ColumnName="RequiereDocSEPA" />
+                <ScalarProperty Name="RecargoFinanciero" ColumnName="RecargoFinanciero" />
+                <ScalarProperty Name="QSID" ColumnName="QSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Clientes">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Clientes">
+              <MappingFragment StoreEntitySet="aspnet_Clientes">
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="IBANCCC" ColumnName="IBANCCC" />
+                <ScalarProperty Name="IBANDC" ColumnName="IBANDC" />
+                <ScalarProperty Name="IBANSUCURSAL" ColumnName="IBANSUCURSAL" />
+                <ScalarProperty Name="IBANENTIDAD" ColumnName="IBANENTIDAD" />
+                <ScalarProperty Name="IBANCODE" ColumnName="IBANCODE" />
+                <ScalarProperty Name="IBANSIGLAS" ColumnName="IBANSIGLAS" />
+                <ScalarProperty Name="TieneDireccionesDeEnvio" ColumnName="TieneDireccionesDeEnvio" />
+                <ScalarProperty Name="RecogeEnNuestrasInstalaciones" ColumnName="RecogeEnNuestrasInstalaciones" />
+                <ScalarProperty Name="EsClienteParticular" ColumnName="EsClienteParticular" />
+                <ScalarProperty Name="ApatadoDeCorreosFacturacion" ColumnName="ApatadoDeCorreosFacturacion" />
+                <ScalarProperty Name="TieneApartadoPostalFacturacion" ColumnName="TieneApartadoPostalFacturacion" />
+                <ScalarProperty Name="IDProvinciaQSFacturacion" ColumnName="IDProvinciaQSFacturacion" />
+                <ScalarProperty Name="IDPaisQSFacturacion" ColumnName="IDPaisQSFacturacion" />
+                <ScalarProperty Name="IDMunicipioQSFacturacion" ColumnName="IDMunicipioQSFacturacion" />
+                <ScalarProperty Name="CPFacturacion" ColumnName="CPFacturacion" />
+                <ScalarProperty Name="MunicipioFacturacion" ColumnName="MunicipioFacturacion" />
+                <ScalarProperty Name="PisoFacturacion" ColumnName="PisoFacturacion" />
+                <ScalarProperty Name="NumeroFacturacion" ColumnName="NumeroFacturacion" />
+                <ScalarProperty Name="DomicilioFacturacion" ColumnName="DomicilioFacturacion" />
+                <ScalarProperty Name="TipoDeViaFacturacion" ColumnName="TipoDeViaFacturacion" />
+                <ScalarProperty Name="VentaSujetaAContrato" ColumnName="VentaSujetaAContrato" />
+                <ScalarProperty Name="ImportePortesPorEnvio" ColumnName="ImportePortesPorEnvio" />
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="TienePersonasAutorizadasRetMat" ColumnName="TienePersonasAutorizadasRetMat" />
+                <ScalarProperty Name="IDMunicipioQS" ColumnName="IDMunicipioQS" />
+                <ScalarProperty Name="IDAseguradora" ColumnName="IDAseguradora" />
+                <ScalarProperty Name="DelegacionID" ColumnName="DelegacionID" />
+                <ScalarProperty Name="FechaDeOriginalCAE" ColumnName="FechaDeOriginalCAE" />
+                <ScalarProperty Name="CAERevisada" ColumnName="CAERevisada" />
+                <ScalarProperty Name="UsuarioValidacionPrevencion" ColumnName="UsuarioValidacionPrevencion" />
+                <ScalarProperty Name="LimiteAsignadoECA" ColumnName="LimiteAsignadoECA" />
+                <ScalarProperty Name="LimiteAsignadoHMA" ColumnName="LimiteAsignadoHMA" />
+                <ScalarProperty Name="LimiteAsignadoMV" ColumnName="LimiteAsignadoMV" />
+                <ScalarProperty Name="IDAgenteQSECA" ColumnName="IDAgenteQSECA" />
+                <ScalarProperty Name="IDAgenteQSHMA" ColumnName="IDAgenteQSHMA" />
+                <ScalarProperty Name="IDAgenteQSMV" ColumnName="IDAgenteQSMV" />
+                <ScalarProperty Name="FechaValidacionPrevencion" ColumnName="FechaValidacionPrevencion" />
+                <ScalarProperty Name="UsuarioValidacionLogistica" ColumnName="UsuarioValidacionLogistica" />
+                <ScalarProperty Name="FechaValidacionLogistica" ColumnName="FechaValidacionLogistica" />
+                <ScalarProperty Name="UsuarioValidacionCreditos" ColumnName="UsuarioValidacionCreditos" />
+                <ScalarProperty Name="FechaValidacionCreditos" ColumnName="FechaValidacionCreditos" />
+                <ScalarProperty Name="UsuarioVolcadoQS" ColumnName="UsuarioVolcadoQS" />
+                <ScalarProperty Name="FechaVolcadoQS" ColumnName="FechaVolcadoQS" />
+                <ScalarProperty Name="EsBorrador" ColumnName="EsBorrador" />
+                <ScalarProperty Name="FicheroCAEanterior" ColumnName="FicheroCAEanterior" />
+                <ScalarProperty Name="CobroDePortesPorEnvio" ColumnName="CobroDePortesPorEnvio" />
+                <ScalarProperty Name="IDCausaNoFirmaCAE" ColumnName="IDCausaNoFirmaCAE" />
+                <ScalarProperty Name="FicheroCAE" ColumnName="FicheroCAE" />
+                <ScalarProperty Name="CAEFirmada" ColumnName="CAEFirmada" />
+                <ScalarProperty Name="RequerimientosDePrevencion" ColumnName="RequerimientosDePrevencion" />
+                <ScalarProperty Name="RequerimientosDeCalidad" ColumnName="RequerimientosDeCalidad" />
+                <ScalarProperty Name="EspacioParaAlmacenar" ColumnName="EspacioParaAlmacenar" />
+                <ScalarProperty Name="IDInstrumentoDePesaje" ColumnName="IDInstrumentoDePesaje" />
+                <ScalarProperty Name="PesaElMaterial" ColumnName="PesaElMaterial" />
+                <ScalarProperty Name="MedioDeTransportePropio" ColumnName="MedioDeTransportePropio" />
+                <ScalarProperty Name="IDTipoVehiculoServicio" ColumnName="IDTipoVehiculoServicio" />
+                <ScalarProperty Name="NecesitaCamionConPluma" ColumnName="NecesitaCamionConPluma" />
+                <ScalarProperty Name="IDMedioDeDescarga" ColumnName="IDMedioDeDescarga" />
+                <ScalarProperty Name="PersonaDeDescarga" ColumnName="PersonaDeDescarga" />
+                <ScalarProperty Name="HorarioDeVerano" ColumnName="HorarioDeVerano" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+                <ScalarProperty Name="FormaDePagoSolicitada" ColumnName="FormaDePagoSolicitada" />
+                <ScalarProperty Name="NoTieneVtosFijos" ColumnName="NoTieneVtosFijos" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="DiaVtoFijo3" ColumnName="DiaVtoFijo3" />
+                <ScalarProperty Name="DiaVtoFijo2" ColumnName="DiaVtoFijo2" />
+                <ScalarProperty Name="DiaVtoFijo1" ColumnName="DiaVtoFijo1" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="ExistePedidoEnFirme" ColumnName="ExistePedidoEnFirme" />
+                <ScalarProperty Name="Piso" ColumnName="Piso" />
+                <ScalarProperty Name="NoAdmiteFacturacionElectronica" ColumnName="NoAdmiteFacturacionElectronica" />
+                <ScalarProperty Name="TieneSocios" ColumnName="TieneSocios" />
+                <ScalarProperty Name="TieneEmpresasVinculadas" ColumnName="TieneEmpresasVinculadas" />
+                <ScalarProperty Name="TieneMail" ColumnName="TieneMail" />
+                <ScalarProperty Name="RecargoFinanciero" ColumnName="RecargoFinanciero" />
+                <ScalarProperty Name="UsuarioUltimaModificacion" ColumnName="UsuarioUltimaModificacion" />
+                <ScalarProperty Name="UltimaModificación" ColumnName="UltimaModificación" />
+                <ScalarProperty Name="UsuarioDeAlta" ColumnName="UsuarioDeAlta" />
+                <ScalarProperty Name="FechaDeAlta" ColumnName="FechaDeAlta" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="LimitePropuesto" ColumnName="LimitePropuesto" />
+                <ScalarProperty Name="Consume" ColumnName="Consume" />
+                <ScalarProperty Name="NumTrabajadores" ColumnName="NumTrabajadores" />
+                <ScalarProperty Name="MaquinariaP" ColumnName="MaquinariaP" />
+                <ScalarProperty Name="MaquinariaA" ColumnName="MaquinariaA" />
+                <ScalarProperty Name="VehiculosP" ColumnName="VehiculosP" />
+                <ScalarProperty Name="VehiculosA" ColumnName="VehiculosA" />
+                <ScalarProperty Name="TerrenosP" ColumnName="TerrenosP" />
+                <ScalarProperty Name="TerrenosA" ColumnName="TerrenosA" />
+                <ScalarProperty Name="NavesP" ColumnName="NavesP" />
+                <ScalarProperty Name="NavesA" ColumnName="NavesA" />
+                <ScalarProperty Name="OficinasP" ColumnName="OficinasP" />
+                <ScalarProperty Name="OficinasA" ColumnName="OficinasA" />
+                <ScalarProperty Name="DtoPP" ColumnName="DtoPP" />
+                <ScalarProperty Name="FormaDePago" ColumnName="FormaDePago" />
+                <ScalarProperty Name="Tarifa" ColumnName="Tarifa" />
+                <ScalarProperty Name="PrevisionAnual" ColumnName="PrevisionAnual" />
+                <ScalarProperty Name="ConsumoPotencial" ColumnName="ConsumoPotencial" />
+                <ScalarProperty Name="Antguedad" ColumnName="Antguedad" />
+                <ScalarProperty Name="FrecuenciaVisita" ColumnName="FrecuenciaVisita" />
+                <ScalarProperty Name="DiasVisita" ColumnName="DiasVisita" />
+                <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+                <ScalarProperty Name="FormaContacto" ColumnName="FormaContacto" />
+                <ScalarProperty Name="GrupoEmpresarial" ColumnName="GrupoEmpresarial" />
+                <ScalarProperty Name="Gerente" ColumnName="Gerente" />
+                <ScalarProperty Name="IDActividadQS" ColumnName="IDActividadQS" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="MailDeFacturacion" ColumnName="MailDeFacturacion" />
+                <ScalarProperty Name="MailDeContacto" ColumnName="MailDeContacto" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="IDProvinciaQS" ColumnName="IDProvinciaQS" />
+                <ScalarProperty Name="IDPaisQS" ColumnName="IDPaisQS" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="TipoDeVia" ColumnName="TipoDeVia" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="Empresas" ColumnName="Empresas" />
+                <ScalarProperty Name="EsDeExposicion" ColumnName="EsDeExposicion" />
+                <ScalarProperty Name="QSID" ColumnName="QSID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Empresas">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Empresas">
+              <MappingFragment StoreEntitySet="aspnet_Empresas">
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="QSID" ColumnName="QSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_MaterialesEmpresa">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_MaterialesEmpresa">
+              <MappingFragment StoreEntitySet="aspnet_MaterialesEmpresa">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="QSIDEmpresa" ColumnName="QSIDEmpresa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_TiposDeCliente">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_TiposDeCliente">
+              <MappingFragment StoreEntitySet="aspnet_TiposDeCliente">
+                <ScalarProperty Name="OrdenDeVisualizacion" ColumnName="OrdenDeVisualizacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_TiposDeVia">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_TiposDeVia">
+              <MappingFragment StoreEntitySet="aspnet_TiposDeVia">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDTipoVia" ColumnName="IDTipoVia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Accionariado">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Accionariado">
+              <MappingFragment StoreEntitySet="aspnet_Accionariado">
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_ClientesHabituales">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_ClientesHabituales">
+              <MappingFragment StoreEntitySet="aspnet_ClientesHabituales">
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_ProveedoresHabituales">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_ProveedoresHabituales">
+              <MappingFragment StoreEntitySet="aspnet_ProveedoresHabituales">
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_SociedadesVinculadas">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_SociedadesVinculadas">
+              <MappingFragment StoreEntitySet="aspnet_SociedadesVinculadas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_BancosCliente">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_BancosCliente">
+              <MappingFragment StoreEntitySet="aspnet_BancosCliente">
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_InstrumentosDePesaje">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_InstrumentosDePesaje">
+              <MappingFragment StoreEntitySet="aspnet_InstrumentosDePesaje">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_MediosDeDescarga">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_MediosDeDescarga">
+              <MappingFragment StoreEntitySet="aspnet_MediosDeDescarga">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_RequerimientosDeCalidad">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_RequerimientosDeCalidad">
+              <MappingFragment StoreEntitySet="aspnet_RequerimientosDeCalidad">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_TiposDeVehiculo">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_TiposDeVehiculo">
+              <MappingFragment StoreEntitySet="aspnet_TiposDeVehiculo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Profile">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Profile">
+              <MappingFragment StoreEntitySet="aspnet_Profile">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+                <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Aseguradoras">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Aseguradoras">
+              <MappingFragment StoreEntitySet="aspnet_Aseguradoras">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_ClientesDirEnv">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_ClientesDirEnv">
+              <MappingFragment StoreEntitySet="aspnet_ClientesDirEnv">
+                <ScalarProperty Name="IDMunicipioQS" ColumnName="IDMunicipioQS" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IDProvinciaQS" ColumnName="IDProvinciaQS" />
+                <ScalarProperty Name="IDPaisQS" ColumnName="IDPaisQS" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="Piso" ColumnName="Piso" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="TipoDeVía" ColumnName="TipoDeVía" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_PersonasRetiradaMat">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_PersonasRetiradaMat">
+              <MappingFragment StoreEntitySet="aspnet_PersonasRetiradaMat">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1" ZoomLevel="88">
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Acciones" Width="1.5" PointX="0.5" PointY="1.125" Height="3.7109993489583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Delegaciones" Width="1.5" PointX="5.75" PointY="0.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Departamentos" Width="1.5" PointX="2.625" PointY="1" Height="1.59568359375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Origenes" Width="1.5" PointX="0.75" PointY="5.875" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Users" Width="2.625" PointX="5.25" PointY="3.5" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Departamentos" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.625" PointY="1.860341796875" />
+          <ConnectorPoint PointX="2" PointY="1.860341796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Origenes" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.375" PointY="5.875" />
+          <ConnectorPoint PointX="1.375" PointY="4.8359993489583326" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Roles" Width="1.5" PointX="9.625" PointY="3.5" Height="1.9210009765624996" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.aspnet_UsersInRoles" >
+          <ConnectorPoint PointX="9.625" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="7.875" PointY="4.5862939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_AplicacionesGM" Width="1.75" PointX="7.875" PointY="0.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_FormasDePago" Width="1.5" PointX="9.75" PointY="0.75" Height="1.9802864583333339" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Clientes" Width="2.375" PointX="12" PointY="0.75" Height="28.325582682291667" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Empresas" Width="1.5" PointX="3.375" PointY="12.375" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_MaterialesEmpresa" Width="1.5" PointX="5.625" PointY="12.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeCliente" Width="2.75" PointX="8.5" PointY="12.25" Height="1.7879850260416657" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_FormasDePago" >
+          <ConnectorPoint PointX="11.25" PointY="1.9324446614583337" />
+          <ConnectorPoint PointX="12" PointY="1.9324446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeCliente" >
+          <ConnectorPoint PointX="11.25" PointY="13.143992513020834" />
+          <ConnectorPoint PointX="12" PointY="13.143992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users" >
+          <ConnectorPoint PointX="7.875" PointY="5.99301245361835" />
+          <ConnectorPoint PointX="12" PointY="5.99301245361835" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1" >
+          <ConnectorPoint PointX="7.875" PointY="6.376053752850841" />
+          <ConnectorPoint PointX="12" PointY="6.376053752850841" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas" >
+          <ConnectorPoint PointX="4.875" PointY="13.206492513020834" />
+          <ConnectorPoint PointX="5.166666666666667" PointY="13.206492513020834" />
+          <ConnectorPoint PointX="5.333333333333333" PointY="13.206492513020834" />
+          <ConnectorPoint PointX="5.625" PointY="13.206492513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeVia" Width="1.5" PointX="8.25" PointY="8" Height="1.5956835937500031" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVia" >
+          <ConnectorPoint PointX="9.75" PointY="8.7978417968750016" />
+          <ConnectorPoint PointX="12" PointY="8.7978417968750016" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Accionariado" Width="1.5" PointX="15.125" PointY="11.375" Height="1.9802864583333388" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Accionariado_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="12.365143229166669" />
+          <ConnectorPoint PointX="15.125" PointY="12.365143229166669" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_ClientesHabituales" Width="1.5" PointX="15.125" PointY="8.375" Height="1.7879850260416674" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_ClientesHabituales_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="9.2689925130208337" />
+          <ConnectorPoint PointX="15.125" PointY="9.2689925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_ProveedoresHabituales" Width="1.5" PointX="15.125" PointY="5.5" Height="1.7879850260416674" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_ProveedoresHabituales_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="6.3939925130208337" />
+          <ConnectorPoint PointX="15.125" PointY="6.3939925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_SociedadesVinculadas" Width="1.5" PointX="15.125" PointY="14.5" Height="1.7879850260416674" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_SociedadesVinculadas_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="15.393992513020834" />
+          <ConnectorPoint PointX="15.125" PointY="15.393992513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_BancosCliente" Width="1.5" PointX="15.125" PointY="2.625" Height="1.7879850260416674" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_BancosCliente_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="3.5189925130208337" />
+          <ConnectorPoint PointX="15.125" PointY="3.5189925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_InstrumentosDePesaje" Width="1.5" PointX="9.75" PointY="18.125" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_MediosDeDescarga" Width="1.5" PointX="9.75" PointY="20.375" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_RequerimientosDeCalidad" Width="1.5" PointX="5.75" PointY="9.5" Height="1.4033821614583282" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeVehiculo" Width="2.375" PointX="3.375" PointY="8.25" Height="1.595683593749996" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_InstrumentosDePesaje" >
+          <ConnectorPoint PointX="11.25" PointY="18.922841796875" />
+          <ConnectorPoint PointX="12" PointY="18.922841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_MediosDeDescarga" >
+          <ConnectorPoint PointX="11.25" PointY="21.172841796875" />
+          <ConnectorPoint PointX="12" PointY="21.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVehiculo" >
+          <ConnectorPoint PointX="5.25" PointY="9.845683593749996" />
+          <ConnectorPoint PointX="5.25" PointY="16.143992513020834" />
+          <ConnectorPoint PointX="12" PointY="16.143992513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Profile" Width="1.5" PointX="2.875" PointY="3.5" Height="2.172587890624996" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5" >
+          <ConnectorPoint PointX="5.25" PointY="4.586293945312498" />
+          <ConnectorPoint PointX="4.375" PointY="4.586293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones" >
+          <ConnectorPoint PointX="7.25" PointY="0.75115284615384592" />
+          <ConnectorPoint PointX="7.6261528461538468" PointY="0.375" />
+          <ConnectorPoint PointX="11.626825923076924" PointY="0.375" />
+          <ConnectorPoint PointX="12.001825923076924" PointY="0.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Aseguradoras" Width="1.5" PointX="9.75" PointY="23.625" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_ClientesDirEnv" Width="2.5" PointX="15.125" PointY="18.25" Height="3.7109993489583317" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_PersonasRetiradaMat" Width="1.5" PointX="15.125" PointY="22.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras" >
+          <ConnectorPoint PointX="11.25" PointY="24.422841796875" />
+          <ConnectorPoint PointX="12" PointY="24.422841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="20.201650390625" />
+          <ConnectorPoint PointX="15.125" PointY="20.201650390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes" >
+          <ConnectorPoint PointX="14.375" PointY="23.643992513020834" />
+          <ConnectorPoint PointX="15.125" PointY="23.643992513020834" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

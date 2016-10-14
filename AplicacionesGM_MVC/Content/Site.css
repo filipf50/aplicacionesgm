@@ -1,0 +1,605 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body
+{
+    font-size: .75em;
+    font-family: Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color:#660066;
+}
+
+a:link
+{
+    color: #034af3;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: #505abc;
+}
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+a:active
+{
+    color: #12eb87;
+}
+
+p, ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+.button
+{
+    padding: 10px 20px;
+    margin-bottom:3px;
+    font-weight: bold;
+    text-decoration: none !important;
+    line-height: 1em;
+    background-color: #e8eef4;
+    color: #034af3;
+    cursor:pointer;
+    display:inline-block;
+    text-align:center;
+}
+
+.button-index
+{
+    width:60px !important;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color:#660066;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page
+{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header
+{
+    position: relative;
+    padding: 10px 0px 2px 10px;
+    border-bottom: 1px #5C87B2 solid;
+    min-height:100px;
+}
+
+#header h1
+{
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px !important;
+}
+
+#main
+{
+    clear:both;
+    padding: 0px 0px 15px 0px;
+    background-color: #fff;
+    margin: 10px 0px 2px 10px;
+    _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
+}
+
+#footer
+{
+    color: #000;
+    padding: 10px 0;
+    line-height: normal;
+    font-size: .9em;
+}
+
+#iconos
+{
+    float:left;
+    z-index:999;
+}
+
+#iconos a
+{
+    text-decoration:none;
+}
+.imgLink
+{
+    border-style:none;
+}
+
+#filtros
+{
+    border-bottom: 1px #5C87B2 solid;
+    width:100%;
+    min-height:40px;
+}
+
+#panelFiltros
+{
+    clear:both;
+}
+
+#mostrarFiltros
+{
+    cursor:pointer;
+}
+
+#submit
+{
+    cursor:pointer;
+}
+
+#borrador
+{
+    cursor:pointer;
+}
+
+#lblBorrador
+{
+    float:left;
+    color:Red !important;
+    font-size:1.30em;
+    font-weight:bold;
+}
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset 
+{
+    /*margin: 1em 0;*/
+    margin:auto;
+    padding: 1em;
+    border: 2px solid #660066;
+    min-width:200px;
+    clear:both;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input[type="text"] 
+{
+    border: 1px solid #CCC;
+}
+
+input[type="password"] 
+{
+    border: 1px solid #CCC;
+}
+
+
+select
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+textarea
+{
+    width:98%;
+    height:200px;
+}
+
+
+.textarea-68
+{
+    width:100% !important;
+    height:68px !important;    
+}
+
+.float_left
+{
+    float:left;
+    margin-left:10px;
+}
+
+.float_right
+{
+    float:right;
+}
+
+
+.col20
+{
+    margin-right:20px;
+    min-width: 200px;
+    float:left;
+}
+
+.col74
+{
+    float:left;  
+    width:74%;
+}
+
+.col60
+{
+    margin-right:20px;
+    min-width: 200px;
+    float:left;
+    width:74%;
+}
+
+.col25
+{
+    float:left;  
+    width:20%;
+}
+
+.login
+{
+    width:33%;
+    min-width:200px;
+}
+
+.checkboxlist
+{
+    height:180px;
+    width:200px;
+    overflow-y:scroll;
+    border:1px solid #CCC;
+}
+
+.date
+{
+    width:150px !important;
+}
+.textbox5
+{
+    width:5% !important;
+}
+
+.textbox10
+{
+    width:10% !important;
+}
+
+.textbox15
+{
+    width:15% !important;
+}
+
+.textbox20
+{
+    width:20% !important;
+}
+
+
+.textbox30
+{
+    width:30% !important;
+}
+
+.textbox40
+{
+    width:40% !important;
+}
+
+.textbox46
+{
+    width:46% !important;
+}
+
+.textbox56
+{
+    width:56% !important;
+}
+
+.textbox67
+{
+    width:67% !important;
+}
+
+.textbox70
+{
+    width:70% !important;
+}
+
+.textbox76
+{
+    width:76% !important;
+}
+.textbox80
+{
+    width:80% !important;
+}
+.textbox100
+{
+    width:98% !important;
+}
+/* TABLE
+----------------------------------------------------------*/
+
+table 
+{
+  border: solid 1px #660066;
+  border-collapse: collapse;
+  width:100%;
+  clear:both;
+}
+
+caption 
+{
+    color:Black;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+    text-align:left;
+}
+
+
+table td 
+{
+  padding: 5px;   
+  border: solid 1px #660066;
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: center;
+  background-color: #e8eef4; 
+  border: solid 1px #660066;   
+}
+
+.noborder
+{
+    border:0;
+    background-color:transparent;
+}
+
+.noTopborder
+{
+    border-top:0;
+}
+
+.border-bottom
+{
+    border-bottom:1px #5C87B2 solid;
+}
+
+.border-top
+{
+    border-top:1px #5C87B2 solid;
+}
+.td20
+{
+    width:20%;
+}
+
+.td80
+{
+    width:80%;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+div#title
+{
+    position:relative;
+    display:block;
+    float:left;
+    text-align:left;
+    min-height:92px;
+}
+.logo
+{
+    width: 195px;
+    height: 50px;
+    border:none;
+}
+
+#logindisplay
+{
+    font-size:1.1em;
+    display:block;
+    text-align:right;
+    float:right;
+}
+
+#logindisplay a:link
+{
+    text-decoration: underline;
+}
+
+#logindisplay a:visited
+{
+    text-decoration: underline;
+}
+
+#logindisplay a:hover
+{
+    text-decoration: none;
+}
+
+span.isOnline{
+	display: block;
+	font-weight: bold;
+	color: #33cc33;
+}
+span.isOffline{
+	display: block;
+	color: #999;
+}
+span.title
+{
+    color:Black;
+    text-transform:uppercase;
+    letter-spacing:10px;   
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label
+{
+    margin: 0.5em 0;
+    font-weight:bold;    
+}
+
+.required:before
+{
+    content:"*";
+    color:Red;
+}
+
+.display-field,
+.editor-field
+{
+    margin: 0.5em 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+
+/*Home index styles
+----------------------------------------------------------*/
+#Clientes
+{
+    float:left;
+    font-size:30px;
+    font-weight:bold;
+    margin-right:30px;
+    width:50%;
+}
+
+#Clientes>a
+{
+    text-decoration:none;
+    color:#660066;
+}
+
+#imgClientes
+{
+    width: 225px; 
+    height: 225px;
+    border-style:none;
+}
+
+#Reuniones
+{
+    font-size:30px;
+    font-weight:bold;
+    margin-left:30px;
+}
+
+#Reuniones>a
+{
+    text-decoration:none;
+    color:#660066;
+}
+
+#imgReuniones
+{
+    width: 260px; 
+    height: 225px;
+    border-style:none;
+}

@@ -1,0 +1,1341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CLIENTESModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CLIENTESModelStoreContainer">
+          <EntitySet Name="ACCIONARIADO" EntityType="CLIENTESModel.Store.ACCIONARIADO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ACCIONARIADO detalle" EntityType="CLIENTESModel.Store.ACCIONARIADO detalle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLIENTES DAR DE ALTA EN MAC" EntityType="CLIENTESModel.Store.CLIENTES DAR DE ALTA EN MAC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLIENTES_HABITUALES" EntityType="CLIENTESModel.Store.CLIENTES_HABITUALES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="INFORMES_COMERCIALES" EntityType="CLIENTESModel.Store.INFORMES_COMERCIALES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PROVEEDORES_HABITUALES" EntityType="CLIENTESModel.Store.PROVEEDORES_HABITUALES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOCIEDADES_VINCULADAS" EntityType="CLIENTESModel.Store.SOCIEDADES_VINCULADAS" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ACCIONARIADO detalle_ACCIONARIADO" Association="CLIENTESModel.Store.FK_ACCIONARIADO detalle_ACCIONARIADO">
+            <End Role="ACCIONARIADO" EntitySet="ACCIONARIADO" />
+            <End Role="ACCIONARIADO detalle" EntitySet="ACCIONARIADO detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACCIONARIADO_CLIENTES DAR DE ALTA EN MAC" Association="CLIENTESModel.Store.FK_ACCIONARIADO_CLIENTES DAR DE ALTA EN MAC">
+            <End Role="CLIENTES DAR DE ALTA EN MAC" EntitySet="CLIENTES DAR DE ALTA EN MAC" />
+            <End Role="ACCIONARIADO" EntitySet="ACCIONARIADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTES_HABITUALES_CLIENTES DAR DE ALTA EN MAC" Association="CLIENTESModel.Store.FK_CLIENTES_HABITUALES_CLIENTES DAR DE ALTA EN MAC">
+            <End Role="CLIENTES DAR DE ALTA EN MAC" EntitySet="CLIENTES DAR DE ALTA EN MAC" />
+            <End Role="CLIENTES_HABITUALES" EntitySet="CLIENTES_HABITUALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INFORMES_COMERCIALES_CLIENTES DAR DE ALTA EN MAC" Association="CLIENTESModel.Store.FK_INFORMES_COMERCIALES_CLIENTES DAR DE ALTA EN MAC">
+            <End Role="CLIENTES DAR DE ALTA EN MAC" EntitySet="CLIENTES DAR DE ALTA EN MAC" />
+            <End Role="INFORMES_COMERCIALES" EntitySet="INFORMES_COMERCIALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVEEDORES_HABITUALES_CLIENTES DAR DE ALTA EN MAC" Association="CLIENTESModel.Store.FK_PROVEEDORES_HABITUALES_CLIENTES DAR DE ALTA EN MAC">
+            <End Role="CLIENTES DAR DE ALTA EN MAC" EntitySet="CLIENTES DAR DE ALTA EN MAC" />
+            <End Role="PROVEEDORES_HABITUALES" EntitySet="PROVEEDORES_HABITUALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOCIEDADES_VINCULADAS_CLIENTES DAR DE ALTA EN MAC" Association="CLIENTESModel.Store.FK_SOCIEDADES_VINCULADAS_CLIENTES DAR DE ALTA EN MAC">
+            <End Role="CLIENTES DAR DE ALTA EN MAC" EntitySet="CLIENTES DAR DE ALTA EN MAC" />
+            <End Role="SOCIEDADES_VINCULADAS" EntitySet="SOCIEDADES_VINCULADAS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ACCIONARIADO">
+          <Key>
+            <PropertyRef Name="CLIENTE" />
+            <PropertyRef Name="AÑO" />
+          </Key>
+          <Property Name="CLIENTE" Type="numeric" Nullable="false" />
+          <Property Name="AÑO" Type="numeric" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACCIONARIADO detalle">
+          <Key>
+            <PropertyRef Name="CLIENTE" />
+            <PropertyRef Name="AÑO" />
+            <PropertyRef Name="NOMBRE" />
+          </Key>
+          <Property Name="CLIENTE" Type="numeric" Nullable="false" />
+          <Property Name="AÑO" Type="numeric" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CIF" Type="varchar" MaxLength="20" />
+          <Property Name="PORCENTAJE" Type="numeric" Scale="5" />
+          <Property Name="doc1" Type="image" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="texto" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CLIENTES DAR DE ALTA EN MAC">
+          <Key>
+            <PropertyRef Name="NUEVO CODIGO" />
+          </Key>
+          <Property Name="NUEVO CODIGO" Type="numeric" Nullable="false" />
+          <Property Name="NOMCLI" Type="varchar" MaxLength="255" />
+          <Property Name="CIF CORREGIDO" Type="varchar" MaxLength="255" />
+          <Property Name="INFORMES" Type="varchar(max)" />
+          <Property Name="importeEspecialCyC" Type="numeric" Scale="5" />
+          <Property Name="fechaHastaCyC" Type="datetime" />
+          <Property Name="referenciaCyC" Type="numeric" Scale="5" />
+          <Property Name="importeCyC" Type="numeric" Scale="5" />
+          <Property Name="clasificacionCyC" Type="numeric" Scale="5" />
+          <Property Name="constituida1" Type="datetime" />
+          <Property Name="UltimoRAI" Type="datetime" />
+          <Property Name="UltimoRAIimporte" Type="numeric" Scale="5" />
+          <Property Name="UltimoRAIAnterior" Type="datetime" />
+          <Property Name="UltimoRAIimporteAnterior" Type="numeric" Scale="5" />
+          <Property Name="paramAño" Type="numeric" />
+          <Property Name="paramInmovilizado" Type="numeric" Scale="5" />
+          <Property Name="paramExistencias" Type="numeric" Scale="5" />
+          <Property Name="paramActivoCirculante" Type="numeric" Scale="5" />
+          <Property Name="paramFondosPropios" Type="numeric" Scale="5" />
+          <Property Name="paramCapitalSocial" Type="numeric" Scale="5" />
+          <Property Name="paramAcreedoresLP" Type="numeric" Scale="5" />
+          <Property Name="paramAcreedoresCP" Type="numeric" Scale="5" />
+          <Property Name="paramTotalPasivo" Type="numeric" Scale="5" />
+          <Property Name="paramBNDII" Type="numeric" Scale="5" />
+          <Property Name="paramResultadoExtra" Type="numeric" Scale="5" />
+          <Property Name="paramVentas" Type="numeric" Scale="5" />
+          <Property Name="docContratos1" Type="image" />
+          <Property Name="docContratos2" Type="image" />
+          <Property Name="docModif1" Type="image" />
+          <Property Name="docModif2" Type="image" />
+          <Property Name="docRai1" Type="image" />
+          <Property Name="docRai2" Type="image" />
+          <Property Name="docBalances1" Type="image" />
+          <Property Name="docBalances2" Type="image" />
+          <Property Name="docBalances3" Type="image" />
+          <Property Name="infBancFecha1" Type="datetime" />
+          <Property Name="infBancEntidad1" Type="varchar" MaxLength="8" />
+          <Property Name="infBancValor1" Type="varchar" MaxLength="1" />
+          <Property Name="infBancFecha2" Type="datetime" />
+          <Property Name="infBancEntidad2" Type="varchar" MaxLength="8" />
+          <Property Name="infBancValor2" Type="varchar" MaxLength="1" />
+          <Property Name="infBancFecha3" Type="datetime" />
+          <Property Name="infBancEntidad3" Type="varchar" MaxLength="8" />
+          <Property Name="infBancValor3" Type="varchar" MaxLength="1" />
+          <Property Name="infBancFecha4" Type="datetime" />
+          <Property Name="infBancEntidad4" Type="varchar" MaxLength="8" />
+          <Property Name="infBancValor4" Type="varchar" MaxLength="1" />
+          <Property Name="infBancFecha5" Type="datetime" />
+          <Property Name="infBancEntidad5" Type="varchar" MaxLength="8" />
+          <Property Name="infBancValor5" Type="varchar" MaxLength="1" />
+          <Property Name="ultInfComFecha" Type="datetime" />
+          <Property Name="ultInfComPersona" Type="varchar" MaxLength="50" />
+          <Property Name="alerta" Type="bit" />
+          <Property Name="alerta_fecha" Type="datetime" />
+          <Property Name="creditBureau" Type="bit" />
+          <Property Name="creditBureau_fecha" Type="datetime" />
+          <Property Name="gestion_fecha" Type="datetime" />
+          <Property Name="gestion_texto" Type="varchar" MaxLength="255" />
+          <Property Name="accion_excedido" Type="numeric" />
+          <Property Name="fpMoraval" Type="varchar" MaxLength="30" />
+          <Property Name="fpHierros" Type="varchar" MaxLength="30" />
+          <Property Name="fpAltamira" Type="varchar" MaxLength="30" />
+          <Property Name="opcAutMoraval" Type="bit" />
+          <Property Name="opcAutHierros" Type="bit" />
+          <Property Name="opcAutAltamira" Type="bit" />
+          <Property Name="opcAutBancoMoraval" Type="bit" />
+          <Property Name="opcAutBancoHierros" Type="bit" />
+          <Property Name="opcAutBancoAltamira" Type="bit" />
+          <Property Name="docAutMoraval" Type="image" />
+          <Property Name="docAutHierros" Type="image" />
+          <Property Name="docAutAltamira" Type="image" />
+          <Property Name="docAutMoravalBanco" Type="image" />
+          <Property Name="docAutHierrosBanco" Type="image" />
+          <Property Name="docAutAltamiraBanco" Type="image" />
+          <Property Name="envFormMoraval" Type="bit" />
+          <Property Name="envFormHierros" Type="bit" />
+          <Property Name="envFormAltamira" Type="bit" />
+          <Property Name="balance_año1" Type="numeric" />
+          <Property Name="bal_cifra_negocio1" Type="numeric" Scale="5" />
+          <Property Name="bal_rtdo_ejercicio1" Type="numeric" Scale="5" />
+          <Property Name="bal_capital1" Type="numeric" Scale="5" />
+          <Property Name="bal_patrimonio_neto1" Type="numeric" Scale="5" />
+          <Property Name="bal_act_no_corriente1" Type="numeric" Scale="5" />
+          <Property Name="bal_act_corriente1" Type="numeric" Scale="5" />
+          <Property Name="bal_pas_corriente1" Type="numeric" Scale="5" />
+          <Property Name="bal_deudas_cp1" Type="numeric" Scale="5" />
+          <Property Name="bal_deudas_lp1" Type="numeric" Scale="5" />
+          <Property Name="bal_fondo_maniobra1" Type="numeric" Scale="5" />
+          <Property Name="bal_r_endeudamiento1" Type="numeric" Scale="5" />
+          <Property Name="bal_r_tesoreria1" Type="numeric" Scale="5" />
+          <Property Name="bal_terrenos1" Type="numeric" Scale="5" />
+          <Property Name="bal_pmc1" Type="numeric" Scale="5" />
+          <Property Name="bal_pmp1" Type="numeric" Scale="5" />
+          <Property Name="bal_aprovisionamiento1" Type="numeric" Scale="5" />
+          <Property Name="bal_cuota_mercado1" Type="numeric" Scale="5" />
+          <Property Name="bal_tipo_balance1" Type="varchar" MaxLength="40" />
+          <Property Name="bal_inmov_material1" Type="numeric" Scale="5" />
+          <Property Name="bal_productos_curso1" Type="numeric" Scale="5" />
+          <Property Name="bal_productos_terminados1" Type="numeric" Scale="5" />
+          <Property Name="bal_cli_prest_servicios1" Type="numeric" Scale="5" />
+          <Property Name="bal_proveedores1" Type="numeric" Scale="5" />
+          <Property Name="bal_anticipos_cli1" Type="numeric" Scale="5" />
+          <Property Name="bal_result_explotacion1" Type="numeric" Scale="5" />
+          <Property Name="bal_result_financiero1" Type="numeric" Scale="5" />
+          <Property Name="bal_tesoreria1" Type="numeric" Scale="5" />
+          <Property Name="balance_año2" Type="numeric" />
+          <Property Name="bal_cifra_negocio2" Type="numeric" Scale="2" />
+          <Property Name="bal_rtdo_ejercicio2" Type="numeric" Scale="5" />
+          <Property Name="bal_capital2" Type="numeric" Scale="5" />
+          <Property Name="bal_patrimonio_neto2" Type="numeric" Scale="5" />
+          <Property Name="bal_act_no_corriente2" Type="numeric" Scale="5" />
+          <Property Name="bal_act_corriente2" Type="numeric" Scale="5" />
+          <Property Name="bal_pas_corriente2" Type="numeric" Scale="5" />
+          <Property Name="bal_deudas_cp2" Type="numeric" Scale="5" />
+          <Property Name="bal_deudas_lp2" Type="numeric" Scale="5" />
+          <Property Name="bal_fondo_maniobra2" Type="numeric" Scale="5" />
+          <Property Name="bal_r_endeudamiento2" Type="numeric" Scale="5" />
+          <Property Name="bal_r_tesoreria2" Type="numeric" Scale="5" />
+          <Property Name="bal_terrenos2" Type="numeric" Scale="5" />
+          <Property Name="bal_pmc2" Type="numeric" Scale="5" />
+          <Property Name="bal_pmp2" Type="numeric" Scale="5" />
+          <Property Name="bal_aprovisionamiento2" Type="numeric" Scale="5" />
+          <Property Name="bal_cuota_mercado2" Type="numeric" Scale="5" />
+          <Property Name="bal_tipo_balance2" Type="varchar" MaxLength="40" />
+          <Property Name="bal_inmov_material2" Type="numeric" Scale="5" />
+          <Property Name="bal_productos_curso2" Type="numeric" Scale="5" />
+          <Property Name="bal_productos_terminados2" Type="numeric" Scale="5" />
+          <Property Name="bal_cli_prest_servicios2" Type="numeric" Scale="5" />
+          <Property Name="bal_proveedores2" Type="numeric" Scale="5" />
+          <Property Name="bal_anticipos_cli2" Type="numeric" Scale="5" />
+          <Property Name="bal_result_explotacion2" Type="numeric" Scale="5" />
+          <Property Name="bal_result_financiero2" Type="numeric" Scale="5" />
+          <Property Name="bal_tesoreria2" Type="numeric" Scale="5" />
+          <Property Name="balance_año3" Type="numeric" />
+          <Property Name="bal_cifra_negocio3" Type="numeric" Scale="5" />
+          <Property Name="bal_rtdo_ejercicio3" Type="numeric" Scale="5" />
+          <Property Name="bal_capital3" Type="numeric" Scale="5" />
+          <Property Name="bal_patrimonio_neto3" Type="numeric" Scale="5" />
+          <Property Name="bal_act_no_corriente3" Type="numeric" Scale="5" />
+          <Property Name="bal_act_corriente3" Type="numeric" Scale="5" />
+          <Property Name="bal_pas_corriente3" Type="numeric" Scale="5" />
+          <Property Name="bal_deudas_cp3" Type="numeric" Scale="5" />
+          <Property Name="bal_deudas_lp3" Type="numeric" Scale="5" />
+          <Property Name="bal_fondo_maniobra3" Type="numeric" Scale="5" />
+          <Property Name="bal_r_endeudamiento3" Type="numeric" Scale="5" />
+          <Property Name="bal_r_tesoreria3" Type="numeric" Scale="5" />
+          <Property Name="bal_terrenos3" Type="numeric" Scale="5" />
+          <Property Name="bal_pmc3" Type="numeric" Scale="5" />
+          <Property Name="bal_pmp3" Type="numeric" Scale="5" />
+          <Property Name="bal_aprovisionamiento3" Type="numeric" Scale="5" />
+          <Property Name="bal_cuota_mercado3" Type="numeric" Scale="5" />
+          <Property Name="bal_tipo_balance3" Type="varchar" MaxLength="40" />
+          <Property Name="bal_inmov_material3" Type="numeric" Scale="5" />
+          <Property Name="bal_productos_curso3" Type="numeric" Scale="5" />
+          <Property Name="bal_productos_terminados3" Type="numeric" Scale="5" />
+          <Property Name="bal_cli_prest_servicios3" Type="numeric" Scale="5" />
+          <Property Name="bal_proveedores3" Type="numeric" Scale="5" />
+          <Property Name="bal_anticipos_cli3" Type="numeric" Scale="5" />
+          <Property Name="bal_result_explotacion3" Type="numeric" Scale="5" />
+          <Property Name="bal_result_financiero3" Type="numeric" Scale="5" />
+          <Property Name="bal_tesoreria3" Type="numeric" Scale="5" />
+          <Property Name="aut_giros_f_envio_MV" Type="datetime" />
+          <Property Name="aut_giros_f_envio_HMA" Type="datetime" />
+          <Property Name="aut_giros_f_envio_ECA" Type="datetime" />
+          <Property Name="aut_giros_banco_f_envio_MV" Type="datetime" />
+          <Property Name="aut_giros_banco_f_envio_HMA" Type="datetime" />
+          <Property Name="aut_giros_banco_f_envio_ECA" Type="datetime" />
+          <Property Name="aut_giros_banco_MV" Type="varchar" MaxLength="50" />
+          <Property Name="aut_giros_banco_HMA" Type="varchar" MaxLength="50" />
+          <Property Name="aut_giros_banco_ECA" Type="varchar" MaxLength="50" />
+          <Property Name="aut_giros_validez_MV" Type="bit" />
+          <Property Name="aut_giros_validez_HMA" Type="bit" />
+          <Property Name="aut_giros_validez_ECA" Type="bit" />
+          <Property Name="otras_denom_nombre1" Type="varchar" MaxLength="50" />
+          <Property Name="otras_denom_cif1" Type="varchar" MaxLength="20" />
+          <Property Name="otras_denom_nombre2" Type="varchar" MaxLength="50" />
+          <Property Name="otras_denom_cif2" Type="varchar" MaxLength="20" />
+          <Property Name="otras_denom_nombre3" Type="varchar" MaxLength="50" />
+          <Property Name="otras_denom_cif3" Type="varchar" MaxLength="20" />
+          <Property Name="sin_fincabilidad" Type="bit" />
+          <Property Name="sin_fincabilidad_fecha" Type="datetime" />
+          <Property Name="sin_fincabilidad_doc" Type="image" />
+          <Property Name="localizador_registros" Type="bit" />
+          <Property Name="localizador_registros_fecha" Type="datetime" />
+          <Property Name="localizador_registros_doc" Type="image" />
+          <Property Name="bal_existencias1" Type="numeric" Scale="5" />
+          <Property Name="bal_existencias2" Type="numeric" Scale="5" />
+          <Property Name="bal_existencias3" Type="numeric" Scale="5" />
+          <Property Name="infComFecha1" Type="datetime" />
+          <Property Name="infComFecha2" Type="datetime" />
+          <Property Name="infComFecha3" Type="datetime" />
+          <Property Name="infComFecha4" Type="datetime" />
+          <Property Name="infCompetFecha1" Type="datetime" />
+          <Property Name="infCompetFecha2" Type="datetime" />
+          <Property Name="infCompetFecha3" Type="datetime" />
+          <Property Name="infCompetFecha4" Type="datetime" />
+          <Property Name="infDirFecha1" Type="datetime" />
+          <Property Name="infDirFecha2" Type="datetime" />
+          <Property Name="infDirFecha3" Type="datetime" />
+          <Property Name="infDirFecha4" Type="datetime" />
+          <Property Name="infCreFecha1" Type="datetime" />
+          <Property Name="infCreFecha2" Type="datetime" />
+          <Property Name="infCreFecha3" Type="datetime" />
+          <Property Name="infCreFecha4" Type="datetime" />
+          <Property Name="claveCreditos" Type="numeric" Scale="5" />
+          <Property Name="limiteMV" Type="numeric" Scale="5" />
+          <Property Name="limiteHMA" Type="numeric" Scale="5" />
+          <Property Name="limiteECA" Type="numeric" Scale="5" />
+          <Property Name="riesgoTotal" Type="numeric" Scale="5" />
+          <Property Name="agenteMV" Type="varchar" MaxLength="30" />
+          <Property Name="agenteHMA" Type="varchar" MaxLength="30" />
+          <Property Name="totalPedPdtes" Type="numeric" Scale="5" />
+          <Property Name="chkAutCopiaIBAN" Type="bit" />
+          <Property Name="opcOtrosAutGiros" Type="bit" />
+          <Property Name="obsOtrosAutGiros" Type="varchar" MaxLength="255" />
+          <Property Name="chkInforma" Type="bit" />
+          <Property Name="fechaInforma" Type="datetime" />
+          <Property Name="blqMoraval" Type="varchar" MaxLength="1" />
+          <Property Name="blqHierros" Type="varchar" MaxLength="1" />
+          <Property Name="blqAltamira" Type="varchar" MaxLength="1" />
+          <Property Name="aut_giros_f_val_MV" Type="datetime" />
+          <Property Name="aut_giros_f_val_HMA" Type="datetime" />
+          <Property Name="aut_giros_f_val_ECA" Type="datetime" />
+          <Property Name="chkAutFP" Type="bit" />
+          <Property Name="fechaAutFP" Type="datetime" />
+          <Property Name="obsAutFP" Type="varchar" MaxLength="50" />
+          <Property Name="aut_giros_bco_MV" Type="varchar" MaxLength="4" />
+          <Property Name="aut_giros_suc_MV" Type="varchar" MaxLength="4" />
+          <Property Name="aut_giros_dc_MV" Type="varchar" MaxLength="2" />
+          <Property Name="aut_giros_cta_MV" Type="varchar" MaxLength="10" />
+          <Property Name="aut_giros_bco_HMA" Type="varchar" MaxLength="4" />
+          <Property Name="aut_giros_suc_HMA" Type="varchar" MaxLength="4" />
+          <Property Name="aut_giros_dc_HMA" Type="varchar" MaxLength="2" />
+          <Property Name="aut_giros_cta_HMA" Type="varchar" MaxLength="10" />
+          <Property Name="aut_giros_bco_ECA" Type="varchar" MaxLength="4" />
+          <Property Name="aut_giros_suc_ECA" Type="varchar" MaxLength="4" />
+          <Property Name="aut_giros_dc_ECA" Type="varchar" MaxLength="2" />
+          <Property Name="aut_giros_cta_ECA" Type="varchar" MaxLength="10" />
+          <Property Name="chkAutCopia" Type="bit" />
+          <Property Name="fechaAutCopia" Type="datetime" />
+          <Property Name="aut_iban_f_val_MV" Type="datetime" />
+          <Property Name="aut_iban_f_val_HMA" Type="datetime" />
+          <Property Name="aut_iban_f_val_ECA" Type="datetime" />
+          <Property Name="docIbanMV" Type="image" />
+          <Property Name="docIbanHMA" Type="image" />
+          <Property Name="docIbanECA" Type="image" />
+          <Property Name="aut_IBAN_cuenta_MV" Type="varchar" MaxLength="34" />
+          <Property Name="aut_IBAN_cuenta_HMA" Type="varchar" MaxLength="34" />
+          <Property Name="aut_IBAN_cuenta_ECA" Type="varchar" MaxLength="34" />
+          <Property Name="aut_IBIC_cuenta_MV" Type="varchar" MaxLength="11" />
+          <Property Name="aut_IBIC_cuenta_HMA" Type="varchar" MaxLength="11" />
+          <Property Name="aut_IBIC_cuenta_ECA" Type="varchar" MaxLength="11" />
+          <Property Name="opcAutMoravalB2B" Type="bit" />
+          <Property Name="opcAutHierrosB2B" Type="bit" />
+          <Property Name="opcAutAltamiraB2B" Type="bit" />
+        </EntityType>
+        <EntityType Name="CLIENTES_HABITUALES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cliente" Type="numeric" />
+          <Property Name="Fecha1" Type="datetime" />
+          <Property Name="NombreCliente1" Type="varchar" MaxLength="50" />
+          <Property Name="Cif1" Type="varchar" MaxLength="20" />
+          <Property Name="FormaCobro1" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="INFORMES_COMERCIALES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CLIENTE" Type="numeric" />
+          <Property Name="FECHA" Type="datetime" />
+          <Property Name="PERSONA" Type="varchar" MaxLength="50" />
+          <Property Name="TEXTO" Type="varchar(max)" />
+          <Property Name="VALIDAR" Type="bit" />
+          <Property Name="documento1" Type="image" />
+          <Property Name="INMUEBLES" Type="varchar" MaxLength="255" />
+          <Property Name="PROPIETARIO" Type="varchar" MaxLength="255" />
+          <Property Name="CARGAS" Type="varchar" MaxLength="255" />
+          <Property Name="ASEGURA_VENTAS" Type="bit" />
+          <Property Name="ASEGURADORA" Type="varchar" MaxLength="50" />
+          <Property Name="NO_ASEGURA_VENTAS" Type="bit" />
+        </EntityType>
+        <EntityType Name="PROVEEDORES_HABITUALES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cliente" Type="numeric" />
+          <Property Name="Fecha1" Type="datetime" />
+          <Property Name="NombreProveedor1" Type="varchar" MaxLength="50" />
+          <Property Name="Cif1" Type="varchar" MaxLength="20" />
+          <Property Name="FormaPago1" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SOCIEDADES_VINCULADAS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cliente" Type="numeric" />
+          <Property Name="Cliente_QS" Type="numeric" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Cif" Type="varchar" MaxLength="20" />
+          <Property Name="doc1" Type="image" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="texto" Type="varchar(max)" />
+          <Property Name="porcentaje" Type="decimal" Scale="5" />
+        </EntityType>
+        <Association Name="FK_ACCIONARIADO detalle_ACCIONARIADO">
+          <End Role="ACCIONARIADO" Type="CLIENTESModel.Store.ACCIONARIADO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ACCIONARIADO detalle" Type="CLIENTESModel.Store.ACCIONARIADO detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCIONARIADO">
+              <PropertyRef Name="CLIENTE" />
+              <PropertyRef Name="AÑO" />
+            </Principal>
+            <Dependent Role="ACCIONARIADO detalle">
+              <PropertyRef Name="CLIENTE" />
+              <PropertyRef Name="AÑO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACCIONARIADO_CLIENTES DAR DE ALTA EN MAC">
+          <End Role="CLIENTES DAR DE ALTA EN MAC" Type="CLIENTESModel.Store.CLIENTES DAR DE ALTA EN MAC" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ACCIONARIADO" Type="CLIENTESModel.Store.ACCIONARIADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES DAR DE ALTA EN MAC">
+              <PropertyRef Name="NUEVO CODIGO" />
+            </Principal>
+            <Dependent Role="ACCIONARIADO">
+              <PropertyRef Name="CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTES_HABITUALES_CLIENTES DAR DE ALTA EN MAC">
+          <End Role="CLIENTES DAR DE ALTA EN MAC" Type="CLIENTESModel.Store.CLIENTES DAR DE ALTA EN MAC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CLIENTES_HABITUALES" Type="CLIENTESModel.Store.CLIENTES_HABITUALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES DAR DE ALTA EN MAC">
+              <PropertyRef Name="NUEVO CODIGO" />
+            </Principal>
+            <Dependent Role="CLIENTES_HABITUALES">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INFORMES_COMERCIALES_CLIENTES DAR DE ALTA EN MAC">
+          <End Role="CLIENTES DAR DE ALTA EN MAC" Type="CLIENTESModel.Store.CLIENTES DAR DE ALTA EN MAC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="INFORMES_COMERCIALES" Type="CLIENTESModel.Store.INFORMES_COMERCIALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES DAR DE ALTA EN MAC">
+              <PropertyRef Name="NUEVO CODIGO" />
+            </Principal>
+            <Dependent Role="INFORMES_COMERCIALES">
+              <PropertyRef Name="CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVEEDORES_HABITUALES_CLIENTES DAR DE ALTA EN MAC">
+          <End Role="CLIENTES DAR DE ALTA EN MAC" Type="CLIENTESModel.Store.CLIENTES DAR DE ALTA EN MAC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROVEEDORES_HABITUALES" Type="CLIENTESModel.Store.PROVEEDORES_HABITUALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES DAR DE ALTA EN MAC">
+              <PropertyRef Name="NUEVO CODIGO" />
+            </Principal>
+            <Dependent Role="PROVEEDORES_HABITUALES">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOCIEDADES_VINCULADAS_CLIENTES DAR DE ALTA EN MAC">
+          <End Role="CLIENTES DAR DE ALTA EN MAC" Type="CLIENTESModel.Store.CLIENTES DAR DE ALTA EN MAC" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SOCIEDADES_VINCULADAS" Type="CLIENTESModel.Store.SOCIEDADES_VINCULADAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES DAR DE ALTA EN MAC">
+              <PropertyRef Name="NUEVO CODIGO" />
+            </Principal>
+            <Dependent Role="SOCIEDADES_VINCULADAS">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CLIENTESModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BDClientesSQLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCIONARIADO" EntityType="CLIENTESModel.ACCIONARIADO" />
+          <EntitySet Name="ACCIONARIADO_detalle" EntityType="CLIENTESModel.ACCIONARIADO_detalle" />
+          <EntitySet Name="CLIENTES_DAR_DE_ALTA_EN_MAC" EntityType="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" />
+          <EntitySet Name="CLIENTES_HABITUALES" EntityType="CLIENTESModel.CLIENTES_HABITUALES" />
+          <EntitySet Name="PROVEEDORES_HABITUALES" EntityType="CLIENTESModel.PROVEEDORES_HABITUALES" />
+          <EntitySet Name="SOCIEDADES_VINCULADAS" EntityType="CLIENTESModel.SOCIEDADES_VINCULADAS" />
+          <EntitySet Name="INFORMES_COMERCIALES" EntityType="CLIENTESModel.INFORMES_COMERCIALES" />
+          <AssociationSet Name="FK_ACCIONARIADO_detalle_ACCIONARIADO" Association="CLIENTESModel.FK_ACCIONARIADO_detalle_ACCIONARIADO">
+            <End Role="ACCIONARIADO" EntitySet="ACCIONARIADO" />
+            <End Role="ACCIONARIADO_detalle" EntitySet="ACCIONARIADO_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC" Association="CLIENTESModel.FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC">
+            <End Role="CLIENTES_DAR_DE_ALTA_EN_MAC" EntitySet="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+            <End Role="ACCIONARIADO" EntitySet="ACCIONARIADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" Association="CLIENTESModel.FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC">
+            <End Role="CLIENTES_DAR_DE_ALTA_EN_MAC" EntitySet="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+            <End Role="CLIENTES_HABITUALES" EntitySet="CLIENTES_HABITUALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC" Association="CLIENTESModel.FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC">
+            <End Role="CLIENTES_DAR_DE_ALTA_EN_MAC" EntitySet="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+            <End Role="INFORMES_COMERCIALES" EntitySet="INFORMES_COMERCIALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" Association="CLIENTESModel.FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC">
+            <End Role="CLIENTES_DAR_DE_ALTA_EN_MAC" EntitySet="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+            <End Role="PROVEEDORES_HABITUALES" EntitySet="PROVEEDORES_HABITUALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC" Association="CLIENTESModel.FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC">
+            <End Role="CLIENTES_DAR_DE_ALTA_EN_MAC" EntitySet="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+            <End Role="SOCIEDADES_VINCULADAS" EntitySet="SOCIEDADES_VINCULADAS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ACCIONARIADO">
+          <Key>
+            <PropertyRef Name="CLIENTE" />
+            <PropertyRef Name="AÑO" />
+          </Key>
+          <Property Name="CLIENTE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AÑO" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="ACCIONARIADO_detalle" Relationship="CLIENTESModel.FK_ACCIONARIADO_detalle_ACCIONARIADO" FromRole="ACCIONARIADO" ToRole="ACCIONARIADO_detalle" />
+          <NavigationProperty Name="CLIENTES_DAR_DE_ALTA_EN_MAC" Relationship="CLIENTESModel.FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="ACCIONARIADO" ToRole="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+        </EntityType>
+        <EntityType Name="ACCIONARIADO_detalle">
+          <Key>
+            <PropertyRef Name="CLIENTE" />
+            <PropertyRef Name="AÑO" />
+            <PropertyRef Name="NOMBRE" />
+          </Key>
+          <Property Name="CLIENTE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AÑO" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CIF" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PORCENTAJE" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="doc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" />
+          <Property Name="texto" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ACCIONARIADO" Relationship="CLIENTESModel.FK_ACCIONARIADO_detalle_ACCIONARIADO" FromRole="ACCIONARIADO_detalle" ToRole="ACCIONARIADO" />
+        </EntityType>
+        <EntityType Name="CLIENTES_DAR_DE_ALTA_EN_MAC">
+          <Key>
+            <PropertyRef Name="NUEVO_CODIGO" />
+          </Key>
+          <Property Name="NUEVO_CODIGO" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NOMCLI" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CIF_CORREGIDO" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="INFORMES" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="importeEspecialCyC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="fechaHastaCyC" Type="DateTime" />
+          <Property Name="referenciaCyC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="importeCyC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="clasificacionCyC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="constituida1" Type="DateTime" />
+          <Property Name="UltimoRAI" Type="DateTime" />
+          <Property Name="UltimoRAIimporte" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="UltimoRAIAnterior" Type="DateTime" />
+          <Property Name="UltimoRAIimporteAnterior" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramAño" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paramInmovilizado" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramExistencias" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramActivoCirculante" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramFondosPropios" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramCapitalSocial" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramAcreedoresLP" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramAcreedoresCP" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramTotalPasivo" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramBNDII" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramResultadoExtra" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="paramVentas" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="docContratos1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docContratos2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docModif1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docModif2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docRai1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docRai2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docBalances1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docBalances2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docBalances3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="infBancFecha1" Type="DateTime" />
+          <Property Name="infBancEntidad1" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="infBancValor1" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="infBancFecha2" Type="DateTime" />
+          <Property Name="infBancEntidad2" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="infBancValor2" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="infBancFecha3" Type="DateTime" />
+          <Property Name="infBancEntidad3" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="infBancValor3" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="infBancFecha4" Type="DateTime" />
+          <Property Name="infBancEntidad4" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="infBancValor4" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="infBancFecha5" Type="DateTime" />
+          <Property Name="infBancEntidad5" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="infBancValor5" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="ultInfComFecha" Type="DateTime" />
+          <Property Name="ultInfComPersona" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="alerta" Type="Boolean" />
+          <Property Name="alerta_fecha" Type="DateTime" />
+          <Property Name="creditBureau" Type="Boolean" />
+          <Property Name="creditBureau_fecha" Type="DateTime" />
+          <Property Name="gestion_fecha" Type="DateTime" />
+          <Property Name="gestion_texto" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="accion_excedido" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fpMoraval" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="fpHierros" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="fpAltamira" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="opcAutMoraval" Type="Boolean" />
+          <Property Name="opcAutHierros" Type="Boolean" />
+          <Property Name="opcAutAltamira" Type="Boolean" />
+          <Property Name="opcAutBancoMoraval" Type="Boolean" />
+          <Property Name="opcAutBancoHierros" Type="Boolean" />
+          <Property Name="opcAutBancoAltamira" Type="Boolean" />
+          <Property Name="docAutMoraval" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docAutHierros" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docAutAltamira" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docAutMoravalBanco" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docAutHierrosBanco" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docAutAltamiraBanco" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="envFormMoraval" Type="Boolean" />
+          <Property Name="envFormHierros" Type="Boolean" />
+          <Property Name="envFormAltamira" Type="Boolean" />
+          <Property Name="balance_año1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bal_cifra_negocio1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_rtdo_ejercicio1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_capital1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_patrimonio_neto1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_act_no_corriente1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_act_corriente1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pas_corriente1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_deudas_cp1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_deudas_lp1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_fondo_maniobra1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_r_endeudamiento1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_r_tesoreria1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_terrenos1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pmc1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pmp1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_aprovisionamiento1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_cuota_mercado1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_tipo_balance1" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="bal_inmov_material1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_productos_curso1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_productos_terminados1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_cli_prest_servicios1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_proveedores1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_anticipos_cli1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_result_explotacion1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_result_financiero1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_tesoreria1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="balance_año2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bal_cifra_negocio2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="bal_rtdo_ejercicio2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_capital2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_patrimonio_neto2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_act_no_corriente2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_act_corriente2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pas_corriente2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_deudas_cp2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_deudas_lp2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_fondo_maniobra2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_r_endeudamiento2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_r_tesoreria2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_terrenos2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pmc2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pmp2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_aprovisionamiento2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_cuota_mercado2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_tipo_balance2" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="bal_inmov_material2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_productos_curso2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_productos_terminados2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_cli_prest_servicios2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_proveedores2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_anticipos_cli2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_result_explotacion2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_result_financiero2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_tesoreria2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="balance_año3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bal_cifra_negocio3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_rtdo_ejercicio3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_capital3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_patrimonio_neto3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_act_no_corriente3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_act_corriente3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pas_corriente3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_deudas_cp3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_deudas_lp3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_fondo_maniobra3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_r_endeudamiento3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_r_tesoreria3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_terrenos3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pmc3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_pmp3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_aprovisionamiento3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_cuota_mercado3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_tipo_balance3" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="bal_inmov_material3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_productos_curso3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_productos_terminados3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_cli_prest_servicios3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_proveedores3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_anticipos_cli3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_result_explotacion3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_result_financiero3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_tesoreria3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="aut_giros_f_envio_MV" Type="DateTime" />
+          <Property Name="aut_giros_f_envio_HMA" Type="DateTime" />
+          <Property Name="aut_giros_f_envio_ECA" Type="DateTime" />
+          <Property Name="aut_giros_banco_f_envio_MV" Type="DateTime" />
+          <Property Name="aut_giros_banco_f_envio_HMA" Type="DateTime" />
+          <Property Name="aut_giros_banco_f_envio_ECA" Type="DateTime" />
+          <Property Name="aut_giros_banco_MV" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_banco_HMA" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_banco_ECA" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_validez_MV" Type="Boolean" />
+          <Property Name="aut_giros_validez_HMA" Type="Boolean" />
+          <Property Name="aut_giros_validez_ECA" Type="Boolean" />
+          <Property Name="otras_denom_nombre1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="otras_denom_cif1" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="otras_denom_nombre2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="otras_denom_cif2" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="otras_denom_nombre3" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="otras_denom_cif3" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="sin_fincabilidad" Type="Boolean" />
+          <Property Name="sin_fincabilidad_fecha" Type="DateTime" />
+          <Property Name="sin_fincabilidad_doc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="localizador_registros" Type="Boolean" />
+          <Property Name="localizador_registros_fecha" Type="DateTime" />
+          <Property Name="localizador_registros_doc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="bal_existencias1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_existencias2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bal_existencias3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="infComFecha1" Type="DateTime" />
+          <Property Name="infComFecha2" Type="DateTime" />
+          <Property Name="infComFecha3" Type="DateTime" />
+          <Property Name="infComFecha4" Type="DateTime" />
+          <Property Name="infCompetFecha1" Type="DateTime" />
+          <Property Name="infCompetFecha2" Type="DateTime" />
+          <Property Name="infCompetFecha3" Type="DateTime" />
+          <Property Name="infCompetFecha4" Type="DateTime" />
+          <Property Name="infDirFecha1" Type="DateTime" />
+          <Property Name="infDirFecha2" Type="DateTime" />
+          <Property Name="infDirFecha3" Type="DateTime" />
+          <Property Name="infDirFecha4" Type="DateTime" />
+          <Property Name="infCreFecha1" Type="DateTime" />
+          <Property Name="infCreFecha2" Type="DateTime" />
+          <Property Name="infCreFecha3" Type="DateTime" />
+          <Property Name="infCreFecha4" Type="DateTime" />
+          <Property Name="claveCreditos" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="limiteMV" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="limiteHMA" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="limiteECA" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="riesgoTotal" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="agenteMV" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="agenteHMA" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="totalPedPdtes" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="chkAutCopiaIBAN" Type="Boolean" />
+          <Property Name="opcOtrosAutGiros" Type="Boolean" />
+          <Property Name="obsOtrosAutGiros" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="chkInforma" Type="Boolean" />
+          <Property Name="fechaInforma" Type="DateTime" />
+          <Property Name="blqMoraval" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="blqHierros" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="blqAltamira" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_f_val_MV" Type="DateTime" />
+          <Property Name="aut_giros_f_val_HMA" Type="DateTime" />
+          <Property Name="aut_giros_f_val_ECA" Type="DateTime" />
+          <Property Name="chkAutFP" Type="Boolean" />
+          <Property Name="fechaAutFP" Type="DateTime" />
+          <Property Name="obsAutFP" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_bco_MV" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_suc_MV" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_dc_MV" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_cta_MV" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_bco_HMA" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_suc_HMA" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_dc_HMA" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_cta_HMA" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_bco_ECA" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_suc_ECA" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_dc_ECA" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="aut_giros_cta_ECA" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="chkAutCopia" Type="Boolean" />
+          <Property Name="fechaAutCopia" Type="DateTime" />
+          <Property Name="aut_iban_f_val_MV" Type="DateTime" />
+          <Property Name="aut_iban_f_val_HMA" Type="DateTime" />
+          <Property Name="aut_iban_f_val_ECA" Type="DateTime" />
+          <Property Name="docIbanMV" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docIbanHMA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docIbanECA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="aut_IBAN_cuenta_MV" Type="String" MaxLength="34" Unicode="false" FixedLength="false" />
+          <Property Name="aut_IBAN_cuenta_HMA" Type="String" MaxLength="34" Unicode="false" FixedLength="false" />
+          <Property Name="aut_IBAN_cuenta_ECA" Type="String" MaxLength="34" Unicode="false" FixedLength="false" />
+          <Property Name="aut_IBIC_cuenta_MV" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+          <Property Name="aut_IBIC_cuenta_HMA" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+          <Property Name="aut_IBIC_cuenta_ECA" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+          <Property Name="opcAutMoravalB2B" Type="Boolean" />
+          <Property Name="opcAutHierrosB2B" Type="Boolean" />
+          <Property Name="opcAutAltamiraB2B" Type="Boolean" />
+          <NavigationProperty Name="ACCIONARIADO" Relationship="CLIENTESModel.FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="ACCIONARIADO" />
+          <NavigationProperty Name="CLIENTES_HABITUALES" Relationship="CLIENTESModel.FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="CLIENTES_HABITUALES" />
+          <NavigationProperty Name="INFORMES_COMERCIALES" Relationship="CLIENTESModel.FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="INFORMES_COMERCIALES" />
+          <NavigationProperty Name="PROVEEDORES_HABITUALES" Relationship="CLIENTESModel.FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="PROVEEDORES_HABITUALES" />
+          <NavigationProperty Name="SOCIEDADES_VINCULADAS" Relationship="CLIENTESModel.FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="SOCIEDADES_VINCULADAS" />
+        </EntityType>
+        <EntityType Name="CLIENTES_HABITUALES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cliente" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Fecha1" Type="DateTime" />
+          <Property Name="NombreCliente1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Cif1" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="FormaCobro1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CLIENTES_DAR_DE_ALTA_EN_MAC" Relationship="CLIENTESModel.FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_HABITUALES" ToRole="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+        </EntityType>
+        <EntityType Name="PROVEEDORES_HABITUALES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cliente" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Fecha1" Type="DateTime" />
+          <Property Name="NombreProveedor1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Cif1" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="FormaPago1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CLIENTES_DAR_DE_ALTA_EN_MAC" Relationship="CLIENTESModel.FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="PROVEEDORES_HABITUALES" ToRole="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+        </EntityType>
+        <EntityType Name="SOCIEDADES_VINCULADAS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cliente" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Cliente_QS" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Cif" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="doc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" />
+          <Property Name="texto" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="porcentaje" Type="Decimal" Precision="18" Scale="5" />
+          <NavigationProperty Name="CLIENTES_DAR_DE_ALTA_EN_MAC" Relationship="CLIENTESModel.FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="SOCIEDADES_VINCULADAS" ToRole="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+        </EntityType>
+        <EntityType Name="INFORMES_COMERCIALES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="CLIENTE" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="FECHA" />
+          <Property Type="String" Name="PERSONA" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TEXTO" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="VALIDAR" />
+          <Property Type="Binary" Name="documento1" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="INMUEBLES" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROPIETARIO" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CARGAS" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ASEGURA_VENTAS" />
+          <Property Type="String" Name="ASEGURADORA" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="NO_ASEGURA_VENTAS" />
+          <NavigationProperty Name="CLIENTES_DAR_DE_ALTA_EN_MAC" Relationship="CLIENTESModel.FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="INFORMES_COMERCIALES" ToRole="CLIENTES_DAR_DE_ALTA_EN_MAC" />
+        </EntityType>
+        <Association Name="FK_ACCIONARIADO_detalle_ACCIONARIADO">
+          <End Type="CLIENTESModel.ACCIONARIADO" Role="ACCIONARIADO" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLIENTESModel.ACCIONARIADO_detalle" Role="ACCIONARIADO_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCIONARIADO">
+              <PropertyRef Name="CLIENTE" />
+              <PropertyRef Name="AÑO" />
+            </Principal>
+            <Dependent Role="ACCIONARIADO_detalle">
+              <PropertyRef Name="CLIENTE" />
+              <PropertyRef Name="AÑO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC">
+          <End Type="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Role="CLIENTES_DAR_DE_ALTA_EN_MAC" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLIENTESModel.ACCIONARIADO" Role="ACCIONARIADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES_DAR_DE_ALTA_EN_MAC">
+              <PropertyRef Name="NUEVO_CODIGO" />
+            </Principal>
+            <Dependent Role="ACCIONARIADO">
+              <PropertyRef Name="CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC">
+          <End Type="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Role="CLIENTES_DAR_DE_ALTA_EN_MAC" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLIENTESModel.CLIENTES_HABITUALES" Role="CLIENTES_HABITUALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES_DAR_DE_ALTA_EN_MAC">
+              <PropertyRef Name="NUEVO_CODIGO" />
+            </Principal>
+            <Dependent Role="CLIENTES_HABITUALES">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC">
+          <End Type="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Role="CLIENTES_DAR_DE_ALTA_EN_MAC" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLIENTESModel.INFORMES_COMERCIALES" Role="INFORMES_COMERCIALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES_DAR_DE_ALTA_EN_MAC">
+              <PropertyRef Name="NUEVO_CODIGO" />
+            </Principal>
+            <Dependent Role="INFORMES_COMERCIALES">
+              <PropertyRef Name="CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC">
+          <End Type="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Role="CLIENTES_DAR_DE_ALTA_EN_MAC" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLIENTESModel.PROVEEDORES_HABITUALES" Role="PROVEEDORES_HABITUALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES_DAR_DE_ALTA_EN_MAC">
+              <PropertyRef Name="NUEVO_CODIGO" />
+            </Principal>
+            <Dependent Role="PROVEEDORES_HABITUALES">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC">
+          <End Type="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Role="CLIENTES_DAR_DE_ALTA_EN_MAC" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CLIENTESModel.SOCIEDADES_VINCULADAS" Role="SOCIEDADES_VINCULADAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES_DAR_DE_ALTA_EN_MAC">
+              <PropertyRef Name="NUEVO_CODIGO" />
+            </Principal>
+            <Dependent Role="SOCIEDADES_VINCULADAS">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CLIENTESModelStoreContainer" CdmEntityContainer="BDClientesSQLEntities">
+          <EntitySetMapping Name="ACCIONARIADO">
+            <EntityTypeMapping TypeName="CLIENTESModel.ACCIONARIADO">
+              <MappingFragment StoreEntitySet="ACCIONARIADO">
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACCIONARIADO_detalle">
+            <EntityTypeMapping TypeName="CLIENTESModel.ACCIONARIADO_detalle">
+              <MappingFragment StoreEntitySet="ACCIONARIADO detalle">
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+                <ScalarProperty Name="doc1" ColumnName="doc1" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTES_DAR_DE_ALTA_EN_MAC">
+            <EntityTypeMapping TypeName="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC">
+              <MappingFragment StoreEntitySet="CLIENTES DAR DE ALTA EN MAC">
+                <ScalarProperty Name="NUEVO_CODIGO" ColumnName="NUEVO CODIGO" />
+                <ScalarProperty Name="NOMCLI" ColumnName="NOMCLI" />
+                <ScalarProperty Name="CIF_CORREGIDO" ColumnName="CIF CORREGIDO" />
+                <ScalarProperty Name="INFORMES" ColumnName="INFORMES" />
+                <ScalarProperty Name="importeEspecialCyC" ColumnName="importeEspecialCyC" />
+                <ScalarProperty Name="fechaHastaCyC" ColumnName="fechaHastaCyC" />
+                <ScalarProperty Name="referenciaCyC" ColumnName="referenciaCyC" />
+                <ScalarProperty Name="importeCyC" ColumnName="importeCyC" />
+                <ScalarProperty Name="clasificacionCyC" ColumnName="clasificacionCyC" />
+                <ScalarProperty Name="constituida1" ColumnName="constituida1" />
+                <ScalarProperty Name="UltimoRAI" ColumnName="UltimoRAI" />
+                <ScalarProperty Name="UltimoRAIimporte" ColumnName="UltimoRAIimporte" />
+                <ScalarProperty Name="UltimoRAIAnterior" ColumnName="UltimoRAIAnterior" />
+                <ScalarProperty Name="UltimoRAIimporteAnterior" ColumnName="UltimoRAIimporteAnterior" />
+                <ScalarProperty Name="paramAño" ColumnName="paramAño" />
+                <ScalarProperty Name="paramInmovilizado" ColumnName="paramInmovilizado" />
+                <ScalarProperty Name="paramExistencias" ColumnName="paramExistencias" />
+                <ScalarProperty Name="paramActivoCirculante" ColumnName="paramActivoCirculante" />
+                <ScalarProperty Name="paramFondosPropios" ColumnName="paramFondosPropios" />
+                <ScalarProperty Name="paramCapitalSocial" ColumnName="paramCapitalSocial" />
+                <ScalarProperty Name="paramAcreedoresLP" ColumnName="paramAcreedoresLP" />
+                <ScalarProperty Name="paramAcreedoresCP" ColumnName="paramAcreedoresCP" />
+                <ScalarProperty Name="paramTotalPasivo" ColumnName="paramTotalPasivo" />
+                <ScalarProperty Name="paramBNDII" ColumnName="paramBNDII" />
+                <ScalarProperty Name="paramResultadoExtra" ColumnName="paramResultadoExtra" />
+                <ScalarProperty Name="paramVentas" ColumnName="paramVentas" />
+                <ScalarProperty Name="docContratos1" ColumnName="docContratos1" />
+                <ScalarProperty Name="docContratos2" ColumnName="docContratos2" />
+                <ScalarProperty Name="docModif1" ColumnName="docModif1" />
+                <ScalarProperty Name="docModif2" ColumnName="docModif2" />
+                <ScalarProperty Name="docRai1" ColumnName="docRai1" />
+                <ScalarProperty Name="docRai2" ColumnName="docRai2" />
+                <ScalarProperty Name="docBalances1" ColumnName="docBalances1" />
+                <ScalarProperty Name="docBalances2" ColumnName="docBalances2" />
+                <ScalarProperty Name="docBalances3" ColumnName="docBalances3" />
+                <ScalarProperty Name="infBancFecha1" ColumnName="infBancFecha1" />
+                <ScalarProperty Name="infBancEntidad1" ColumnName="infBancEntidad1" />
+                <ScalarProperty Name="infBancValor1" ColumnName="infBancValor1" />
+                <ScalarProperty Name="infBancFecha2" ColumnName="infBancFecha2" />
+                <ScalarProperty Name="infBancEntidad2" ColumnName="infBancEntidad2" />
+                <ScalarProperty Name="infBancValor2" ColumnName="infBancValor2" />
+                <ScalarProperty Name="infBancFecha3" ColumnName="infBancFecha3" />
+                <ScalarProperty Name="infBancEntidad3" ColumnName="infBancEntidad3" />
+                <ScalarProperty Name="infBancValor3" ColumnName="infBancValor3" />
+                <ScalarProperty Name="infBancFecha4" ColumnName="infBancFecha4" />
+                <ScalarProperty Name="infBancEntidad4" ColumnName="infBancEntidad4" />
+                <ScalarProperty Name="infBancValor4" ColumnName="infBancValor4" />
+                <ScalarProperty Name="infBancFecha5" ColumnName="infBancFecha5" />
+                <ScalarProperty Name="infBancEntidad5" ColumnName="infBancEntidad5" />
+                <ScalarProperty Name="infBancValor5" ColumnName="infBancValor5" />
+                <ScalarProperty Name="ultInfComFecha" ColumnName="ultInfComFecha" />
+                <ScalarProperty Name="ultInfComPersona" ColumnName="ultInfComPersona" />
+                <ScalarProperty Name="alerta" ColumnName="alerta" />
+                <ScalarProperty Name="alerta_fecha" ColumnName="alerta_fecha" />
+                <ScalarProperty Name="creditBureau" ColumnName="creditBureau" />
+                <ScalarProperty Name="creditBureau_fecha" ColumnName="creditBureau_fecha" />
+                <ScalarProperty Name="gestion_fecha" ColumnName="gestion_fecha" />
+                <ScalarProperty Name="gestion_texto" ColumnName="gestion_texto" />
+                <ScalarProperty Name="accion_excedido" ColumnName="accion_excedido" />
+                <ScalarProperty Name="fpMoraval" ColumnName="fpMoraval" />
+                <ScalarProperty Name="fpHierros" ColumnName="fpHierros" />
+                <ScalarProperty Name="fpAltamira" ColumnName="fpAltamira" />
+                <ScalarProperty Name="opcAutMoraval" ColumnName="opcAutMoraval" />
+                <ScalarProperty Name="opcAutHierros" ColumnName="opcAutHierros" />
+                <ScalarProperty Name="opcAutAltamira" ColumnName="opcAutAltamira" />
+                <ScalarProperty Name="opcAutBancoMoraval" ColumnName="opcAutBancoMoraval" />
+                <ScalarProperty Name="opcAutBancoHierros" ColumnName="opcAutBancoHierros" />
+                <ScalarProperty Name="opcAutBancoAltamira" ColumnName="opcAutBancoAltamira" />
+                <ScalarProperty Name="docAutMoraval" ColumnName="docAutMoraval" />
+                <ScalarProperty Name="docAutHierros" ColumnName="docAutHierros" />
+                <ScalarProperty Name="docAutAltamira" ColumnName="docAutAltamira" />
+                <ScalarProperty Name="docAutMoravalBanco" ColumnName="docAutMoravalBanco" />
+                <ScalarProperty Name="docAutHierrosBanco" ColumnName="docAutHierrosBanco" />
+                <ScalarProperty Name="docAutAltamiraBanco" ColumnName="docAutAltamiraBanco" />
+                <ScalarProperty Name="envFormMoraval" ColumnName="envFormMoraval" />
+                <ScalarProperty Name="envFormHierros" ColumnName="envFormHierros" />
+                <ScalarProperty Name="envFormAltamira" ColumnName="envFormAltamira" />
+                <ScalarProperty Name="balance_año1" ColumnName="balance_año1" />
+                <ScalarProperty Name="bal_cifra_negocio1" ColumnName="bal_cifra_negocio1" />
+                <ScalarProperty Name="bal_rtdo_ejercicio1" ColumnName="bal_rtdo_ejercicio1" />
+                <ScalarProperty Name="bal_capital1" ColumnName="bal_capital1" />
+                <ScalarProperty Name="bal_patrimonio_neto1" ColumnName="bal_patrimonio_neto1" />
+                <ScalarProperty Name="bal_act_no_corriente1" ColumnName="bal_act_no_corriente1" />
+                <ScalarProperty Name="bal_act_corriente1" ColumnName="bal_act_corriente1" />
+                <ScalarProperty Name="bal_pas_corriente1" ColumnName="bal_pas_corriente1" />
+                <ScalarProperty Name="bal_deudas_cp1" ColumnName="bal_deudas_cp1" />
+                <ScalarProperty Name="bal_deudas_lp1" ColumnName="bal_deudas_lp1" />
+                <ScalarProperty Name="bal_fondo_maniobra1" ColumnName="bal_fondo_maniobra1" />
+                <ScalarProperty Name="bal_r_endeudamiento1" ColumnName="bal_r_endeudamiento1" />
+                <ScalarProperty Name="bal_r_tesoreria1" ColumnName="bal_r_tesoreria1" />
+                <ScalarProperty Name="bal_terrenos1" ColumnName="bal_terrenos1" />
+                <ScalarProperty Name="bal_pmc1" ColumnName="bal_pmc1" />
+                <ScalarProperty Name="bal_pmp1" ColumnName="bal_pmp1" />
+                <ScalarProperty Name="bal_aprovisionamiento1" ColumnName="bal_aprovisionamiento1" />
+                <ScalarProperty Name="bal_cuota_mercado1" ColumnName="bal_cuota_mercado1" />
+                <ScalarProperty Name="bal_tipo_balance1" ColumnName="bal_tipo_balance1" />
+                <ScalarProperty Name="bal_inmov_material1" ColumnName="bal_inmov_material1" />
+                <ScalarProperty Name="bal_productos_curso1" ColumnName="bal_productos_curso1" />
+                <ScalarProperty Name="bal_productos_terminados1" ColumnName="bal_productos_terminados1" />
+                <ScalarProperty Name="bal_cli_prest_servicios1" ColumnName="bal_cli_prest_servicios1" />
+                <ScalarProperty Name="bal_proveedores1" ColumnName="bal_proveedores1" />
+                <ScalarProperty Name="bal_anticipos_cli1" ColumnName="bal_anticipos_cli1" />
+                <ScalarProperty Name="bal_result_explotacion1" ColumnName="bal_result_explotacion1" />
+                <ScalarProperty Name="bal_result_financiero1" ColumnName="bal_result_financiero1" />
+                <ScalarProperty Name="bal_tesoreria1" ColumnName="bal_tesoreria1" />
+                <ScalarProperty Name="balance_año2" ColumnName="balance_año2" />
+                <ScalarProperty Name="bal_cifra_negocio2" ColumnName="bal_cifra_negocio2" />
+                <ScalarProperty Name="bal_rtdo_ejercicio2" ColumnName="bal_rtdo_ejercicio2" />
+                <ScalarProperty Name="bal_capital2" ColumnName="bal_capital2" />
+                <ScalarProperty Name="bal_patrimonio_neto2" ColumnName="bal_patrimonio_neto2" />
+                <ScalarProperty Name="bal_act_no_corriente2" ColumnName="bal_act_no_corriente2" />
+                <ScalarProperty Name="bal_act_corriente2" ColumnName="bal_act_corriente2" />
+                <ScalarProperty Name="bal_pas_corriente2" ColumnName="bal_pas_corriente2" />
+                <ScalarProperty Name="bal_deudas_cp2" ColumnName="bal_deudas_cp2" />
+                <ScalarProperty Name="bal_deudas_lp2" ColumnName="bal_deudas_lp2" />
+                <ScalarProperty Name="bal_fondo_maniobra2" ColumnName="bal_fondo_maniobra2" />
+                <ScalarProperty Name="bal_r_endeudamiento2" ColumnName="bal_r_endeudamiento2" />
+                <ScalarProperty Name="bal_r_tesoreria2" ColumnName="bal_r_tesoreria2" />
+                <ScalarProperty Name="bal_terrenos2" ColumnName="bal_terrenos2" />
+                <ScalarProperty Name="bal_pmc2" ColumnName="bal_pmc2" />
+                <ScalarProperty Name="bal_pmp2" ColumnName="bal_pmp2" />
+                <ScalarProperty Name="bal_aprovisionamiento2" ColumnName="bal_aprovisionamiento2" />
+                <ScalarProperty Name="bal_cuota_mercado2" ColumnName="bal_cuota_mercado2" />
+                <ScalarProperty Name="bal_tipo_balance2" ColumnName="bal_tipo_balance2" />
+                <ScalarProperty Name="bal_inmov_material2" ColumnName="bal_inmov_material2" />
+                <ScalarProperty Name="bal_productos_curso2" ColumnName="bal_productos_curso2" />
+                <ScalarProperty Name="bal_productos_terminados2" ColumnName="bal_productos_terminados2" />
+                <ScalarProperty Name="bal_cli_prest_servicios2" ColumnName="bal_cli_prest_servicios2" />
+                <ScalarProperty Name="bal_proveedores2" ColumnName="bal_proveedores2" />
+                <ScalarProperty Name="bal_anticipos_cli2" ColumnName="bal_anticipos_cli2" />
+                <ScalarProperty Name="bal_result_explotacion2" ColumnName="bal_result_explotacion2" />
+                <ScalarProperty Name="bal_result_financiero2" ColumnName="bal_result_financiero2" />
+                <ScalarProperty Name="bal_tesoreria2" ColumnName="bal_tesoreria2" />
+                <ScalarProperty Name="balance_año3" ColumnName="balance_año3" />
+                <ScalarProperty Name="bal_cifra_negocio3" ColumnName="bal_cifra_negocio3" />
+                <ScalarProperty Name="bal_rtdo_ejercicio3" ColumnName="bal_rtdo_ejercicio3" />
+                <ScalarProperty Name="bal_capital3" ColumnName="bal_capital3" />
+                <ScalarProperty Name="bal_patrimonio_neto3" ColumnName="bal_patrimonio_neto3" />
+                <ScalarProperty Name="bal_act_no_corriente3" ColumnName="bal_act_no_corriente3" />
+                <ScalarProperty Name="bal_act_corriente3" ColumnName="bal_act_corriente3" />
+                <ScalarProperty Name="bal_pas_corriente3" ColumnName="bal_pas_corriente3" />
+                <ScalarProperty Name="bal_deudas_cp3" ColumnName="bal_deudas_cp3" />
+                <ScalarProperty Name="bal_deudas_lp3" ColumnName="bal_deudas_lp3" />
+                <ScalarProperty Name="bal_fondo_maniobra3" ColumnName="bal_fondo_maniobra3" />
+                <ScalarProperty Name="bal_r_endeudamiento3" ColumnName="bal_r_endeudamiento3" />
+                <ScalarProperty Name="bal_r_tesoreria3" ColumnName="bal_r_tesoreria3" />
+                <ScalarProperty Name="bal_terrenos3" ColumnName="bal_terrenos3" />
+                <ScalarProperty Name="bal_pmc3" ColumnName="bal_pmc3" />
+                <ScalarProperty Name="bal_pmp3" ColumnName="bal_pmp3" />
+                <ScalarProperty Name="bal_aprovisionamiento3" ColumnName="bal_aprovisionamiento3" />
+                <ScalarProperty Name="bal_cuota_mercado3" ColumnName="bal_cuota_mercado3" />
+                <ScalarProperty Name="bal_tipo_balance3" ColumnName="bal_tipo_balance3" />
+                <ScalarProperty Name="bal_inmov_material3" ColumnName="bal_inmov_material3" />
+                <ScalarProperty Name="bal_productos_curso3" ColumnName="bal_productos_curso3" />
+                <ScalarProperty Name="bal_productos_terminados3" ColumnName="bal_productos_terminados3" />
+                <ScalarProperty Name="bal_cli_prest_servicios3" ColumnName="bal_cli_prest_servicios3" />
+                <ScalarProperty Name="bal_proveedores3" ColumnName="bal_proveedores3" />
+                <ScalarProperty Name="bal_anticipos_cli3" ColumnName="bal_anticipos_cli3" />
+                <ScalarProperty Name="bal_result_explotacion3" ColumnName="bal_result_explotacion3" />
+                <ScalarProperty Name="bal_result_financiero3" ColumnName="bal_result_financiero3" />
+                <ScalarProperty Name="bal_tesoreria3" ColumnName="bal_tesoreria3" />
+                <ScalarProperty Name="aut_giros_f_envio_MV" ColumnName="aut_giros_f_envio_MV" />
+                <ScalarProperty Name="aut_giros_f_envio_HMA" ColumnName="aut_giros_f_envio_HMA" />
+                <ScalarProperty Name="aut_giros_f_envio_ECA" ColumnName="aut_giros_f_envio_ECA" />
+                <ScalarProperty Name="aut_giros_banco_f_envio_MV" ColumnName="aut_giros_banco_f_envio_MV" />
+                <ScalarProperty Name="aut_giros_banco_f_envio_HMA" ColumnName="aut_giros_banco_f_envio_HMA" />
+                <ScalarProperty Name="aut_giros_banco_f_envio_ECA" ColumnName="aut_giros_banco_f_envio_ECA" />
+                <ScalarProperty Name="aut_giros_banco_MV" ColumnName="aut_giros_banco_MV" />
+                <ScalarProperty Name="aut_giros_banco_HMA" ColumnName="aut_giros_banco_HMA" />
+                <ScalarProperty Name="aut_giros_banco_ECA" ColumnName="aut_giros_banco_ECA" />
+                <ScalarProperty Name="aut_giros_validez_MV" ColumnName="aut_giros_validez_MV" />
+                <ScalarProperty Name="aut_giros_validez_HMA" ColumnName="aut_giros_validez_HMA" />
+                <ScalarProperty Name="aut_giros_validez_ECA" ColumnName="aut_giros_validez_ECA" />
+                <ScalarProperty Name="otras_denom_nombre1" ColumnName="otras_denom_nombre1" />
+                <ScalarProperty Name="otras_denom_cif1" ColumnName="otras_denom_cif1" />
+                <ScalarProperty Name="otras_denom_nombre2" ColumnName="otras_denom_nombre2" />
+                <ScalarProperty Name="otras_denom_cif2" ColumnName="otras_denom_cif2" />
+                <ScalarProperty Name="otras_denom_nombre3" ColumnName="otras_denom_nombre3" />
+                <ScalarProperty Name="otras_denom_cif3" ColumnName="otras_denom_cif3" />
+                <ScalarProperty Name="sin_fincabilidad" ColumnName="sin_fincabilidad" />
+                <ScalarProperty Name="sin_fincabilidad_fecha" ColumnName="sin_fincabilidad_fecha" />
+                <ScalarProperty Name="sin_fincabilidad_doc" ColumnName="sin_fincabilidad_doc" />
+                <ScalarProperty Name="localizador_registros" ColumnName="localizador_registros" />
+                <ScalarProperty Name="localizador_registros_fecha" ColumnName="localizador_registros_fecha" />
+                <ScalarProperty Name="localizador_registros_doc" ColumnName="localizador_registros_doc" />
+                <ScalarProperty Name="bal_existencias1" ColumnName="bal_existencias1" />
+                <ScalarProperty Name="bal_existencias2" ColumnName="bal_existencias2" />
+                <ScalarProperty Name="bal_existencias3" ColumnName="bal_existencias3" />
+                <ScalarProperty Name="infComFecha1" ColumnName="infComFecha1" />
+                <ScalarProperty Name="infComFecha2" ColumnName="infComFecha2" />
+                <ScalarProperty Name="infComFecha3" ColumnName="infComFecha3" />
+                <ScalarProperty Name="infComFecha4" ColumnName="infComFecha4" />
+                <ScalarProperty Name="infCompetFecha1" ColumnName="infCompetFecha1" />
+                <ScalarProperty Name="infCompetFecha2" ColumnName="infCompetFecha2" />
+                <ScalarProperty Name="infCompetFecha3" ColumnName="infCompetFecha3" />
+                <ScalarProperty Name="infCompetFecha4" ColumnName="infCompetFecha4" />
+                <ScalarProperty Name="infDirFecha1" ColumnName="infDirFecha1" />
+                <ScalarProperty Name="infDirFecha2" ColumnName="infDirFecha2" />
+                <ScalarProperty Name="infDirFecha3" ColumnName="infDirFecha3" />
+                <ScalarProperty Name="infDirFecha4" ColumnName="infDirFecha4" />
+                <ScalarProperty Name="infCreFecha1" ColumnName="infCreFecha1" />
+                <ScalarProperty Name="infCreFecha2" ColumnName="infCreFecha2" />
+                <ScalarProperty Name="infCreFecha3" ColumnName="infCreFecha3" />
+                <ScalarProperty Name="infCreFecha4" ColumnName="infCreFecha4" />
+                <ScalarProperty Name="claveCreditos" ColumnName="claveCreditos" />
+                <ScalarProperty Name="limiteMV" ColumnName="limiteMV" />
+                <ScalarProperty Name="limiteHMA" ColumnName="limiteHMA" />
+                <ScalarProperty Name="limiteECA" ColumnName="limiteECA" />
+                <ScalarProperty Name="riesgoTotal" ColumnName="riesgoTotal" />
+                <ScalarProperty Name="agenteMV" ColumnName="agenteMV" />
+                <ScalarProperty Name="agenteHMA" ColumnName="agenteHMA" />
+                <ScalarProperty Name="totalPedPdtes" ColumnName="totalPedPdtes" />
+                <ScalarProperty Name="chkAutCopiaIBAN" ColumnName="chkAutCopiaIBAN" />
+                <ScalarProperty Name="opcOtrosAutGiros" ColumnName="opcOtrosAutGiros" />
+                <ScalarProperty Name="obsOtrosAutGiros" ColumnName="obsOtrosAutGiros" />
+                <ScalarProperty Name="chkInforma" ColumnName="chkInforma" />
+                <ScalarProperty Name="fechaInforma" ColumnName="fechaInforma" />
+                <ScalarProperty Name="blqMoraval" ColumnName="blqMoraval" />
+                <ScalarProperty Name="blqHierros" ColumnName="blqHierros" />
+                <ScalarProperty Name="blqAltamira" ColumnName="blqAltamira" />
+                <ScalarProperty Name="aut_giros_f_val_MV" ColumnName="aut_giros_f_val_MV" />
+                <ScalarProperty Name="aut_giros_f_val_HMA" ColumnName="aut_giros_f_val_HMA" />
+                <ScalarProperty Name="aut_giros_f_val_ECA" ColumnName="aut_giros_f_val_ECA" />
+                <ScalarProperty Name="chkAutFP" ColumnName="chkAutFP" />
+                <ScalarProperty Name="fechaAutFP" ColumnName="fechaAutFP" />
+                <ScalarProperty Name="obsAutFP" ColumnName="obsAutFP" />
+                <ScalarProperty Name="aut_giros_bco_MV" ColumnName="aut_giros_bco_MV" />
+                <ScalarProperty Name="aut_giros_suc_MV" ColumnName="aut_giros_suc_MV" />
+                <ScalarProperty Name="aut_giros_dc_MV" ColumnName="aut_giros_dc_MV" />
+                <ScalarProperty Name="aut_giros_cta_MV" ColumnName="aut_giros_cta_MV" />
+                <ScalarProperty Name="aut_giros_bco_HMA" ColumnName="aut_giros_bco_HMA" />
+                <ScalarProperty Name="aut_giros_suc_HMA" ColumnName="aut_giros_suc_HMA" />
+                <ScalarProperty Name="aut_giros_dc_HMA" ColumnName="aut_giros_dc_HMA" />
+                <ScalarProperty Name="aut_giros_cta_HMA" ColumnName="aut_giros_cta_HMA" />
+                <ScalarProperty Name="aut_giros_bco_ECA" ColumnName="aut_giros_bco_ECA" />
+                <ScalarProperty Name="aut_giros_suc_ECA" ColumnName="aut_giros_suc_ECA" />
+                <ScalarProperty Name="aut_giros_dc_ECA" ColumnName="aut_giros_dc_ECA" />
+                <ScalarProperty Name="aut_giros_cta_ECA" ColumnName="aut_giros_cta_ECA" />
+                <ScalarProperty Name="chkAutCopia" ColumnName="chkAutCopia" />
+                <ScalarProperty Name="fechaAutCopia" ColumnName="fechaAutCopia" />
+                <ScalarProperty Name="aut_iban_f_val_MV" ColumnName="aut_iban_f_val_MV" />
+                <ScalarProperty Name="aut_iban_f_val_HMA" ColumnName="aut_iban_f_val_HMA" />
+                <ScalarProperty Name="aut_iban_f_val_ECA" ColumnName="aut_iban_f_val_ECA" />
+                <ScalarProperty Name="docIbanMV" ColumnName="docIbanMV" />
+                <ScalarProperty Name="docIbanHMA" ColumnName="docIbanHMA" />
+                <ScalarProperty Name="docIbanECA" ColumnName="docIbanECA" />
+                <ScalarProperty Name="aut_IBAN_cuenta_MV" ColumnName="aut_IBAN_cuenta_MV" />
+                <ScalarProperty Name="aut_IBAN_cuenta_HMA" ColumnName="aut_IBAN_cuenta_HMA" />
+                <ScalarProperty Name="aut_IBAN_cuenta_ECA" ColumnName="aut_IBAN_cuenta_ECA" />
+                <ScalarProperty Name="aut_IBIC_cuenta_MV" ColumnName="aut_IBIC_cuenta_MV" />
+                <ScalarProperty Name="aut_IBIC_cuenta_HMA" ColumnName="aut_IBIC_cuenta_HMA" />
+                <ScalarProperty Name="aut_IBIC_cuenta_ECA" ColumnName="aut_IBIC_cuenta_ECA" />
+                <ScalarProperty Name="opcAutMoravalB2B" ColumnName="opcAutMoravalB2B" />
+                <ScalarProperty Name="opcAutHierrosB2B" ColumnName="opcAutHierrosB2B" />
+                <ScalarProperty Name="opcAutAltamiraB2B" ColumnName="opcAutAltamiraB2B" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTES_HABITUALES">
+            <EntityTypeMapping TypeName="CLIENTESModel.CLIENTES_HABITUALES">
+              <MappingFragment StoreEntitySet="CLIENTES_HABITUALES">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Fecha1" ColumnName="Fecha1" />
+                <ScalarProperty Name="NombreCliente1" ColumnName="NombreCliente1" />
+                <ScalarProperty Name="Cif1" ColumnName="Cif1" />
+                <ScalarProperty Name="FormaCobro1" ColumnName="FormaCobro1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDORES_HABITUALES">
+            <EntityTypeMapping TypeName="CLIENTESModel.PROVEEDORES_HABITUALES">
+              <MappingFragment StoreEntitySet="PROVEEDORES_HABITUALES">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Fecha1" ColumnName="Fecha1" />
+                <ScalarProperty Name="NombreProveedor1" ColumnName="NombreProveedor1" />
+                <ScalarProperty Name="Cif1" ColumnName="Cif1" />
+                <ScalarProperty Name="FormaPago1" ColumnName="FormaPago1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOCIEDADES_VINCULADAS">
+            <EntityTypeMapping TypeName="CLIENTESModel.SOCIEDADES_VINCULADAS">
+              <MappingFragment StoreEntitySet="SOCIEDADES_VINCULADAS">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Cliente_QS" ColumnName="Cliente_QS" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cif" ColumnName="Cif" />
+                <ScalarProperty Name="doc1" ColumnName="doc1" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INFORMES_COMERCIALES">
+            <EntityTypeMapping TypeName="CLIENTESModel.INFORMES_COMERCIALES">
+              <MappingFragment StoreEntitySet="INFORMES_COMERCIALES">
+                <ScalarProperty Name="NO_ASEGURA_VENTAS" ColumnName="NO_ASEGURA_VENTAS" />
+                <ScalarProperty Name="ASEGURADORA" ColumnName="ASEGURADORA" />
+                <ScalarProperty Name="ASEGURA_VENTAS" ColumnName="ASEGURA_VENTAS" />
+                <ScalarProperty Name="CARGAS" ColumnName="CARGAS" />
+                <ScalarProperty Name="PROPIETARIO" ColumnName="PROPIETARIO" />
+                <ScalarProperty Name="INMUEBLES" ColumnName="INMUEBLES" />
+                <ScalarProperty Name="documento1" ColumnName="documento1" />
+                <ScalarProperty Name="VALIDAR" ColumnName="VALIDAR" />
+                <ScalarProperty Name="TEXTO" ColumnName="TEXTO" />
+                <ScalarProperty Name="PERSONA" ColumnName="PERSONA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BDClientesSQL">
+        <EntityTypeShape EntityType="CLIENTESModel.ACCIONARIADO" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLIENTESModel.ACCIONARIADO_detalle" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Width="1.5" PointX="4.75" PointY="0.75" Height="50.055644531249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLIENTESModel.CLIENTES_HABITUALES" Width="1.5" PointX="0.75" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLIENTESModel.PROVEEDORES_HABITUALES" Width="1.5" PointX="6.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLIENTESModel.SOCIEDADES_VINCULADAS" Width="2.125" PointX="6.875" PointY="3.625" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CLIENTESModel.INFORMES_COMERCIALES" Width="1.5" PointX="3" PointY="4.5" Height="3.5186979166666674" />
+        <AssociationConnector Association="CLIENTESModel.FK_ACCIONARIADO_detalle_ACCIONARIADO" >
+          <ConnectorPoint PointX="2.25" PointY="1.6439925130208333" />
+          <ConnectorPoint PointX="2.75" PointY="1.6439925130208333" />
+        </AssociationConnector>
+        <AssociationConnector Association="CLIENTESModel.FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC" >
+          <ConnectorPoint PointX="4.7511528461538495" PointY="0.75" />
+          <ConnectorPoint PointX="4.3761528461538495" PointY="0.37500000000000011" />
+          <ConnectorPoint PointX="2.6261528461538459" PointY="0.37500000000000011" />
+          <ConnectorPoint PointX="2.25" PointY="0.75115284615384614" />
+        </AssociationConnector>
+        <AssociationConnector Association="CLIENTESModel.FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" >
+          <ConnectorPoint PointX="4.75" PointY="30.020325520833335" />
+          <ConnectorPoint PointX="1.5" PointY="30.020325520833335" />
+          <ConnectorPoint PointX="1.5" PointY="7.1148893229166665" />
+        </AssociationConnector>
+        <AssociationConnector Association="CLIENTESModel.FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC" >
+          <ConnectorPoint PointX="4.75" PointY="6.3554996744791659" />
+          <ConnectorPoint PointX="4.5" PointY="6.3554996744791659" />
+        </AssociationConnector>
+        <AssociationConnector Association="CLIENTESModel.FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" >
+          <ConnectorPoint PointX="6.25" PointY="1.9324446614583335" />
+          <ConnectorPoint PointX="6.75" PointY="1.9324446614583335" />
+        </AssociationConnector>
+        <AssociationConnector Association="CLIENTESModel.FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC" >
+          <ConnectorPoint PointX="6.25" PointY="5.0958968098958328" />
+          <ConnectorPoint PointX="6.875" PointY="5.0958968098958328" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
