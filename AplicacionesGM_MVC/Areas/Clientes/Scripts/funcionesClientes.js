@@ -1,5 +1,5 @@
 ﻿function mostrarPanelExposicion() {
-    if ($('.MORAVAL').is(":checked") && !$('.HMA').is(":checked") && !$('.ECA').is(":checked")) {
+    if (!$('.ECA').is(":checked")) {
         $('#panelExposicion').show();
     } else {
         $("#EsDeExposicion").val("false").change();
@@ -10,16 +10,49 @@
 
 function noAdmiteFacturacionElectronica() {
     if ($('#NoAdmiteFacturacionElectronica').is(":checked")) {
-        $('#DirEnvioFacturas').show();
+        if ($('#EsDeExposicion').val() == "false"){
+            //Si es un cliente de exposición no mostramos la dirección postal
+            $('#ApartadoDeCorreos').show();
+            if ($('#TipoDeViaFacturacion').val() == "") {
+                $('#TieneApartadoPostalFacturacion').val("true");
+                $('#TipoDeViaFacturacion').val("");
+                $('#DomicilioFacturacion').val("");
+                $('#NumeroFacturacion').val("");
+                $('#PisoFacturacion').val("");
+            }
+            mostrarDirEnvioFacturas();
+            $('#CPFacturacion').val($('#CP').val());
+            cargarDatosCPFacturacion();
+        }
         $('#MailDeFacturacion').val("");
         $('#lblMailFacturacion').hide();
         $('#MailDeFacturacion').hide();
     } else {
-        $('#DirEnvioFactura').val("");
-        $('#DirEnvioFacturas').hide();
+        $('#EnvioPostal').hide();
         $('#lblMailFacturacion').show();
         $('#MailDeFacturacion').show();
     }
+}
+
+function mostrarDirEnvioFacturas() {
+    $('#EnvioPostal').show();
+    if ($('#TieneApartadoPostalFacturacion').val() == "false") {
+        $('#DirEnvioFacturas').show();
+        $('#lblApartadoPostal').hide();
+        $('#ApatadoDeCorreosFacturacion').hide();
+        if ($('#DomicilioFacturacion').val() == "") {
+            $('#TipoDeViaFacturacion').val($('#TipoDeVia').val());
+            $('#DomicilioFacturacion').val($('#Domicilio').val());
+            $('#NumeroFacturacion').val($('#Numero').val());
+            $('#PisoFacturacion').val($('#Piso').val());
+            $('#CPFacturacion').val($('#CP').val());
+            cargarDatosCPFacturacion();
+        }
+    } else {
+        $('#DirEnvioFacturas').hide();
+        $('#lblApartadoPostal').show();
+        $('#ApatadoDeCorreosFacturacion').show();
+    }    
 }
 
 function IBANObligatorioSN() {
@@ -56,6 +89,8 @@ function mostrarAgentes() {
 
 function mostrarFichaExposicion() {
     if ($('#EsDeExposicion').val() == "true") {
+        $('#panelRecogen').show();
+        $('#panelParticular').show();
         $('#panelSocios').hide();
         $('#TieneSocios').val(0); //Nos aseguramos de que tiene socios tome el valor NO
         $('#panelEmpresasVinculadas').hide();
@@ -65,7 +100,6 @@ function mostrarFichaExposicion() {
         $('#personaAutorizada').hide();
         $('#Tarifa').val(""); //Nos aseguramos de que el campo tarifa quede vacío
         $('#DatosEmpresariales').hide();
-        $('#MailFacturacion').hide();
         $('#PedidoEnFirme').hide();
         $('#lblDtoPP').hide();
         $('#DtoPP').hide();
@@ -73,6 +107,7 @@ function mostrarFichaExposicion() {
         $('#RecargoFinanciero').hide();
         $('#lblTarifa').hide();
         $('#Tarifa').hide();
+        $('#ApartadoDeCorreos').hide();
         $('#DirEnvioFacturas').hide()
         $('#IBAN').hide();
         $('#Vencimientos').hide();
@@ -82,11 +117,13 @@ function mostrarFichaExposicion() {
         $('#Creditos').hide();
         $('#DatosGerente').hide();
         $('#DatosGrupoEmpresarial').hide();
-        $('#fichaLogística').hide();
-        $('#TieneFichaLogistica').val(false);
-        $('#panelFichaLogistica').hide();
+        $('#lblMailFacturacion').text("Mail de envío factura");
+        $('#lblNoAdmiteFacturacionElectronica').text("El cliente no quiere que se le envíe la factura");
+        mostrarCAE();
         cargarFormasDePago(true);
     } else {
+        $('#panelRecogen').hide();
+        $('#panelParticular').hide();
         $('#DatosEmpresariales').show();
         $('#MailFacturacion').show();
         $('#panelContacto').show();
@@ -106,12 +143,44 @@ function mostrarFichaExposicion() {
         $('#Creditos').show();
         $('#DatosGerente').show();
         $('#DatosGrupoEmpresarial').show();
-        $('#fichaLogística').show();
+        $('#lblMailFacturacion').text("Mail de facturación electrónica");
+        $('#lblNoAdmiteFacturacionElectronica').text("El cliente no admite facturación electrónica");
         cargarFormasDePago(false);
+        mostrarCAE();
         calcularTarifa();
     }
 
 
+}
+
+function asignarTipoDocumento(){
+    if ($('#radioNIF').attr("checked")) {
+        $('#lblNombre').text("Nombre y apellidos");
+    } else {
+        $('#lblNombre').text("Razón social");
+    }
+}
+
+function asignarDatosPrevencion() {
+    if ($('#EsClienteParticular').val() == "true") {
+        if ($('#RecogeEnNuestrasInstalaciones').val() == "true") {
+            //Si es cliente particular y recoge en nuestras instalaciones NO mostramos la ficha logística.
+            $('#panelFichaLogistica').hide();
+        } else if ($('#RecogeEnNuestrasInstalaciones').val() == "false") {
+            //Si es cliente particular y no recoge en nuestras instalaciones ocultamos los requerimientos especiales y asignamos como causa de no firma "Cliente Particular"
+            $('#panelFichaLogistica').show();
+            $('#requerimientosCalidad').hide();
+            $('#requerimientosPrevencion').hide();
+        }
+    } else {
+        $('#panelFichaLogistica').show();
+        $('#requerimientosCalidad').show();
+        $('#requerimientosPrevencion').show();
+        if ($('#RecogeEnNuestrasInstalaciones').val() == "true") {
+            //Si no es particular y recoge en nuestras instalaciones, indicaremos como motivo de no firma por defecto "Recoge en nuestras instalciones"
+            
+        }
+    }
 }
 
 function mostrarPanelMails() {
@@ -151,7 +220,7 @@ function cargarDatosCP() {
             $municipio.attr("value", this.Municipio).text(this.Municipio);
             if (this.CP == v) {
                 $municipio.attr("selected", "selected");
-                $('#IDMunicipio').val(this.IDMunicipio);
+                $('#IDMunicipioQS').val(this.IDMunicipio);
                 newProv = this.IDProvincia;
                 newPais = this.IDPais;
             }
@@ -192,7 +261,7 @@ function cargarDatosCP() {
 
 function calcularZona() {
     setTimeout(function () {
-        var mun = $('#IDMunicipio').val();
+        var mun = $('#IDMunicipioQS').val();
         var prov = $('#IDProvinciaQS').val();
         var pais = $('#IDPaisQS').val();
         var url = '/Clientes/Clientes/getJsonZonas';
@@ -213,6 +282,143 @@ function calcularZona() {
             $("#Zona option[value='']").attr("selected", "selected");
         }
     }, 500);
+}
+
+function cargarDatosCPFacturacion() {
+    var v = $('#CPFacturacion').val();
+    var url = "/Clientes/Clientes/getJsonLocalizaciones";
+    var lastProv = "";
+    var lastPais = "";
+    var newProv = "";
+    var newPais = "";
+    $.getJSON(url, { cp: v }, function (municipios) {
+        $('#MunicipioFacturacion').empty();
+        $('#IDProvinciaQSFacturacion').empty();
+        $('#IDPaisQSFacturacion').empty();
+
+        //Cargamos los Municipios relacionados con el CP
+        $defaultMun = $('<option />');
+        $defaultMun.attr("value", "").text("--Seleccione un valor--");
+        $('#MunicipioFacturacion').append($defaultMun);
+        $defaultProv = $('<option />');
+        $defaultProv.attr("value", "").text("--Seleccione un valor--");
+        $('#IDProvinciaQSFacturacion').append($defaultProv);
+        $defaultPais = $('<option />');
+        $defaultPais.attr("value", "").text("--Seleccione un valor--");
+        $('#IDPaisQSFacturacion').append($defaultPais);
+
+        $(municipios).each(function () {
+            // Añadimos el municipio al desplegable de municipios
+            var $municipio = $('<option />');
+            $municipio.attr("value", this.Municipio).text(this.Municipio);
+            if (this.CP == v) {
+                $municipio.attr("selected", "selected");
+                $('#IDMunicipioQSFacturacion').val(this.IDMunicipio);
+                newProv = this.IDProvincia;
+                newPais = this.IDPais;
+            }
+
+            $("#MunicipioFacturacion").append($municipio);
+
+            //Añadimos las provincias al desplegable de provincias
+            if (this.IDProvincia != lastProv) {
+                var $provincia = $('<option />');
+                $provincia.attr("value", this.IDProvincia).text(this.Provincia);
+                $('#IDProvinciaQSFacturacion').append($provincia);
+
+                lastProv = this.IDProvincia;
+            }
+
+            //Añadimos los paises.
+            if (this.IDPais != lastPais) {
+                var $pais = $('<option />');
+                $pais.attr("value", this.IDPais).text(this.Pais);
+                $('#IDPaisQSFacturacion').append($pais);
+
+                lastPais = this.IDPais;
+            }
+        });
+
+        //Seleccionamos la Provincia y el pais correspondiente
+        if (newProv != "") {
+            $(('#IDProvinciaQSFacturacion option[value=').concat(newProv, ']')).attr("selected", "selected");
+        }
+        if (newPais != "") {
+            $(('#IDPaisQSFacturacion option[value=').concat(newPais, ']')).attr("selected", "selected");
+        }
+    });
+}
+function cargarDatosCPDirEnv(campo){
+    var pos = campo.attr("id").replace(/\D/g, '');
+    var v = campo.val();
+    var url = "/Clientes/Clientes/getJsonLocalizaciones";
+    var lastProv = "";
+    var lastPais = "";
+    var newProv = "";
+    var newPais = "";
+    $.getJSON(url, { cp: v }, function (municipios) {
+        $('#arrMunicipioDirEnv' + pos).empty();
+        $('#arrIDProvinciaQSDirEnv' + pos).empty();
+        $('#arrIDPaisQSDirEnv' + pos).empty();
+
+        //Cargamos los Municipios relacionados con el CP
+        $defaultMun = $('<option />');
+        $defaultMun.attr("value", "").text("--Seleccione un valor--");
+        $('#arrMunicipioDirEnv' + pos).append($defaultMun);
+        $defaultProv = $('<option />');
+        $defaultProv.attr("value", "").text("--Seleccione un valor--");
+        $('#arrIDProvinciaQSDirEnv' + pos).append($defaultProv);
+        $defaultPais = $('<option />');
+        $defaultPais.attr("value", "").text("--Seleccione un valor--");
+        $('#arrIDPaisQSDirEnv' + pos).append($defaultPais);
+        $(municipios).each(function () {
+            // Añadimos el municipio al desplegable de municipios
+            var $municipio = $('<option />');
+            $municipio.attr("value", this.Municipio).text(this.Municipio);
+            if (this.CP == v) {
+                $municipio.attr("selected", "selected");
+                $('#arrIDMunicipioQSDirEnv' + pos).val(this.IDMunicipio);
+                newProv = this.IDProvincia;
+                newPais = this.IDPais;
+            }
+
+            $("#arrMunicipioDirEnv" + pos).append($municipio);
+
+            //Añadimos las provincias al desplegable de provincias
+            if (this.IDProvincia != lastProv) {
+                var $provincia = $('<option />');
+                $provincia.attr("value", this.IDProvincia).text(this.Provincia);
+                $('#arrIDProvinciaQSDirEnv' + pos).append($provincia);
+
+                lastProv = this.IDProvincia;
+            }
+
+            //Añadimos los paises.
+            if (this.IDPais != lastPais) {
+                var $pais = $('<option />');
+                $pais.attr("value", this.IDPais).text(this.Pais);
+                $('#arrIDPaisQSDirEnv' + pos).append($pais);
+
+                lastPais = this.IDPais;
+            }
+        });
+
+        //Seleccionamos la Provincia y el pais correspondiente
+        if (newProv != "") {
+            $(('#arrIDProvinciaQSDirEnv' + pos + ' option[value=').concat(newProv, ']')).attr("selected", "selected");
+        }
+        if (newPais != "") {
+            $(('#arrIDPaisQSDirEnv' + pos + ' option[value=').concat(newPais, ']')).attr("selected", "selected");
+        }
+    });
+}
+
+function mostrarPanelPersonaAutorizada() {
+    if ($('#TienePersonasAutorizadasRetMat').val() == "true") {
+        $('#panelPersonaAutorizada').show();
+    } else {
+        $('#panelPersonaAutorizada').hide();
+    }
 }
 
 function mostrarDatosFormaDePago() {
@@ -334,14 +540,14 @@ function mostrarVtosFijos() {
     }
 }
 
-function mostrarFichaLogistica() {
-    if ($('#TieneFichaLogistica').val() == "true") {
-        $('#panelFichaLogistica').show();
-        mostrarCAE();
+function mostrarImportePortesPorEnvio() {
+    if ($('#CobroDePortesPorEnvio').val() == "true") {
+        $('#lblImportePortesPorEnvio').show();
+        $('#ImportePortesPorEnvio').show();
     } else {
-        $('#panelFichaLogistica').hide();
+        $('#lblImportePortesPorEnvio').hide();
+        $('#ImportePortesPorEnvio').hide();
     }
-
 }
 
 function mostrarInstrumentosDePesaje() {
@@ -370,6 +576,21 @@ function mostrarSocios() {
     }
 }
 
+function añadirPersona() {
+    $prevRow = ($('#panelPersonaAutorizada tr').length - 2).toString();
+    if ($prevRow < 1) {
+        var $tableBody = $('#panelPersonaAutorizada').find("tbody"),
+                $trLast = $tableBody.find("tr:last"),
+                $trNew = $trLast.clone();
+        $trLast.after($trNew);
+        $trLast = $tableBody.find("tr:last");
+        $trLast.find('input:text').val('');
+        //Regenero los ID
+        $rows = ($('#panelPersonaAutorizada tr').length - 1).toString();
+        $trLast.find(('#arrNIFPersona').concat($prevRow)).attr("id", ("arrNIFPersona").concat($rows));
+        $trLast.find(('#arrNombrePersona').concat($prevRow)).attr("id", ("arrNombrePersona").concat($rows));
+    }
+}
 
 function añadirSocio() {
     var $tableBody = $('#panelSocios').find("tbody"),
@@ -384,6 +605,36 @@ function añadirSocio() {
     $trLast.find(('#arrCIFSocio').concat($prevRow)).attr("id", ("arrCIFSocio").concat($rows));
     $trLast.find(('#arrNombreSocio').concat($prevRow)).attr("id", ("arrNombreSocio").concat($rows));
     $trLast.find(('#arrPorcentaSocio').concat($prevRow)).attr("id", ("arrPorcentaSocio").concat($rows));
+}
+
+function mostrarDireccionesDeEnvio() {
+    if ($('#TieneDireccionesDeEnvio').val() == "true") {
+        $('#panelDireccionesDeEnvio').show();
+    } else {
+        $('#panelDireccionesDeEnvio').hide();
+    }
+}
+
+function añadirDirEnvio() {
+    var $tbodyLast = $('#panelDireccionEnvio').find("tbody:last"),
+        $tbodyNew = $tbodyLast.clone(true);
+    $tbodyLast.after($tbodyNew);
+    $tbodyLast = $('#panelDireccionEnvio').find("tbody:last");
+    $tbodyLast.find('input:text').val(''); //Limpiamos los valores de textbox
+    $tbodyLast.find('select').val(''); //Limpiamos los valores de los combos
+    //Regenero los ID
+    $prevRow = ($('#panelDireccionEnvio tbody').length - 1).toString();
+    $rows = ($('#panelDireccionEnvio tbody').length).toString();
+    $tbodyLast.find(('#arrNombreDirEnv').concat($prevRow)).attr("id", ("arrNombreDirEnv").concat($rows));
+    $tbodyLast.find(('#arrTipoDeViaDirEnv').concat($prevRow)).attr("id", ("arrTipoDeViaDirEnv").concat($rows));
+    $tbodyLast.find(('#arrDomicilioDirEnv').concat($prevRow)).attr("id", ("arrDomicilioDirEnv").concat($rows));
+    $tbodyLast.find(('#arrNumeroDirEnv').concat($prevRow)).attr("id", ("arrNumeroDirEnv").concat($rows));
+    $tbodyLast.find(('#arrPisoDirEnv').concat($prevRow)).attr("id", ("arrPisoDirEnv1").concat($rows));
+    $tbodyLast.find(('#arrCPDirEnv').concat($prevRow)).attr("id", ("arrCPDirEnv").concat($rows));
+    $tbodyLast.find(('#arrMunicipioDirEnv').concat($prevRow)).attr("id", ("arrMunicipioDirEnv").concat($rows));
+    $tbodyLast.find(('#arrIDMunicipioQSDirEnv').concat($prevRow)).attr("id", ("arrIDMunicipioQSDirEnv").concat($rows));
+    $tbodyLast.find(('#arrIDProvinciaQSDirEnv').concat($prevRow)).attr("id", ("arrIDProvinciaQSDirEnv").concat($rows));
+    $tbodyLast.find(('#arrIDPaisQSDirEnv').concat($prevRow)).attr("id", ("arrIDPaisQSDirEnv").concat($rows));    
 }
 
 function añadirClienteHab() {
@@ -431,4 +682,12 @@ function añadirEmpresaVinculada() {
     $rows = ($('#panelEmpresasVinculadas tr').length - 1).toString();
     $trLast.find(('#arrCIFVinc').concat($prevRow)).attr("id", ("arrCIFVinc").concat($rows));
     $trLast.find(('#arrEmpVinc').concat($prevRow)).attr("id", ("arrEmpVinc").concat($rows));
+}
+
+function asignarMailDeFacturacion() {
+    if ($("#EsDeExposicion").val() == "true") {
+        if (confirm("¿Desea asignar el mail " + $("#MailDeContacto").val() + " para envíar la factura?")){
+            $("#MailDeFacturacion").val($("#MailDeContacto").val());
+        }
+    }
 }

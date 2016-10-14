@@ -54,5 +54,44 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                                                      });
             return dtView;
         }
+
+        public string getNombreProvincia(int intIDProvincia)
+        {
+            string strRes = "";
+            LocalizacionesTableAdapter ta = new LocalizacionesTableAdapter();
+
+            IEnumerable<LocalizacionesModel> dtView = (from loc in ta.GetData().Where(l => l.MUPRV == intIDProvincia).Distinct()
+                                                       select new LocalizacionesModel
+                                                       {
+                                                           Provincia = loc.PPNBR
+                                                       });
+            if (dtView.Count() > 0)
+            {
+                strRes = dtView.First().Provincia.ToString();
+            }
+
+            ta.Dispose();
+            return strRes;
+        }
+
+        public string getNombrePais(int intIDPais)
+        {
+            string strRes = "";
+            LocalizacionesTableAdapter ta = new LocalizacionesTableAdapter();
+
+            IEnumerable<LocalizacionesModel> dtView = (from loc in ta.GetData().Where (l=>l.NCCDG==intIDPais).Distinct()
+                                                       select new LocalizacionesModel
+                                                       {
+                                                           IDPais = loc.NCCDG,
+                                                           Pais=loc.NCNBR
+                                                       });
+            if (dtView.Count() > 0)
+            {
+                strRes = dtView.First().Pais.ToString();
+            }
+
+            ta.Dispose();
+            return strRes;
+        }
     }
 }

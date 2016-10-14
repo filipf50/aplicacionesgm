@@ -33,12 +33,14 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_ProveedoresHabituales_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_ProveedoresHabituales", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_ProveedoresHabituales), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_SociedadesVinculadas_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_SociedadesVinculadas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_SociedadesVinculadas), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_BancosCliente_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_BancosCliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_BancosCliente), true)]
-[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Causas", "aspnet_Causas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Causas), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_InstrumentosDePesaje", "aspnet_InstrumentosDePesaje", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_InstrumentosDePesaje), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_MediosDeDescarga", "aspnet_MediosDeDescarga", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_MediosDeDescarga), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_TiposDeVehiculo", "aspnet_TiposDeVehiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_TiposDeVehiculo), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK__aspnet_Pr__UserI__38996AB5", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Users), "aspnet_Profile", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Profile), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Delegaciones), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Aseguradoras), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_ClientesDirEnv", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_ClientesDirEnv), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_PersonasRetiradaMat", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_PersonasRetiradaMat), true)]
 
 #endregion
 
@@ -381,22 +383,6 @@ namespace AplicacionesGM_MVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<aspnet_Causas> aspnet_Causas
-        {
-            get
-            {
-                if ((_aspnet_Causas == null))
-                {
-                    _aspnet_Causas = base.CreateObjectSet<aspnet_Causas>("aspnet_Causas");
-                }
-                return _aspnet_Causas;
-            }
-        }
-        private ObjectSet<aspnet_Causas> _aspnet_Causas;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<aspnet_InstrumentosDePesaje> aspnet_InstrumentosDePesaje
         {
             get
@@ -473,6 +459,54 @@ namespace AplicacionesGM_MVC.Models
             }
         }
         private ObjectSet<aspnet_Profile> _aspnet_Profile;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_Aseguradoras> aspnet_Aseguradoras
+        {
+            get
+            {
+                if ((_aspnet_Aseguradoras == null))
+                {
+                    _aspnet_Aseguradoras = base.CreateObjectSet<aspnet_Aseguradoras>("aspnet_Aseguradoras");
+                }
+                return _aspnet_Aseguradoras;
+            }
+        }
+        private ObjectSet<aspnet_Aseguradoras> _aspnet_Aseguradoras;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_ClientesDirEnv> aspnet_ClientesDirEnv
+        {
+            get
+            {
+                if ((_aspnet_ClientesDirEnv == null))
+                {
+                    _aspnet_ClientesDirEnv = base.CreateObjectSet<aspnet_ClientesDirEnv>("aspnet_ClientesDirEnv");
+                }
+                return _aspnet_ClientesDirEnv;
+            }
+        }
+        private ObjectSet<aspnet_ClientesDirEnv> _aspnet_ClientesDirEnv;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_PersonasRetiradaMat> aspnet_PersonasRetiradaMat
+        {
+            get
+            {
+                if ((_aspnet_PersonasRetiradaMat == null))
+                {
+                    _aspnet_PersonasRetiradaMat = base.CreateObjectSet<aspnet_PersonasRetiradaMat>("aspnet_PersonasRetiradaMat");
+                }
+                return _aspnet_PersonasRetiradaMat;
+            }
+        }
+        private ObjectSet<aspnet_PersonasRetiradaMat> _aspnet_PersonasRetiradaMat;
 
         #endregion
 
@@ -623,14 +657,6 @@ namespace AplicacionesGM_MVC.Models
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_Causas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToaspnet_Causas(aspnet_Causas aspnet_Causas)
-        {
-            base.AddObject("aspnet_Causas", aspnet_Causas);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_InstrumentosDePesaje. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToaspnet_InstrumentosDePesaje(aspnet_InstrumentosDePesaje aspnet_InstrumentosDePesaje)
@@ -668,6 +694,30 @@ namespace AplicacionesGM_MVC.Models
         public void AddToaspnet_Profile(aspnet_Profile aspnet_Profile)
         {
             base.AddObject("aspnet_Profile", aspnet_Profile);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_Aseguradoras. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_Aseguradoras(aspnet_Aseguradoras aspnet_Aseguradoras)
+        {
+            base.AddObject("aspnet_Aseguradoras", aspnet_Aseguradoras);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_ClientesDirEnv. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_ClientesDirEnv(aspnet_ClientesDirEnv aspnet_ClientesDirEnv)
+        {
+            base.AddObject("aspnet_ClientesDirEnv", aspnet_ClientesDirEnv);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_PersonasRetiradaMat. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_PersonasRetiradaMat(aspnet_PersonasRetiradaMat aspnet_PersonasRetiradaMat)
+        {
+            base.AddObject("aspnet_PersonasRetiradaMat", aspnet_PersonasRetiradaMat);
         }
 
         #endregion
@@ -1367,6 +1417,113 @@ namespace AplicacionesGM_MVC.Models
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_Aseguradoras")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_Aseguradoras : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_Aseguradoras.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        public static aspnet_Aseguradoras Createaspnet_Aseguradoras(global::System.Int32 id)
+        {
+            aspnet_Aseguradoras aspnet_Aseguradoras = new aspnet_Aseguradoras();
+            aspnet_Aseguradoras.ID = id;
+            return aspnet_Aseguradoras;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Clientes")]
+        public EntityCollection<aspnet_Clientes> aspnet_Clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Clientes", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_BancosCliente")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1519,113 +1676,6 @@ namespace AplicacionesGM_MVC.Models
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_Causas")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class aspnet_Causas : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto aspnet_Causas.
-        /// </summary>
-        /// <param name="id">Valor inicial de la propiedad ID.</param>
-        public static aspnet_Causas Createaspnet_Causas(global::System.Int32 id)
-        {
-            aspnet_Causas aspnet_Causas = new aspnet_Causas();
-            aspnet_Causas.ID = id;
-            return aspnet_Causas;
-        }
-
-        #endregion
-
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Nombre
-        {
-            get
-            {
-                return _Nombre;
-            }
-            set
-            {
-                OnNombreChanging(value);
-                ReportPropertyChanging("Nombre");
-                _Nombre = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Nombre");
-                OnNombreChanged();
-            }
-        }
-        private global::System.String _Nombre;
-        partial void OnNombreChanging(global::System.String value);
-        partial void OnNombreChanged();
-
-        #endregion
-
-    
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Causas", "aspnet_Clientes")]
-        public EntityCollection<aspnet_Clientes> aspnet_Clientes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Causas", "aspnet_Clientes");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Causas", "aspnet_Clientes", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_Clientes")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1644,8 +1694,6 @@ namespace AplicacionesGM_MVC.Models
         /// <param name="fechaDeAlta">Valor inicial de la propiedad FechaDeAlta.</param>
         /// <param name="usuarioDeAlta">Valor inicial de la propiedad UsuarioDeAlta.</param>
         /// <param name="tieneMail">Valor inicial de la propiedad TieneMail.</param>
-        /// <param name="tieneEmpresasVinculadas">Valor inicial de la propiedad TieneEmpresasVinculadas.</param>
-        /// <param name="tieneSocios">Valor inicial de la propiedad TieneSocios.</param>
         /// <param name="noAdmiteFacturacionElectronica">Valor inicial de la propiedad NoAdmiteFacturacionElectronica.</param>
         /// <param name="existePedidoEnFirme">Valor inicial de la propiedad ExistePedidoEnFirme.</param>
         /// <param name="noTieneVtosFijos">Valor inicial de la propiedad NoTieneVtosFijos.</param>
@@ -1654,11 +1702,17 @@ namespace AplicacionesGM_MVC.Models
         /// <param name="pesaElMaterial">Valor inicial de la propiedad PesaElMaterial.</param>
         /// <param name="espacioParaAlmacenar">Valor inicial de la propiedad EspacioParaAlmacenar.</param>
         /// <param name="cAEFirmada">Valor inicial de la propiedad CAEFirmada.</param>
-        /// <param name="tieneFichaLogistica">Valor inicial de la propiedad TieneFichaLogistica.</param>
         /// <param name="esBorrador">Valor inicial de la propiedad EsBorrador.</param>
         /// <param name="cAERevisada">Valor inicial de la propiedad CAERevisada.</param>
         /// <param name="delegacionID">Valor inicial de la propiedad DelegacionID.</param>
-        public static aspnet_Clientes Createaspnet_Clientes(global::System.Decimal id, global::System.Boolean esDeExposicion, global::System.String empresas, global::System.String nIF, global::System.Decimal cP, global::System.DateTime fechaDeAlta, global::System.Guid usuarioDeAlta, global::System.Boolean tieneMail, global::System.Decimal tieneEmpresasVinculadas, global::System.Decimal tieneSocios, global::System.Boolean noAdmiteFacturacionElectronica, global::System.Boolean existePedidoEnFirme, global::System.Boolean noTieneVtosFijos, global::System.Boolean necesitaCamionConPluma, global::System.Boolean medioDeTransportePropio, global::System.Boolean pesaElMaterial, global::System.Boolean espacioParaAlmacenar, global::System.Boolean cAEFirmada, global::System.Boolean tieneFichaLogistica, global::System.Boolean esBorrador, global::System.Boolean cAERevisada, global::System.Int32 delegacionID)
+        /// <param name="tienePersonasAutorizadasRetMat">Valor inicial de la propiedad TienePersonasAutorizadasRetMat.</param>
+        /// <param name="ventaSujetaAContrato">Valor inicial de la propiedad VentaSujetaAContrato.</param>
+        /// <param name="tieneApartadoPostalFacturacion">Valor inicial de la propiedad TieneApartadoPostalFacturacion.</param>
+        /// <param name="esClienteParticular">Valor inicial de la propiedad EsClienteParticular.</param>
+        /// <param name="recogeEnNuestrasInstalaciones">Valor inicial de la propiedad RecogeEnNuestrasInstalaciones.</param>
+        /// <param name="tieneDireccionesDeEnvio">Valor inicial de la propiedad TieneDireccionesDeEnvio.</param>
+        /// <param name="tipoDocumento">Valor inicial de la propiedad TipoDocumento.</param>
+        public static aspnet_Clientes Createaspnet_Clientes(global::System.Decimal id, global::System.Boolean esDeExposicion, global::System.String empresas, global::System.String nIF, global::System.Decimal cP, global::System.DateTime fechaDeAlta, global::System.Guid usuarioDeAlta, global::System.Boolean tieneMail, global::System.Boolean noAdmiteFacturacionElectronica, global::System.Boolean existePedidoEnFirme, global::System.Boolean noTieneVtosFijos, global::System.Boolean necesitaCamionConPluma, global::System.Boolean medioDeTransportePropio, global::System.Boolean pesaElMaterial, global::System.Boolean espacioParaAlmacenar, global::System.Boolean cAEFirmada, global::System.Boolean esBorrador, global::System.Boolean cAERevisada, global::System.Int32 delegacionID, global::System.Boolean tienePersonasAutorizadasRetMat, global::System.Boolean ventaSujetaAContrato, global::System.Boolean tieneApartadoPostalFacturacion, global::System.Boolean esClienteParticular, global::System.Boolean recogeEnNuestrasInstalaciones, global::System.Boolean tieneDireccionesDeEnvio, global::System.Int32 tipoDocumento)
         {
             aspnet_Clientes aspnet_Clientes = new aspnet_Clientes();
             aspnet_Clientes.ID = id;
@@ -1669,8 +1723,6 @@ namespace AplicacionesGM_MVC.Models
             aspnet_Clientes.FechaDeAlta = fechaDeAlta;
             aspnet_Clientes.UsuarioDeAlta = usuarioDeAlta;
             aspnet_Clientes.TieneMail = tieneMail;
-            aspnet_Clientes.TieneEmpresasVinculadas = tieneEmpresasVinculadas;
-            aspnet_Clientes.TieneSocios = tieneSocios;
             aspnet_Clientes.NoAdmiteFacturacionElectronica = noAdmiteFacturacionElectronica;
             aspnet_Clientes.ExistePedidoEnFirme = existePedidoEnFirme;
             aspnet_Clientes.NoTieneVtosFijos = noTieneVtosFijos;
@@ -1679,10 +1731,16 @@ namespace AplicacionesGM_MVC.Models
             aspnet_Clientes.PesaElMaterial = pesaElMaterial;
             aspnet_Clientes.EspacioParaAlmacenar = espacioParaAlmacenar;
             aspnet_Clientes.CAEFirmada = cAEFirmada;
-            aspnet_Clientes.TieneFichaLogistica = tieneFichaLogistica;
             aspnet_Clientes.EsBorrador = esBorrador;
             aspnet_Clientes.CAERevisada = cAERevisada;
             aspnet_Clientes.DelegacionID = delegacionID;
+            aspnet_Clientes.TienePersonasAutorizadasRetMat = tienePersonasAutorizadasRetMat;
+            aspnet_Clientes.VentaSujetaAContrato = ventaSujetaAContrato;
+            aspnet_Clientes.TieneApartadoPostalFacturacion = tieneApartadoPostalFacturacion;
+            aspnet_Clientes.EsClienteParticular = esClienteParticular;
+            aspnet_Clientes.RecogeEnNuestrasInstalaciones = recogeEnNuestrasInstalaciones;
+            aspnet_Clientes.TieneDireccionesDeEnvio = tieneDireccionesDeEnvio;
+            aspnet_Clientes.TipoDocumento = tipoDocumento;
             return aspnet_Clientes;
         }
 
@@ -1908,30 +1966,6 @@ namespace AplicacionesGM_MVC.Models
         private Nullable<global::System.Decimal> _Numero;
         partial void OnNumeroChanging(Nullable<global::System.Decimal> value);
         partial void OnNumeroChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Municipio
-        {
-            get
-            {
-                return _Municipio;
-            }
-            set
-            {
-                OnMunicipioChanging(value);
-                ReportPropertyChanging("Municipio");
-                _Municipio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Municipio");
-                OnMunicipioChanged();
-            }
-        }
-        private global::System.String _Municipio;
-        partial void OnMunicipioChanging(global::System.String value);
-        partial void OnMunicipioChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -2172,30 +2206,6 @@ namespace AplicacionesGM_MVC.Models
         private global::System.String _IDActividadQS;
         partial void OnIDActividadQSChanging(global::System.String value);
         partial void OnIDActividadQSChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String DirEnvioFactura
-        {
-            get
-            {
-                return _DirEnvioFactura;
-            }
-            set
-            {
-                OnDirEnvioFacturaChanging(value);
-                ReportPropertyChanging("DirEnvioFactura");
-                _DirEnvioFactura = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("DirEnvioFactura");
-                OnDirEnvioFacturaChanged();
-            }
-        }
-        private global::System.String _DirEnvioFactura;
-        partial void OnDirEnvioFacturaChanging(global::System.String value);
-        partial void OnDirEnvioFacturaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -2490,30 +2500,6 @@ namespace AplicacionesGM_MVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String IBAN
-        {
-            get
-            {
-                return _IBAN;
-            }
-            set
-            {
-                OnIBANChanging(value);
-                ReportPropertyChanging("IBAN");
-                _IBAN = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("IBAN");
-                OnIBANChanged();
-            }
-        }
-        private global::System.String _IBAN;
-        partial void OnIBANChanging(global::System.String value);
-        partial void OnIBANChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String OficinasA
         {
             get
@@ -2748,30 +2734,6 @@ namespace AplicacionesGM_MVC.Models
         private global::System.String _MaquinariaP;
         partial void OnMaquinariaPChanging(global::System.String value);
         partial void OnMaquinariaPChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String CompañiaSeguroVentas
-        {
-            get
-            {
-                return _CompañiaSeguroVentas;
-            }
-            set
-            {
-                OnCompañiaSeguroVentasChanging(value);
-                ReportPropertyChanging("CompañiaSeguroVentas");
-                _CompañiaSeguroVentas = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("CompañiaSeguroVentas");
-                OnCompañiaSeguroVentasChanged();
-            }
-        }
-        private global::System.String _CompañiaSeguroVentas;
-        partial void OnCompañiaSeguroVentasChanging(global::System.String value);
-        partial void OnCompañiaSeguroVentasChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3033,7 +2995,7 @@ namespace AplicacionesGM_MVC.Models
                 OnTieneEmpresasVinculadasChanged();
             }
         }
-        private global::System.Decimal _TieneEmpresasVinculadas;
+        private global::System.Decimal _TieneEmpresasVinculadas = 2m;
         partial void OnTieneEmpresasVinculadasChanging(global::System.Decimal value);
         partial void OnTieneEmpresasVinculadasChanged();
     
@@ -3057,7 +3019,7 @@ namespace AplicacionesGM_MVC.Models
                 OnTieneSociosChanged();
             }
         }
-        private global::System.Decimal _TieneSocios;
+        private global::System.Decimal _TieneSocios = 2m;
         partial void OnTieneSociosChanging(global::System.Decimal value);
         partial void OnTieneSociosChanged();
     
@@ -3276,54 +3238,6 @@ namespace AplicacionesGM_MVC.Models
         private global::System.Boolean _NoTieneVtosFijos;
         partial void OnNoTieneVtosFijosChanging(global::System.Boolean value);
         partial void OnNoTieneVtosFijosChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String NIFPersonalAutorizadoRetiradaMaterial
-        {
-            get
-            {
-                return _NIFPersonalAutorizadoRetiradaMaterial;
-            }
-            set
-            {
-                OnNIFPersonalAutorizadoRetiradaMaterialChanging(value);
-                ReportPropertyChanging("NIFPersonalAutorizadoRetiradaMaterial");
-                _NIFPersonalAutorizadoRetiradaMaterial = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("NIFPersonalAutorizadoRetiradaMaterial");
-                OnNIFPersonalAutorizadoRetiradaMaterialChanged();
-            }
-        }
-        private global::System.String _NIFPersonalAutorizadoRetiradaMaterial;
-        partial void OnNIFPersonalAutorizadoRetiradaMaterialChanging(global::System.String value);
-        partial void OnNIFPersonalAutorizadoRetiradaMaterialChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String NombrePersonalAutorizadoRetiradaMaterial
-        {
-            get
-            {
-                return _NombrePersonalAutorizadoRetiradaMaterial;
-            }
-            set
-            {
-                OnNombrePersonalAutorizadoRetiradaMaterialChanging(value);
-                ReportPropertyChanging("NombrePersonalAutorizadoRetiradaMaterial");
-                _NombrePersonalAutorizadoRetiradaMaterial = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("NombrePersonalAutorizadoRetiradaMaterial");
-                OnNombrePersonalAutorizadoRetiradaMaterialChanged();
-            }
-        }
-        private global::System.String _NombrePersonalAutorizadoRetiradaMaterial;
-        partial void OnNombrePersonalAutorizadoRetiradaMaterialChanging(global::System.String value);
-        partial void OnNombrePersonalAutorizadoRetiradaMaterialChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3690,7 +3604,7 @@ namespace AplicacionesGM_MVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IDCausaNoFirmaCAE
+        public global::System.String IDCausaNoFirmaCAE
         {
             get
             {
@@ -3700,21 +3614,21 @@ namespace AplicacionesGM_MVC.Models
             {
                 OnIDCausaNoFirmaCAEChanging(value);
                 ReportPropertyChanging("IDCausaNoFirmaCAE");
-                _IDCausaNoFirmaCAE = StructuralObject.SetValidValue(value);
+                _IDCausaNoFirmaCAE = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("IDCausaNoFirmaCAE");
                 OnIDCausaNoFirmaCAEChanged();
             }
         }
-        private Nullable<global::System.Int32> _IDCausaNoFirmaCAE;
-        partial void OnIDCausaNoFirmaCAEChanging(Nullable<global::System.Int32> value);
+        private global::System.String _IDCausaNoFirmaCAE;
+        partial void OnIDCausaNoFirmaCAEChanging(global::System.String value);
         partial void OnIDCausaNoFirmaCAEChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String CobroDePortesPorEnvio
+        public global::System.Boolean CobroDePortesPorEnvio
         {
             get
             {
@@ -3724,38 +3638,14 @@ namespace AplicacionesGM_MVC.Models
             {
                 OnCobroDePortesPorEnvioChanging(value);
                 ReportPropertyChanging("CobroDePortesPorEnvio");
-                _CobroDePortesPorEnvio = StructuralObject.SetValidValue(value, true);
+                _CobroDePortesPorEnvio = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("CobroDePortesPorEnvio");
                 OnCobroDePortesPorEnvioChanged();
             }
         }
-        private global::System.String _CobroDePortesPorEnvio;
-        partial void OnCobroDePortesPorEnvioChanging(global::System.String value);
+        private global::System.Boolean _CobroDePortesPorEnvio = false;
+        partial void OnCobroDePortesPorEnvioChanging(global::System.Boolean value);
         partial void OnCobroDePortesPorEnvioChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean TieneFichaLogistica
-        {
-            get
-            {
-                return _TieneFichaLogistica;
-            }
-            set
-            {
-                OnTieneFichaLogisticaChanging(value);
-                ReportPropertyChanging("TieneFichaLogistica");
-                _TieneFichaLogistica = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TieneFichaLogistica");
-                OnTieneFichaLogisticaChanged();
-            }
-        }
-        private global::System.Boolean _TieneFichaLogistica;
-        partial void OnTieneFichaLogisticaChanging(global::System.Boolean value);
-        partial void OnTieneFichaLogisticaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4144,30 +4034,6 @@ namespace AplicacionesGM_MVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IDDelegacion
-        {
-            get
-            {
-                return _IDDelegacion;
-            }
-            set
-            {
-                OnIDDelegacionChanging(value);
-                ReportPropertyChanging("IDDelegacion");
-                _IDDelegacion = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDDelegacion");
-                OnIDDelegacionChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _IDDelegacion;
-        partial void OnIDDelegacionChanging(Nullable<global::System.Int32> value);
-        partial void OnIDDelegacionChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Boolean CAERevisada
@@ -4236,6 +4102,654 @@ namespace AplicacionesGM_MVC.Models
         private global::System.Int32 _DelegacionID;
         partial void OnDelegacionIDChanging(global::System.Int32 value);
         partial void OnDelegacionIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IDAseguradora
+        {
+            get
+            {
+                return _IDAseguradora;
+            }
+            set
+            {
+                OnIDAseguradoraChanging(value);
+                ReportPropertyChanging("IDAseguradora");
+                _IDAseguradora = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDAseguradora");
+                OnIDAseguradoraChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IDAseguradora;
+        partial void OnIDAseguradoraChanging(Nullable<global::System.Int32> value);
+        partial void OnIDAseguradoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDMunicipioQS
+        {
+            get
+            {
+                return _IDMunicipioQS;
+            }
+            set
+            {
+                OnIDMunicipioQSChanging(value);
+                ReportPropertyChanging("IDMunicipioQS");
+                _IDMunicipioQS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDMunicipioQS");
+                OnIDMunicipioQSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDMunicipioQS;
+        partial void OnIDMunicipioQSChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDMunicipioQSChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean TienePersonasAutorizadasRetMat
+        {
+            get
+            {
+                return _TienePersonasAutorizadasRetMat;
+            }
+            set
+            {
+                OnTienePersonasAutorizadasRetMatChanging(value);
+                ReportPropertyChanging("TienePersonasAutorizadasRetMat");
+                _TienePersonasAutorizadasRetMat = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TienePersonasAutorizadasRetMat");
+                OnTienePersonasAutorizadasRetMatChanged();
+            }
+        }
+        private global::System.Boolean _TienePersonasAutorizadasRetMat;
+        partial void OnTienePersonasAutorizadasRetMatChanging(global::System.Boolean value);
+        partial void OnTienePersonasAutorizadasRetMatChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Municipio
+        {
+            get
+            {
+                return _Municipio;
+            }
+            set
+            {
+                OnMunicipioChanging(value);
+                ReportPropertyChanging("Municipio");
+                _Municipio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Municipio");
+                OnMunicipioChanged();
+            }
+        }
+        private global::System.String _Municipio;
+        partial void OnMunicipioChanging(global::System.String value);
+        partial void OnMunicipioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ImportePortesPorEnvio
+        {
+            get
+            {
+                return _ImportePortesPorEnvio;
+            }
+            set
+            {
+                OnImportePortesPorEnvioChanging(value);
+                ReportPropertyChanging("ImportePortesPorEnvio");
+                _ImportePortesPorEnvio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ImportePortesPorEnvio");
+                OnImportePortesPorEnvioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ImportePortesPorEnvio;
+        partial void OnImportePortesPorEnvioChanging(Nullable<global::System.Int32> value);
+        partial void OnImportePortesPorEnvioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean VentaSujetaAContrato
+        {
+            get
+            {
+                return _VentaSujetaAContrato;
+            }
+            set
+            {
+                OnVentaSujetaAContratoChanging(value);
+                ReportPropertyChanging("VentaSujetaAContrato");
+                _VentaSujetaAContrato = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VentaSujetaAContrato");
+                OnVentaSujetaAContratoChanged();
+            }
+        }
+        private global::System.Boolean _VentaSujetaAContrato;
+        partial void OnVentaSujetaAContratoChanging(global::System.Boolean value);
+        partial void OnVentaSujetaAContratoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TipoDeViaFacturacion
+        {
+            get
+            {
+                return _TipoDeViaFacturacion;
+            }
+            set
+            {
+                OnTipoDeViaFacturacionChanging(value);
+                ReportPropertyChanging("TipoDeViaFacturacion");
+                _TipoDeViaFacturacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TipoDeViaFacturacion");
+                OnTipoDeViaFacturacionChanged();
+            }
+        }
+        private global::System.String _TipoDeViaFacturacion;
+        partial void OnTipoDeViaFacturacionChanging(global::System.String value);
+        partial void OnTipoDeViaFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DomicilioFacturacion
+        {
+            get
+            {
+                return _DomicilioFacturacion;
+            }
+            set
+            {
+                OnDomicilioFacturacionChanging(value);
+                ReportPropertyChanging("DomicilioFacturacion");
+                _DomicilioFacturacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DomicilioFacturacion");
+                OnDomicilioFacturacionChanged();
+            }
+        }
+        private global::System.String _DomicilioFacturacion;
+        partial void OnDomicilioFacturacionChanging(global::System.String value);
+        partial void OnDomicilioFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> NumeroFacturacion
+        {
+            get
+            {
+                return _NumeroFacturacion;
+            }
+            set
+            {
+                OnNumeroFacturacionChanging(value);
+                ReportPropertyChanging("NumeroFacturacion");
+                _NumeroFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NumeroFacturacion");
+                OnNumeroFacturacionChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _NumeroFacturacion;
+        partial void OnNumeroFacturacionChanging(Nullable<global::System.Decimal> value);
+        partial void OnNumeroFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PisoFacturacion
+        {
+            get
+            {
+                return _PisoFacturacion;
+            }
+            set
+            {
+                OnPisoFacturacionChanging(value);
+                ReportPropertyChanging("PisoFacturacion");
+                _PisoFacturacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PisoFacturacion");
+                OnPisoFacturacionChanged();
+            }
+        }
+        private global::System.String _PisoFacturacion;
+        partial void OnPisoFacturacionChanging(global::System.String value);
+        partial void OnPisoFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MunicipioFacturacion
+        {
+            get
+            {
+                return _MunicipioFacturacion;
+            }
+            set
+            {
+                OnMunicipioFacturacionChanging(value);
+                ReportPropertyChanging("MunicipioFacturacion");
+                _MunicipioFacturacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MunicipioFacturacion");
+                OnMunicipioFacturacionChanged();
+            }
+        }
+        private global::System.String _MunicipioFacturacion;
+        partial void OnMunicipioFacturacionChanging(global::System.String value);
+        partial void OnMunicipioFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> CPFacturacion
+        {
+            get
+            {
+                return _CPFacturacion;
+            }
+            set
+            {
+                OnCPFacturacionChanging(value);
+                ReportPropertyChanging("CPFacturacion");
+                _CPFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CPFacturacion");
+                OnCPFacturacionChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _CPFacturacion;
+        partial void OnCPFacturacionChanging(Nullable<global::System.Decimal> value);
+        partial void OnCPFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDMunicipioQSFacturacion
+        {
+            get
+            {
+                return _IDMunicipioQSFacturacion;
+            }
+            set
+            {
+                OnIDMunicipioQSFacturacionChanging(value);
+                ReportPropertyChanging("IDMunicipioQSFacturacion");
+                _IDMunicipioQSFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDMunicipioQSFacturacion");
+                OnIDMunicipioQSFacturacionChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDMunicipioQSFacturacion;
+        partial void OnIDMunicipioQSFacturacionChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDMunicipioQSFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDPaisQSFacturacion
+        {
+            get
+            {
+                return _IDPaisQSFacturacion;
+            }
+            set
+            {
+                OnIDPaisQSFacturacionChanging(value);
+                ReportPropertyChanging("IDPaisQSFacturacion");
+                _IDPaisQSFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDPaisQSFacturacion");
+                OnIDPaisQSFacturacionChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDPaisQSFacturacion;
+        partial void OnIDPaisQSFacturacionChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDPaisQSFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDProvinciaQSFacturacion
+        {
+            get
+            {
+                return _IDProvinciaQSFacturacion;
+            }
+            set
+            {
+                OnIDProvinciaQSFacturacionChanging(value);
+                ReportPropertyChanging("IDProvinciaQSFacturacion");
+                _IDProvinciaQSFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDProvinciaQSFacturacion");
+                OnIDProvinciaQSFacturacionChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDProvinciaQSFacturacion;
+        partial void OnIDProvinciaQSFacturacionChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDProvinciaQSFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean TieneApartadoPostalFacturacion
+        {
+            get
+            {
+                return _TieneApartadoPostalFacturacion;
+            }
+            set
+            {
+                OnTieneApartadoPostalFacturacionChanging(value);
+                ReportPropertyChanging("TieneApartadoPostalFacturacion");
+                _TieneApartadoPostalFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TieneApartadoPostalFacturacion");
+                OnTieneApartadoPostalFacturacionChanged();
+            }
+        }
+        private global::System.Boolean _TieneApartadoPostalFacturacion;
+        partial void OnTieneApartadoPostalFacturacionChanging(global::System.Boolean value);
+        partial void OnTieneApartadoPostalFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ApatadoDeCorreosFacturacion
+        {
+            get
+            {
+                return _ApatadoDeCorreosFacturacion;
+            }
+            set
+            {
+                OnApatadoDeCorreosFacturacionChanging(value);
+                ReportPropertyChanging("ApatadoDeCorreosFacturacion");
+                _ApatadoDeCorreosFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApatadoDeCorreosFacturacion");
+                OnApatadoDeCorreosFacturacionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ApatadoDeCorreosFacturacion;
+        partial void OnApatadoDeCorreosFacturacionChanging(Nullable<global::System.Int32> value);
+        partial void OnApatadoDeCorreosFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean EsClienteParticular
+        {
+            get
+            {
+                return _EsClienteParticular;
+            }
+            set
+            {
+                OnEsClienteParticularChanging(value);
+                ReportPropertyChanging("EsClienteParticular");
+                _EsClienteParticular = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EsClienteParticular");
+                OnEsClienteParticularChanged();
+            }
+        }
+        private global::System.Boolean _EsClienteParticular;
+        partial void OnEsClienteParticularChanging(global::System.Boolean value);
+        partial void OnEsClienteParticularChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean RecogeEnNuestrasInstalaciones
+        {
+            get
+            {
+                return _RecogeEnNuestrasInstalaciones;
+            }
+            set
+            {
+                OnRecogeEnNuestrasInstalacionesChanging(value);
+                ReportPropertyChanging("RecogeEnNuestrasInstalaciones");
+                _RecogeEnNuestrasInstalaciones = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RecogeEnNuestrasInstalaciones");
+                OnRecogeEnNuestrasInstalacionesChanged();
+            }
+        }
+        private global::System.Boolean _RecogeEnNuestrasInstalaciones;
+        partial void OnRecogeEnNuestrasInstalacionesChanging(global::System.Boolean value);
+        partial void OnRecogeEnNuestrasInstalacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean TieneDireccionesDeEnvio
+        {
+            get
+            {
+                return _TieneDireccionesDeEnvio;
+            }
+            set
+            {
+                OnTieneDireccionesDeEnvioChanging(value);
+                ReportPropertyChanging("TieneDireccionesDeEnvio");
+                _TieneDireccionesDeEnvio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TieneDireccionesDeEnvio");
+                OnTieneDireccionesDeEnvioChanged();
+            }
+        }
+        private global::System.Boolean _TieneDireccionesDeEnvio;
+        partial void OnTieneDireccionesDeEnvioChanging(global::System.Boolean value);
+        partial void OnTieneDireccionesDeEnvioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IBANSIGLAS
+        {
+            get
+            {
+                return _IBANSIGLAS;
+            }
+            set
+            {
+                OnIBANSIGLASChanging(value);
+                ReportPropertyChanging("IBANSIGLAS");
+                _IBANSIGLAS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IBANSIGLAS");
+                OnIBANSIGLASChanged();
+            }
+        }
+        private global::System.String _IBANSIGLAS;
+        partial void OnIBANSIGLASChanging(global::System.String value);
+        partial void OnIBANSIGLASChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IBANCODE
+        {
+            get
+            {
+                return _IBANCODE;
+            }
+            set
+            {
+                OnIBANCODEChanging(value);
+                ReportPropertyChanging("IBANCODE");
+                _IBANCODE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IBANCODE");
+                OnIBANCODEChanged();
+            }
+        }
+        private global::System.String _IBANCODE;
+        partial void OnIBANCODEChanging(global::System.String value);
+        partial void OnIBANCODEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IBANENTIDAD
+        {
+            get
+            {
+                return _IBANENTIDAD;
+            }
+            set
+            {
+                OnIBANENTIDADChanging(value);
+                ReportPropertyChanging("IBANENTIDAD");
+                _IBANENTIDAD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IBANENTIDAD");
+                OnIBANENTIDADChanged();
+            }
+        }
+        private global::System.String _IBANENTIDAD;
+        partial void OnIBANENTIDADChanging(global::System.String value);
+        partial void OnIBANENTIDADChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IBANSUCURSAL
+        {
+            get
+            {
+                return _IBANSUCURSAL;
+            }
+            set
+            {
+                OnIBANSUCURSALChanging(value);
+                ReportPropertyChanging("IBANSUCURSAL");
+                _IBANSUCURSAL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IBANSUCURSAL");
+                OnIBANSUCURSALChanged();
+            }
+        }
+        private global::System.String _IBANSUCURSAL;
+        partial void OnIBANSUCURSALChanging(global::System.String value);
+        partial void OnIBANSUCURSALChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IBANDC
+        {
+            get
+            {
+                return _IBANDC;
+            }
+            set
+            {
+                OnIBANDCChanging(value);
+                ReportPropertyChanging("IBANDC");
+                _IBANDC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IBANDC");
+                OnIBANDCChanged();
+            }
+        }
+        private global::System.String _IBANDC;
+        partial void OnIBANDCChanging(global::System.String value);
+        partial void OnIBANDCChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IBANCCC
+        {
+            get
+            {
+                return _IBANCCC;
+            }
+            set
+            {
+                OnIBANCCCChanging(value);
+                ReportPropertyChanging("IBANCCC");
+                _IBANCCC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IBANCCC");
+                OnIBANCCCChanged();
+            }
+        }
+        private global::System.String _IBANCCC;
+        partial void OnIBANCCCChanging(global::System.String value);
+        partial void OnIBANCCCChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TipoDocumento
+        {
+            get
+            {
+                return _TipoDocumento;
+            }
+            set
+            {
+                OnTipoDocumentoChanging(value);
+                ReportPropertyChanging("TipoDocumento");
+                _TipoDocumento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TipoDocumento");
+                OnTipoDocumentoChanged();
+            }
+        }
+        private global::System.Int32 _TipoDocumento;
+        partial void OnTipoDocumentoChanging(global::System.Int32 value);
+        partial void OnTipoDocumentoChanged();
 
         #endregion
 
@@ -4548,44 +5062,6 @@ namespace AplicacionesGM_MVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Causas", "aspnet_Causas")]
-        public aspnet_Causas aspnet_Causas
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Causas>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Causas", "aspnet_Causas").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Causas>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Causas", "aspnet_Causas").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<aspnet_Causas> aspnet_CausasReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Causas>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Causas", "aspnet_Causas");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Causas>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Causas", "aspnet_Causas", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_InstrumentosDePesaje", "aspnet_InstrumentosDePesaje")]
         public aspnet_InstrumentosDePesaje aspnet_InstrumentosDePesaje
         {
@@ -4728,6 +5204,501 @@ namespace AplicacionesGM_MVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Delegaciones>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Delegaciones", "aspnet_Delegaciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras")]
+        public aspnet_Aseguradoras aspnet_Aseguradoras
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Aseguradoras>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Aseguradoras>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Aseguradoras> aspnet_AseguradorasReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Aseguradoras>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Aseguradoras>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_ClientesDirEnv")]
+        public EntityCollection<aspnet_ClientesDirEnv> aspnet_ClientesDirEnv
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_ClientesDirEnv>("AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_ClientesDirEnv");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_ClientesDirEnv>("AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_ClientesDirEnv", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_PersonasRetiradaMat")]
+        public EntityCollection<aspnet_PersonasRetiradaMat> aspnet_PersonasRetiradaMat
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_PersonasRetiradaMat>("AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_PersonasRetiradaMat");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_PersonasRetiradaMat>("AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_PersonasRetiradaMat", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_ClientesDirEnv")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_ClientesDirEnv : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_ClientesDirEnv.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        /// <param name="iDCliente">Valor inicial de la propiedad IDCliente.</param>
+        public static aspnet_ClientesDirEnv Createaspnet_ClientesDirEnv(global::System.Int32 id, global::System.Decimal iDCliente)
+        {
+            aspnet_ClientesDirEnv aspnet_ClientesDirEnv = new aspnet_ClientesDirEnv();
+            aspnet_ClientesDirEnv.ID = id;
+            aspnet_ClientesDirEnv.IDCliente = iDCliente;
+            return aspnet_ClientesDirEnv;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal IDCliente
+        {
+            get
+            {
+                return _IDCliente;
+            }
+            set
+            {
+                OnIDClienteChanging(value);
+                ReportPropertyChanging("IDCliente");
+                _IDCliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDCliente");
+                OnIDClienteChanged();
+            }
+        }
+        private global::System.Decimal _IDCliente;
+        partial void OnIDClienteChanging(global::System.Decimal value);
+        partial void OnIDClienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TipoDeVía
+        {
+            get
+            {
+                return _TipoDeVía;
+            }
+            set
+            {
+                OnTipoDeVíaChanging(value);
+                ReportPropertyChanging("TipoDeVía");
+                _TipoDeVía = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TipoDeVía");
+                OnTipoDeVíaChanged();
+            }
+        }
+        private global::System.String _TipoDeVía;
+        partial void OnTipoDeVíaChanging(global::System.String value);
+        partial void OnTipoDeVíaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Domicilio
+        {
+            get
+            {
+                return _Domicilio;
+            }
+            set
+            {
+                OnDomicilioChanging(value);
+                ReportPropertyChanging("Domicilio");
+                _Domicilio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Domicilio");
+                OnDomicilioChanged();
+            }
+        }
+        private global::System.String _Domicilio;
+        partial void OnDomicilioChanging(global::System.String value);
+        partial void OnDomicilioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Numero
+        {
+            get
+            {
+                return _Numero;
+            }
+            set
+            {
+                OnNumeroChanging(value);
+                ReportPropertyChanging("Numero");
+                _Numero = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Numero");
+                OnNumeroChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Numero;
+        partial void OnNumeroChanging(Nullable<global::System.Decimal> value);
+        partial void OnNumeroChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Piso
+        {
+            get
+            {
+                return _Piso;
+            }
+            set
+            {
+                OnPisoChanging(value);
+                ReportPropertyChanging("Piso");
+                _Piso = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Piso");
+                OnPisoChanged();
+            }
+        }
+        private global::System.String _Piso;
+        partial void OnPisoChanging(global::System.String value);
+        partial void OnPisoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Municipio
+        {
+            get
+            {
+                return _Municipio;
+            }
+            set
+            {
+                OnMunicipioChanging(value);
+                ReportPropertyChanging("Municipio");
+                _Municipio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Municipio");
+                OnMunicipioChanged();
+            }
+        }
+        private global::System.String _Municipio;
+        partial void OnMunicipioChanging(global::System.String value);
+        partial void OnMunicipioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> CP
+        {
+            get
+            {
+                return _CP;
+            }
+            set
+            {
+                OnCPChanging(value);
+                ReportPropertyChanging("CP");
+                _CP = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CP");
+                OnCPChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _CP;
+        partial void OnCPChanging(Nullable<global::System.Decimal> value);
+        partial void OnCPChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDPaisQS
+        {
+            get
+            {
+                return _IDPaisQS;
+            }
+            set
+            {
+                OnIDPaisQSChanging(value);
+                ReportPropertyChanging("IDPaisQS");
+                _IDPaisQS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDPaisQS");
+                OnIDPaisQSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDPaisQS;
+        partial void OnIDPaisQSChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDPaisQSChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDProvinciaQS
+        {
+            get
+            {
+                return _IDProvinciaQS;
+            }
+            set
+            {
+                OnIDProvinciaQSChanging(value);
+                ReportPropertyChanging("IDProvinciaQS");
+                _IDProvinciaQS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDProvinciaQS");
+                OnIDProvinciaQSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDProvinciaQS;
+        partial void OnIDProvinciaQSChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDProvinciaQSChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Telefono
+        {
+            get
+            {
+                return _Telefono;
+            }
+            set
+            {
+                OnTelefonoChanging(value);
+                ReportPropertyChanging("Telefono");
+                _Telefono = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Telefono");
+                OnTelefonoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Telefono;
+        partial void OnTelefonoChanging(Nullable<global::System.Decimal> value);
+        partial void OnTelefonoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Fax
+        {
+            get
+            {
+                return _Fax;
+            }
+            set
+            {
+                OnFaxChanging(value);
+                ReportPropertyChanging("Fax");
+                _Fax = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Fax");
+                OnFaxChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Fax;
+        partial void OnFaxChanging(Nullable<global::System.Decimal> value);
+        partial void OnFaxChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> IDMunicipioQS
+        {
+            get
+            {
+                return _IDMunicipioQS;
+            }
+            set
+            {
+                OnIDMunicipioQSChanging(value);
+                ReportPropertyChanging("IDMunicipioQS");
+                _IDMunicipioQS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDMunicipioQS");
+                OnIDMunicipioQSChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _IDMunicipioQS;
+        partial void OnIDMunicipioQSChanging(Nullable<global::System.Decimal> value);
+        partial void OnIDMunicipioQSChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes")]
+        public aspnet_Clientes aspnet_Clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Clientes> aspnet_ClientesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes", value);
                 }
             }
         }
@@ -5936,6 +6907,158 @@ namespace AplicacionesGM_MVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Acciones>("AplicacionesGM_MVCModel.FK_aspnet_Acciones_aspnet_Origenes", "aspnet_Acciones", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_PersonasRetiradaMat")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_PersonasRetiradaMat : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_PersonasRetiradaMat.
+        /// </summary>
+        /// <param name="iDCliente">Valor inicial de la propiedad IDCliente.</param>
+        /// <param name="nIF">Valor inicial de la propiedad NIF.</param>
+        public static aspnet_PersonasRetiradaMat Createaspnet_PersonasRetiradaMat(global::System.Decimal iDCliente, global::System.String nIF)
+        {
+            aspnet_PersonasRetiradaMat aspnet_PersonasRetiradaMat = new aspnet_PersonasRetiradaMat();
+            aspnet_PersonasRetiradaMat.IDCliente = iDCliente;
+            aspnet_PersonasRetiradaMat.NIF = nIF;
+            return aspnet_PersonasRetiradaMat;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal IDCliente
+        {
+            get
+            {
+                return _IDCliente;
+            }
+            set
+            {
+                if (_IDCliente != value)
+                {
+                    OnIDClienteChanging(value);
+                    ReportPropertyChanging("IDCliente");
+                    _IDCliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDCliente");
+                    OnIDClienteChanged();
+                }
+            }
+        }
+        private global::System.Decimal _IDCliente;
+        partial void OnIDClienteChanging(global::System.Decimal value);
+        partial void OnIDClienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NIF
+        {
+            get
+            {
+                return _NIF;
+            }
+            set
+            {
+                if (_NIF != value)
+                {
+                    OnNIFChanging(value);
+                    ReportPropertyChanging("NIF");
+                    _NIF = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("NIF");
+                    OnNIFChanged();
+                }
+            }
+        }
+        private global::System.String _NIF;
+        partial void OnNIFChanging(global::System.String value);
+        partial void OnNIFChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes")]
+        public aspnet_Clientes aspnet_Clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Clientes> aspnet_ClientesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes", value);
                 }
             }
         }

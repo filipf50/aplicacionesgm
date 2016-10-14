@@ -42,7 +42,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
                            select u;
             }
 
-            ViewData["Responsables"] = usuarios.AsEnumerable().OrderBy(u => u.UserName).Distinct().ToDictionary(u => u.UserId, u => u.UserName);
+            ViewData["Responsables"] = usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId, u => u.UserName);
 
             //Cargo las acciones
             IEnumerable<aspnet_Acciones> Accion = getAcciones(sortOrder, sortType, ViewData["Title"].ToString(), formData);
@@ -57,7 +57,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
             ViewData["chkDepartamentos"] = chkDepartamentos;
             CheckBoxModel chkDelegaciones = new CheckBoxModel(delegaciones.AsEnumerable().OrderBy(d => d.Descripcion).ToDictionary(d => d.DelegacionID.ToString(), d => d.Descripcion), new List<string>());
             ViewData["chkDelegaciones"] = chkDelegaciones;
-            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
+            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u=>(ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
             ViewData["chkResponsables"] = chkResponsables;
 
             return View(Accion);
@@ -108,7 +108,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
                            select u;
             }
 
-            ViewData["Responsables"] = usuarios.AsEnumerable().OrderBy(u => u.UserName).Distinct().ToDictionary(u => u.UserId, u => u.UserName);
+            ViewData["Responsables"] = usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId, u => u.UserName);
 
             //Cargo los datos para los Checks del buscador
             var origenes = db.aspnet_Origenes.Select(o => new { o.OrigenID, o.Descripcion });
@@ -120,7 +120,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
             ViewData["chkDepartamentos"] = chkDepartamentos;
             CheckBoxModel chkDelegaciones = new CheckBoxModel(delegaciones.AsEnumerable().OrderBy(d => d.Descripcion).ToDictionary(d => d.DelegacionID.ToString(), d => d.Descripcion), new List<string>());
             ViewData["chkDelegaciones"] = chkDelegaciones;
-            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
+            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
             ViewData["chkResponsables"] = chkResponsables;
 
             return View(Accion);
@@ -155,7 +155,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
                            where r.RoleName != "Administrador" || r.RoleName == null
                            select u;
             }
-            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
+            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
             ViewData["chkResponsables"] = chkResponsables;
 
             return View();
@@ -247,7 +247,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
                            where r.RoleName != "Administrador" || r.RoleName == null
                            select u;
             }
-            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().Distinct().OrderBy(u => u.UserName).ToDictionary(u => u.UserId.ToString(), u => u.UserName),new List<string>());
+            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().OrderBy(u => u.UserName).ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
             ViewData["chkResponsables"] =chkResponsables;
 
             
@@ -308,7 +308,7 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
                            where r.RoleName != "Administrador" || r.RoleName == null
                            select u;
             }
-            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
+            CheckBoxModel chkResponsables = new CheckBoxModel(usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId.ToString(), u => u.UserName), new List<string>());
             ViewData["chkResponsables"] = chkResponsables;
 
             return View(deleted);
@@ -369,8 +369,8 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
                            where r.RoleName != "Administrador" || r.RoleName == null
                            select u;
             }
-            
-            Dictionary<Guid,string> dicResponsables = usuarios.AsEnumerable().OrderBy(u => u.UserName).Distinct().ToDictionary(u => u.UserId, u => u.UserName); 
+
+            Dictionary<Guid, string> dicResponsables = usuarios.AsEnumerable().OrderBy(u => u.UserName).Where(u => (ProfileBase.Create(u.UserName))["AplicacionesGM"].ToString().Split(',').Contains("1")).Distinct().ToDictionary(u => u.UserId, u => u.UserName); 
             
             List<aspnet_Acciones> dt = acciones.ToList();
 

@@ -140,7 +140,41 @@ ORDER BY TNCDG</CommandText>
               <Mapping SourceColumn="TNCDG" DataSetColumn="TNCDG" />
               <Mapping SourceColumn="TNNBR" DataSetColumn="TNNBR" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="as400ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillContactos" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataContactos" GeneratorSourceName="FillContactos" GetMethodModifier="Public" GetMethodName="GetDataContactos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataContactos" UserSourceName="FillContactos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TNCDG, REPLACE(TNNBR,'C-','') TNNBR
+FROM            MRVBQSF004.BDGTN
+WHERE TNNBR LIKE 'C-%'
+ORDER BY TNNBR</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="as400ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillDias" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataDias" GeneratorSourceName="FillDias" GetMethodModifier="Public" GetMethodName="GetDataDias" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataDias" UserSourceName="FillDias">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TNCDG, REPLACE(TNNBR,'D-','') TNNBR
+FROM            MRVBQSF004.BDGTN
+WHERE TNNBR LIKE 'D-%'
+ORDER BY TNNBR</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="as400ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillFrecuencias" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataFrecuencias" GeneratorSourceName="FillFrecuencias" GetMethodModifier="Public" GetMethodName="GetDataFrecuencias" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataFrecuencias" UserSourceName="FillFrecuencias">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TNCDG, REPLACE(TNNBR,'F-','') TNNBR
+FROM            MRVBQSF004.BDGTN
+WHERE TNNBR LIKE 'F-%'
+ORDER BY TNNBR</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="INSAETableAdapter" GeneratorDataComponentClassName="INSAETableAdapter" Name="INSAE" UserDataComponentName="INSAETableAdapter">
             <MainSource>
@@ -313,6 +347,26 @@ ORDER BY AENBR</CommandText>
                 </SelectCommand>
               </DbSource>
             </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="INSICTableAdapter" GeneratorDataComponentClassName="INSICTableAdapter" Name="INSIC" UserDataComponentName="INSICTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="as400ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ICCDG, ICDES
+FROM            MRVGEN.INSIC
+WHERE        (ICBAJA &lt;&gt; '*')
+ORDER BY ICDES</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ICCDG" DataSetColumn="ICCDG" />
+              <Mapping SourceColumn="ICDES" DataSetColumn="ICDES" />
+            </Mappings>
+            <Sources />
           </TableAdapter>
         </Tables>
         <Sources />
@@ -703,6 +757,26 @@ ORDER BY AENBR</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="INSIC" msprop:Generator_TableClassName="INSICDataTable" msprop:Generator_TableVarName="tableINSIC" msprop:Generator_TablePropName="INSIC" msprop:Generator_RowDeletingName="INSICRowDeleting" msprop:Generator_RowChangingName="INSICRowChanging" msprop:Generator_RowEvHandlerName="INSICRowChangeEventHandler" msprop:Generator_RowDeletedName="INSICRowDeleted" msprop:Generator_UserTableName="INSIC" msprop:Generator_RowChangedName="INSICRowChanged" msprop:Generator_RowEvArgName="INSICRowChangeEvent" msprop:Generator_RowClassName="INSICRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ICCDG" msprop:Generator_ColumnVarNameInTable="columnICCDG" msprop:Generator_ColumnPropNameInRow="ICCDG" msprop:Generator_ColumnPropNameInTable="ICCDGColumn" msprop:Generator_UserColumnName="ICCDG">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ICDES" msprop:Generator_ColumnVarNameInTable="columnICDES" msprop:Generator_ColumnPropNameInRow="ICDES" msprop:Generator_ColumnPropNameInTable="ICDESColumn" msprop:Generator_UserColumnName="ICDES">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -732,6 +806,10 @@ ORDER BY AENBR</CommandText>
     <xs:unique name="AGTAG006_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:AGTAG006" />
       <xs:field xpath="mstns:AGCDG" />
+    </xs:unique>
+    <xs:unique name="INSIC_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:INSIC" />
+      <xs:field xpath="mstns:ICCDG" />
     </xs:unique>
   </xs:element>
 </xs:schema>

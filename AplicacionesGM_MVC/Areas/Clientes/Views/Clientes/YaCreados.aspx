@@ -120,6 +120,12 @@
                         F. Volcado a QS
                     </th>
                     <th>
+                        Usuario de creación
+                    </th>
+                    <th>
+                        Delegación
+                    </th>
+                    <th>
                         Empresas
                     </th>
                     <th>
@@ -151,9 +157,6 @@
                {
                 //Responsable de logística  %>
                 <tr>
-                    <th>
-                        Delegación
-                    </th>
                     <th>
                         Nº Cliente
                     </th>
@@ -287,9 +290,9 @@
                         <%: (item.Zona == null) ? "" : zonas.Where(p => p.Value == item.Zona.ToString()).First().Text%>
                     </td>
                     <td>
-                        <% if (item.NoAdmiteFacturacionElectronica == true)
+                        <% if (item.NoAdmiteFacturacionElectronica == true && item.EsDeExposicion == false )
                            {%>
-                            <%: item.DirEnvioFactura%>
+                            <%: item.TipoDeViaFacturacion + " " + item.DomicilioFacturacion + " Nº " + string.Format("{0:0.##}", item.NumeroFacturacion) + " " + item.PisoFacturacion + " " + item.CPFacturacion + "(" + item.MunicipioFacturacion + ") " + ((item.IDProvinciaQSFacturacion == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text) + " " + ((item.IDPaisQS == null) ? "" : paises.Where(p => p.Value == item.IDPaisQS.ToString()).First().Text) %>
                         <%}
                            else
                            { %>
@@ -403,6 +406,12 @@
                         <%: String.Format("{0:d}", item.FechaVolcadoQS)%>
                     </td>
                     <td>
+                        <%:item.aspnet_Users.UserName.ToString() %>
+                    </td>
+                    <td>
+                        <%:item.aspnet_Delegaciones.Descripcion %>
+                    </td>
+                    <td>
                         <% 
                    Dictionary<string, string> empresas = (Dictionary<string, string>)ViewData["Empresas"];
                    string strEmpresas = "";
@@ -442,9 +451,11 @@
                         <%: item.DtoPP%>
                     </td>
                     <td>
-                        <% if (item.NoAdmiteFacturacionElectronica == true)
+                        <% if (item.NoAdmiteFacturacionElectronica == true && item.EsDeExposicion == false )
                            {%>
-                            <%: item.DirEnvioFactura%>
+                            <% SelectList provincias = (SelectList)ViewData["Provincias"]; 
+                               SelectList paises = (SelectList)ViewData["Paises"]; %>
+                            <%: item.TipoDeViaFacturacion + " " + item.DomicilioFacturacion + " Nº " + string.Format("{0:0.##}", item.NumeroFacturacion) + " " + item.PisoFacturacion + " " + item.CPFacturacion + "(" + item.MunicipioFacturacion + ") " + ((item.IDProvinciaQSFacturacion == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text) + " " + ((item.IDPaisQS == null) ? "" : paises.Where(p => p.Value == item.IDPaisQS.ToString()).First().Text) %>
                         <%}
                            else
                            { %>
@@ -461,10 +472,6 @@
                {
                    //Responsable de logística %>
                  <tr>
-                    <td>
-                        <% SelectList delegaciones = (SelectList)ViewData["Delegaciones"]; %>
-                        <%:(item.IDDelegacion == null) ? "" : delegaciones.Where(d => d.Value == item.IDDelegacion.ToString()).First().Text%>
-                    </td>
                     <td>
                         <%: item.QSID%>
                     </td>
@@ -612,7 +619,8 @@
                     <td>
                         <% if (!item.CAEFirmada)
                            {%>
-                            <%: item.aspnet_Causas.Nombre%>
+                            <% SelectList causasNoFirma = (SelectList)ViewData["CausasDeNoFirma"]; %>
+                        <%:(item.IDCausaNoFirmaCAE == null) ? "" : causasNoFirma.Where(c => c.Value == item.IDCausaNoFirmaCAE.ToString()).First().Text%>
                         <%} %>
                     </td>
                     <td>

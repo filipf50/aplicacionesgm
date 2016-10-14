@@ -16,7 +16,7 @@ public class CustomValidations
         /// </summary>
         /// <remarks>Aunque actualmente no se utilice el término CIF, se usa en la enumeración
         /// por comodidad</remarks>
-        private enum TiposCodigosEnum { NIF, NIE, CIF }
+        public enum TiposCodigosEnum { NIF, NIE, CIF }
 
         // Número tal cual lo introduce el usuario
         private string numero;
@@ -452,12 +452,22 @@ public class CustomValidations
     }		    
 
 
-    public bool IsValidNIF(object value,ref string ErrorMessage)
+    public bool IsValidNIF(object value,bool blnValidarTipo, string strTipoCodigo, ref string ErrorMessage)
     {
         try
         {
+            bool blnRes;
             NumeroNif objValidadorNIF = NumeroNif.CompruebaNif(Convert.ToString(value));
-            return objValidadorNIF.EsCorrecto;
+            if (blnValidarTipo && !strTipoCodigo.ToString().Contains(objValidadorNIF.TipoNif))
+            {
+                ErrorMessage = "El código indicado no se corresponde con un " + strTipoCodigo.ToString();
+                blnRes= false;
+            }
+            else
+            {
+                blnRes= objValidadorNIF.EsCorrecto;
+            }
+            return blnRes;
         }
         catch (Exception ex)
         {

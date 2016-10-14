@@ -20,6 +20,14 @@
             <%: Html.ValidationSummary(true,"Error al guardar el nuevo tipo de vehículo. Revise los errores y vuelva a intentarlo") %>
             
             <div class="editor-label">
+                <%: Html.LabelFor(model => model.ID) %>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.ID) %>
+                <%: Html.ValidationMessageFor(model => model.ID) %>
+            </div>
+
+            <div class="editor-label">
                 <%: Html.LabelFor(model => model.Nombre) %>
             </div>
             <div class="editor-field">

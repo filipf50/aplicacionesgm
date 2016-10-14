@@ -199,7 +199,7 @@ namespace AplicacionesGM_MVC.Controllers
             profile["Subordinados"] = formData["arrSubordinados"].Replace("false,", "").Replace(",false", "").Replace("false", "");
             profile.Save();
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("Edit", new { userName });
         }
 
         [Authorize]
@@ -210,7 +210,7 @@ namespace AplicacionesGM_MVC.Controllers
             profile["Origenes"] = formData["arrOrigenes"].Replace("false,", "").Replace(",false", "").Replace("false", "");
             profile.Save();
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("Edit", new { userName });
         }
 
         [Authorize]
@@ -221,7 +221,7 @@ namespace AplicacionesGM_MVC.Controllers
             profile["AplicacionesGM"] = formData["arrAplicacionesGM"].Replace("false,", "").Replace(",false", "").Replace("false", "");
             profile.Save();
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("Edit", new { userName });
         }
 
         [Authorize]
@@ -232,7 +232,7 @@ namespace AplicacionesGM_MVC.Controllers
             profile["Delegaciones"] = formData["arrDelegaciones"].Replace("false,", "").Replace(",false", "").Replace("false", "");
             profile.Save();
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("Edit", new { userName });
         }
 
         [Authorize]
@@ -245,7 +245,7 @@ namespace AplicacionesGM_MVC.Controllers
             profile["IDAgenteQSECA"] = formData["IDAgenteQSECA"].ToString();
             profile.Save();
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("Edit", new { userName });
         }
 
         // **************************************

@@ -76,7 +76,7 @@
                     </tr>
                     <tr id="panelExposicion">
                         <td class="editor-label required noborder td20">
-                            ¿Es un cliente de exposición?
+                            ¿Es un cliente de exposición o mostrador?
                         </td>
                         <td class="editor-field noborder td80">
                             <%: Html.DropDownListFor(model => model.EsDeExposicion, new SelectList(
@@ -89,9 +89,39 @@
                                              Model), new { @class = "textbox5" })%>
                         </td>
                     </tr>
+                    <tr id="panelParticular">
+                        <td class="editor-label required noborder td20">
+                            ¿Es un cliente particular?
+                        </td>
+                        <td class="editor-field noborder td80">
+                            <%: Html.DropDownListFor(model => model.EsClienteParticular, new SelectList(
+                                        new[]{
+                                                new{Value="false", Text="No"}, 
+                                                new{Value="true", Text="Sí"},
+                                             },
+                                             "Value",
+                                             "Text",
+                                             Model), new { @class = "textbox5" })%>
+                        </td>
+                    </tr>
+                    <tr id="panelRecogen">
+                        <td class="editor-label required noborder td20">
+                            ¿Recoge en nuestras instalaciones?
+                        </td>
+                        <td class="editor-field noborder td80">
+                            <%: Html.DropDownListFor(model => model.RecogeEnNuestrasInstalaciones, new SelectList(
+                                        new[]{
+                                                new{Value="false", Text="No"}, 
+                                                new{Value="true", Text="Sí"},
+                                             },
+                                             "Value",
+                                             "Text",
+                                             Model), new { @class = "textbox5" })%>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="editor-label required noborder td20">
-                            C.I.F / N.I.F
+                            <%: Html.RadioButtonFor(model => model.TipoDocumento, 1, new { @id = "radioNIF" })%> N.I.F / N.I.E <%: Html.RadioButtonFor(model => model.TipoDocumento, 2, new { @id = "radioCIF" })%> C.I.F
                         </td>
                         <td class="editor-field noborder td80">
                             <%: Html.TextBoxFor(model => model.NIF, new { @class = "textbox10" })%>
@@ -100,16 +130,19 @@
                     </tr>
                     <tr>
                         <td class="editor-label required noborder td20">
-                           <%: Html.LabelFor(model => model.Nombre)%> 
+                          <label id="lblNombre">Nombre y apellidos</label>
                         </td>
                         <td class="editor-field noborder td80">
                             <%: Html.TextBoxFor(model => model.Nombre, new { @class = "textbox100" })%>
                             <%: Html.ValidationMessageFor(model => model.Nombre, true)%>
                         </td>
                     </tr>
+                    <tr class="border-top">
+                        <td colspan="2" align="center" class="editor-label noborder border-bottom"><span class="title">DIRECCIÓN FISCAL (PARA DATOS FACTURA)</span></td>
+                    </tr>
                     <tr>
                         <td class="editor-label noborder td20">
-                            Domicilio
+                            Domicilio 
                         </td>
                         <td class="editor-field noborder td80">
                             <label for="TipoDeVia" class="display-label required">Tipo Vía</label>  <%: Html.DropDownListFor(model => model.TipoDeVia, (SelectList)ViewData["TiposDeVia"], "--Seleccione un valor--", new { @class = "textbox15" })%>
@@ -122,7 +155,7 @@
                             <%:Html.ValidationMessageFor(model => model.Piso, true)%>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="border-bottom">
                         <td class="editor-label required noborder td20">
                             <label for="CP" class="display-label">CP</label>
                         </td>
@@ -132,7 +165,7 @@
                             <label for="Municipio" class="display-label required">Municipio</label>
                             <%: Html.DropDownListFor(model => model.Municipio, (SelectList)ViewData["Municipios"], "--Seleccione un valor--", null)%>
                             <%:Html.ValidationMessageFor(model => model.Municipio, true)%>
-                            <%: Html.Hidden("IDMunicipio")%> <!-- se usa para almacenar el código del municipio y utilizarlo en el cálculo de la ruta en caso de que se modifique el código postal !-->
+                            <%: Html.HiddenFor(model=>model.IDMunicipioQS) %> <!-- se usa para almacenar el código del municipio y utilizarlo en el cálculo de la ruta en caso de que se modifique el código postal !-->
                             <label for="IDProvinciaQS" class="display-label required">Provincia</label>
                             <%: Html.DropDownListFor(model => model.IDProvinciaQS, (SelectList)ViewData["Provincias"], "--Seleccione un valor--", null)%>
                             <%:Html.ValidationMessageFor(model => model.IDProvinciaQS, true)%>
@@ -143,7 +176,7 @@
                     </tr>
                     <tr>
                         <td class="editor-label noborder required td20">
-                            <%: Html.LabelFor(model => model.Zona)%>
+                            Ruta
                         </td>
                         <td class="editor-field noborder td80">
                             <%: Html.DropDownListFor(model => model.Zona, (SelectList)ViewData["Zonas"], "--Seleccione un valor--", new { @class = "textbox40" })%>
@@ -213,17 +246,66 @@
                             <%: Html.ValidationMessageFor(model => model.FormaContacto, true)%>
                         </td>
                     </tr>
-                    <tr id="panelPersonaAutorizada">
-                        <td class="editor-label noborder td20">
-                            Persona autorizada retirada material
+                    <tr>
+                        <td class="editor-label required noborder td20">
+                            ¿Tiene personas autorizadas para recoger material?
                         </td>
                         <td class="editor-field noborder td80">
-                            N.I.F
-                            <%: Html.TextBoxFor(model => model.NIFPersonalAutorizadoRetiradaMaterial, new { @class = "textbox10" })%>
-                            <%: Html.ValidationMessageFor(model => model.NIFPersonalAutorizadoRetiradaMaterial, true)%>
-                            Nombre
-                            <%: Html.TextBoxFor(model => model.NombrePersonalAutorizadoRetiradaMaterial, new { @class = "textbox76" })%>
-                            <%: Html.ValidationMessageFor(model => model.NombrePersonalAutorizadoRetiradaMaterial, true)%>
+                            <%: Html.DropDownListFor(model => model.TienePersonasAutorizadasRetMat, new SelectList(
+                                        new[]{
+                                                new{Value="true", Text="Sí"}, 
+                                                new{Value="false", Text="No"}, 
+                                             },
+                                             "Value",
+                                             "Text",
+                                             Model), new { @class = "textbox5" })%>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td class="noborder" colspan="2">
+                            <table id="panelPersonaAutorizada">
+                                <tr>
+                                    <td class="editor-label noborder border-bottom td20">
+                                        Personas autorizadas retirada material (máximo 2 personas)
+                                    </td>
+                                    <td class="editor-field noborder border-bottom td80">
+                                        <span id="addPersona" class="button" title="Pulse para añadir persona autorizada" >Añadir Persona</span>
+                                    </td>
+                                </tr>
+                                <% if (Model.aspnet_PersonasRetiradaMat.Count() == 0)
+                                   { %>
+                                    <tr>
+                                        <td class="noborder td20">
+                                            <span class="button" title="Pulse para eliminar la persona autorizada" onclick="if ($('#panelPersonaAutorizada >tbody >tr').length>2) { $(this).closest('tr').remove();}">Quitar Persona</span>
+                                        </td>
+                                        <td class="noborder td80">
+                                            <label class="editor-label required">N.I.F / N.I.E</label> <%: Html.TextBox("arrNIFPersona1", "", new { @class = "textbox10 required" })%>
+                                            <%: Html.ValidationMessage("arrNIFPersona1", blnAddValmsg: true)%> 
+                                            <label class="editor-label required">Nombre y apellidos </label> <%: Html.TextBox("arrNombrePersona1", "", new { @class = "textbox56 required" })%>
+                                            <%: Html.ValidationMessage("arrNombrePersona1", blnAddValmsg: true)%> 
+                                        </td>
+                                    </tr>
+                                   <%}
+                                   else
+                                   {
+                                       int i = 0;
+                                       foreach (var persona in Model.aspnet_PersonasRetiradaMat)
+                                       {
+                                           i++;%>
+                                            <tr>
+                                                <td class="noborder td20">
+                                                    <span class="button" title="Pulse para eliminar la persona autorizada" onclick="if ($('#panelPersonaAutorizada >tbody >tr').length>2) { $(this).closest('tr').remove();}">Quitar Persona</span>
+                                                </td>
+                                                <td class="noborder td80">
+                                                    <label class="editor-label required">N.I.F / N.I.E</label> <%: Html.TextBox("arrNIFPersona1", "arrNIFPersona" + i, persona.NIF, new { @class = "textbox10" })%>
+                                                    <%: Html.ValidationMessage("arrNIFPersona" + i, blnAddValmsg: true)%> 
+                                                     <label class="editor-label required">Nombre y apellidos </label> <%: Html.TextBox("arrNombrePersona1", "arrNombrePersona" + i, persona.Nombre, new { @class = "textbox56" })%>
+                                                    <%: Html.ValidationMessage("arrNombrePersona" + i, blnAddValmsg: true)%> 
+                                                </td>
+                                            </tr>
+                                      <%}
+                                   }%>
+                            </table>            
                         </td>
                     </tr>
                     <tr id="DatosGerente">
@@ -266,8 +348,8 @@
                                             <span class="button" title="Pulse para eliminar el socio" onclick="if ($('#panelSocios >tbody >tr').length>2) { $(this).closest('tr').remove();}">Quitar Socio</span>
                                         </td>
                                         <td class="noborder td80">
-                                            C.I.F <%: Html.TextBox("arrCIFSocio1", "", new { @class = "textbox10" })%>
-                                            <label class="editor-label required">Nombre </label> <%: Html.TextBox("arrNombreSocio1", "", new { @class = "textbox56" })%>
+                                            C.I.F / N.I.F <%: Html.TextBox("arrCIFSocio1", "", new { @class = "textbox10" })%>
+                                            <label class="editor-label required">Nombre / Empresa </label> <%: Html.TextBox("arrNombreSocio1", "", new { @class = "textbox40" })%>
                                             Porcentaje <%: Html.TextBox("arrPorcentaSocio1", "", new { @class = "textbox10" })%>
                                         </td>
                                     </tr>
@@ -285,7 +367,7 @@
                                                 <td class="noborder td80">
                                                     C.I.F <%: Html.TextBox("arrCIFSocio1", "arrCIFSocio" + i, socio.CIF, new { @class = "textbox10" })%>
                                                     <%: Html.ValidationMessage("arrCIFSocio" + i, blnAddValmsg: true)%> 
-                                                     <label class="editor-label required">Nombre </label> <%: Html.TextBox("arrNombreSocio1", "arrNombreSocio" + i, socio.Nombre, new { @class = "textbox56" })%>
+                                                     <label class="editor-label required">Nombre </label> <%: Html.TextBox("arrNombreSocio1", "arrNombreSocio" + i, socio.Nombre, new { @class = "textbox40" })%>
                                                     <%: Html.ValidationMessage("arrNombreSocio" + i, blnAddValmsg: true)%> 
                                                     Porcentaje <%: Html.TextBox("arrPorcentaSocio1", "arrPorcentaSocio" + i, socio.Porcentaje, new { @class = "textbox10" })%>
                                                     <%: Html.ValidationMessage("arrPorcentaSocio" + i, blnAddValmsg: true)%>
@@ -327,15 +409,18 @@
                                         <span id="addEmpresaVinculada" class="button" title="Pulse para vincular una nueva empresa al grupo empresarial" >Añadir Empresa Vinculada</span>
                                     </td>
                                 </tr>
-                                    <% if (Model.aspnet_SociedadesVinculadas.Count() == 0)
+                                <% if (Model.aspnet_SociedadesVinculadas.Count() == 0)
                                        {%>
                                             <tr>
                                                <td class="noborder td20">
                                                     <span class="button" title="Pulse para desvincular la empresa del grupo empresarial" onclick="if ($('#panelEmpresasVinculadas >tbody >tr').length>2) { $(this).closest('tr').remove();}" >Quitar Empresa</span>
                                                </td>
                                                <td class=" noborder td80">
-                                                    <label class="display-label required">C.I.F</label> <%: Html.TextBox("arrCIFVinc1", "", new { @class = "textbox10" })%>
-                                                    <label class="display-label required">Nombre</label> <%: Html.TextBox("arrEmpVinc1", "", new { @class = "textbox70" })%>
+                                                    C.I.F <%: Html.TextBox("arrCIFVinc1", "", new { @class = "textbox10" })%>
+                                                    <%: Html.ValidationMessage("arrCIFVinc1", blnAddValmsg: true)%> 
+                                                    <label class="display-label required">Nombre</label> 
+                                                    <%: Html.TextBox("arrEmpVinc1", "", new { @class = "textbox70" })%>
+                                                    <%: Html.ValidationMessage("arrEmpVinc1", blnAddValmsg: true)%>
                                                 </td>
                                             </tr>                                                
                                       <%}
@@ -350,31 +435,15 @@
                                                         <span class="button" title="Pulse para desvincular la empresa del grupo empresarial" onclick="if ($('#panelEmpresasVinculadas >tbody >tr').length>2) { $(this).closest('tr').remove();}" >Quitar Empresa</span>
                                                    </td>
                                                    <td class=" noborder td80">
-                                                        <label class="display-label required">C.I.F</label> <%: Html.TextBox("arrCIFVinc1", "arrCIFVinc" + i, sociedad.CIF, new { @class = "textbox10" })%>
+                                                        C.I.F <%: Html.TextBox("arrCIFVinc1", "arrCIFVinc" + i, sociedad.CIF, new { @class = "textbox10" })%>
                                                         <%: Html.ValidationMessage("arrCIFVinc" + i, blnAddValmsg: true)%> 
                                                         <label class="display-label required">Nombre</label> <%: Html.TextBox("arrEmpVinc1", "arrEmpVinc" + i, sociedad.Nombre, new { @class = "textbox70" })%>
                                                         <%: Html.ValidationMessage("arrEmpVinc" + i, blnAddValmsg: true)%>
                                                     </td>
                                                 </tr>                                                
                                          <%}
-                                       }%>
-                            </table>            
-                        </td>
-                    </tr>
-                    <tr id="fichaLogística">
-                        <td class="editor-label noborder td20">
-                            Ficha logística
-                        </td>
-                        <td class="editor-field noborder td80">
-                            ¿Rellenar ficha logística?
-                            <%: Html.DropDownListFor(model => model.TieneFichaLogistica, new SelectList(
-                                        new[]{
-                                                new{Value="true", Text="Sí"}, 
-                                                new{Value="false", Text="No"}, 
-                                             },
-                                             "Value",
-                                             "Text",
-                                             Model), new { @class = "textbox5" })%>
+                                       }%>                                             
+                            </table>
                         </td>
                     </tr>
                     <tr>
@@ -417,7 +486,7 @@
                                     <td class="editor-field noborder td80">
                                         <%:Html.DropDownListFor(model => model.IDMedioDeDescarga, (SelectList)ViewData["MediosDeDescarga"], "--Seleccione un valor--", new { @class = "textbox20" })%>
                                         <%:Html.ValidationMessageFor(model => model.IDMedioDeDescarga, true)%>
-                                        <label class="editor-label required ">¿Necesita camión con pluma?</label>
+                                        <label class="editor-label required ">¿Necesita camión con grúa?</label>
                                         <%: Html.DropDownListFor(model => model.NecesitaCamionConPluma, new SelectList(
                                                     new[]{
                                                             new{Value="true", Text="Sí"}, 
@@ -479,11 +548,20 @@
                                         <label class="editor-label">Cobro de portes por envío</label>
                                     </td>
                                     <td class="editor-field noborder td80">
-                                        <%:Html.TextBoxFor(model => model.CobroDePortesPorEnvio, new { @class = "textbox100" })%>
-                                        <%:Html.ValidationMessageFor(model => model.CobroDePortesPorEnvio, true)%>
+                                        <%: Html.DropDownListFor(model => model.CobroDePortesPorEnvio, new SelectList(
+                                                    new[]{
+                                                            new{Value="true", Text="Sí"}, 
+                                                            new{Value="false", Text="No"},
+                                                         },
+                                                         "Value",
+                                                         "Text",
+                                                         Model), new { @class = "textbox5" })%>
+                                        <label class="editor-label required" id="lblImportePortesPorEnvio">Importe en euros a cobrar por envío:</label>
+                                        <%:Html.TextBoxFor(model => model.ImportePortesPorEnvio, new { @class = "textbox10" })%>
+                                        <%:Html.ValidationMessageFor(model => model.ImportePortesPorEnvio, true)%>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="requerimientosCalidad">
                                     <td class="editor-label noborder td20">
                                         <label class="editor-label">Requerimientos especiales de calidad</label>
                                     </td>
@@ -507,7 +585,7 @@
                                         <% } %>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="requerimientosPrevencion">
                                     <td class="editor-label noborder td20">
                                         <label class="editor-label">Requerimientos especiales de prevención</label>
                                     </td>
@@ -562,6 +640,139 @@
                                         <%:Html.ValidationMessageFor(model => model.IDCausaNoFirmaCAE, true)%>
                                      </td>
                                 </tr>
+                                <tr>
+                                    <td class="editor-label required noborder td20">
+                                        <label class="editor-label">¿Desea indicar direcciones de envío?</label>
+                                    </td>
+                                    <td class="editor-field noborder td80">
+                                        <%: Html.DropDownListFor(model => model.TieneDireccionesDeEnvio, new SelectList(
+                                                    new[]{
+                                                            new{Value="true", Text="Sí"}, 
+                                                            new{Value="false", Text="No"},
+                                                         },
+                                                         "Value",
+                                                         "Text",
+                                                         Model), new { @class = "textbox5" })%>
+                                    </td>
+                                </tr>
+                                <tr id="panelDireccionesDeEnvio">
+                                    <td class="noborder" colspan="2">
+                                        <table>
+                                            <tr>
+                                                <td class="editor-label noborder border-bottom td20">
+                                                    Direcciones de Envío
+                                                </td>
+                                                <td class="editor-field noborder border-bottom td80">
+                                                    <span id="addDirEnv" class="button" title="Pulse para añadir una nueva dirección de envío" >Añadir Dirección</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="noborder" colspan="2">
+                                                    <table id="panelDireccionEnvio" class="noborder">
+                                                        <% if (Model.aspnet_ClientesDirEnv.Count() == 0)
+                                                            { %>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="noborder td20" rowspan="4">
+                                                                        <span class="button" title="Pulse para eliminar la dirección de envío" onclick="if ($('#panelDireccionEnvio >tbody').length>1) { $(this).closest('tbody').remove();}">Quitar Dirección</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="editor-field noborder td80">
+                                                                        <label class="editor-label required"> Nombre y Apellidos / Razón social </label>
+                                                                        <%: Html.TextBox("arrNombreDirEnv1", "", new { @class = "textbox70" })%>
+                                                                        <%: Html.ValidationMessage("arrNombreDirEnv1", blnAddValmsg: true)%> 
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="editor-field noborder td80">
+                                                                        <label for="arrTipoDeViaDirEnv1" class="display-label required">Tipo Vía</label>  <%: Html.DropDownList("arrTipoDeViaDirEnv1", (SelectList)ViewData["TiposDeVia"], "--Seleccione un valor--", new { @class = "textbox15" })%>
+                                                                        <%: Html.ValidationMessage("arrTipoDeViaDirEnv1", blnAddValmsg: true)%> 
+                                                                        <label for="arrDomicilioDirEnv1" class="display-label required" >Nombre</label>  <%: Html.TextBox("arrDomicilioDirEnv1", "", new { @class = "textbox30" })%>
+                                                                        <%: Html.ValidationMessage("arrDomicilioDirEnv1", blnAddValmsg: true)%> 
+                                                                        <label for="arrNumeroDirEnv1" class="display-label required">Nº</label>  <%: Html.TextBox("arrNumeroDirEnv1", "", new { @class = "textbox5" })%>
+                                                                        <%: Html.ValidationMessage("arrNumeroDirEnv1", blnAddValmsg: true)%> 
+                                                                        <label for="arrPisoDirEnv1" class="display-label">Piso</label> <%: Html.TextBox("arrPisoDirEnv1", "", new { @class = "textbox15" })%>
+                                                                        <%: Html.ValidationMessage("arrPisoDirEnv1", blnAddValmsg: true)%>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="border-bottom">
+                                                                    <td class="editor-field noborder td80">
+                                                                        <label for="arrCPDirEnv1" class="display-label">CP</label>
+                                                                        <%: Html.TextBox("arrCPDirEnv1", "", new { @class = "textbox10" })%>
+                                                                        <%: Html.ValidationMessage("arrCPDirEnv1", blnAddValmsg: true)%>
+                                                                        <label for="arrMunicipioDirEnv1" class="display-label required">Municipio</label>
+                                                                        <%: Html.DropDownList("arrMunicipioDirEnv1", (SelectList)ViewData["Municipios"], "--Seleccione un valor--", null)%>
+                                                                        <%: Html.ValidationMessage("arrMunicipioDirEnv1", blnAddValmsg: true)%>
+                                                                        <%: Html.Hidden("arrIDMunicipioQSDirEnv1")%> <!-- se usa para almacenar el código del municipio y utilizarlo en el cálculo de la ruta en caso de que se modifique el código postal !-->
+                                                                        <label for="arrIDProvinciaQSDirEnv1" class="display-label required">Provincia</label>
+                                                                        <%: Html.DropDownList("arrIDProvinciaQSDirEnv1", (SelectList)ViewData["Provincias"], "--Seleccione un valor--", null)%>
+                                                                        <%: Html.ValidationMessage("arrIDProvinciaQSDirEnv1", blnAddValmsg: true)%>
+                                                                        <label for="arrIDPaisQSDirEnv1" class="display-label required">País</label>
+                                                                        <%: Html.DropDownList("arrIDPaisQSDirEnv1", (SelectList)ViewData["Paises"], "--Seleccione un valor--", new { @class = "textbox10" })%>
+                                                                        <%: Html.ValidationMessage("arrIDPaisQSDirEnv1", blnAddValmsg: true)%>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        <% }
+                                                        else
+                                                            { 
+                                                                int i=0;
+                                                                foreach (var direccion in Model.aspnet_ClientesDirEnv)
+                                                                {
+                                                                    i++; 
+                                                                    %>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="noborder td20" rowspan="4">
+                                                                                <span class="button" title="Pulse para eliminar la dirección de envío" onclick="if ($('#panelDireccionEnvio >tbody').length>1) { $(this).closest('tbody').remove();}">Quitar Dirección</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="editor-field noborder td80">
+                                                                                <label class="editor-label required"> Nombre y Apellidos / Razón social </label>
+                                                                                <%: Html.TextBox("arrNombreDirEnv1", "arrNombreDirEnv"+i, direccion.Nombre.ToString(),  new { @class = "textbox70" })%>
+                                                                                <%: Html.ValidationMessage("arrNombreDirEnv"+i, blnAddValmsg: true)%> 
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="editor-field noborder td80">
+                                                                                <label for="arrTipoDeViaDirEnv1" class="display-label required">Tipo Vía</label>  <%: Html.DropDownList("arrTipoDeViaDirEnv1", new SelectList((IEnumerable)ViewData["TiposDeViaDE"],"IDTipoVia","Nombre", direccion.TipoDeVía) , "--Seleccione un valor--", new { @class = "textbox15", @id="arrTipoDeViaDirEnv" +i })%>
+                                                                                <%: Html.ValidationMessage("arrTipoDeViaDirEnv" + i, blnAddValmsg: true)%> 
+                                                                                <label for="arrDomicilioDirEnv1" class="display-label required" >Nombre</label>  <%: Html.TextBox("arrDomicilioDirEnv1","arrDomicilioiDirEnv" + i, direccion.Domicilio, new { @class = "textbox30" })%>
+                                                                                <%: Html.ValidationMessage("arrDomicilioDirEnv" + i, blnAddValmsg: true)%> 
+                                                                                <label for="arrNumeroDirEnv1" class="display-label required">Nº</label>  <%: Html.TextBox("arrNumeroDirEnv1", "arrNumeroDirEnv" + i, direccion.Numero, new { @class = "textbox5" })%>
+                                                                                <%: Html.ValidationMessage("arrNumeroDirEnv" + i, blnAddValmsg: true)%> 
+                                                                                <label for="arrPisoDirEnv1" class="display-label">Piso</label> <%: Html.TextBox("arrPisoDirEnv1", "arrPisoDirEnv"+i, direccion.Piso, new { @class = "textbox15" })%>
+                                                                                <%: Html.ValidationMessage("arrPisoDirEnv" + i, blnAddValmsg: true)%>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="border-bottom">
+                                                                            <td class="editor-field noborder td80">
+                                                                                <label for="arrCPDirEnv1" class="display-label">CP</label>
+                                                                                <%: Html.TextBox("arrCPDirEnv1","arrCPDirEnv" + i, direccion.CP, new { @class = "textbox10" })%>
+                                                                                <%: Html.ValidationMessage("arrCPDirEnv" + i, blnAddValmsg: true)%>
+                                                                                <label for="arrMunicipioDirEnv1" class="display-label required">Municipio</label>
+                                                                                <%: Html.DropDownList("arrMunicipioDirEnv1", new SelectList((IEnumerable)ViewData["Localizaciones"],"Municipio", "Municipio",direccion.Municipio), "--Seleccione un valor--", new {@id="arrMunicipioDirEnv"+i })%>
+                                                                                <%: Html.ValidationMessage("arrMunicipioDirEnv" + i, blnAddValmsg: true)%>
+                                                                                <%: Html.Hidden("arrIDMunicipioQSDirEnv1", direccion.IDMunicipioQS, new { @id = "arrIDMunicipioQSDirEnv" + i })%> <!-- se usa para almacenar el código del municipio y utilizarlo en el cálculo de la ruta en caso de que se modifique el código postal !-->
+                                                                                <label for="arrIDProvinciaQSDirEnv1" class="display-label required">Provincia</label>
+                                                                                <%: Html.DropDownList("arrIDProvinciaQSDirEnv1", new SelectList((IEnumerable)ViewData["Localizaciones"], "IDProvincia", "Provincia", direccion.IDProvinciaQS), "--Seleccione un valor--", new { @id = "arrIDProvinciaQSDirEnv" + i })%>
+                                                                                <%: Html.ValidationMessage("arrIDProvinciaQSDirEnv" + i, blnAddValmsg: true)%>
+                                                                                <label for="arrIDPaisQSDirEnv1" class="display-label required">País</label>
+                                                                                <%: Html.DropDownList("arrIDPaisQSDirEnv1", new SelectList((IEnumerable)ViewData["Localizaciones"], "IDPais", "Pais", direccion.IDPaisQS), "--Seleccione un valor--", new { @class = "textbox10", @id = "arrIDPaisQSDirEnv" + i })%>
+                                                                                <%: Html.ValidationMessage("arrIDPaisQSDirEnv" + i, blnAddValmsg: true)%>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                <%  } %>
+                                                            <% } %>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>            
+                                    </td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
@@ -586,18 +797,33 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="editor-label required noborder td20">
+                        <td class="editor-label noborder td20">
                             Año de antigüedad
                         </td>
                         <td class="editor-field noborder td80">
                             <%: Html.TextBoxFor(model => model.Antguedad, new { @class = "textbox10" })%>
                             <%: Html.ValidationMessageFor(model => model.Antguedad, true)%>
                             <label for="ConsumoPotencial" class="display-label required">Consumo Potencial</label>
-                            <%: Html.TextBoxFor(model => model.ConsumoPotencial, String.Format("{0:F}", Model.ConsumoPotencial))%>
+                            <%: Html.TextBoxFor(model => model.ConsumoPotencial, String.Format("{0:F}", Model.ConsumoPotencial))%> €
                             <%: Html.ValidationMessageFor(model => model.ConsumoPotencial, true)%>
                             <label for="PrevisionAnual" class="display-label required">Previsión Anual</label>
-                            <%: Html.TextBoxFor(model => model.PrevisionAnual, String.Format("{0:F}", Model.PrevisionAnual))%>
+                            <%: Html.TextBoxFor(model => model.PrevisionAnual, String.Format("{0:F}", Model.PrevisionAnual))%> €
                             <%: Html.ValidationMessageFor(model => model.PrevisionAnual, true)%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label required noborder td20">
+                            <label class="editor-label">¿Venta sujeta a contrato?</label>
+                        </td>
+                        <td class="editor-field noborder td80">
+                            <%: Html.DropDownListFor(model => model.VentaSujetaAContrato, new SelectList(
+                                    new[]{
+                                            new{Value="true", Text="Sí"}, 
+                                            new{Value="false", Text="No"},
+                                            },
+                                            "Value",
+                                            "Text",
+                                            Model), new { @class = "textbox5" })%>
                         </td>
                     </tr>
                     <tr>
@@ -605,8 +831,8 @@
                             <label>Cia. aseguradora de ventas</label>
                         </td>
                         <td class="editor-field noborder td80">
-                            <%: Html.TextBoxFor(model => model.CompañiaSeguroVentas, new { @class = "textbox70" })%>
-                            <%: Html.ValidationMessageFor(model => model.CompañiaSeguroVentas, true)%>
+                            <%: Html.DropDownListFor(model => model.IDAseguradora, (SelectList)ViewData["Aseguradoras"],"--Seleccione un valor si corresponde--", new { @class = "textbox70" })%>
+                            <%: Html.ValidationMessageFor(model => model.IDAseguradora, true)%>
                             <label for="NumTrabajadores" class="editor-label">N<sup>o</sup>. Trabajadores</label>
                             <%: Html.TextBoxFor(model => model.NumTrabajadores, new { @class = "textbox10" })%>
                             <%: Html.ValidationMessageFor(model => model.NumTrabajadores, true)%>
@@ -688,16 +914,78 @@
                         <td class="editor-field noborder td80">
                             <%: Html.TextBoxFor(model => model.MailDeFacturacion, new { @class = "textbox40" })%>
                             <%: Html.ValidationMessageFor(model => model.MailDeFacturacion, true)%>
-                            <%: Html.CheckBoxFor(model => model.NoAdmiteFacturacionElectronica)%> El cliente no admite facturación electrónica                            
+                            <%: Html.CheckBoxFor(model => model.NoAdmiteFacturacionElectronica)%> <label id="lblNoAdmiteFacturacionElectronica">El cliente no admite facturación electrónica</label>
                         </td>
                     </tr>
-                    <tr id="DirEnvioFacturas">
-                        <td class="editor-label noborder required td20">
-                            Dir. postal envío facturas
-                        </td>
-                        <td class="editor-field noborder td80">
-                            <%: Html.TextBoxFor(model => model.DirEnvioFactura, new { @class = "textbox100" })%>
-                            <%: Html.ValidationMessageFor(model => model.DirEnvioFactura, true)%>
+                    <tr id="EnvioPostal">
+                        <td class="noborder" colspan="2">
+                            <table class="noborder">
+                                <tr class="border-top">
+                                    <td colspan="2" align="center" class="editor-label noborder border-bottom"><span class="title">DIRECCIÓN POSTAL ENVÍO FACTURA</span></td>
+                                </tr>
+                                <tbody>
+                                    <tr id="ApartadoDeCorreos">
+                                        <td class="editor-label noborder td20">
+                                            ¿Tiene apartado de correos para envío de facturas?
+                                        </td>
+                                        <td class="editor-field noborder td80">
+                                            <%: Html.DropDownListFor(model => model.TieneApartadoPostalFacturacion, new SelectList(
+                                                    new[]{
+                                                            new{Value="false", Text="No"}, 
+                                                            new{Value="true", Text="Sí"},
+                                                            },
+                                                            "Value",
+                                                            "Text",
+                                                            Model), new { @class = "textbox5" })%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="editor-label noborder td20">
+                                            <label class="editor-label required" id="lblApartadoPostal">Nº apartado de correos</label>
+                                        </td>
+                                        <td class="editor-field noborder td80">
+                                            <%: Html.TextBoxFor(model=>model.ApatadoDeCorreosFacturacion) %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody id="DirEnvioFacturas">
+                                    <tr>
+                                        <td class="editor-label noborder td20">
+                                            Domicilio
+                                        </td>
+                                        <td class="editor-field noborder td80">
+                                            <label for="TipoDeViaFacturacion" class="display-label required">Tipo Vía</label>  <%: Html.DropDownListFor(model => model.TipoDeViaFacturacion, (SelectList)ViewData["TiposDeVia"], "--Seleccione un valor--", new { @class = "textbox15" })%>
+                                            <%:Html.ValidationMessageFor(model => model.TipoDeViaFacturacion, true)%>
+                                            <label for="DomicilioFacturacion" class="display-label required" >Nombre</label>  <%: Html.TextBoxFor(model => model.DomicilioFacturacion, new { @class = "textbox30" })%>
+                                            <%:Html.ValidationMessageFor(model => model.DomicilioFacturacion, true)%>
+                                            <label for="NumeroFacturacion" class="display-label required">Nº</label>  <%: Html.TextBoxFor(model => model.NumeroFacturacion, new { @class = "textbox5" })%>
+                                            <%:Html.ValidationMessageFor(model => model.NumeroFacturacion, true)%>
+                                            <label for="PisoFacturacion" class="display-label">Piso</label> <%: Html.TextBoxFor(model => model.PisoFacturacion, new { @class = "textbox15" })%>
+                                            <%:Html.ValidationMessageFor(model => model.PisoFacturacion, true)%>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tr class="border-bottom">
+                                    <td class="editor-label required noborder td20">
+                                        <label for="CPFacturacion" class="display-label">CP</label>
+                                    </td>
+                                    <td class="editor-field noborder td80">
+                                        <%: Html.TextBoxFor(model => model.CPFacturacion, new { @class = "textbox10" })%>
+                                        <%:Html.ValidationMessageFor(model => model.CPFacturacion, true)%>
+                                        <label for="Municipio" class="display-label required">Municipio</label>
+                                        <%: Html.DropDownListFor(model => model.MunicipioFacturacion, (SelectList)ViewData["Municipios"], "--Seleccione un valor--", null)%>
+                                        <%:Html.ValidationMessageFor(model => model.MunicipioFacturacion, true)%>
+                                        <%: Html.HiddenFor(model=>model.IDMunicipioQSFacturacion) %> <!-- se usa para almacenar el código del municipio y utilizarlo en el cálculo de la ruta en caso de que se modifique el código postal !-->
+                                        <label for="IDProvinciaQS" class="display-label required">Provincia</label>
+                                        <%: Html.DropDownListFor(model => model.IDProvinciaQSFacturacion, (SelectList)ViewData["Provincias"], "--Seleccione un valor--", null)%>
+                                        <%:Html.ValidationMessageFor(model => model.IDProvinciaQSFacturacion, true)%>
+                                        <label for="IDPaisQS" class="display-label required">País</label>
+                                        <%: Html.DropDownListFor(model => model.IDPaisQSFacturacion, (SelectList)ViewData["Paises"], "--Seleccione un valor--", new { @class = "textbox10" })%>
+                                        <%:Html.ValidationMessageFor(model => model.IDPaisQSFacturacion, true)%>
+                                    </td>
+                                </tr>
+                                
+                            </table>
                         </td>
                     </tr>
                     <tr>
@@ -743,11 +1031,16 @@
                     </tr>
                     <tr id="IBAN">
                         <td id="lblIBAN" class="editor-label noborder td20">
-                            <%: Html.LabelFor(model => model.IBAN)%>
+                            IBAN
                         </td>
                         <td class="editor-field noborder td80">
-                            <%: Html.TextBoxFor(model => model.IBAN, new { @class = "textbox40" })%>
-                            <%: Html.ValidationMessageFor(model => model.IBAN, true)%>
+                            <%: Html.TextBoxFor(model => model.IBANSIGLAS, new { @Size = "2", @Maxlength="2", @Value="ES", })%>
+                            <%: Html.TextBoxFor(model => model.IBANCODE, new { @size = "2", @maxlength="2" })%>
+                            <%: Html.TextBoxFor(model => model.IBANENTIDAD, new { @size = "4", @maxlength="4" })%>
+                            <%: Html.TextBoxFor(model => model.IBANSUCURSAL, new { @size = "4", @maxlength="4" })%>
+                            <%: Html.TextBoxFor(model => model.IBANDC, new { @size = "2", @maxlength="2" })%>
+                            <%: Html.TextBoxFor(model => model.IBANCCC, new { @size = "10", @maxlength="10" })%>
+                            <%: Html.ValidationMessageFor(model => model.IBANSIGLAS, true)%>
                         </td>
                     </tr>
                     <tr id="Vencimientos">
@@ -774,7 +1067,7 @@
                             <%: Html.LabelFor(model => model.LimitePropuesto)%>
                         </td>
                         <td class="editor-field noborder td80">
-                            <%: Html.TextBoxFor(model => model.LimitePropuesto, new { @class = "textbox10" })%>
+                            <%: Html.TextBoxFor(model => model.LimitePropuesto, new { @class = "textbox10" })%> €
                             <%: Html.ValidationMessageFor(model => model.LimitePropuesto, true)%>
                         </td>
                     </tr>
@@ -1003,6 +1296,14 @@
                 $(this).closest('form').submit();
             });
 
+            //Reemplazamos todo lo que no sean ni números ni letras en los campos que contengan NIF o CIF en su id
+            $("input[id*='NIF']").blur(function () {
+                $(this).val($(this).val().replace(/\W/g, ''));
+            });
+            $("input[id*='CIF']").blur(function () {
+                $(this).val($(this).val().replace(/\W/g, ''));
+            });
+
             //Reemplaza las comas por espacios cuando los campos cuyo id comienza por 'arr' pierden el foco. Es para evitar que al convertirse 
             //en el post en una cadena separada por comas luego se pueda hacer un split correctamente.
             $("input[id^='arr']").blur(function () {
@@ -1023,6 +1324,9 @@
                 $(this).val($(this).val().replace(/\D/g, ''));
             });
             $("#LimitePropuesto").blur(function () {
+                $(this).val($(this).val().replace(/\D/g, ''));
+            });
+            $("#ImportePortesPorEnvio").blur(function () {
                 $(this).val($(this).val().replace(/\D/g, ''));
             });
 
@@ -1056,10 +1360,14 @@
 
             mostrarAgentes();
             mostrarPanelExposicion();
+            asignarTipoDocumento();
             mostrarPanelMails();
+            mostrarPanelPersonaAutorizada();
             mostrarEmpresasVinculadas();
+            mostrarDireccionesDeEnvio();
             mostrarSocios();
-            mostrarFichaLogistica();
+            mostrarCAE()
+            mostrarImportePortesPorEnvio();
             mostrarFichaExposicion();
             noAdmiteFacturacionElectronica();
             mostrarVtosFijos();
@@ -1080,6 +1388,18 @@
 
             $('#EsDeExposicion').change(function () {
                 mostrarFichaExposicion();
+            });
+
+            $('#EsClienteParticular').change(function () {
+                asignarDatosPrevencion();
+            });
+
+            $('#RecogeEnNuestrasInstalaciones').change(function () {
+                asignarDatosPrevencion();
+            });
+
+            $('input[name=TipoDocumento]:radio').change(function () {
+                asignarTipoDocumento();
             });
 
             $('#CP').change(function () {
@@ -1110,12 +1430,33 @@
                 calcularTarifa();
             });
 
+            $('#TienePersonasAutorizadasRetMat').change(function () {
+                mostrarPanelPersonaAutorizada();
+            });
+
             $('#TieneSocios').change(function () {
                 mostrarSocios();
             });
 
+            $("input[id^='arrCPDirEnv']").change(function () {
+
+                cargarDatosCPDirEnv($(this));
+            });
+
+            $('#TieneDireccionesDeEnvio').change(function () {
+                mostrarDireccionesDeEnvio();
+            });
+
             $('#NoAdmiteFacturacionElectronica').click(function () {
                 noAdmiteFacturacionElectronica();
+            });
+
+            $('#TieneApartadoPostalFacturacion').change(function () {
+                mostrarDirEnvioFacturas();
+            });
+
+            $('#CPFacturacion').change(function () {
+                cargarDatosCPFacturacion();
             });
 
             $("#FormaDePago").change(function () {
@@ -1133,8 +1474,16 @@
                 IBANObligatorioSN();
             });
 
+            $('#addPersona').click(function () {
+                añadirPersona();
+            });
+
             $('#addSocio').click(function () {
                 añadirSocio();
+            });
+
+            $('#addDirEnv').click(function () {
+                añadirDirEnvio();
             });
 
             $('#addClienteHab').click(function () {
@@ -1157,10 +1506,6 @@
                 añadirBanco();
             });
 
-            $('#TieneFichaLogistica').change(function () {
-                mostrarFichaLogistica();
-            });
-
             $('#CAEFirmada').change(function () {
                 mostrarCAE();
             });
@@ -1169,6 +1514,9 @@
                 mostrarInstrumentosDePesaje();
             });
 
+            $('#CobroDePortesPorEnvio').change(function (){
+                mostrarImportePortesPorEnvio();
+            });
 
         });
     </script>

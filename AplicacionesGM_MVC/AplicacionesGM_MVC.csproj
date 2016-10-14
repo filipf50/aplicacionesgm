@@ -75,8 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Clientes\ClientesAreaRegistration.cs" />
+    <Compile Include="Areas\Clientes\Controllers\AseguradorasController.cs" />
     <Compile Include="Areas\Clientes\Controllers\ClientesController.cs" />
-    <Compile Include="Areas\Clientes\Controllers\CausasController.cs" />
     <Compile Include="Areas\Clientes\Controllers\RequerimientosDeCalidadController.cs" />
     <Compile Include="Areas\Clientes\Controllers\IntrumentosDePesajeController.cs" />
     <Compile Include="Areas\Clientes\Controllers\TiposDeVehiculoController.cs" />
@@ -135,10 +135,9 @@
     <Content Include="Areas\Clientes\Scripts\funcionesClientes.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Areas\Clientes\Views\Causas\Create.aspx" />
-    <Content Include="Areas\Clientes\Views\Causas\Delete.aspx" />
-    <Content Include="Areas\Clientes\Views\Causas\Edit.aspx" />
-    <Content Include="Areas\Clientes\Views\Causas\Index.aspx" />
+    <Content Include="Areas\Clientes\Views\Aseguradoras\Create.aspx" />
+    <Content Include="Areas\Clientes\Views\Aseguradoras\Edit.aspx" />
+    <Content Include="Areas\Clientes\Views\Aseguradoras\Index.aspx" />
     <Content Include="Areas\Clientes\Views\Clientes\Create.aspx" />
     <Content Include="Areas\Clientes\Views\Clientes\Delete.aspx" />
     <Content Include="Areas\Clientes\Views\Clientes\Edit.aspx" />

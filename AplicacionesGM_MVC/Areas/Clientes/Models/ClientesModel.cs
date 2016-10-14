@@ -72,8 +72,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += "," + (objCliente.Telefono2 ?? 0).ToString();
                 strValores += "," + (objCliente.Fax ?? 0).ToString();
                 strValores += ",'" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
-                strValores += ",'" + objCliente.IDActividadQS.ToString() + "'";
-                strValores += ",'" + objCliente.TipoCliente.ToString() + "'";
+                strValores += ",'" + (objCliente.IDActividadQS ?? "").ToString() + "'";
+                strValores += ",'" + (objCliente.TipoCliente ?? "").ToString() + "'";
                 strValores += "," + ((objCliente.Tarifa ?? 0).ToString());
                 strValores += "," + objCliente.FormaDePago.ToString();
                 strValores += "," + (objCliente.DtoPP ?? 0).ToString().Replace(",", ".");
@@ -82,7 +82,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += "," + (objCliente.DiaVtoFijo2 ?? 0).ToString();
                 strValores += "," + (objCliente.DiaVtoFijo3 ?? 0).ToString();
                 strValores += "," + (objCliente.Zona ?? 0).ToString();
-                strValores += ",'" + ((objCliente.Observaciones ?? "").ToString().Length > 60 ? (objCliente.Observaciones ?? "").ToString().Substring(1, 60) : (objCliente.Observaciones ?? "").ToString()) + "'";
+                strValores += ",'" + ((objCliente.Observaciones ?? "").ToString().Length > 60 ? (objCliente.Observaciones ?? "").ToString().Substring(0, 60) : (objCliente.Observaciones ?? "").ToString()) + "'";
                 strValores += "," + objCliente.FechaVolcadoQS.Value.ToString("yyyyMMdd");
                 //Valores por defecto
                 if (objCliente.aspnet_FormasDePago.RequiereDocSEPA)
@@ -95,7 +95,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 {
                     strValores += ",'A'"; //Riesgo Venta
                     strValores += ",'A'"; //Riesgo Pedido
-                    strValores += ",''"; //Bloqueado
+                    strValores += ",'N'"; //Bloqueado
                 }
                 strValores += ", 'I'"; //Tipo de Albarán
                 strValores += ", 'E'"; //Tipo de tarifa
@@ -103,7 +103,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ", 'ESP'"; //Divisa cambio
 
                 //Cuenta contable
-                if (objCliente.IDActividadQS.ToString().Trim() == "EG")
+                if ((objCliente.IDActividadQS??"").ToString().Trim() == "EG")
                 {
                     strValores += ", 43300" + objCliente.QSID.ToString();
                 }
@@ -166,8 +166,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ", CLTFX=" + (objCliente.Fax ?? 0).ToString();
                 strValores += ", CLMAIL='" + (objCliente.TieneMail ? (objCliente.MailDeContacto.ToString() ?? "") + "'" : "NO TIENE'");
                 strValores += ", CLURL='" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
-                strValores += ", CLACT='" + objCliente.IDActividadQS.ToString() + "'";
-                strValores += ", CLTCL='" + objCliente.TipoCliente.ToString() + "'";
+                strValores += ", CLACT='" + (objCliente.IDActividadQS??"").ToString() + "'";
+                strValores += ", CLTCL='" + (objCliente.TipoCliente??"").ToString() + "'";
                 strValores += ", CLTTR=" + ((objCliente.Tarifa ?? 0).ToString());
                 strValores += ", CLFPG=" + objCliente.FormaDePago.ToString();
                 strValores += ", CLDTPP=" + (objCliente.DtoPP ?? 0).ToString().Replace(",", ".");
@@ -176,7 +176,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ", CLDF2=" + (objCliente.DiaVtoFijo2 ?? 0).ToString();
                 strValores += ", CLDF3=" + (objCliente.DiaVtoFijo3 ?? 0).ToString();
                 strValores += ", CLZON=" + (objCliente.Zona ?? 0).ToString();
-                strValores += ", CLOBS='" + ((objCliente.Observaciones ?? "").ToString().Length > 60 ? (objCliente.Observaciones ?? "").ToString().Substring(1, 60) : (objCliente.Observaciones ?? "").ToString()) + "'";
+                strValores += ", CLOBS='" + ((objCliente.Observaciones ?? "").ToString().Length > 60 ? (objCliente.Observaciones ?? "").ToString().Substring(0, 60) : (objCliente.Observaciones ?? "").ToString()) + "'";
                 //Valores por defecto
                 if (objCliente.aspnet_FormasDePago.RequiereDocSEPA)
                 {
@@ -226,6 +226,24 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             string strQuery = "";
             string strValores = "";
             command.Connection = con;
+            //Añadir registro en CLNCM con el código de municipio
+            #region TABLA CLNCM
+            if (!existeMunicpioClienteQS(strEmpresa, objCliente))
+            {
+                strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNCM (CMCLN, CMMUN) VALUES (" + objCliente.QSID + "," + objCliente.IDMunicipioQS + ")";
+            }
+            else
+            {
+                strQuery = "UPDATE MRVF" + strEmpresa + "COM.CLNCM SET CMMUN=" + objCliente.IDMunicipioQS + " WHERE CMCLN=" + objCliente.QSID;
+            }
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            command.CommandText = strQuery;
+            command.ExecuteNonQuery();
+            #endregion
+
             //Añadimos el control para exceso de deuda
             #region TABLA CLNED
             if (!existeExcesoDeudaClienteQS(strEmpresa, objCliente))
@@ -246,108 +264,154 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
 
             //Gestionamos los fotomontajes
             #region TABLA CLNFT
-            if (objCliente.IDActividadQS == "CP" || objCliente.IDActividadQS == "C" || objCliente.IDActividadQS == "PR")
+            string strFotoMontaje = "N";
+            if ((objCliente.IDActividadQS ?? "") == "CP" || (objCliente.IDActividadQS ?? "") == "C" || (objCliente.IDActividadQS ?? "") == "PR")
             {
                 //Si la actividad del cliente es CONTRUCTOR-PROMOTOR, CONSTRUCTOR O PROMOTOR SE OBLIGA A QUE TENGA FOTOMONTAJE
-                if (!existeFotomontajeClienteQS(strEmpresa, objCliente))
-                {
-                    strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNFT (FTCCN,FTFOT) VALUES (" + objCliente.QSID.ToString() + ", 'S')";
-                }
-                else
-                {
-                    strQuery = "UPDATE MRVF" + strEmpresa + "COM.CLNFT SET FTFOT='S' WHERE FTCCN=" + objCliente.QSID.ToString();
-                }
-                if (con.State == System.Data.ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-                command.CommandText = strQuery;
-                command.ExecuteNonQuery();
+                strFotoMontaje = "S";
+            }
+            
+            if (!existeFotomontajeClienteQS(strEmpresa, objCliente))
+            {
+                strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNFT (FTCCN,FTFOT) VALUES (" + objCliente.QSID.ToString() + ", '" + strFotoMontaje + "')";
             }
             else
             {
-                //Si la actividad es diferente borramos el registro 
-                strQuery = "DELETE FROM MRVF" + strEmpresa + "COM.CLNFT WHERE FTCCN=" + objCliente.QSID.ToString();
-                if (con.State == System.Data.ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-                command.CommandText = strQuery;
-                command.ExecuteNonQuery();
+                strQuery = "UPDATE MRVF" + strEmpresa + "COM.CLNFT SET FTFOT='" + strFotoMontaje + "' WHERE FTCCN=" + objCliente.QSID.ToString();
             }
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            command.CommandText = strQuery;
+            command.ExecuteNonQuery();
             #endregion
 
             //Añadimos los datos de Observaciones con los datos de la FICHA LOGÍSTICA
             #region TABLA CLNOB
-            if (objCliente.TieneFichaLogistica)
+            string strPersonasAutorizadasRetMat = "";
+            if (!existeFichaLogisticaClienteQS(strEmpresa, objCliente))
             {
-                if (!existeFichaLogisticaClienteQS(strEmpresa, objCliente))
+                if (objCliente.aspnet_PersonasRetiradaMat.Count > 0)
                 {
-                    strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNOB (OBCDG,OBPM1,OBPM2,OBPM3,OBPM4,OBPM5,OBPM6,OBPM7,OBPO1,OBPO2,OBAM1,OBAM2,OBAM3,OBAM4,OBAM5,OBAM6,OBAM7,OBAE1,OBAE2,OBFB2) ";
-                    strValores = "VALUES (" + objCliente.QSID.ToString();
-                    strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", 'M.T.PROPIOS: " + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/AUT.RECOGIDAS:" + (objCliente.NIFPersonalAutorizadoRetiradaMaterial ?? "").ToString() + " " + (objCliente.NombrePersonalAutorizadoRetiradaMaterial ?? "").ToString() + "'";
-                    strValores += ", 'P.X ENVIO: " + (objCliente.CobroDePortesPorEnvio ?? "").ToString() + " / V. PARA SERVICIO: " + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'";
-                    strValores += ", 'MEDIOS DE DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + " / CAMION PLUMA: " + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "'";
-                    strValores += ", '" + (objCliente.PesaElMaterial ? "EL CLIENTE PESA EL MATERIAL CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "EL CLIENTE NO PESA EL MATERIAL") + "'";
-                    strValores += ", 'REQUERIMIENTOS DE PREVENCION: " + (objCliente.RequerimientosDePrevencion ?? "").ToString() + "'";
-                    strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", 'M.T.PROPIOS: " + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/AUT.RECOGIDAS:" + (objCliente.NIFPersonalAutorizadoRetiradaMaterial ?? "").ToString() + " " + (objCliente.NombrePersonalAutorizadoRetiradaMaterial ?? "").ToString() + "'";
-                    strValores += ", 'P.X ENVIO: " + (objCliente.CobroDePortesPorEnvio ?? "").ToString() + " / V. PARA SERVICIO: " + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'";
-                    strValores += ", 'MEDIOS DE DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + " / CAMION PLUMA: " + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "'";
-                    strValores += ", '" + (objCliente.PesaElMaterial ? "EL CLIENTE PESA EL MATERIAL CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "EL CLIENTE NO PESA EL MATERIAL") + "'";
-                    strValores += ", 'REQUERIMIENTOS DE PREVENCION: " + (objCliente.RequerimientosDePrevencion ?? "").ToString() + "'";
-                    strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", '" + (objCliente.DirEnvioFactura ?? "").ToString() + "')";
+                    //Si tenemos personas autorizadas para retirada de material las añadimos en los campos OBPM6 Y OBPM7
+                    strPersonasAutorizadasRetMat = ", 'AUT.RECOGIDAS:";
+                    foreach (var persona in objCliente.aspnet_PersonasRetiradaMat)
+                    {
+                        strPersonasAutorizadasRetMat += persona.NIF.ToString() + " " + persona.Nombre.ToString() + "', '";
+                    }
+                    if (objCliente.aspnet_PersonasRetiradaMat.Count == 1)
+                    {
+                        strPersonasAutorizadasRetMat += "'"; //Si sólo hay una persona autorizada, cerramos la comilla para que el campo OBPM7 quede vacío
+                    }
+                    else
+                    {
+                        strPersonasAutorizadasRetMat = strValores.Substring(0, strValores.Length - 3); //Si hay 2 quitamos ", '" de la cadena
+                    }
                 }
                 else
                 {
-                    strQuery = "UPDATE MRVF" + strEmpresa + "COM.CLNOB SET ";
-                    strValores = "OBPM1='HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", OBPM2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", OBPM3='M.T.PROPIOS: " + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/AUT.RECOGIDAS:" + (objCliente.NIFPersonalAutorizadoRetiradaMaterial ?? "").ToString() + " " + (objCliente.NombrePersonalAutorizadoRetiradaMaterial ?? "").ToString() + "'";
-                    strValores += ", OBPM4='P.X ENVIO: " + (objCliente.CobroDePortesPorEnvio ?? "").ToString() + " / V. PARA SERVICIO: " + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'";
-                    strValores += ", OBPM5='MEDIOS DE DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + " / CAMION PLUMA: " + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "'";
-                    strValores += ", OBPM6='" + (objCliente.PesaElMaterial ? "EL CLIENTE PESA EL MATERIAL CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "EL CLIENTE NO PESA EL MATERIAL") + "'";
-                    strValores += ", OBPM7='REQUERIMIENTOS DE PREVENCION: " + (objCliente.RequerimientosDePrevencion ?? "").ToString() + "'";
-                    strValores += ", OBPO1='HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", OBPO2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", OBAM1='HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", OBAM2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", OBAM3='M.T.PROPIOS: " + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/AUT.RECOGIDAS:" + (objCliente.NIFPersonalAutorizadoRetiradaMaterial ?? "").ToString() + " " + (objCliente.NombrePersonalAutorizadoRetiradaMaterial ?? "").ToString() + "'";
-                    strValores += ", OBAM4='P.X ENVIO: " + (objCliente.CobroDePortesPorEnvio ?? "").ToString() + " / V. PARA SERVICIO: " + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'";
-                    strValores += ", OBAM5='MEDIOS DE DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + " / CAMION PLUMA: " + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "'";
-                    strValores += ", OBAM6='" + (objCliente.PesaElMaterial ? "EL CLIENTE PESA EL MATERIAL CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "EL CLIENTE NO PESA EL MATERIAL") + "'";
-                    strValores += ", OBAM7='REQUERIMIENTOS DE PREVENCION: " + (objCliente.RequerimientosDePrevencion ?? "").ToString() + "'";
-                    strValores += ", OBAE1='HORARIO: " + objCliente.Horario.ToString() + "'";
-                    strValores += ", OBAE2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'";
-                    strValores += ", OBFB2='" + (objCliente.DirEnvioFactura ?? "").ToString() + "' ";
-                    strValores += "WHERE OBCDG=" + objCliente.QSID.ToString();
+                    //Si no tenemos personas autorizadas para retirada de material, dejamos los campos OBPM6 Y OBPM7 vacíos.
+                    strPersonasAutorizadasRetMat = ", '',''";
                 }
-                strQuery += strValores.ToUpper();
-                if (con.State == System.Data.ConnectionState.Closed)
+
+                strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNOB (OBCDG,OBPM1,OBPM2,OBPM3,OBPM4,OBPM5,OBPM6,OBPM7,OBPO1,OBPO2,OBPO3,OBAM1,OBAM2,OBAM3,OBAM4,OBAM5,OBAM6,OBAM7,OBAE1,OBAE2,OBAE3,OBFB1,OBFB2,OBFB3) ";
+                strValores = "VALUES (" + objCliente.QSID.ToString();
+                strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'"; //OBPM1
+                strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBPM2
+                strValores += ", 'M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? objCliente.ImportePortesPorEnvio.ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'"; //OBPM3
+                strValores += ", 'M.DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "NO PESA EL MATERIAL") + "'"; //OBPM4
+                strValores += ", 'OBLIG. CERT. CALIDAD:" + ((objCliente.RequerimientosDeCalidad ??"").Contains('2') ? "SI" : "NO") + "/PRL: " + (objCliente.RequerimientosDePrevencion ?? "").ToString().Substring(0, ((objCliente.RequerimientosDePrevencion ??"").Length>30 ? 30 :(objCliente.RequerimientosDePrevencion ??"").Length)) + "'";//OBPM5
+                strValores += strPersonasAutorizadasRetMat; //OBPM6 y OBPM7
+                strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'"; //OBPO1
+                strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBPO2
+                strValores += ", 'CONTACTO DESCARGA:" + ((objCliente.PersonaDeDescarga ?? "").Length>40 ? (objCliente.PersonaDeDescarga ?? "").ToString().Substring(0,40):(objCliente.PersonaDeDescarga ?? "").ToString()) + "'"; //OBPO3
+                strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'"; //OBAM1
+                strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBAM2
+                strValores += ", 'M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? objCliente.ImportePortesPorEnvio.ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'"; //OBAM3
+                strValores += ", 'M.DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "NO PESA EL MATERIAL") + "'"; //OBAM4
+                strValores += ", 'OBLIG. CERT. CALIDAD:" + (objCliente.RequerimientosDeCalidad.Contains('2') ? "SI" : "NO") + "/PRL: " + (objCliente.RequerimientosDePrevencion ?? "").ToString().Substring(0, ((objCliente.RequerimientosDePrevencion ?? "").Length > 30 ? 30 : (objCliente.RequerimientosDePrevencion ?? "").Length)) + "'";//OBAM5
+                strValores += strPersonasAutorizadasRetMat; //OBAM6 y //OBAM7
+                strValores += ", 'HORARIO: " + objCliente.Horario.ToString() + "'"; //OBAE1
+                strValores += ", 'HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBAE2
+                strValores += ", 'CONTACTO DESCARGA:" + ((objCliente.PersonaDeDescarga ?? "").Length > 40 ? (objCliente.PersonaDeDescarga ?? "").ToString().Substring(0, 40) : (objCliente.PersonaDeDescarga ?? "").ToString()) + "'"; //OBPO3
+                if (objCliente.NoAdmiteFacturacionElectronica)
                 {
-                    con.Open();
+                    LocalizacionesModel objLocalizaciones = new LocalizacionesModel();
+                    strValores += ", 'ENVIAR FACTURAS A LA SIGUIENTE DIRECCIÓN:'";
+                    strValores += ", '" + objCliente.TipoDeViaFacturacion.ToString() + ". " + objCliente.DomicilioFacturacion.ToString() + " Nº " + objCliente.NumeroFacturacion.ToString() + " Piso " + objCliente.PisoFacturacion.ToString() + "'";
+                    strValores += ", '" + objCliente.CPFacturacion.ToString() + "-" + objCliente.MunicipioFacturacion.ToString() + "- " + objLocalizaciones.getNombreProvincia((int)objCliente.IDProvinciaQSFacturacion) + " " + objLocalizaciones.getNombrePais((int)objCliente.IDPaisQSFacturacion) + "')";
                 }
-                command.CommandText = strQuery;
-                command.ExecuteNonQuery();
+                else
+                {
+                    strValores += ", '','','')";
+                }   
             }
             else
             {
-                //Si no tenemos ficha logística borramos los datos que puedan existir
-                strQuery = "DELETE FROM MRVF" + strEmpresa + "COM.CLNOB WHERE OBCDG=" + objCliente.QSID.ToString();
-                if (con.State == System.Data.ConnectionState.Closed)
+                if (objCliente.aspnet_PersonasRetiradaMat.Count > 0)
                 {
-                    con.Open();
+                    //Si tenemos personas autorizadas para retirada de material las añadimos en los campos OBPM6 Y OBPM7
+                    strPersonasAutorizadasRetMat = ", OBPM6='AUT.RECOGIDAS:";
+                    foreach (var persona in objCliente.aspnet_PersonasRetiradaMat)
+                    {
+                        strPersonasAutorizadasRetMat += persona.NIF.ToString() + " " + persona.Nombre.ToString() + "', OBPM7='";
+                    }
+                    if (objCliente.aspnet_PersonasRetiradaMat.Count == 1)
+                    {
+                        strPersonasAutorizadasRetMat += "'"; //Si sólo hay una persona autorizada, cerramos la comilla para que el campo OBPM7 quede vacío
+                    }
+                    else
+                    {
+                        strPersonasAutorizadasRetMat = strValores.Substring(0, strValores.Length - 8); //Si hay 2 quitamos ", '" de la cadena
+                    }
                 }
-                command.CommandText = strQuery;
-                command.ExecuteNonQuery();
+                else
+                {
+                    //Si no tenemos personas autorizadas para retirada de material, dejamos los campos OBPM6 Y OBPM7 vacíos.
+                    strPersonasAutorizadasRetMat = ", OBPM6='',OBPM7=''";
+                }
+                
+                strQuery = "UPDATE MRVF" + strEmpresa + "COM.CLNOB SET ";
+                strValores = "OBPM1='HORARIO: " + objCliente.Horario.ToString() + "'"; //OBPM1
+                strValores += ", OBPM2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBPM2
+                strValores += ", OBPM3='M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? objCliente.ImportePortesPorEnvio.ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'"; //OBPM3
+                strValores += ", OBPM4='M.DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "NO PESA EL MATERIAL") + "'"; //OBPM4
+                strValores += ", OBPM5='OBLIG. CERT. CALIDAD:" + (objCliente.RequerimientosDeCalidad.Contains('2') ? "SI" : "NO") + "/PRL: " + (objCliente.RequerimientosDePrevencion ?? "").ToString().Substring(0, ((objCliente.RequerimientosDePrevencion ?? "").Length > 30 ? 30 : (objCliente.RequerimientosDePrevencion ?? "").Length)) + "'";//OBPM5
+                strValores += strPersonasAutorizadasRetMat; //OBPM6 y OBPM7
+                strValores += ", OBPO1='HORARIO: " + objCliente.Horario.ToString() + "'"; //OBPO1
+                strValores += ", OBPO2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBPO2
+                strValores += ", OBPO3='CONTACTO DESCARGA: " +((objCliente.PersonaDeDescarga ?? "").Length > 40 ? (objCliente.PersonaDeDescarga ?? "").ToString().Substring(0, 40) : (objCliente.PersonaDeDescarga ?? "").ToString()) + "'"; //OBPO3
+                strValores += ", OBAM1='HORARIO: " + objCliente.Horario.ToString() + "'"; //OBAM1
+                strValores += ", OBAM2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBAM2
+                strValores += ", OBAM3='M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? objCliente.ImportePortesPorEnvio.ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString() + "'"; //OBAM3
+                strValores += ", OBAM4='M.DESCARGA: " + objCliente.aspnet_MediosDeDescarga.Nombre + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "NO PESA EL MATERIAL") + "'"; //OBAM4
+                strValores += ", OBAM5='OBLIG. CERT. CALIDAD:" + (objCliente.RequerimientosDeCalidad.Contains('2') ? "SI" : "NO") + "/PRL: " + (objCliente.RequerimientosDePrevencion ?? "").ToString().Substring(0, ((objCliente.RequerimientosDePrevencion ?? "").Length > 30 ? 30 : (objCliente.RequerimientosDePrevencion ?? "").Length)) + "'";//OBAM5
+                strValores += strPersonasAutorizadasRetMat.Replace("OBPM6","OBAM6").Replace("OBPM7","OBAM7"); //OBAM6 y //OBAM7
+                strValores += ", OBAE1='HORARIO: " + objCliente.Horario.ToString() + "'"; //OBAE1
+                strValores += ", OBAE2='HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString() + "'"; //OBAE2
+                strValores += ", OBAE3='CONTACTO DESCARGA:" + ((objCliente.PersonaDeDescarga ?? "").Length > 40 ? (objCliente.PersonaDeDescarga ?? "").ToString().Substring(0, 40) : (objCliente.PersonaDeDescarga ?? "").ToString()) + "'";  //OBAE3
+                if (objCliente.NoAdmiteFacturacionElectronica)
+                {
+                    LocalizacionesModel objLocalizaciones = new LocalizacionesModel();
+                    strValores += ", OBFB1='ENVIAR FACTURAS A LA SIGUIENTE DIRECCIÓN:'";
+                    strValores += ", OBFB2='" + objCliente.TipoDeViaFacturacion.ToString() + ". " + objCliente.DomicilioFacturacion.ToString() + " Nº " + objCliente.NumeroFacturacion.ToString() + " Piso " + objCliente.PisoFacturacion.ToString();
+                    strValores += ", OBFB3='" + objCliente.CPFacturacion.ToString() + "(" + objCliente.MunicipioFacturacion.ToString() + ") " + objLocalizaciones.getNombreProvincia((int)objCliente.IDProvinciaQSFacturacion) + " " + objLocalizaciones.getNombrePais((int)objCliente.IDPaisQSFacturacion);
+                }
+                else
+                {
+                    strValores += ", OBFB1='', OBFB2='', OBFB3=''";
+                }
+                    
+                strValores += " WHERE OBCDG=" + objCliente.QSID.ToString();
             }
+            strQuery += strValores.ToUpper();
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            command.CommandText = strQuery;
+            command.ExecuteNonQuery();
             #endregion
 
             //Datos factura electrónica
@@ -397,20 +461,20 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             }
             #endregion
 
-            //Grabamos el IBAM si corresponde
+            //Grabamos el IBAN si corresponde
             #region TABLA CLNIB
-            if ((objCliente.IBAN ?? "").ToString() != "")
+            if ((objCliente.IBANENTIDAD ?? "").ToString() != "")
             {
                 if (!existeIBANClienteQS(strEmpresa, objCliente))
                 {
                     strQuery = "INSERT INTO MRVF" + strEmpresa + "COM.CLNIB (IBCDG, IBIBAN) ";
                     strValores = "VALUES ( " + objCliente.QSID.ToString();
-                    strValores += ", '" + objCliente.IBAN.ToString() + "')";
+                    strValores += ", '" + objCliente.IBANSIGLAS.ToString() + objCliente.IBANCODE.ToString() + objCliente.IBANENTIDAD.ToString() + objCliente.IBANSUCURSAL.ToString() + objCliente.IBANDC.ToString()+objCliente.IBANCCC.ToString()+ "')";
                 }
                 else
                 {
                     strQuery = "UPDATE MRVF" + strEmpresa + "COM.CLNIB SET ";
-                    strValores = "IBIBAN ='" + objCliente.IBAN.ToString() + "' ";
+                    strValores = "IBIBAN ='" + objCliente.IBANSIGLAS.ToString() + objCliente.IBANCODE.ToString() + objCliente.IBANENTIDAD.ToString() + objCliente.IBANSUCURSAL.ToString() + objCliente.IBANDC.ToString() + objCliente.IBANCCC.ToString() + "' ";
                     strValores += "WHERE IBCDG=" + objCliente.QSID.ToString();
                 }
                 strQuery += strValores;
@@ -458,11 +522,11 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ",'" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
                 strValores += ",'ESP'";
                 strValores += "," + (strEmpresa == "003" || strEmpresa == "033" ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa == "044" ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString()));
-                strValores += ",'" + objCliente.FrecuenciaVisita.ToString() + "'";
-                strValores += ",'" + objCliente.DiasVisita.ToString() + "'";
-                strValores += ",'" + objCliente.FormaContacto.ToString() + "'";
-                strValores += "," + objCliente.ConsumoPotencial.ToString().Replace(",", ".");
-                strValores += "," + objCliente.PrevisionAnual.ToString().Replace(",", ".");
+                strValores += ",'" + (objCliente.FrecuenciaVisita ?? "").ToString() + "'";
+                strValores += ",'" + (objCliente.DiasVisita ??"").ToString() + "'";
+                strValores += ",'" + (objCliente.FormaContacto??"").ToString() + "'";
+                strValores += "," + (objCliente.ConsumoPotencial??0).ToString().Replace(",", ".");
+                strValores += "," + (objCliente.PrevisionAnual??0).ToString().Replace(",", ".");
 
                 //Pasamos todo a mayúsculas excepto el mail
                 strValores = strValores.ToUpper();
@@ -491,11 +555,11 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 strValores += ", PRURL='" + (objCliente.Contacto ?? "").ToString() + " - " + (objCliente.Web ?? "").ToString() + "'";
                 strValores += ", PRDIVC='ESP'";
                 strValores += ", PRAGT=" + (strEmpresa == "003" || strEmpresa == "033" ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa == "044" ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString()));
-                strValores += ", PRCMA1='" + objCliente.FrecuenciaVisita.ToString() + "'";
-                strValores += ", PRCMA2='" + objCliente.DiasVisita.ToString() + "'";
-                strValores += ", PRCMA3='" + objCliente.FormaContacto.ToString() + "'";
-                strValores += ", PRCMN1=" + objCliente.ConsumoPotencial.ToString().Replace(",", ".");
-                strValores += ", PRCMN2=" + objCliente.PrevisionAnual.ToString().Replace(",", ".");
+                strValores += ", PRCMA1='" + (objCliente.FrecuenciaVisita??"").ToString() + "'";
+                strValores += ", PRCMA2='" + (objCliente.DiasVisita??"").ToString() + "'";
+                strValores += ", PRCMA3='" + (objCliente.FormaContacto??"").ToString() + "'";
+                strValores += ", PRCMN1=" + (objCliente.ConsumoPotencial??0).ToString().Replace(",", ".");
+                strValores += ", PRCMN2=" + (objCliente.PrevisionAnual??0).ToString().Replace(",", ".");
 
                 //Pasamos todo a mayúsculas excepto el mail
                 strValores = strValores.ToUpper();
@@ -511,6 +575,75 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             command.CommandText = strQuery;
             command.ExecuteNonQuery();
             #endregion
+
+            //Grabamos los datos en Direcciones de envío
+            #region CLNDE
+            int i=1;
+            foreach (var direccion in objCliente.aspnet_ClientesDirEnv)
+            {
+                strQuery = "INSERT INTO MRVF" + strEmpresa + ".CLNDE (DECDG,DEDEN,DENBR,DESGL,DEVIA,DENMR,DEAMP,DEMNC,DECDP,DEPAI,DEPRV,DETF1,DETFX) ";
+                strValores = " VALUES (" + direccion.IDCliente.ToString();
+                strValores += "," + i;
+                strValores += ",'" + direccion.Nombre.ToString() + "'";
+                strValores += ",'" + direccion.TipoDeVía.ToString() + "'";
+                strValores += ",'" + direccion.Domicilio.ToString() + "'";
+                strValores += "," + direccion.Numero;
+                strValores += ",'" + direccion.Piso.ToString() + "'"; 
+                strValores += ",'" + direccion.Municipio.ToString() + "'"; 
+                strValores += "," + direccion.CP;
+                strValores += "," + direccion.IDProvinciaQS;
+                strValores += "," + direccion.IDPaisQS;
+                strValores += "," + direccion.Telefono;
+                strValores += "," + direccion.Fax + ")";
+                
+                strValores = strValores.ToUpper();
+
+                strQuery += strValores;
+                if (con.State == System.Data.ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                command.CommandText = strQuery;
+                command.ExecuteNonQuery();
+
+                //Grabamos también el registro en la tabla de direcciones de envío / municipios 
+                strQuery = "INSERT INTO MRVF" + strEmpresa + ".CLNDM (DMCLN,DMDEN,DMMUN) ";
+                strValores = " VALUES (" + direccion.IDCliente.ToString();
+                strValores += "," + i;
+                strValores += "," + direccion.IDCliente;
+                strValores += "," + direccion.IDMunicipioQS;
+
+                strValores = strValores.ToUpper();
+
+                strQuery += strValores;
+                if (con.State == System.Data.ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                command.CommandText = strQuery;
+                command.ExecuteNonQuery();
+                     
+            }
+            #endregion
+        }
+        private bool existeMunicpioClienteQS(string strEmpresa, aspnet_Clientes objCliente)
+        {
+            bool blnRes = false;
+            OdbcCommand command = new OdbcCommand();
+            command.Connection = con;
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            command.CommandText = "SELECT COUNT(*) FROM MRVF" + strEmpresa + "COM.CLNCM WHERE CMCLN=" + objCliente.QSID.ToString();
+            int rows = (int)command.ExecuteScalar();
+            if (rows > 0)
+            {
+                blnRes = true;
+            }
+            con.Close();
+            command.Dispose();
+            return blnRes;
         }
         private bool existeExcesoDeudaClienteQS(string strEmpresa, aspnet_Clientes objCliente)
         {
@@ -626,10 +759,10 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             command.Dispose();
             return blnRes;
         }
-        public bool existeClienteEnEmpresaQS(string strEmpresa, decimal? QSID)
+        public bool existeClienteEnEmpresaQS(string strEmpresa, decimal? QSID, ref string strAgente)
         {
             bool blnRes = true;
-            string strQuery = "SELECT CLCDG FROM MRVF" + strEmpresa + "COM.CLNCL WHERE CLCDG=" + QSID.ToString() + "";
+            string strQuery = "SELECT CLAG1 FROM MRVF" + strEmpresa + "COM.CLNCL WHERE CLCDG=" + QSID.ToString() + "";
             OdbcCommand command = new OdbcCommand();
             con.Open();
             command.Connection = con;
@@ -641,6 +774,10 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
             if (aux == null)
             {
                 blnRes = false;
+            }
+            else
+            {
+                strAgente = aux.ToString();
             }
             return blnRes;
         }
@@ -732,15 +869,24 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
         public bool crearClienteEnQS(string strEmpresa, aspnet_Clientes objCliente)
         {
             bool blnRes = true;
+            string agenteCliente = "";
+            string agenteEmpresa=((strEmpresa=="003" || strEmpresa=="033") ? (objCliente.IDAgenteQSMV ?? 0).ToString() : (strEmpresa == "004" || strEmpresa=="044") ? (objCliente.IDAgenteQSHMA ?? 0).ToString() : (objCliente.IDAgenteQSECA ?? 0).ToString());
             try
             {
-                if (!existeClienteEnEmpresaQS(strEmpresa, (decimal)objCliente.QSID))
+                if (!existeClienteEnEmpresaQS(strEmpresa, (decimal)objCliente.QSID, ref agenteCliente))
                 {
                     blnRes = insertarClienteEnEmpresaQS(strEmpresa, objCliente);
                 }
                 else
                 {
-                    blnRes = actualizarClienteEnEmpresaQS(strEmpresa, objCliente);
+                    if (agenteCliente == agenteEmpresa)
+                    {
+                        blnRes = actualizarClienteEnEmpresaQS(strEmpresa, objCliente);
+                    }
+                    else
+                    {
+                        blnRes = false;
+                    }
                 }
             }
             catch(Exception ex)
@@ -761,6 +907,12 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 //Borramos los datos del cliente
                 #region TABLA CLNCL
                 command.CommandText = "DELETE FROM MRVF" + strEmpresa + "COM.CLNCL WHERE CLCDG=" + QSID.ToString();
+                command.ExecuteNonQuery();
+                #endregion
+
+                //Borramos los datos de cliente / municipio
+                #region TABLA CLNCM
+                command.CommandText = "DELETE FROM MRVF" + strEmpresa + "COM.CLNCM WHERE CMCLN=" + QSID.ToString();
                 command.ExecuteNonQuery();
                 #endregion
 
@@ -799,6 +951,15 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 command.CommandText = "DELETE FROM MRVBQSF" + strEmpresa + ".BDGPR WHERE PRCDG=" + QSID.ToString();
                 command.ExecuteNonQuery();
                 #endregion
+
+                //Borramos los datos de las direcciones de envío y municipios de las mismas
+                #region TABLA CLNDE Y CLNDM
+                command.CommandText = "DELETE FROM MRVF" + strEmpresa + "COM.CLNDE WHERE DECDG=" + QSID.ToString();
+                command.ExecuteNonQuery();
+                command.CommandText = "DELETE FROM MRVF" + strEmpresa + "COM.CLNDM WHERE DMCLN=" + QSID.ToString();
+                command.ExecuteNonQuery();
+                #endregion
+
             }
             catch (Exception ex)
             {
@@ -986,14 +1147,16 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 #region DATOS INFORMES COMERCIALES
                 //Añadimos los datos correspondientes al informe comercial
                 #region INFORME COMERCIAL
-                //Cargamos la Actividad
-                INSAETableAdapter taAct = new INSAETableAdapter();
-                DSas400.INSAEDataTable dtAct = new DSas400.INSAEDataTable();
-                taAct.FillByID(dtAct, objCliente.IDActividadQS);
-                strInformeComercial += "ACTIVIDAD: " + dtAct.Rows[0]["AENBR"].ToString().Trim() + Environment.NewLine;
-                dtAct.Dispose();
-                taAct.Dispose();
-
+                if (objCliente.IDActividadQS != null)
+                {
+                    //Cargamos la Actividad
+                    INSAETableAdapter taAct = new INSAETableAdapter();
+                    DSas400.INSAEDataTable dtAct = new DSas400.INSAEDataTable();
+                    taAct.FillByID(dtAct, objCliente.IDActividadQS);
+                    strInformeComercial += "ACTIVIDAD: " + dtAct.Rows[0]["AENBR"].ToString().Trim() + Environment.NewLine;
+                    dtAct.Dispose();
+                    taAct.Dispose();
+                }
                 strInformeComercial += "ANTIGÜEDAD: " + objCliente.Antguedad + Environment.NewLine;
                 strInformeComercial += "CONSUMO POTENCIAL: " + objCliente.ConsumoPotencial + ", PREVISIÓN ANUAL: " + objCliente.PrevisionAnual + Environment.NewLine;
                 strInformeComercial += "CONSUME: " + objCliente.Consume + Environment.NewLine;
@@ -1119,7 +1282,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                     AGTAG003TableAdapter ta=new AGTAG003TableAdapter();
                     DSas400.AGTAG003DataTable dt = new DSas400.AGTAG003DataTable();
                     ta.FillByID(dt, (decimal)objCliente.IDAgenteQSMV);
-                    objNewInforme.PERSONA = dt.Rows[0]["AGNBR"].ToString().Substring(0, 50).Trim();
+                    objNewInforme.PERSONA = dt.Rows[0]["AGNBR"].ToString().Substring(0, (dt.Rows[0]["AGNBR"].ToString().Length > 50 ? 50 : dt.Rows[0]["AGNBR"].ToString().Length)).Trim();
                     ta.Dispose();
                     dt.Dispose();
                 }
@@ -1127,8 +1290,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 {
                     AGTAG004TableAdapter ta = new AGTAG004TableAdapter();
                     DSas400.AGTAG004DataTable dt = new DSas400.AGTAG004DataTable();
-                    ta.FillByID(dt, (decimal)objCliente.IDAgenteQSMV);
-                    objNewInforme.PERSONA = dt.Rows[0]["AGNBR"].ToString().Substring(1, 50).Trim();
+                    ta.FillByID(dt, (decimal)objCliente.IDAgenteQSHMA);
+                    objNewInforme.PERSONA = dt.Rows[0]["AGNBR"].ToString().Substring(0, (dt.Rows[0]["AGNBR"].ToString().Length > 50 ? 50 : dt.Rows[0]["AGNBR"].ToString().Length)).Trim();
                     ta.Dispose();
                     dt.Dispose();
                 }
@@ -1136,8 +1299,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 {
                     AGTAG006TableAdapter ta = new AGTAG006TableAdapter();
                     DSas400.AGTAG006DataTable dt = new DSas400.AGTAG006DataTable();
-                    ta.FillByID(dt, (decimal)objCliente.IDAgenteQSMV);
-                    objNewInforme.PERSONA = dt.Rows[0]["AGNBR"].ToString().Substring(1, 50);
+                    ta.FillByID(dt, (decimal)objCliente.IDAgenteQSECA);
+                    objNewInforme.PERSONA = dt.Rows[0]["AGNBR"].ToString().Substring(0, (dt.Rows[0]["AGNBR"].ToString().Length > 50 ? 50 : dt.Rows[0]["AGNBR"].ToString().Length)).Trim();
                     ta.Dispose();
                     dt.Dispose();
                 }
@@ -1146,11 +1309,11 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 objNewInforme.INMUEBLES = strAlquiler;
                 objNewInforme.PROPIETARIO = strPropietario;
 
-                if (objCliente.CompañiaSeguroVentas != null)
+                if (objCliente.IDAseguradora != null)
                 {
                     objNewInforme.ASEGURA_VENTAS = true;
                     objNewInforme.NO_ASEGURA_VENTAS = false;
-                    objNewInforme.ASEGURADORA = objCliente.CompañiaSeguroVentas;
+                    objNewInforme.ASEGURADORA = objCliente.aspnet_Aseguradoras.Nombre.ToString();
                 }
                 else
                 {
@@ -1196,7 +1359,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
         }
         #endregion
         #region BD PLANIFICACIONTRANSPORTES
-        public bool crearExcepcionesClienteEnBDPlanificacion(int intIDDelegacion, aspnet_Clientes objCliente)
+        public bool crearExcepcionesClienteEnBDPlanificacion(aspnet_Clientes objCliente)
         {
             bool blnRes = true;
             try
@@ -1213,7 +1376,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                     dbPlanificacion.ObjectStateManager.ChangeObjectState(excCli, System.Data.EntityState.Modified);
                 }
 
-                excCli.DELEGACION = intIDDelegacion;
+                excCli.DELEGACION = (int)objCliente.DelegacionID;
                 excCli.codigoQS = Convert.ToInt32(objCliente.QSID);
                 excCli.cliente = objCliente.Nombre;
                 excCli.horario = objCliente.Horario;

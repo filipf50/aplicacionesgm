@@ -94,6 +94,12 @@
                         Nº Cliente
                     </th>
                     <th>
+                        F. envío de datos
+                    </th>
+                    <th>
+                        F. Volcado a QS
+                    </th>
+                    <th>
                         Empresas
                     </th>
                     <th>
@@ -111,9 +117,6 @@
                     <th>
                         Consumo potencial
                     </th>
-                    <th>
-                        Límite asignado por empresa
-                    </th>
                     <th></th>
                 </tr>
                <% //Fin responsable de créditos
@@ -126,7 +129,13 @@
                         Válido
                     </th>
                     <th>
-                        F. toma de datos
+                        F. envío de datos
+                    </th>
+                    <th>
+                        Usuario de creación
+                    </th>
+                    <th>
+                        Delegación
                     </th>
                     <th>
                         Empresas
@@ -162,9 +171,6 @@
                 <tr>
                     <th>
                         Válido
-                    </th>
-                    <th>
-                        Delegación
                     </th>
                     <th>
                         Nº Cliente
@@ -298,9 +304,9 @@
                         <%: (item.Zona == null) ? "" : zonas.Where(p => p.Value == item.Zona.ToString()).First().Text%>
                     </td>
                     <td>
-                        <% if (item.NoAdmiteFacturacionElectronica == true)
+                        <% if (item.NoAdmiteFacturacionElectronica == true && item.EsDeExposicion == false)
                            {%>
-                            <%: item.DirEnvioFactura%>
+                            <%: item.TipoDeViaFacturacion + " " + item.DomicilioFacturacion + " Nº " + string.Format("{0:0.##}", item.NumeroFacturacion) + " " + item.PisoFacturacion + " " + item.CPFacturacion + "(" + item.MunicipioFacturacion + ") " + ((item.IDProvinciaQSFacturacion == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text) + " " + ((item.IDPaisQS == null) ? "" : paises.Where(p => p.Value == item.IDPaisQS.ToString()).First().Text) %>
                         <%}
                            else
                            { %>
@@ -331,7 +337,7 @@
                         <% }%>
                     </td>
                     <td>
-                        <%: Html.ActionLink("Modificar", "Edit", new { id = item.ID }, new { @class = "button button-index" })%> |
+                        <%: Html.ActionLink("Modificar", "Edit", new { id = item.ID }, new { @class = "button button-index" })%>
                         <%: Html.ActionLink("Borrar", "Delete", new { id = item.ID }, new { @class = "button button-index" })%>
                     </td>
                 </tr>
@@ -346,6 +352,12 @@
                     </td>
                     <td>
                         <%: item.QSID.ToString() %>
+                    </td>
+                    <td>
+                        <%: String.Format("{0:d}", item.FechaDeAlta)%>
+                    </td>
+                    <td>
+                        <%: String.Format("{0:d}", item.FechaVolcadoQS)%>
                     </td>
                     <td>
                         <% 
@@ -383,22 +395,6 @@
                         <%: item.ConsumoPotencial%>
                     </td>
                     <td>
-                        <table class="noborder">
-                        <%foreach (string key in empresas.Keys)
-                          {
-                              if (item.Empresas.Contains(key))
-                              { 
-                                string strInputName = "limite_" + item.QSID + "_" + key;%>
-                                <tr class="noborder">
-                                    <td class="noborder"><label><%: empresas[key].ToString() %></label></td>
-                                    <td class="noborder"><input type="text" class="textbox100" name="<%: strInputName %>" /></td>
-                                </tr>
-                           <% }
-                          }                            
-                        %>
-                        </table>
-                    </td>
-                    <td>
                         <%: Html.ActionLink("Consultar", "Edit", new { id = item.ID })%>
                     </td>
                 </tr>
@@ -406,15 +402,26 @@
                }
                else if (User.IsInRole("Clientes") || User.IsInRole("Administrador") || User.IsInRole("Gestor") )
                {
-                //Responsable de clientes Loli %>
+                   //Responsable de clientes Loli 
+                   string strClass = "";
+                   if (item.ExistePedidoEnFirme)
+                   {
+                       strClass = "editor-label";
+                   }%>
                  <tr>
                     <td>
                         <%: Html.CheckBox("arrGuardar", new { @value = item.ID })%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: String.Format("{0:d}", item.FechaDeAlta)%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
+                        <%:item.aspnet_Users.UserName.ToString() %>
+                    </td>
+                    <td class="<%: strClass %>">
+                        <%:item.aspnet_Delegaciones.Descripcion %>
+                    </td>
+                    <td class="<%: strClass %>">
                         <% 
                    Dictionary<string, string> empresas = (Dictionary<string, string>)ViewData["Empresas"];
                    string strEmpresas = "";
@@ -434,29 +441,31 @@
                    } %>
                         <%: strEmpresas%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.NIF%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Nombre%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% SelectList formasDePago = (SelectList)ViewData["FormasDePago"]; %>
                         <%: (item.FormaDePago == null) ? "" : formasDePago.Where(p => p.Value == item.FormaDePago.ToString()).First().Text%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.FormaDePagoSolicitada%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.RecargoFinanciero%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.DtoPP%>
                     </td>
-                    <td>
-                        <% if (item.NoAdmiteFacturacionElectronica == true)
+                    <td class="<%: strClass %>">
+                        <% if (item.NoAdmiteFacturacionElectronica == true && item.EsDeExposicion == false)
                            {%>
-                            <%: item.DirEnvioFactura%>
+                            <% SelectList provincias = (SelectList)ViewData["Provincias"]; 
+                               SelectList paises = (SelectList)ViewData["Paises"]; %>
+                            <%: item.TipoDeViaFacturacion + " " + item.DomicilioFacturacion + " Nº " + string.Format("{0:0.##}", item.NumeroFacturacion) + " " + item.PisoFacturacion + " " + item.CPFacturacion + "(" + item.MunicipioFacturacion + ") " + ((item.IDProvinciaQSFacturacion == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text) + " " + ((item.IDPaisQS == null) ? "" : paises.Where(p => p.Value == item.IDPaisQS.ToString()).First().Text) %>
                         <%}
                            else
                            { %>
@@ -476,9 +485,6 @@
                  <tr>
                     <td>
                         <%: Html.CheckBox("arrGuardar", new { @value = item.ID })%>
-                    </td>
-                    <td>
-                        <%: Html.DropDownList("Delegacion_" + item.QSID, (SelectList)ViewData["Delegaciones"], "--Seleccione un valor--")%>
                     </td>
                     <td>
                         <%: item.QSID %>
@@ -620,7 +626,8 @@
                     <td>
                         <% if (!item.CAEFirmada)
                            {%>
-                            <%: item.aspnet_Causas.Nombre%>
+                            <% SelectList causasNoFirma = (SelectList)ViewData["CausasDeNoFirma"]; %>
+                        <%:(item.IDCausaNoFirmaCAE == null) ? "" : causasNoFirma.Where(c => c.Value == item.IDCausaNoFirmaCAE.ToString()).First().Text%>
                         <%} %>
                     </td>
                     <td>

@@ -17,7 +17,7 @@
                     <%: Html.LabelFor(m => m.UserName) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(m => m.UserName) %>
+                    <%: Html.TextBoxFor(m => m.UserName, new { @class = "textbox100" })%>
                     <%: Html.ValidationMessageFor(m => m.UserName) %>
                 </div>
                 
@@ -25,7 +25,7 @@
                     <%: Html.LabelFor(m => m.Password) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.PasswordFor(m => m.Password) %>
+                    <%: Html.PasswordFor(m => m.Password, new { @class = "textbox100" })%>
                     <%: Html.ValidationMessageFor(m => m.Password) %>
                 </div>
                 

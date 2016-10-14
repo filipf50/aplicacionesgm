@@ -39,10 +39,5 @@
     <% } %>
 
     </table>
-
-    <p>
-        <%: Html.ActionLink("Crear nuevo tipo de vehículo", "Create") %>
-    </p>
-
 </asp:Content>
 

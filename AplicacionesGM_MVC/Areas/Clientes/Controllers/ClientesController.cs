@@ -52,65 +52,22 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                         {
                             decimal IDCliente = Convert.ToDecimal(strIDCliente.Trim());
                             aspnet_Clientes objCliente = db.aspnet_Clientes.FirstOrDefault(item => item.ID == IDCliente);
-                            if (User.IsInRole("Clientes"))
+                            if (User.IsInRole("Clientes") || User.IsInRole("Administrador"))
                             {//Responsable de clientes (Loli)
                              #region RESPONSABLE DE CLIENTES
-
-                                if (objCliente.FormaDePago == null)
-                                {
-                                    ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no puede volcarse a las bases de datos ya que no tiene forma de pago asignada.");
-                                }
-                                else
-                                {
-                                    //Obteneoms el código de cliente
-                                    objCliente.QSID = objCliModel.getIDCliente(objCliente.Empresas, objCliente.NIF, objCliente.EsDeExposicion);
-                                    if (objCliente.QSID != 0)
-                                    {
-                                        //Creamos el cliente en la BD de clientes
-                                        if (objCliModel.crearClienteEnBDClientes(objCliente))
-                                        {
-                                            //Creamos el cliente en QS
-                                            if (!crearClienteEnQS(objCliente))
-                                            {
-                                                //Borramos el cliente de QS por si se ha podido volcar en alguna de las empresas
-                                                borrarClienteQS(objCliente);
-                                                //Borramos el cliente de la BD de clientes
-                                                objCliModel.borrarClienteEnBDClientes(objCliente);
-                                                //Dejamos a null el ID para que no pase a Aperturados
-                                                objCliente.QSID = null;
-                                                ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no ha podido volcarse a la base de datos de clientes. Revise los datos y vuelva a intentarlo.");
-                                            }
-                                            else
-                                            {
-                                                //Si todo ha ido bien grabamos el usuario y la fecha de volcado a QS
-                                                objCliente.FechaVolcadoQS = System.DateTime.Now;
-                                                objCliente.UsuarioVolcadoQS = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            //Borramos el cliente de la BD de Clientes para liberar el código
-                                            objCliModel.borrarClienteEnBDClientes(objCliente);
-                                            objCliente.QSID = null;
-                                            ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no ha podido volcarse a la base de datos de QS. Revise los datos y vuelva a intentarlo.");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        objCliente.QSID = null;
-                                        ModelState.AddModelError("", "No se ha podido obtener código para el cliente " + objCliente.Nombre);
-                                    }
-                                }
-                                //Actualizamos el cliente de la BD de AplicacionesGM para que pase a Aperturados en caso de que todo haya ido bien.
-                                db.SaveChanges();
+                                volcarClienteABBDD(objCliente);
                              #endregion
                             }
                             else if (User.IsInRole("Créditos"))
                             {//Responsable de créditos
                              #region RESPONSABLE CRÉDITOS
                                 //Validamos que tengamos los datos necesarios del cliente
+                                
+                                /*
+                                Finalmente se ha decidido no utilizar esta opción
                                 bool blnError = false;
                                 string strMessageError = "";
+                                 
                                 foreach (string strEmpresa in objCliente.Empresas.Split(','))
                                 {
                                     if ((strEmpresa == "003" && formData["limite_" + objCliente.QSID.ToString() + "_003"] == "") || (strEmpresa == "004" && formData["limite_" + objCliente.QSID.ToString() + "_004"] == "") || (strEmpresa == "033" && formData["limite_" + objCliente.QSID.ToString() + "_033"] == "") || (strEmpresa == "044" && formData["limite_" + objCliente.QSID.ToString() + "_044"] == "") || (strEmpresa == "006" && formData["limite_" + objCliente.QSID.ToString() + "_006"] == ""))
@@ -165,9 +122,11 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                                     objCliente.LimiteAsignadoECA = null;
 
                                     ModelState.AddModelError("", strMessageError);
-                                }
+                                }*/
                                 
                                 //Actualizamos el cliente
+                                objCliente.UsuarioValidacionCreditos = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+                                objCliente.FechaValidacionCreditos = System.DateTime.Now;
                                 db.ObjectStateManager.ChangeObjectState(objCliente, EntityState.Modified);
                                 db.SaveChanges();                                
                              #endregion
@@ -177,7 +136,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                              #region RESPONSABLE LOGÍSTICA
                                 if (formData["Delegacion_" + objCliente.QSID.ToString()].ToString() != "")
                                 {
-                                    if (objCliModel.crearExcepcionesClienteEnBDPlanificacion(Convert.ToInt32(formData["Delegacion_" + objCliente.QSID]), objCliente))
+                                    if (objCliModel.crearExcepcionesClienteEnBDPlanificacion(objCliente))
                                     {
                                         objCliente.FechaValidacionLogistica = System.DateTime.Now;
                                         objCliente.UsuarioValidacionLogistica = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
@@ -191,7 +150,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                                 }
                                 else
                                 {
-                                    ModelState.AddModelError("", "Debe de indicar la delegación a la quiere asociar el cliente " + objCliente.Nombre);
+                                    ModelState.AddModelError("", "Debe de indicar la delegación a la que quiere asociar el cliente " + objCliente.Nombre);
                                 }
                              #endregion
                             }
@@ -366,8 +325,21 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 if (ModelState.IsValid)
                 {
                     guardarDatosCliente(modified, formData);
-                    
-                    return RedirectToAction("Index");
+
+                    if (modified.EsDeExposicion)
+                    {
+                        //Si es un cliente de Exposición lo volcamos directamente a la BD
+                        if (volcarClienteABBDD(modified))
+                        {
+                            //Si el volcado ha ido bien redireccionamos al Index
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    else
+                    {
+                        //Si no es un cliente de Exposición lo dejamos pendiente de validar por el responsable de clientes.
+                        return RedirectToAction("Index");
+                    }                    
                 }
 
                 cargaDatosCliente(modified);
@@ -539,15 +511,15 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             {
                 if (User.IsInRole("Créditos"))
                 {
-                    clientes = clientes.Where(c => c.QSID != null && c.LimiteAsignadoMV == null && c.LimiteAsignadoHMA ==null && c.LimiteAsignadoECA==null);
+                    clientes = clientes.Where(c => c.QSID != null && c.UsuarioValidacionCreditos == null);
                 }
                 else if (User.IsInRole("Logística"))
                 {
-                    clientes = clientes.Where(c => c.QSID != null && c.TieneFichaLogistica == true && c.UsuarioValidacionLogistica == null);
+                    clientes = clientes.Where(c => c.QSID != null && c.UsuarioValidacionLogistica == null);
                 }
                 else if (User.IsInRole("Prevención"))
                 {
-                    clientes = clientes.Where(c => c.QSID != null && c.TieneFichaLogistica == true && c.CAERevisada == false);
+                    clientes = clientes.Where(c => c.QSID != null && c.CAERevisada == false);
                 }
                 else
                 {
@@ -558,20 +530,21 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             {
                 if (User.IsInRole("Créditos"))
                 {
-                    clientes = clientes.Where(c => c.QSID != null && (c.LimiteAsignadoMV != null || c.LimiteAsignadoHMA != null || c.LimiteAsignadoECA != null));
+                    clientes = clientes.Where(c => c.QSID != null && c.UsuarioValidacionCreditos != null);
                 }
                 else if (User.IsInRole("Logística"))
                 {
-                    clientes = clientes.Where(c => c.QSID != null && c.TieneFichaLogistica==true && c.UsuarioValidacionLogistica != null);
+                    clientes = clientes.Where(c => c.QSID != null  && c.UsuarioValidacionLogistica != null);
                 }
                 else if (User.IsInRole("Prevención"))
                 {
-                    clientes = clientes.Where(c => c.QSID != null && c.TieneFichaLogistica == true && c.CAERevisada == true);
+                    clientes = clientes.Where(c => c.QSID != null && c.CAERevisada == true);
                 }
                 else
                 {
                     clientes = clientes.Where(c => c.QSID != null);
                 }
+                clientes = clientes.OrderByDescending(c => c.FechaVolcadoQS);
             }
 
             if (User.IsInRole("Comercial"))
@@ -811,7 +784,12 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             ViewData["Paises"] = new SelectList(getPaises(objLoc), "IDPais", "Pais");
             ViewData["Zonas"] = new SelectList(getZonas(), "IDZona", "Nombre");
             ViewData["FormasDePago"] = getFormasDePago(false);
-            
+            //Causas de no firma, datos de incoterms
+            Areas.Clientes.Models.DSas400TableAdapters.INSICTableAdapter ti = new Models.DSas400TableAdapters.INSICTableAdapter();
+            var datosC = (from ca in ti.GetData() select ca);
+            var list = new SelectList(datosC.AsEnumerable(), "ICCDG", "ICDES");
+            ViewData["CausasDeNoFirma"] = list;
+
             if (User.IsInRole("Logística"))
             {
                 ViewData["Delegaciones"] = new SelectList(dbPlanificacion.Maestro_Delegaciones.AsEnumerable(), "DELEGACION", "NOMBRE");
@@ -869,6 +847,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             var tiposDeVia = db.aspnet_TiposDeVia.Select(tc => new { tc.IDTipoVia, tc.Nombre });
             list = new SelectList(tiposDeVia.AsEnumerable().OrderBy(tc => tc.Nombre), "IDTipoVia", "Nombre");
             ViewData["TiposDeVia"] = list;
+            ViewData["TiposDeViaDE"] = tiposDeVia.AsEnumerable();//Utilizados para los combos de las direcciones de envío
             
             //Datos de tipos de clientes
             var tiposDeCliente = db.aspnet_TiposDeCliente.Select(tc => new { tc.ID, tc.Nombre, tc.OrdenDeVisualizacion });
@@ -878,9 +857,14 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             //Datos de Formas de Pago
             ViewData["FormasDePago"] = getFormasDePago(objCliente.EsDeExposicion);
 
+            //Datos de Aseguradoras
+            var aseguradoras = db.aspnet_Aseguradoras;
+            ViewData["Aseguradoras"]=new SelectList(aseguradoras.AsEnumerable().OrderBy(a=>a.Nombre),"ID","Nombre");
+
             //Datos de Municipios, Provincias y Paises
             IEnumerable<LocalizacionesModel> objLoc=getLocalizaciones(objCliente.CP);
 
+            ViewData["Localizaciones"] = getLocalizaciones();
             ViewData["Municipios"] = new SelectList(objLoc, "Municipio", "Municipio");
             ViewData["Provincias"] = new SelectList(getProvincias(objLoc), "IDProvincia", "Provincia");
             ViewData["Paises"] = new SelectList(getPaises(objLoc), "IDPais", "Pais");
@@ -894,10 +878,14 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             
             //Datos de formas de contacto, frecuencia de visita y diás de visita
             Areas.Clientes.Models.DSas400TableAdapters.BDGTNTableAdapter td = new Models.DSas400TableAdapters.BDGTNTableAdapter();
-            var datos = (from d in td.GetData() select d);
+            var datos = (from d in td.GetDataContactos() select d);
             list = new SelectList(datos.AsEnumerable(), "TNCDG", "TNNBR");
             ViewData["FormasDeContacto"] = list;
+            datos = (from d in td.GetDataDias() select d);
+            list = new SelectList(datos.AsEnumerable(), "TNCDG", "TNNBR");
             ViewData["DiasDeVisita"] = list;
+            datos = (from d in td.GetDataFrecuencias() select d);
+            list = new SelectList(datos.AsEnumerable(), "TNCDG", "TNNBR");
             ViewData["FrecuenciaDeVisita"] = list;
 
             //Datos de Medios de Descarga
@@ -915,9 +903,10 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             list = new SelectList(instrumentosDePesaje.AsEnumerable(), "ID", "Nombre");
             ViewData["InstrumentosDePesaje"] = list;
 
-            //Causas de no firma
-            var causasDeNoFirma = db.aspnet_Causas.Select(md => new { md.ID, md.Nombre });
-            list = new SelectList(causasDeNoFirma.AsEnumerable(), "ID", "Nombre");
+            //Causas de no firma, datos de incoterms
+            Areas.Clientes.Models.DSas400TableAdapters.INSICTableAdapter ti = new Models.DSas400TableAdapters.INSICTableAdapter();
+            var datosC = (from ca in ti.GetData() select ca);
+            list = new SelectList(datosC.AsEnumerable(), "ICCDG", "ICDES");
             ViewData["CausasDeNoFirma"] = list;
 
             if (objCliente.UsuarioDeAlta != null && objCliente.aspnet_Users==null)
@@ -986,7 +975,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 {
                     ModelState.AddModelError("CP", "Es obligatorio indicar el CP del domicilio del cliente.");
                 }
-                if ((modified.Municipio ?? "").ToString() == "")
+                if ((modified.Municipio ?? "").ToString() =="")
                 {
                     ModelState.AddModelError("Municipio", "Es obligatorio indicar el municipio del domicilio del cliente.");
                 }
@@ -1017,6 +1006,39 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                         ModelState.AddModelError("FormaDePagoSolicitada", "Es obligatorio indicar la forma de pago que se solicita.");
                     }
                 }
+
+                //Validamos la ficha logística
+                if ((modified.Horario ?? "") == "")
+                {
+                    ModelState.AddModelError("Horario", "Es obligatorio indicar el horario");
+                }
+                if ((modified.IDMedioDeDescarga ?? 0) == 0)
+                {
+                    ModelState.AddModelError("IDMedioDeDescarga", "Es obligatorio indicar un medio de descarga");
+                }
+
+                if ((modified.IDTipoVehiculoServicio ?? 0) == 0)
+                {
+                    ModelState.AddModelError("IDTipoVehiculoServicio", "Es obligatorio indicar un tipo de vehículo apto para el servicio");
+                }
+                if (modified.PesaElMaterial)
+                {
+                    if ((modified.IDInstrumentoDePesaje ?? 0) == 0)
+                    {
+                        ModelState.AddModelError("IDInstrumentoDePesaje", "Es obligatorio indicar un instrumento de pesaje");
+                    }
+                }
+                if (modified.CobroDePortesPorEnvio && ((modified.ImportePortesPorEnvio ?? 0) == 0))
+                {
+                    ModelState.AddModelError("ImportePortesPorEnvio", "Si  ha indicado que se cobran portes por envío, es obligatorio indicar el importe que se cobrarán al cliente por envío");
+                }
+                if (!modified.CAEFirmada)
+                {
+                    if ((modified.IDCausaNoFirmaCAE ?? "") == "")
+                    {
+                        ModelState.AddModelError("IDCausaNoFirmaCAE", "Es obligatorio indicar la causa por la que el cliente no firma la coordinación de actividades");
+                    }
+                }
                 
                 if (modified.EsDeExposicion == false)
                 {
@@ -1029,10 +1051,6 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                     {
                         ModelState.AddModelError("FormaContacto", "Es obligatorio indicar la forma de contacto con el cliente.");
                     }
-                    if ((modified.NombrePersonalAutorizadoRetiradaMaterial ?? "") != "" && (modified.NIFPersonalAutorizadoRetiradaMaterial ?? "") == "")
-                    {
-                        ModelState.AddModelError("NIFPersonalAutorizadoRetiradaMaterial", "Si indica una persona autorizada para la retirada de material, es obligatario indicar su NIF");
-                    }
                     if (modified.TipoCliente == "")
                     {
                         ModelState.AddModelError("TipoCliente", "Es obligatorio indicar un tipo de cliente");
@@ -1044,10 +1062,6 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                     if (modified.FrecuenciaVisita == "")
                     {
                         ModelState.AddModelError("FrecuenciaVisita", "Es obligatorio indicar la frecuencia de visita para el cliente");
-                    }
-                    if ((modified.Antguedad ?? "") == "")
-                    {
-                        ModelState.AddModelError("Antguedad", "Es obligatorio indicar la antigüedad del cliente");
                     }
                     if ((modified.ConsumoPotencial ?? 0) == 0)
                     {
@@ -1075,92 +1089,57 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                     {
                         ModelState.AddModelError("arrMateriales", "Debe indicar al menos un producto de consumo");
                     }
-                    if (modified.TieneFichaLogistica)
+                    
+                    string[] CIFSCli = formData["arrCliHabCIF1"].Split(',');
+                    string[] NombresCli = formData["arrCliHabNombre1"].Split(',');
+
+                    if (NombresCli.Length == 0)
                     {
-                        //Validamos la ficha logística
-                        if ((modified.Horario ?? "") == "")
+                        ModelState.AddModelError("arrCliHabNombre1", "Es obligatorio indicar, al menos, un nombre del cliente habitual");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < NombresCli.Length; i++)
                         {
-                            ModelState.AddModelError("Horario", "Es obligatorio indicar el horario");
-                        }
-                        if ((modified.IDMedioDeDescarga ?? 0) == 0)
-                        {
-                            ModelState.AddModelError("IDMedioDeDescarga", "Es obligatorio indicar un medio de descarga");
-                        }
-
-                        if ((modified.IDTipoVehiculoServicio ?? 0) == 0)
-                        {
-                            ModelState.AddModelError("IDTipoVehiculoServicio", "Es obligatorio indicar un tipo de vehículo apto para el servicio");
-                        }
-                        if (modified.PesaElMaterial)
-                        {
-                            if ((modified.IDInstrumentoDePesaje ?? 0) == 0)
+                            if (CIFSCli[i] != "" && !Validations.IsValidNIF(CIFSCli[i],false,"", ref ErrMessage))
                             {
-                                ModelState.AddModelError("IDInstrumentoDePesaje", "Es obligatorio indicar un instrumento de pesaje");
+                                ModelState.AddModelError("arrCliHabCIF" + (i + 1).ToString(), ErrMessage);
+                            }
+                            if (NombresCli[i] == "")
+                            {
+                                ModelState.AddModelError("arrCliHabNombre" + (i + 1).ToString(), "Es obligatorio indicar el nombre del cliente habitual.");
+                            }
+                            else if (NombresCli[i].ToString().Length > 50)
+                            {
+                                ModelState.AddModelError("arrCliHabNombre" + (i + 1).ToString(), "Longitud máxima 50 caracteres");
                             }
                         }
-                        if ((modified.CobroDePortesPorEnvio ?? "") == "")
+                    }
+
+                    string[] CIFSProv = formData["arrProvHabCIF1"].Split(',');
+                    string[] NombresProv = formData["arrProvHabNombre1"].Split(',');
+
+                    if (NombresProv.Length == 0)
+                    {
+                        ModelState.AddModelError("arrProvHabNombre1", "Es obligatori indicar, al menos, un nombre del proveedor habitual");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < NombresProv.Length; i++)
                         {
-                            ModelState.AddModelError("CobroDePortesPorEnvio", "Es obligatorio indicar los portes que se le cobrarán al cliente por envío");
-                        }
-                        if (!modified.CAEFirmada)
-                        {
-                            if ((modified.IDCausaNoFirmaCAE ?? 0) == 0)
+                            if (CIFSProv[i] != "" && !Validations.IsValidNIF(CIFSProv[i],false,"", ref ErrMessage))
                             {
-                                ModelState.AddModelError("IDCausaNoFirmaCAE", "Es obligatorio indicar la causa por la que el cliente no firma la coordinación de actividades");
+                                ModelState.AddModelError("arrProvHabCIF" + (i + 1).ToString(), ErrMessage);
                             }
-                        }
-
-                        string[] CIFSCli = formData["arrCliHabCIF1"].Split(',');
-                        string[] NombresCli = formData["arrCliHabNombre1"].Split(',');
-
-                        if (NombresCli.Length == 0)
-                        {
-                            ModelState.AddModelError("arrCliHabNombre1", "Es obligatori indicar, al menos, un nombre del cliente habitual");
-                        }
-                        else
-                        {
-                            for (int i = 0; i < NombresCli.Length; i++)
+                            if (NombresProv[i] == "")
                             {
-                                if (CIFSCli[i] != "" && !Validations.IsValidNIF(CIFSCli[i], ref ErrMessage))
-                                {
-                                    ModelState.AddModelError("arrCliHabCIF" + (i + 1).ToString(), ErrMessage);
-                                }
-                                if (NombresCli[i] == "")
-                                {
-                                    ModelState.AddModelError("arrCliHabNombre" + (i + 1).ToString(), "Es obligatorio indicar el nombre del cliente habitual.");
-                                }
-                                else if (NombresCli[i].ToString().Length > 50)
-                                {
-                                    ModelState.AddModelError("arrCliHabNombre" + (i + 1).ToString(), "Longitud máxima 50 caracteres");
-                                }
+                                ModelState.AddModelError("arrProvHabNombre" + (i + 1).ToString(), "Es obligatorio indicar el nombre del proveedor habitual.");
                             }
-                        }
-
-                        string[] CIFSProv = formData["arrProvHabCIF1"].Split(',');
-                        string[] NombresProv = formData["arrProvHabNombre1"].Split(',');
-
-                        if (NombresProv.Length == 0)
-                        {
-                            ModelState.AddModelError("arrProvHabNombre1", "Es obligatori indicar, al menos, un nombre del proveedor habitual");
-                        }
-                        else
-                        {
-                            for (int i = 0; i < NombresProv.Length; i++)
+                            else if (NombresProv[i].ToString().Length > 50)
                             {
-                                if (CIFSProv[i] != "" && !Validations.IsValidNIF(CIFSProv[i], ref ErrMessage))
-                                {
-                                    ModelState.AddModelError("arrProvHabCIF" + (i + 1).ToString(), ErrMessage);
-                                }
-                                if (NombresProv[i] == "")
-                                {
-                                    ModelState.AddModelError("arrProvHabNombre" + (i + 1).ToString(), "Es obligatorio indicar el nombre del proveedor habitual.");
-                                }
-                                else if (NombresProv[i].ToString().Length > 50)
-                                {
-                                    ModelState.AddModelError("arrProvHabNombre" + (i + 1).ToString(), "Longitud máxima 50 caracteres");
-                                }
-
+                                ModelState.AddModelError("arrProvHabNombre" + (i + 1).ToString(), "Longitud máxima 50 caracteres");
                             }
+
                         }
                     }
                 } //Fin cliente de Expo
@@ -1168,7 +1147,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             } // Fin Borrador
 
             //Validamos longitudes máximas campos válidos            
-            if (!Validations.IsValidNIF(modified.NIF, ref ErrMessage))
+            if (!Validations.IsValidNIF(modified.NIF,true,(modified.TipoDocumento==1?"NIF o NIE":"CIF"), ref ErrMessage))
             {
                 ModelState.AddModelError("NIF", ErrMessage);
             }
@@ -1214,19 +1193,40 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                     ModelState.AddModelError("FormaDePagoSolicitada", "Longitud máxima 30 caracteres");
                 }
             }
+            if (modified.NoAdmiteFacturacionElectronica == false)
+            {
+                if (!Validations.isValidEMail(modified.MailDeFacturacion, ref ErrMessage))
+                {
+                    ModelState.AddModelError("MailDeFacturacion", ErrMessage);
+                }
+                else if (modified.MailDeFacturacion.Length > 50)
+                {
+                    ModelState.AddModelError("MailDeFacturacion", "Longitud máxima 50 caracteres");
+                }
+            }
+            //Validamos la ficha logística en las longitudes he quitado los textos fijos que se añaden en los campos.
+            if ((modified.Horario ?? "").Length > 50)
+            {
+                ModelState.AddModelError("Horario", "Longitud máxima 50 caracteres");
+            }
+
+            if ((modified.HorarioDeVerano ?? "").Length > 40)
+            {
+                ModelState.AddModelError("HorarioDeVerano", "Longitud máxima 40 caracteres");
+            }
+
+            if ((modified.PersonaDeDescarga ?? "").Length > 40)
+            {
+                ModelState.AddModelError("PersonaDeDescarga", "Longitud máxima 40 caracteres");
+            }
+
+            if ((modified.RequerimientosDePrevencion ?? "").Length > 30)
+            {
+                ModelState.AddModelError("RequerimientosDePrevencion", "Longitud máxima 30 caracteres");
+            }
+
             if (modified.EsDeExposicion == false)
             {
-                if ((modified.NombrePersonalAutorizadoRetiradaMaterial ?? "").ToString().Length > 20)
-                {
-                    ModelState.AddModelError("NombrePersonalAutorizadoRetiradaMaterial", "Longitud máxima 20 caracteres");
-                }
-                if ((modified.NIFPersonalAutorizadoRetiradaMaterial ?? "") != "")
-                {
-                    if (!Validations.IsValidNIF(modified.NIFPersonalAutorizadoRetiradaMaterial, ref ErrMessage))
-                    {
-                        ModelState.AddModelError("NIFPersonalAutorizadoRetiradaMaterial", ErrMessage);
-                    }
-                }
                 if ((modified.Gerente ?? "").Length > 50)
                 {
                     ModelState.AddModelError("Gerente", "Longitud máxima 50 caracteres");
@@ -1235,43 +1235,24 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 {
                     ModelState.AddModelError("GrupoEmpresarial", "Longitud máxima 50 caracteres");
                 }
-                if ((modified.CompañiaSeguroVentas ?? "").ToString() != "" && (modified.CompañiaSeguroVentas ?? "").ToString().Length > 50)
+                if (modified.NoAdmiteFacturacionElectronica == true)
                 {
-                    ModelState.AddModelError("CompañiaSeguroVentas", "Longitud máxima 50 caracteres");
-                }
-                if (modified.NoAdmiteFacturacionElectronica == false)
-                {
-                    if (!Validations.isValidEMail(modified.MailDeFacturacion, ref ErrMessage))
+                    if ((modified.CPFacturacion ?? 0) == 0)
                     {
-                        ModelState.AddModelError("MailDeFacturacion", ErrMessage);
-                    }
-                    else if (modified.MailDeFacturacion.Length > 50)
-                    {
-                        ModelState.AddModelError("MailDeFacturacion", "Longitud máxima 50 caracteres");
-                    }
-                }
-                else
-                {
-                    if ((modified.DirEnvioFactura ?? "").ToString() == "")
-                    {
-                        ModelState.AddModelError("DirEnvioFactura", "Si el cliente no admite facturación electrónica es obligatoria indicar una dirección postal.");
-                    }
-                    else if (modified.DirEnvioFactura.Length > 60)
-                    {
-                        ModelState.AddModelError("DirEnvioFactura", "Longitud máxima 60 caracteres");
+                        ModelState.AddModelError("DomicilioFacturacion", "Si el cliente no admite facturación electrónica es obligatorio indicar una dirección postal.");
                     }
                 }
                 if (formData["EsSepa"] == "1")
                 {
                     //Validamos el IBAN si corresponde
-                    if ((modified.IBAN ?? "").ToString() == "" && modified.ExistePedidoEnFirme == true)
+                    if ((modified.IBANCODE ?? "").ToString() == "" && modified.ExistePedidoEnFirme == true)
                     {
-                        ModelState.AddModelError("IBAN", "El IBAN es obligatorio para la forma de pago seleccionada.");
+                        ModelState.AddModelError("IBANCODE", "El IBAN es obligatorio para la forma de pago seleccionada.");
                     }
 
-                    if ((modified.IBAN ?? "").ToString() != "" && !Validations.isValidIBAN(modified.IBAN, ref ErrMessage))
+                    if ((modified.IBANCODE ?? "").ToString() != "" && !Validations.isValidIBAN(modified.IBANSIGLAS.ToString() + modified.IBANCODE.ToString() + modified.IBANENTIDAD.ToString() + modified.IBANSUCURSAL.ToString() + modified.IBANDC.ToString() + modified.IBANCCC.ToString(), ref ErrMessage))
                     {
-                        ModelState.AddModelError("IBAN", ErrMessage);
+                        ModelState.AddModelError("IBANCODE", ErrMessage);
                     }
 
                     //Validamos los datos de Crédito
@@ -1306,37 +1287,34 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                         }
                     }
                 }
-                if (modified.TieneFichaLogistica)
-                {
-                    //Validamos la ficha logística en las longitudes he quitado los textos fijos que se añaden en los campos.
-                    if (modified.Horario.Length > 50)
-                    {
-                        ModelState.AddModelError("Horario", "Longitud máxima 50 caracteres");
-                    }
-
-                    if ((modified.HorarioDeVerano ?? "").Length > 40)
-                    {
-                        ModelState.AddModelError("HorarioDeVerano", "Longitud máxima 40 caracteres");
-                    }
-
-                    if ((modified.PersonaDeDescarga ?? "").Length > 40)
-                    {
-                        ModelState.AddModelError("PersonaDeDescarga", "Longitud máxima 40 caracteres");
-                    }
-                    if (modified.CobroDePortesPorEnvio.Length > 40)
-                    {
-                        ModelState.AddModelError("CobroDePortesPorEnvio", "Longitud máxima 40 caracteres");
-                    }
-
-                    if ((modified.RequerimientosDePrevencion ?? "").Length > 30)
-                    {
-                        ModelState.AddModelError("RequerimientosDePrevencion", "Longitud máxima 30 caracteres");
-                    }
-                }
             }
             //Fin control campos Clientes
 
             //Tablas vinculadas
+            if (modified.TienePersonasAutorizadasRetMat)
+            {
+                string[] NIFPersonasAutRetMat = formData["arrNIFPersona1"].Split(',');
+                string[] NombrePersonasAutRetMat = formData["arrNombrePersona1"].Split(',');
+
+                if (NIFPersonasAutRetMat.Length == 0)
+                {
+                    ModelState.AddModelError("TienePersonalAutorizado", "Es necesario indicar, al menos, los datos de una persona autorizada");
+                }
+                else
+                {
+                    for (int i=0; i< NIFPersonasAutRetMat.Length;i++)
+                    {
+                        if (NombrePersonasAutRetMat[i] == "")
+                        {
+                            ModelState.AddModelError("arrNombrePersona" + (i + 1).ToString(), "Es obligatorio indicar el nombre de la persona");
+                        }
+                        if (NIFPersonasAutRetMat[i]!="" && !Validations.IsValidNIF(NIFPersonasAutRetMat[i],true,"NIF o NIE",ref ErrMessage)){
+                            ModelState.AddModelError("arrNIFPersona" + (i+1).ToString(), ErrMessage);
+                        }
+                    }
+                }
+            }
+
             if (modified.TieneSocios==1)
             {
                 string[] socios= formData["arrNombreSocio1"].Split(',');
@@ -1355,7 +1333,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                         {
                             ModelState.AddModelError("arrNombreSocio"+ (i+1).ToString(), "Es obligatorio indicar el nombre del socio");
                         }
-                        if (CIFS[i]!="" && !Validations.IsValidNIF(CIFS[i], ref ErrMessage))
+                        if (CIFS[i]!="" && !Validations.IsValidNIF(CIFS[i],false,"", ref ErrMessage))
                         {
                             ModelState.AddModelError("arrCIFSocio" + (i + 1).ToString(), ErrMessage);
                         }
@@ -1373,13 +1351,13 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
 
                 if (empresas.Length == 0)
                 {
-                    ModelState.AddModelError("arrEmpVinc1", "Es necesario indicar, al menos, el CIF y el nombre de una de las empresas vinculadas.");
+                    ModelState.AddModelError("arrEmpVinc1", "Es necesario indicar, al menos, el nombre de una de las empresas vinculadas.");
                 }
                 else
                 {
                     for (int i = 0; i < empresas.Length; i++)
                     {
-                        if (CIFS[i] != "" && !Validations.IsValidNIF(CIFS[i], ref ErrMessage))
+                        if (CIFS[i] != "" && !Validations.IsValidNIF(CIFS[i],true,"CIF", ref ErrMessage))
                         {
                             ModelState.AddModelError("arrCIFVinc" + (i + 1).ToString(), ErrMessage);
                         }
@@ -1459,6 +1437,31 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 db.aspnet_SociedadesVinculadas.AddObject(empresa);
             }
 
+            //Borramos las personas autorizadas para retirada de material
+            var personasAut = (from pa in db.aspnet_PersonasRetiradaMat where pa.IDCliente == modified.ID select pa);
+            foreach (var persona in personasAut)
+            {
+                db.aspnet_PersonasRetiradaMat.DeleteObject(persona);
+            }
+            
+            //Añadimos las personas autorizadas para retirada de material
+            foreach (var persona in modified.aspnet_PersonasRetiradaMat)
+            {
+                db.aspnet_PersonasRetiradaMat.AddObject(persona);
+            }
+
+            //Borramos las direcciones de envío vinculadas con el cliente
+            var direccionesEnvio = (from de in db.aspnet_ClientesDirEnv where de.IDCliente == modified.ID select de);
+            foreach (var direccion in direccionesEnvio)
+            {
+                db.aspnet_ClientesDirEnv.DeleteObject(direccion);
+            }
+
+            //Añádimos las direcciones de envío en caso de que existan
+            foreach (var direccion in modified.aspnet_ClientesDirEnv)
+            {
+                db.aspnet_ClientesDirEnv.AddObject(direccion);
+            }
 
             //Borramos los bancos con los que trabaja el cliente
             var bancosCliActuales=(from b in db.aspnet_BancosCliente where b.IDCliente==modified.ID select b);
@@ -1534,34 +1537,30 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             //Asignamos los valores de los checkbox
             modified.Empresas = formData["arrEmpresas"].ToString().Replace("false,", "").Replace(",false", "").Replace("false", "");
             modified.Consume = formData["arrMateriales"].ToString().Replace("false,", "").Replace(",false", "").Replace("false", "");
-            if (modified.TieneFichaLogistica)
+            modified.RequerimientosDeCalidad = formData["arrRequerimientosCal"].ToString().Replace("false,", "").Replace(",false", "").Replace("false", "");
+            if (modified.CAEFirmada == false && (modified.FicheroCAE ?? "") != "")
             {
-                modified.RequerimientosDeCalidad = formData["arrRequerimientosCal"].ToString().Replace("false,", "").Replace(",false", "").Replace("false", "");
-                if (modified.CAEFirmada == false && (modified.FicheroCAE ?? "") != "")
-                {
-                    //Si se ha marcado como que no está firmada la CAE y antés sí que teníamos fichero, nos guardamos el nombre fichero en FicheroCAEanterior por si tuviesemos que recuperarlo
-                    modified.FicheroCAEanterior = modified.FicheroCAE;
-                    modified.FicheroCAE = null;
-                }
-                foreach (string strFileName in Request.Files)
-                {
-                    HttpPostedFileBase file = Request.Files[strFileName];
-                    if (file.ContentLength > 0)
-                    {
-                        string filePath = Path.Combine(HttpContext.Server.MapPath("../../CAEFirmadas"), Path.GetFileName(file.FileName));
-                        int i = 1;
-                        while(System.IO.File.Exists(filePath)){
-                            filePath = Path.Combine(HttpContext.Server.MapPath("../../CAEFirmadas"), Path.GetFileNameWithoutExtension(file.FileName) +i.ToString()+Path.GetExtension(file.FileName));
-                            i++;
-                        }
-                        modified.FicheroCAE = filePath;
-                        modified.IDCausaNoFirmaCAE = null; //Vaciamos este campo por si tenía algún valor anterior.
-                        file.SaveAs(filePath);
-                    }
-                }
-                
+                //Si se ha marcado como que no está firmada la CAE y antés sí que teníamos fichero, nos guardamos el nombre fichero en FicheroCAEanterior por si tuviesemos que recuperarlo
+                modified.FicheroCAEanterior = modified.FicheroCAE;
+                modified.FicheroCAE = null;
             }
-
+            foreach (string strFileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[strFileName];
+                if (file.ContentLength > 0)
+                {
+                    string filePath = Path.Combine(HttpContext.Server.MapPath("../../../CAEFirmadas"), Path.GetFileName(file.FileName));
+                    int i = 1;
+                    while(System.IO.File.Exists(filePath)){
+                        filePath = Path.Combine(HttpContext.Server.MapPath("../../../CAEFirmadas"), Path.GetFileNameWithoutExtension(file.FileName) +i.ToString()+Path.GetExtension(file.FileName));
+                        i++;
+                    }
+                    modified.FicheroCAE = filePath.Replace(HttpContext.Server.MapPath("../../.."), ""); //En la BD quitamos esta parte de la ruta para que puede cargarse el fichero posteriormente en el navegador.
+                    modified.IDCausaNoFirmaCAE = null; //Vaciamos este campo por si tenía algún valor anterior.
+                    file.SaveAs(filePath);
+                }
+            }
+            
             //Asignamos valores de las tablas vinculadas
             if (modified.TieneSocios == 1)
             {
@@ -1618,6 +1617,67 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 modified.aspnet_SociedadesVinculadas.Clear();
             }
 
+            //Personas autorizadas para recoger
+            modified.aspnet_PersonasRetiradaMat.Clear();
+            if (modified.TienePersonasAutorizadasRetMat)
+            {
+                string[] dnisAutorizados = formData["arrNIFPersona1"].Split(',');
+                string[] nombresAutorizados = formData["arrNombrePersona1"].Split(',');
+
+                if (dnisAutorizados.Length > 0)
+                {
+                    for (int i = 0; i < dnisAutorizados.Length; i++)
+                    {
+                        aspnet_PersonasRetiradaMat personaAut = new aspnet_PersonasRetiradaMat();
+                        personaAut.IDCliente = modified.ID;
+                        personaAut.NIF = dnisAutorizados[i].ToString();
+                        personaAut.Nombre = nombresAutorizados[i].ToString();
+
+                        modified.aspnet_PersonasRetiradaMat.Add(personaAut);
+                    }
+                }
+            }
+            
+            //Direcciones de envío
+            modified.aspnet_ClientesDirEnv.Clear();
+            if (modified.TieneDireccionesDeEnvio)
+            {
+                string[] nombres = formData["arrNombreDirEnv1"].Split(',');
+                string[] tiposDeVia = formData["arrTipoDeViaDirEnv1"].Split(',');
+                string[] domicilios = formData["arrDomicilioDirEnv1"].Split(',');
+                string[] numeros = formData["arrNumeroDirEnv1"].Split(',');
+                string[] pisos = formData["arrPisoDirEnv1"].Split(',');
+                string[] cps = formData["arrCPDirEnv1"].Split(',');
+                string[] idmunicipiosQS = formData["arrIDMunicipioQSDirEnv1"].Split(',');
+                string[] municipios = formData["arrMunicipioDirEnv1"].Split(',');
+                string[] idsmunicipios = formData["arrIDMunicipioQSDirEnv1"].Split(',');
+                string[] provincias = formData["arrIDProvinciaQSDirEnv1"].Split(',');
+                string[] paises = formData["arrIDPaisQSDirEnv1"].Split(',');
+
+                if (tiposDeVia.Length > 0)
+                {
+                    for (int i = 0; i < tiposDeVia.Length; i++)
+                    {
+                        aspnet_ClientesDirEnv dirEnv = new aspnet_ClientesDirEnv();
+
+                        dirEnv.IDCliente = modified.ID;
+                        dirEnv.Nombre = nombres[i].ToString();  
+                        dirEnv.TipoDeVía = tiposDeVia[i].ToString();
+                        dirEnv.Domicilio = domicilios[i].ToString();
+                        dirEnv.Numero = Convert.ToDecimal(numeros[i]);
+                        dirEnv.Piso = pisos[i].ToString();
+                        dirEnv.CP = Convert.ToInt32(cps[i].ToString());
+                        dirEnv.IDMunicipioQS = Convert.ToInt32(idmunicipiosQS[i].ToString());
+                        dirEnv.Municipio = municipios[i].ToString();
+                        dirEnv.IDProvinciaQS = Convert.ToDecimal(provincias[i]);
+                        dirEnv.IDPaisQS = Convert.ToDecimal(paises[i]);
+
+                        modified.aspnet_ClientesDirEnv.Add(dirEnv);
+                    }
+                }
+            }
+            
+            //Bancos con los que trabaja
             modified.aspnet_BancosCliente.Clear();
             if (formData["EsSepa"] == "1")
             {
@@ -1640,7 +1700,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             }
 
             modified.aspnet_ClientesHabituales.Clear();
-            
+            modified.aspnet_ProveedoresHabituales.Clear();
             if (modified.EsDeExposicion == false)
             {
                 string[] CIFSCli = formData["arrCliHabCIF1"].Split(',');
@@ -1660,7 +1720,6 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                     }
                 }
 
-                modified.aspnet_ProveedoresHabituales.Clear();
                 string[] CIFSProv = formData["arrProvHabCIF1"].Split(',');
                 string[] NombresProv = formData["arrProvHabNombre1"].Split(',');
 
@@ -1694,6 +1753,12 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                         blnRes = false;
                         break;
                     }
+                }
+
+                //Si todo ha ido bien, lo creamos también en la empresa 001 - GENERICA
+                if (!objCliModel.crearClienteEnQS("001", objCliente))
+                {
+                    blnRes = false;
                 }
             }
             catch (Exception ex)
@@ -1756,7 +1821,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
             return arrLoc;
         }
 
-        private System.Collections.IEnumerable getProvincias(IEnumerable<LocalizacionesModel> objLoc){
+        private System.Collections.IEnumerable getProvincias(IEnumerable<LocalizacionesModel> objLoc)
+        {
             return (from provincias in objLoc select new { IDProvincia = provincias.IDProvincia, Provincia = provincias.Provincia }).Distinct().OrderBy (prov=>prov.Provincia);
         }
 
@@ -1819,6 +1885,84 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Controllers
                 strRes = "90";
             }
             return Json(strRes, JsonRequestBehavior.AllowGet);
+        }
+
+        private bool volcarClienteABBDD(aspnet_Clientes objCliente){
+            bool blnRes = true;
+            ClientesModel objCliModel = new ClientesModel();
+            if (objCliente.FormaDePago == null)
+            {
+                ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no puede volcarse a las bases de datos ya que no tiene forma de pago asignada.");
+            }
+            else
+            {
+                //Obteneoms el código de cliente
+                objCliente.QSID = objCliModel.getIDCliente(objCliente.Empresas, objCliente.NIF, objCliente.EsDeExposicion);
+                if (objCliente.QSID != 0)
+                {
+                    //Creamos el cliente en la BD de clientes
+                    if (objCliModel.crearClienteEnBDClientes(objCliente))
+                    {
+                        //Creamos el cliente en QS
+                        //Asignamos fecha y usuario de volcado a QS
+                        objCliente.FechaVolcadoQS = System.DateTime.Now;
+                        objCliente.UsuarioVolcadoQS = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+                        if (!crearClienteEnQS(objCliente))
+                        {
+                            //Borramos el cliente de QS por si se ha podido volcar en alguna de las empresas
+                            borrarClienteQS(objCliente);
+                            //Borramos el cliente de la BD de clientes
+                            objCliModel.borrarClienteEnBDClientes(objCliente);
+                            //Dejamos a null el ID para que no pase a Aperturados
+                            objCliente.QSID = null;
+                            ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no ha podido volcarse a la base de datos de QS. Revise los datos y vuelva a intentarlo.");
+                            blnRes = false;
+                        }
+                        else
+                        {
+                            //Si todo ha ido bien, volcamos la información de la ficha logística al programa de transporte
+                            if (objCliModel.crearExcepcionesClienteEnBDPlanificacion(objCliente))
+                            {
+                                //Si todo ha ido bien grabamos el usuario y la fecha de volcado a QS
+                                objCliente.FechaValidacionLogistica = System.DateTime.Now;
+                                objCliente.UsuarioValidacionLogistica = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+                            }
+                            else
+                            {
+                                //Borramos el cliente de QS por si se ha podido volcar en alguna de las empresas
+                                borrarClienteQS(objCliente);
+                                //Borramos el cliente de la BD de clientes
+                                objCliModel.borrarClienteEnBDClientes(objCliente);
+                                //Dejamos a null el ID para que no pase a Aperturados
+                                objCliente.QSID = null;
+                                //Quitamos fecha y usuario de volcado a QS
+                                objCliente.FechaVolcadoQS = null;
+                                objCliente.UsuarioVolcadoQS = null;
+                                ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no ha podido volcarse a la base de datos de transporte. Revise los datos y vuelva a intentarlo.");
+                                blnRes = false;
+                            }
+                                                
+                        }
+                    }
+                    else
+                    {
+                        //Borramos el cliente de la BD de Clientes para liberar el código
+                        objCliModel.borrarClienteEnBDClientes(objCliente);
+                        objCliente.QSID = null;
+                        ModelState.AddModelError("", "El cliente " + objCliente.Nombre + " no ha podido volcarse a la base de datos de clientes. Revise los datos y vuelva a intentarlo.");
+                        blnRes = false;
+                    }
+                }
+                else
+                {
+                    objCliente.QSID = null;
+                    ModelState.AddModelError("", "No se ha podido obtener código para el cliente " + objCliente.Nombre);
+                    blnRes = false;
+                }
+            }
+            //Actualizamos el cliente de la BD de AplicacionesGM para que pase a Aperturados en caso de que todo haya ido bien.
+            db.SaveChanges();
+            return blnRes;
         }
 
 
