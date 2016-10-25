@@ -320,6 +320,7 @@
           <Property Name="opcAutMoravalB2B" Type="bit" />
           <Property Name="opcAutHierrosB2B" Type="bit" />
           <Property Name="opcAutAltamiraB2B" Type="bit" />
+          <Property Name="clitimestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="CLIENTES_HABITUALES">
           <Key>
@@ -580,9 +581,9 @@
           <Property Name="infBancValor5" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
           <Property Name="ultInfComFecha" Type="DateTime" />
           <Property Name="ultInfComPersona" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="alerta" Type="Boolean" />
+          <Property Name="alerta" Type="Boolean" DefaultValue="false" />
           <Property Name="alerta_fecha" Type="DateTime" />
-          <Property Name="creditBureau" Type="Boolean" />
+          <Property Name="creditBureau" Type="Boolean" DefaultValue="false" />
           <Property Name="creditBureau_fecha" Type="DateTime" />
           <Property Name="gestion_fecha" Type="DateTime" />
           <Property Name="gestion_texto" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -590,21 +591,21 @@
           <Property Name="fpMoraval" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="fpHierros" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="fpAltamira" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="opcAutMoraval" Type="Boolean" />
+          <Property Name="opcAutMoraval" Type="Boolean" DefaultValue="false" />
           <Property Name="opcAutHierros" Type="Boolean" />
-          <Property Name="opcAutAltamira" Type="Boolean" />
-          <Property Name="opcAutBancoMoraval" Type="Boolean" />
-          <Property Name="opcAutBancoHierros" Type="Boolean" />
-          <Property Name="opcAutBancoAltamira" Type="Boolean" />
+          <Property Name="opcAutAltamira" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcAutBancoMoraval" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcAutBancoHierros" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcAutBancoAltamira" Type="Boolean" DefaultValue="false" />
           <Property Name="docAutMoraval" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutHierros" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutAltamira" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutMoravalBanco" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutHierrosBanco" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutAltamiraBanco" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="envFormMoraval" Type="Boolean" />
-          <Property Name="envFormHierros" Type="Boolean" />
-          <Property Name="envFormAltamira" Type="Boolean" />
+          <Property Name="envFormMoraval" Type="Boolean" DefaultValue="false" />
+          <Property Name="envFormHierros" Type="Boolean" DefaultValue="false" />
+          <Property Name="envFormAltamira" Type="Boolean" DefaultValue="false" />
           <Property Name="balance_año1" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="bal_cifra_negocio1" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="bal_rtdo_ejercicio1" Type="Decimal" Precision="18" Scale="5" />
@@ -698,19 +699,19 @@
           <Property Name="aut_giros_banco_MV" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="aut_giros_banco_HMA" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="aut_giros_banco_ECA" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="aut_giros_validez_MV" Type="Boolean" />
-          <Property Name="aut_giros_validez_HMA" Type="Boolean" />
-          <Property Name="aut_giros_validez_ECA" Type="Boolean" />
+          <Property Name="aut_giros_validez_MV" Type="Boolean" DefaultValue="false" />
+          <Property Name="aut_giros_validez_HMA" Type="Boolean" DefaultValue="false" />
+          <Property Name="aut_giros_validez_ECA" Type="Boolean" DefaultValue="false" />
           <Property Name="otras_denom_nombre1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="otras_denom_cif1" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="otras_denom_nombre2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="otras_denom_cif2" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="otras_denom_nombre3" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="otras_denom_cif3" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="sin_fincabilidad" Type="Boolean" />
+          <Property Name="sin_fincabilidad" Type="Boolean" DefaultValue="false" />
           <Property Name="sin_fincabilidad_fecha" Type="DateTime" />
           <Property Name="sin_fincabilidad_doc" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="localizador_registros" Type="Boolean" />
+          <Property Name="localizador_registros" Type="Boolean" DefaultValue="false" />
           <Property Name="localizador_registros_fecha" Type="DateTime" />
           <Property Name="localizador_registros_doc" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="bal_existencias1" Type="Decimal" Precision="18" Scale="5" />
@@ -740,10 +741,10 @@
           <Property Name="agenteMV" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="agenteHMA" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="totalPedPdtes" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="chkAutCopiaIBAN" Type="Boolean" />
-          <Property Name="opcOtrosAutGiros" Type="Boolean" />
+          <Property Name="chkAutCopiaIBAN" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcOtrosAutGiros" Type="Boolean" DefaultValue="false" />
           <Property Name="obsOtrosAutGiros" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="chkInforma" Type="Boolean" />
+          <Property Name="chkInforma" Type="Boolean" DefaultValue="false" />
           <Property Name="fechaInforma" Type="DateTime" />
           <Property Name="blqMoraval" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
           <Property Name="blqHierros" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
@@ -751,7 +752,7 @@
           <Property Name="aut_giros_f_val_MV" Type="DateTime" />
           <Property Name="aut_giros_f_val_HMA" Type="DateTime" />
           <Property Name="aut_giros_f_val_ECA" Type="DateTime" />
-          <Property Name="chkAutFP" Type="Boolean" />
+          <Property Name="chkAutFP" Type="Boolean" DefaultValue="false" />
           <Property Name="fechaAutFP" Type="DateTime" />
           <Property Name="obsAutFP" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="aut_giros_bco_MV" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
@@ -766,7 +767,7 @@
           <Property Name="aut_giros_suc_ECA" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
           <Property Name="aut_giros_dc_ECA" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
           <Property Name="aut_giros_cta_ECA" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="chkAutCopia" Type="Boolean" />
+          <Property Name="chkAutCopia" Type="Boolean" DefaultValue="false" />
           <Property Name="fechaAutCopia" Type="DateTime" />
           <Property Name="aut_iban_f_val_MV" Type="DateTime" />
           <Property Name="aut_iban_f_val_HMA" Type="DateTime" />
@@ -780,14 +781,15 @@
           <Property Name="aut_IBIC_cuenta_MV" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="aut_IBIC_cuenta_HMA" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="aut_IBIC_cuenta_ECA" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
-          <Property Name="opcAutMoravalB2B" Type="Boolean" />
-          <Property Name="opcAutHierrosB2B" Type="Boolean" />
-          <Property Name="opcAutAltamiraB2B" Type="Boolean" />
+          <Property Name="opcAutMoravalB2B" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcAutHierrosB2B" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcAutAltamiraB2B" Type="Boolean" DefaultValue="false" />
           <NavigationProperty Name="ACCIONARIADO" Relationship="CLIENTESModel.FK_ACCIONARIADO_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="ACCIONARIADO" />
           <NavigationProperty Name="CLIENTES_HABITUALES" Relationship="CLIENTESModel.FK_CLIENTES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="CLIENTES_HABITUALES" />
           <NavigationProperty Name="INFORMES_COMERCIALES" Relationship="CLIENTESModel.FK_INFORMES_COMERCIALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="INFORMES_COMERCIALES" />
           <NavigationProperty Name="PROVEEDORES_HABITUALES" Relationship="CLIENTESModel.FK_PROVEEDORES_HABITUALES_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="PROVEEDORES_HABITUALES" />
           <NavigationProperty Name="SOCIEDADES_VINCULADAS" Relationship="CLIENTESModel.FK_SOCIEDADES_VINCULADAS_CLIENTES_DAR_DE_ALTA_EN_MAC" FromRole="CLIENTES_DAR_DE_ALTA_EN_MAC" ToRole="SOCIEDADES_VINCULADAS" />
+          <Property Type="Binary" Name="clitimestamp" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="CLIENTES_HABITUALES">
           <Key>
@@ -964,6 +966,7 @@
           <EntitySetMapping Name="CLIENTES_DAR_DE_ALTA_EN_MAC">
             <EntityTypeMapping TypeName="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC">
               <MappingFragment StoreEntitySet="CLIENTES DAR DE ALTA EN MAC">
+                <ScalarProperty Name="clitimestamp" ColumnName="clitimestamp" />
                 <ScalarProperty Name="NUEVO_CODIGO" ColumnName="NUEVO CODIGO" />
                 <ScalarProperty Name="NOMCLI" ColumnName="NOMCLI" />
                 <ScalarProperty Name="CIF_CORREGIDO" ColumnName="CIF CORREGIDO" />
@@ -1300,7 +1303,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="BDClientesSQL">
+      <Diagram Name="BDClientesSQL" ZoomLevel="102">
         <EntityTypeShape EntityType="CLIENTESModel.ACCIONARIADO" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
         <EntityTypeShape EntityType="CLIENTESModel.ACCIONARIADO_detalle" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
         <EntityTypeShape EntityType="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Width="1.5" PointX="4.75" PointY="0.75" Height="50.055644531249996" IsExpanded="true" />

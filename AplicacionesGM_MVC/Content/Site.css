@@ -237,6 +237,12 @@ textarea
     height:200px;
 }
 
+.textarea-48
+{
+    width:98% !important;
+    height:48px !important;    
+}
+
 
 .textarea-68
 {

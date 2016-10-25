@@ -276,9 +276,7 @@ namespace AplicacionesGM_MVC.Controllers
 
                         //Cargamos en la sesion las aplicaciones a las que tiene acceso el usuario
                         ProfileBase profile = ProfileBase.Create(model.UserName);
-                        Session["AplicacionesGM"] = profile["AplicacionesGM"].ToString().Split(',');
-
-
+                        
                         if (profile["AplicacionesGM"].ToString().Split(',').Count() > 1)
                         {
                             //Si tiene acceso a más de una aplicación, mostramos la Home para que eliga la aplicación a la que quiere acceder

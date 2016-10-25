@@ -1689,7 +1689,6 @@ namespace AplicacionesGM_MVC.Models
         /// <param name="id">Valor inicial de la propiedad ID.</param>
         /// <param name="esDeExposicion">Valor inicial de la propiedad EsDeExposicion.</param>
         /// <param name="empresas">Valor inicial de la propiedad Empresas.</param>
-        /// <param name="nIF">Valor inicial de la propiedad NIF.</param>
         /// <param name="cP">Valor inicial de la propiedad CP.</param>
         /// <param name="fechaDeAlta">Valor inicial de la propiedad FechaDeAlta.</param>
         /// <param name="usuarioDeAlta">Valor inicial de la propiedad UsuarioDeAlta.</param>
@@ -1712,13 +1711,14 @@ namespace AplicacionesGM_MVC.Models
         /// <param name="recogeEnNuestrasInstalaciones">Valor inicial de la propiedad RecogeEnNuestrasInstalaciones.</param>
         /// <param name="tieneDireccionesDeEnvio">Valor inicial de la propiedad TieneDireccionesDeEnvio.</param>
         /// <param name="tipoDocumento">Valor inicial de la propiedad TipoDocumento.</param>
-        public static aspnet_Clientes Createaspnet_Clientes(global::System.Decimal id, global::System.Boolean esDeExposicion, global::System.String empresas, global::System.String nIF, global::System.Decimal cP, global::System.DateTime fechaDeAlta, global::System.Guid usuarioDeAlta, global::System.Boolean tieneMail, global::System.Boolean noAdmiteFacturacionElectronica, global::System.Boolean existePedidoEnFirme, global::System.Boolean noTieneVtosFijos, global::System.Boolean necesitaCamionConPluma, global::System.Boolean medioDeTransportePropio, global::System.Boolean pesaElMaterial, global::System.Boolean espacioParaAlmacenar, global::System.Boolean cAEFirmada, global::System.Boolean esBorrador, global::System.Boolean cAERevisada, global::System.Int32 delegacionID, global::System.Boolean tienePersonasAutorizadasRetMat, global::System.Boolean ventaSujetaAContrato, global::System.Boolean tieneApartadoPostalFacturacion, global::System.Boolean esClienteParticular, global::System.Boolean recogeEnNuestrasInstalaciones, global::System.Boolean tieneDireccionesDeEnvio, global::System.Int32 tipoDocumento)
+        /// <param name="sinNumero">Valor inicial de la propiedad SinNumero.</param>
+        /// <param name="sinNumeroFacturacion">Valor inicial de la propiedad SinNumeroFacturacion.</param>
+        public static aspnet_Clientes Createaspnet_Clientes(global::System.Decimal id, global::System.Boolean esDeExposicion, global::System.String empresas, global::System.Decimal cP, global::System.DateTime fechaDeAlta, global::System.Guid usuarioDeAlta, global::System.Boolean tieneMail, global::System.Boolean noAdmiteFacturacionElectronica, global::System.Boolean existePedidoEnFirme, global::System.Boolean noTieneVtosFijos, global::System.Boolean necesitaCamionConPluma, global::System.Boolean medioDeTransportePropio, global::System.Boolean pesaElMaterial, global::System.Boolean espacioParaAlmacenar, global::System.Boolean cAEFirmada, global::System.Boolean esBorrador, global::System.Boolean cAERevisada, global::System.Int32 delegacionID, global::System.Boolean tienePersonasAutorizadasRetMat, global::System.Boolean ventaSujetaAContrato, global::System.Boolean tieneApartadoPostalFacturacion, global::System.Boolean esClienteParticular, global::System.Boolean recogeEnNuestrasInstalaciones, global::System.Boolean tieneDireccionesDeEnvio, global::System.Int32 tipoDocumento, global::System.Boolean sinNumero, global::System.Boolean sinNumeroFacturacion)
         {
             aspnet_Clientes aspnet_Clientes = new aspnet_Clientes();
             aspnet_Clientes.ID = id;
             aspnet_Clientes.EsDeExposicion = esDeExposicion;
             aspnet_Clientes.Empresas = empresas;
-            aspnet_Clientes.NIF = nIF;
             aspnet_Clientes.CP = cP;
             aspnet_Clientes.FechaDeAlta = fechaDeAlta;
             aspnet_Clientes.UsuarioDeAlta = usuarioDeAlta;
@@ -1741,6 +1741,8 @@ namespace AplicacionesGM_MVC.Models
             aspnet_Clientes.RecogeEnNuestrasInstalaciones = recogeEnNuestrasInstalaciones;
             aspnet_Clientes.TieneDireccionesDeEnvio = tieneDireccionesDeEnvio;
             aspnet_Clientes.TipoDocumento = tipoDocumento;
+            aspnet_Clientes.SinNumero = sinNumero;
+            aspnet_Clientes.SinNumeroFacturacion = sinNumeroFacturacion;
             return aspnet_Clientes;
         }
 
@@ -1850,7 +1852,7 @@ namespace AplicacionesGM_MVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String NIF
         {
@@ -1862,7 +1864,7 @@ namespace AplicacionesGM_MVC.Models
             {
                 OnNIFChanging(value);
                 ReportPropertyChanging("NIF");
-                _NIF = StructuralObject.SetValidValue(value, false);
+                _NIF = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("NIF");
                 OnNIFChanged();
             }
@@ -4750,6 +4752,78 @@ namespace AplicacionesGM_MVC.Models
         private global::System.Int32 _TipoDocumento;
         partial void OnTipoDocumentoChanging(global::System.Int32 value);
         partial void OnTipoDocumentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean SinNumero
+        {
+            get
+            {
+                return _SinNumero;
+            }
+            set
+            {
+                OnSinNumeroChanging(value);
+                ReportPropertyChanging("SinNumero");
+                _SinNumero = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SinNumero");
+                OnSinNumeroChanged();
+            }
+        }
+        private global::System.Boolean _SinNumero;
+        partial void OnSinNumeroChanging(global::System.Boolean value);
+        partial void OnSinNumeroChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean SinNumeroFacturacion
+        {
+            get
+            {
+                return _SinNumeroFacturacion;
+            }
+            set
+            {
+                OnSinNumeroFacturacionChanging(value);
+                ReportPropertyChanging("SinNumeroFacturacion");
+                _SinNumeroFacturacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SinNumeroFacturacion");
+                OnSinNumeroFacturacionChanged();
+            }
+        }
+        private global::System.Boolean _SinNumeroFacturacion;
+        partial void OnSinNumeroFacturacionChanging(global::System.Boolean value);
+        partial void OnSinNumeroFacturacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ObservacionesGestion
+        {
+            get
+            {
+                return _ObservacionesGestion;
+            }
+            set
+            {
+                OnObservacionesGestionChanging(value);
+                ReportPropertyChanging("ObservacionesGestion");
+                _ObservacionesGestion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ObservacionesGestion");
+                OnObservacionesGestionChanged();
+            }
+        }
+        private global::System.String _ObservacionesGestion;
+        partial void OnObservacionesGestionChanging(global::System.String value);
+        partial void OnObservacionesGestionChanged();
 
         #endregion
 
@@ -5309,11 +5383,13 @@ namespace AplicacionesGM_MVC.Models
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad ID.</param>
         /// <param name="iDCliente">Valor inicial de la propiedad IDCliente.</param>
-        public static aspnet_ClientesDirEnv Createaspnet_ClientesDirEnv(global::System.Int32 id, global::System.Decimal iDCliente)
+        /// <param name="sinNumero">Valor inicial de la propiedad SinNumero.</param>
+        public static aspnet_ClientesDirEnv Createaspnet_ClientesDirEnv(global::System.Int32 id, global::System.Decimal iDCliente, global::System.Boolean sinNumero)
         {
             aspnet_ClientesDirEnv aspnet_ClientesDirEnv = new aspnet_ClientesDirEnv();
             aspnet_ClientesDirEnv.ID = id;
             aspnet_ClientesDirEnv.IDCliente = iDCliente;
+            aspnet_ClientesDirEnv.SinNumero = sinNumero;
             return aspnet_ClientesDirEnv;
         }
 
@@ -5659,6 +5735,30 @@ namespace AplicacionesGM_MVC.Models
         private Nullable<global::System.Decimal> _IDMunicipioQS;
         partial void OnIDMunicipioQSChanging(Nullable<global::System.Decimal> value);
         partial void OnIDMunicipioQSChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean SinNumero
+        {
+            get
+            {
+                return _SinNumero;
+            }
+            set
+            {
+                OnSinNumeroChanging(value);
+                ReportPropertyChanging("SinNumero");
+                _SinNumero = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SinNumero");
+                OnSinNumeroChanged();
+            }
+        }
+        private global::System.Boolean _SinNumero;
+        partial void OnSinNumeroChanging(global::System.Boolean value);
+        partial void OnSinNumeroChanged();
 
         #endregion
 

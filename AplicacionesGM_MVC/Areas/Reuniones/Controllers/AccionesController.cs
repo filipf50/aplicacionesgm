@@ -65,14 +65,8 @@ namespace AplicacionesGM_MVC.Areas.Reuniones.Controllers
 
         public ActionResult LimpiarFiltros(string tab)
         {
-            //Nos guardamos la variable de sesión AplicacionesGM para poder restaurarla
-            Array Aplicaciones = (Array)Session["AplicacionesGM"];
-
             //Borramos la session
             Session.Clear();
-
-            //Restauramos AplicacionesGM
-            Session["AplicacionesGM"] = Aplicaciones;
 
             if (tab == "Acciones Pendientes")
             {

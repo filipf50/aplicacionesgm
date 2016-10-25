@@ -112,10 +112,16 @@
                         Forma de pago
                     </th>
                     <th>
+                        Forma de pago para autorizar
+                    </th>
+                    <th>
                         Limite propuesto
                     </th>
                     <th>
                         Consumo potencial
+                    </th>
+                    <th>
+                        Observaciones gestión
                     </th>
                     <th></th>
                 </tr>
@@ -249,11 +255,16 @@
                 }
                %>
         <% foreach (var item in Model)
-           { %>
+           { 
+               string strClass = "";
+                if (item.ExistePedidoEnFirme)
+                {
+                    strClass = "editor-label";
+                }%>
             <% if (User.IsInRole("Comercial"))
                { //Comerciales %> 
                 <tr>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: String.Format("{0:d}", item.FechaDeAlta)%>
                     </td>
                     <td>
@@ -276,34 +287,34 @@
                    } %>
                         <%: strEmpresas%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.NIF%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Nombre%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.TipoDeVia + " " + item.Domicilio + " " + String.Format("{0:0.##}", item.Numero)%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Municipio%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% SelectList provincias = (SelectList)ViewData["Provincias"]; %>
                         <%:(item.IDProvinciaQS == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: String.Format("{0:0.##}", item.CP)%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% SelectList paises = (SelectList)ViewData["Paises"]; %>
                         <%: (item.IDPaisQS == null) ? "" : paises.Where(p => p.Value == item.IDPaisQS.ToString()).First().Text%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% SelectList zonas = (SelectList)ViewData["Zonas"]; %>
                         <%: (item.Zona == null) ? "" : zonas.Where(p => p.Value == item.Zona.ToString()).First().Text%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.NoAdmiteFacturacionElectronica == true && item.EsDeExposicion == false)
                            {%>
                             <%: item.TipoDeViaFacturacion + " " + item.DomicilioFacturacion + " Nº " + string.Format("{0:0.##}", item.NumeroFacturacion) + " " + item.PisoFacturacion + " " + item.CPFacturacion + "(" + item.MunicipioFacturacion + ") " + ((item.IDProvinciaQSFacturacion == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text) + " " + ((item.IDPaisQS == null) ? "" : paises.Where(p => p.Value == item.IDPaisQS.ToString()).First().Text) %>
@@ -316,7 +327,7 @@
                     <td>
                         <%: item.IDActividadQS%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.EsDeExposicion == true)
                            {%>
                             Sí
@@ -326,7 +337,7 @@
                             No
                         <% }%>                  
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.EsBorrador == true)
                            {%>
                             Sí
@@ -350,16 +361,16 @@
                     <td>
                         <%: Html.CheckBox("arrGuardar", new { @value = item.ID })%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.QSID.ToString() %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: String.Format("{0:d}", item.FechaDeAlta)%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: String.Format("{0:d}", item.FechaVolcadoQS)%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% 
                    string strEmpresas = "";
                    foreach (string key in empresas.Keys)
@@ -378,21 +389,27 @@
                    } %>
                         <%: strEmpresas%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.NIF%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Nombre%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% SelectList formasDePago = (SelectList)ViewData["FormasDePago"]; %>
                         <%: (item.FormaDePago == null) ? "" : formasDePago.Where(p => p.Value == item.FormaDePago.ToString()).First().Text%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
+                        <%: item.FormaDePagoSolicitada%>
+                    </td>
+                    <td class="<%: strClass %>">
                         <%: item.LimitePropuesto%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.ConsumoPotencial%>
+                    </td>
+                    <td>
+                        <%: Html.TextArea("ObservacionesGestion", (item.ObservacionesGestion ?? ""), new { @class = "textarea-48", @id="ObservacionesGestion-" + item.ID })%>
                     </td>
                     <td>
                         <%: Html.ActionLink("Consultar", "Edit", new { id = item.ID })%>
@@ -403,11 +420,7 @@
                else if (User.IsInRole("Clientes") || User.IsInRole("Administrador") || User.IsInRole("Gestor") )
                {
                    //Responsable de clientes Loli 
-                   string strClass = "";
-                   if (item.ExistePedidoEnFirme)
-                   {
-                       strClass = "editor-label";
-                   }%>
+                 %>
                  <tr>
                     <td>
                         <%: Html.CheckBox("arrGuardar", new { @value = item.ID })%>
@@ -483,17 +496,17 @@
                {
                 //Responsable de logística %>
                  <tr>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: Html.CheckBox("arrGuardar", new { @value = item.ID })%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.QSID %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% SelectList provincias = (SelectList)ViewData["Provincias"]; %>
                         <%:(item.IDProvinciaQS == null) ? "" : provincias.Where(p => p.Value == item.IDProvinciaQS.ToString()).First().Text%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% 
                    Dictionary<string, string> empresas = (Dictionary<string, string>)ViewData["Empresas"];
                    string strEmpresas = "";
@@ -513,19 +526,19 @@
                    } %>
                         <%: strEmpresas%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.NIF%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Nombre%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Horario %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.aspnet_MediosDeDescarga.Nombre %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.NecesitaCamionConPluma)
                            {%>
                                 Sí
@@ -535,10 +548,10 @@
                                 No
                         <%} %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.aspnet_TiposDeVehiculo.Nombre%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.PesaElMaterial)
                            {%>
                                 Sí
@@ -548,7 +561,7 @@
                                 No
                         <%} %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.EspacioParaAlmacenar)
                            {%>
                                 Sí
@@ -558,7 +571,7 @@
                                 No
                         <%} %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.CobroDePortesPorEnvio%>
                     </td>
                     <td>
@@ -578,10 +591,10 @@
                     <td>
                         <%: Html.TextBox("fechaOri_" + item.QSID,"", new { @class = "date" })%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.QSID.ToString() %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% 
                    Dictionary<string, string> empresas = (Dictionary<string, string>)ViewData["Empresas"];
                    string strEmpresas = "";
@@ -601,13 +614,13 @@
                    } %>
                         <%: strEmpresas%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.NIF%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <%: item.Nombre%>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.CAEFirmada)
                            {%>
                                 Sí
@@ -617,13 +630,13 @@
                                 No
                         <%} %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (item.CAEFirmada)
                            { %>
                             <a href="<%: item.FicheroCAE %>" target="_blank">Ver documento</a>
                         <% } %>
                     </td>
-                    <td>
+                    <td class="<%: strClass %>">
                         <% if (!item.CAEFirmada)
                            {%>
                             <% SelectList causasNoFirma = (SelectList)ViewData["CausasDeNoFirma"]; %>
@@ -645,6 +658,9 @@
         $(document).ready(function () {
             $('#btnGuardar').click(function () {
                 $(this).closest('form').submit();
+            });
+            $("textarea[id^='ObservacionesGestion']").change(function () {
+                guardarObservacionesGestion($(this));
             });
         });
     </script>

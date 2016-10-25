@@ -1979,7 +1979,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnalertaChanged();
             }
         }
-        private Nullable<global::System.Boolean> _alerta;
+        private Nullable<global::System.Boolean> _alerta = false;
         partial void OnalertaChanging(Nullable<global::System.Boolean> value);
         partial void OnalertaChanged();
     
@@ -2027,7 +2027,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OncreditBureauChanged();
             }
         }
-        private Nullable<global::System.Boolean> _creditBureau;
+        private Nullable<global::System.Boolean> _creditBureau = false;
         partial void OncreditBureauChanging(Nullable<global::System.Boolean> value);
         partial void OncreditBureauChanged();
     
@@ -2219,7 +2219,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutMoravalChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutMoraval;
+        private Nullable<global::System.Boolean> _opcAutMoraval = false;
         partial void OnopcAutMoravalChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutMoravalChanged();
     
@@ -2267,7 +2267,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutAltamiraChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutAltamira;
+        private Nullable<global::System.Boolean> _opcAutAltamira = false;
         partial void OnopcAutAltamiraChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutAltamiraChanged();
     
@@ -2291,7 +2291,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutBancoMoravalChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutBancoMoraval;
+        private Nullable<global::System.Boolean> _opcAutBancoMoraval = false;
         partial void OnopcAutBancoMoravalChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutBancoMoravalChanged();
     
@@ -2315,7 +2315,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutBancoHierrosChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutBancoHierros;
+        private Nullable<global::System.Boolean> _opcAutBancoHierros = false;
         partial void OnopcAutBancoHierrosChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutBancoHierrosChanged();
     
@@ -2339,7 +2339,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutBancoAltamiraChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutBancoAltamira;
+        private Nullable<global::System.Boolean> _opcAutBancoAltamira = false;
         partial void OnopcAutBancoAltamiraChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutBancoAltamiraChanged();
     
@@ -2507,7 +2507,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnenvFormMoravalChanged();
             }
         }
-        private Nullable<global::System.Boolean> _envFormMoraval;
+        private Nullable<global::System.Boolean> _envFormMoraval = false;
         partial void OnenvFormMoravalChanging(Nullable<global::System.Boolean> value);
         partial void OnenvFormMoravalChanged();
     
@@ -2531,7 +2531,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnenvFormHierrosChanged();
             }
         }
-        private Nullable<global::System.Boolean> _envFormHierros;
+        private Nullable<global::System.Boolean> _envFormHierros = false;
         partial void OnenvFormHierrosChanging(Nullable<global::System.Boolean> value);
         partial void OnenvFormHierrosChanged();
     
@@ -2555,7 +2555,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnenvFormAltamiraChanged();
             }
         }
-        private Nullable<global::System.Boolean> _envFormAltamira;
+        private Nullable<global::System.Boolean> _envFormAltamira = false;
         partial void OnenvFormAltamiraChanging(Nullable<global::System.Boolean> value);
         partial void OnenvFormAltamiraChanged();
     
@@ -4811,7 +4811,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 Onaut_giros_validez_MVChanged();
             }
         }
-        private Nullable<global::System.Boolean> _aut_giros_validez_MV;
+        private Nullable<global::System.Boolean> _aut_giros_validez_MV = false;
         partial void Onaut_giros_validez_MVChanging(Nullable<global::System.Boolean> value);
         partial void Onaut_giros_validez_MVChanged();
     
@@ -4835,7 +4835,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 Onaut_giros_validez_HMAChanged();
             }
         }
-        private Nullable<global::System.Boolean> _aut_giros_validez_HMA;
+        private Nullable<global::System.Boolean> _aut_giros_validez_HMA = false;
         partial void Onaut_giros_validez_HMAChanging(Nullable<global::System.Boolean> value);
         partial void Onaut_giros_validez_HMAChanged();
     
@@ -4859,7 +4859,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 Onaut_giros_validez_ECAChanged();
             }
         }
-        private Nullable<global::System.Boolean> _aut_giros_validez_ECA;
+        private Nullable<global::System.Boolean> _aut_giros_validez_ECA = false;
         partial void Onaut_giros_validez_ECAChanging(Nullable<global::System.Boolean> value);
         partial void Onaut_giros_validez_ECAChanged();
     
@@ -5027,7 +5027,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 Onsin_fincabilidadChanged();
             }
         }
-        private Nullable<global::System.Boolean> _sin_fincabilidad;
+        private Nullable<global::System.Boolean> _sin_fincabilidad = false;
         partial void Onsin_fincabilidadChanging(Nullable<global::System.Boolean> value);
         partial void Onsin_fincabilidadChanged();
     
@@ -5099,7 +5099,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 Onlocalizador_registrosChanged();
             }
         }
-        private Nullable<global::System.Boolean> _localizador_registros;
+        private Nullable<global::System.Boolean> _localizador_registros = false;
         partial void Onlocalizador_registrosChanging(Nullable<global::System.Boolean> value);
         partial void Onlocalizador_registrosChanged();
     
@@ -5819,7 +5819,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnchkAutCopiaIBANChanged();
             }
         }
-        private Nullable<global::System.Boolean> _chkAutCopiaIBAN;
+        private Nullable<global::System.Boolean> _chkAutCopiaIBAN = false;
         partial void OnchkAutCopiaIBANChanging(Nullable<global::System.Boolean> value);
         partial void OnchkAutCopiaIBANChanged();
     
@@ -5843,7 +5843,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcOtrosAutGirosChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcOtrosAutGiros;
+        private Nullable<global::System.Boolean> _opcOtrosAutGiros = false;
         partial void OnopcOtrosAutGirosChanging(Nullable<global::System.Boolean> value);
         partial void OnopcOtrosAutGirosChanged();
     
@@ -5891,7 +5891,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnchkInformaChanged();
             }
         }
-        private Nullable<global::System.Boolean> _chkInforma;
+        private Nullable<global::System.Boolean> _chkInforma = false;
         partial void OnchkInformaChanging(Nullable<global::System.Boolean> value);
         partial void OnchkInformaChanged();
     
@@ -6083,7 +6083,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnchkAutFPChanged();
             }
         }
-        private Nullable<global::System.Boolean> _chkAutFP;
+        private Nullable<global::System.Boolean> _chkAutFP = false;
         partial void OnchkAutFPChanging(Nullable<global::System.Boolean> value);
         partial void OnchkAutFPChanged();
     
@@ -6443,7 +6443,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnchkAutCopiaChanged();
             }
         }
-        private Nullable<global::System.Boolean> _chkAutCopia;
+        private Nullable<global::System.Boolean> _chkAutCopia = false;
         partial void OnchkAutCopiaChanging(Nullable<global::System.Boolean> value);
         partial void OnchkAutCopiaChanged();
     
@@ -6779,7 +6779,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutMoravalB2BChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutMoravalB2B;
+        private Nullable<global::System.Boolean> _opcAutMoravalB2B = false;
         partial void OnopcAutMoravalB2BChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutMoravalB2BChanged();
     
@@ -6803,7 +6803,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutHierrosB2BChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutHierrosB2B;
+        private Nullable<global::System.Boolean> _opcAutHierrosB2B = false;
         partial void OnopcAutHierrosB2BChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutHierrosB2BChanged();
     
@@ -6827,9 +6827,33 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutAltamiraB2BChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutAltamiraB2B;
+        private Nullable<global::System.Boolean> _opcAutAltamiraB2B = false;
         partial void OnopcAutAltamiraB2BChanging(Nullable<global::System.Boolean> value);
         partial void OnopcAutAltamiraB2BChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] clitimestamp
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_clitimestamp);
+            }
+            set
+            {
+                OnclitimestampChanging(value);
+                ReportPropertyChanging("clitimestamp");
+                _clitimestamp = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("clitimestamp");
+                OnclitimestampChanged();
+            }
+        }
+        private global::System.Byte[] _clitimestamp;
+        partial void OnclitimestampChanging(global::System.Byte[] value);
+        partial void OnclitimestampChanged();
 
         #endregion
 

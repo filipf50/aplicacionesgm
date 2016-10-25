@@ -193,6 +193,7 @@
           <Property Name="TipoDeVia" Type="nvarchar" MaxLength="2" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="25" />
           <Property Name="Numero" Type="numeric" Precision="5" />
+          <Property Name="SinNumero" Type="bit" Nullable="false" />
           <Property Name="Piso" Type="nvarchar" MaxLength="15" />
           <Property Name="IDMunicipioQS" Type="numeric" Precision="4" />
           <Property Name="Municipio" Type="nvarchar" MaxLength="25" />
@@ -295,6 +296,7 @@
           <Property Name="TipoDeViaFacturacion" Type="nvarchar" MaxLength="2" />
           <Property Name="DomicilioFacturacion" Type="nvarchar" MaxLength="25" />
           <Property Name="NumeroFacturacion" Type="numeric" Precision="5" />
+          <Property Name="SinNumeroFacturacion" Type="bit" Nullable="false" />
           <Property Name="PisoFacturacion" Type="nvarchar" MaxLength="15" />
           <Property Name="IDMunicipioQSFacturacion" Type="numeric" Precision="4" />
           <Property Name="MunicipioFacturacion" Type="nvarchar" MaxLength="25" />
@@ -306,6 +308,7 @@
           <Property Name="EsClienteParticular" Type="bit" Nullable="false" />
           <Property Name="RecogeEnNuestrasInstalaciones" Type="bit" Nullable="false" />
           <Property Name="TieneDireccionesDeEnvio" Type="bit" Nullable="false" />
+          <Property Name="ObservacionesGestion" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="aspnet_ClientesDirEnv">
           <Key>
@@ -317,6 +320,7 @@
           <Property Name="TipoDeVía" Type="nvarchar" MaxLength="2" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="25" />
           <Property Name="Numero" Type="numeric" Precision="5" />
+          <Property Name="SinNumero" Type="bit" Nullable="false" />
           <Property Name="Piso" Type="nvarchar" MaxLength="15" />
           <Property Name="IDMunicipioQS" Type="numeric" Precision="4" />
           <Property Name="Municipio" Type="nvarchar" MaxLength="25" />
@@ -1033,7 +1037,7 @@
           <Property Type="Decimal" Name="QSID" Precision="10" Scale="0" />
           <Property Type="Boolean" Name="EsDeExposicion" Nullable="false" />
           <Property Type="String" Name="Empresas" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="NIF" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NIF" MaxLength="15" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Type="String" Name="Nombre" MaxLength="30" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Type="String" Name="TipoDeVia" MaxLength="2" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Type="String" Name="Domicilio" MaxLength="25" FixedLength="false" Unicode="true" Nullable="true" />
@@ -1171,6 +1175,9 @@
           <Property Type="String" Name="IBANDC" />
           <Property Type="String" Name="IBANCCC" />
           <Property Type="Int32" Name="TipoDocumento" Nullable="false" />
+          <Property Type="Boolean" Name="SinNumero" Nullable="false" />
+          <Property Type="Boolean" Name="SinNumeroFacturacion" Nullable="false" />
+          <Property Type="String" Name="ObservacionesGestion" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="aspnet_Empresas">
           <Key>
@@ -1519,6 +1526,7 @@
           <Property Type="Decimal" Name="Fax" Precision="10" Scale="0" />
           <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_ClientesDirEnv_aspnet_Clientes" FromRole="aspnet_ClientesDirEnv" ToRole="aspnet_Clientes" />
           <Property Type="Decimal" Name="IDMunicipioQS" Precision="4" Scale="0" />
+          <Property Type="Boolean" Name="SinNumero" Nullable="false" />
         </EntityType>
         <EntityType Name="aspnet_PersonasRetiradaMat">
           <Key>
@@ -1651,6 +1659,9 @@
           <EntitySetMapping Name="aspnet_Clientes">
             <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Clientes">
               <MappingFragment StoreEntitySet="aspnet_Clientes">
+                <ScalarProperty Name="ObservacionesGestion" ColumnName="ObservacionesGestion" />
+                <ScalarProperty Name="SinNumeroFacturacion" ColumnName="SinNumeroFacturacion" />
+                <ScalarProperty Name="SinNumero" ColumnName="SinNumero" />
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
                 <ScalarProperty Name="IBANCCC" ColumnName="IBANCCC" />
                 <ScalarProperty Name="IBANDC" ColumnName="IBANDC" />
@@ -1914,6 +1925,7 @@
           <EntitySetMapping Name="aspnet_ClientesDirEnv">
             <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_ClientesDirEnv">
               <MappingFragment StoreEntitySet="aspnet_ClientesDirEnv">
+                <ScalarProperty Name="SinNumero" ColumnName="SinNumero" />
                 <ScalarProperty Name="IDMunicipioQS" ColumnName="IDMunicipioQS" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
