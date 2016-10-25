@@ -34,7 +34,8 @@
             <% if (Page.User.Identity.IsAuthenticated) { %>
                 <div class="chromestyle" id="chromemenu">
                     <ul>
-                     <% if (((Array)Session["AplicacionesGM"]).Length > 1)
+                     <% ProfileBase profile = ProfileBase.Create(Page.User.Identity.Name);
+                       if (profile["AplicacionesGM"].ToString().Split(',').Length > 1)
                         { %>
                             <li><%: Html.ActionLink("Cambiar de Aplicación", "Index", "Home", new { area = "" },null)%></li>
                      <% } %>

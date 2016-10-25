@@ -10,7 +10,7 @@
 
 function noAdmiteFacturacionElectronica() {
     if ($('#NoAdmiteFacturacionElectronica').is(":checked")) {
-        if ($('#EsDeExposicion').val() == "false"){
+        if ($('#EsDeExposicion').val() == "false") {
             //Si es un cliente de exposición no mostramos la dirección postal
             $('#ApartadoDeCorreos').show();
             if ($('#TipoDeViaFacturacion').val() == "") {
@@ -23,6 +23,8 @@ function noAdmiteFacturacionElectronica() {
             mostrarDirEnvioFacturas();
             $('#CPFacturacion').val($('#CP').val());
             cargarDatosCPFacturacion();
+        } else {
+            $('#EnvioPostal').hide();
         }
         $('#MailDeFacturacion').val("");
         $('#lblMailFacturacion').hide();
@@ -119,7 +121,6 @@ function mostrarFichaExposicion() {
         $('#DatosGrupoEmpresarial').hide();
         $('#lblMailFacturacion').text("Mail de envío factura");
         $('#lblNoAdmiteFacturacionElectronica').text("El cliente no quiere que se le envíe la factura");
-        mostrarCAE();
         cargarFormasDePago(true);
     } else {
         $('#panelRecogen').hide();
@@ -146,10 +147,10 @@ function mostrarFichaExposicion() {
         $('#lblMailFacturacion').text("Mail de facturación electrónica");
         $('#lblNoAdmiteFacturacionElectronica').text("El cliente no admite facturación electrónica");
         cargarFormasDePago(false);
-        mostrarCAE();
         calcularTarifa();
     }
-
+    mostrarCAE();
+    noAdmiteFacturacionElectronica();
 
 }
 
@@ -165,10 +166,12 @@ function asignarDatosPrevencion() {
     if ($('#EsClienteParticular').val() == "true") {
         if ($('#RecogeEnNuestrasInstalaciones').val() == "true") {
             //Si es cliente particular y recoge en nuestras instalaciones NO mostramos la ficha logística.
+            $('#IDCausaNoFirmaCAE').val("2  ").attr("selected", "selected"); //RECOGEN
             $('#panelFichaLogistica').hide();
         } else if ($('#RecogeEnNuestrasInstalaciones').val() == "false") {
             //Si es cliente particular y no recoge en nuestras instalaciones ocultamos los requerimientos especiales y asignamos como causa de no firma "Cliente Particular"
             $('#panelFichaLogistica').show();
+            $('#IDCausaNoFirmaCAE').val("1  ").attr("selected","selected"); //PARTICULAR
             $('#requerimientosCalidad').hide();
             $('#requerimientosPrevencion').hide();
         }
@@ -177,8 +180,8 @@ function asignarDatosPrevencion() {
         $('#requerimientosCalidad').show();
         $('#requerimientosPrevencion').show();
         if ($('#RecogeEnNuestrasInstalaciones').val() == "true") {
-            //Si no es particular y recoge en nuestras instalaciones, indicaremos como motivo de no firma por defecto "Recoge en nuestras instalciones"
-            
+            //Si no es particular y recoge en nuestras instalaciones, indicaremos como motivo de no firma por defecto "Recoge en nuestras instalaciones"
+            $('#IDCausaNoFirmaCAE').val("2  ").attr("selected", "selected"); //RECOGEN
         }
     }
 }
@@ -188,6 +191,16 @@ function mostrarPanelMails() {
         $('#panelMails').show();
     } else {
         $('#panelMails').hide();
+    }
+}
+
+function mostrarNumero() {
+    if ($('#SinNumero').is(":checked")) {
+        $('#lblNumero').hide();
+        $('#Numero').hide();
+    } else {
+        $('#lblNumero').show();
+        $('#Numero').show();
     }
 }
 
@@ -284,6 +297,16 @@ function calcularZona() {
     }, 500);
 }
 
+function mostrarNumeroFacturacion() {
+    if ($('#SinNumeroFacturacion').is(":checked")) {
+        $('#lblNumeroFacturacion').hide();
+        $('#NumeroFacturacion').hide();
+    } else {
+        $('#lblNumeroFacturacion').show();
+        $('#NumeroFacturacion').show();
+    }
+}
+
 function cargarDatosCPFacturacion() {
     var v = $('#CPFacturacion').val();
     var url = "/Clientes/Clientes/getJsonLocalizaciones";
@@ -348,6 +371,18 @@ function cargarDatosCPFacturacion() {
         }
     });
 }
+
+function mostrarNumeroDirEnv(campo) {
+    var pos = campo.attr("id").replace(/\D/g, '');
+    if (campo.is(":checked")) {
+        $('#arrlblNumeroDirEnv' + pos).hide();
+        $('#arrNumeroDirEnv' + pos).hide();
+    } else {
+        $('#arrlblNumeroDirEnv' + pos).show();
+        $('#arrNumeroDirEnv' + pos).show();
+    }
+}
+
 function cargarDatosCPDirEnv(campo){
     var pos = campo.attr("id").replace(/\D/g, '');
     var v = campo.val();
@@ -440,7 +475,6 @@ function mostrarDatosFormaDePago() {
                 $('#trFormaDePagoSolicitada').hide();
             }
         } else {
-            $('#FormaDePagoSolicitada').val('');
             $('#trFormaDePagoSolicitada').hide();
             var url = "/Clientes/Clientes/getJsonDatosFormaDePago";
             $.getJSON(url, { id: v }, function (data) {
@@ -628,7 +662,9 @@ function añadirDirEnvio() {
     $tbodyLast.find(('#arrNombreDirEnv').concat($prevRow)).attr("id", ("arrNombreDirEnv").concat($rows));
     $tbodyLast.find(('#arrTipoDeViaDirEnv').concat($prevRow)).attr("id", ("arrTipoDeViaDirEnv").concat($rows));
     $tbodyLast.find(('#arrDomicilioDirEnv').concat($prevRow)).attr("id", ("arrDomicilioDirEnv").concat($rows));
+    $tbodyLast.find(('#arrlblNumeroDirEnv').concat($prevRow)).attr("id", ("arrlblNumeroDirEnv").concat($rows));
     $tbodyLast.find(('#arrNumeroDirEnv').concat($prevRow)).attr("id", ("arrNumeroDirEnv").concat($rows));
+    $tbodyLast.find(('#arrSinNumeroDirEnv').concat($prevRow)).attr("id", ("arrSinNumeroDirEnv").concat($rows));
     $tbodyLast.find(('#arrPisoDirEnv').concat($prevRow)).attr("id", ("arrPisoDirEnv1").concat($rows));
     $tbodyLast.find(('#arrCPDirEnv').concat($prevRow)).attr("id", ("arrCPDirEnv").concat($rows));
     $tbodyLast.find(('#arrMunicipioDirEnv').concat($prevRow)).attr("id", ("arrMunicipioDirEnv").concat($rows));
@@ -690,4 +726,12 @@ function asignarMailDeFacturacion() {
             $("#MailDeFacturacion").val($("#MailDeContacto").val());
         }
     }
+}
+
+function guardarObservacionesGestion(campo) {
+    var url = '/Clientes/Clientes/guardarObservaciones';
+    var nombre = campo.attr('id');
+    var idCliente = nombre.split('-');
+    var observaciones = campo.val().substr(0, 200);
+    $.getJSON(url, { intIDCliente: idCliente[1], strObservaciones: observaciones });
 }

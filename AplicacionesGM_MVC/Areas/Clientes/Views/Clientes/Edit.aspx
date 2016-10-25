@@ -132,7 +132,7 @@
                     </tr>
                     <tr>
                         <td class="editor-label required noborder td20">
-                            <%: Html.RadioButtonFor(model => model.TipoDocumento, 1, new { @id = "radioNIF" })%> N.I.F / N.I.E <%: Html.RadioButtonFor(model => model.TipoDocumento, 2, new { @id = "radioCIF" })%> C.I.F
+                            <%: Html.RadioButtonFor(model => model.TipoDocumento, 1, new { @id = "radioNIF" })%> D.N.I / N.I.F / N.I.E <%: Html.RadioButtonFor(model => model.TipoDocumento, 2, new { @id = "radioCIF" })%> C.I.F
                         </td>
                         <td class="editor-field noborder td80">
                             <%: Html.TextBoxFor(model => model.NIF, new { @class = "textbox10" })%>
@@ -160,8 +160,9 @@
                             <%:Html.ValidationMessageFor(model => model.TipoDeVia, true)%>
                             <label for="Domicilio" class="display-label required" >Nombre</label>  <%: Html.TextBoxFor(model => model.Domicilio, new { @class = "textbox30" })%>
                             <%:Html.ValidationMessageFor(model => model.Domicilio, true)%>
-                            <label for="Numero" class="display-label required">Nº</label>  <%: Html.TextBoxFor(model => model.Numero, new { @class = "textbox5" })%>
+                            <label for="Numero" class="display-label required" id="lblNumero">Nº</label>  <%: Html.TextBoxFor(model => model.Numero, new { @class = "textbox5" })%>
                             <%:Html.ValidationMessageFor(model => model.Numero, true)%>
+                            <%: Html.CheckBoxFor(model => model.SinNumero)%> S/N
                             <label for="Numero" class="display-label">Piso</label> <%: Html.TextBoxFor(model => model.Piso, new { @class = "textbox15" })%>
                             <%:Html.ValidationMessageFor(model => model.Piso, true)%>
                         </td>
@@ -701,8 +702,9 @@
                                                                         <%: Html.ValidationMessage("arrTipoDeViaDirEnv1", blnAddValmsg: true)%> 
                                                                         <label for="arrDomicilioDirEnv1" class="display-label required" >Nombre</label>  <%: Html.TextBox("arrDomicilioDirEnv1", "", new { @class = "textbox30" })%>
                                                                         <%: Html.ValidationMessage("arrDomicilioDirEnv1", blnAddValmsg: true)%> 
-                                                                        <label for="arrNumeroDirEnv1" class="display-label required">Nº</label>  <%: Html.TextBox("arrNumeroDirEnv1", "", new { @class = "textbox5" })%>
+                                                                        <label for="arrNumeroDirEnv1" class="display-label required" id="arrlblNumeroDirEnv1">Nº</label>  <%: Html.TextBox("arrNumeroDirEnv1", "", new { @class = "textbox5" })%>
                                                                         <%: Html.ValidationMessage("arrNumeroDirEnv1", blnAddValmsg: true)%> 
+                                                                        <%: Html.CheckBox("arrSinNumeroDirEnv1")%> <label id="arrSinNumeroDirEnv1">S/N</label>
                                                                         <label for="arrPisoDirEnv1" class="display-label">Piso</label> <%: Html.TextBox("arrPisoDirEnv1", "", new { @class = "textbox15" })%>
                                                                         <%: Html.ValidationMessage("arrPisoDirEnv1", blnAddValmsg: true)%>
                                                                     </td>
@@ -752,8 +754,9 @@
                                                                                 <%: Html.ValidationMessage("arrTipoDeViaDirEnv" + i, blnAddValmsg: true)%> 
                                                                                 <label for="arrDomicilioDirEnv1" class="display-label required" >Nombre</label>  <%: Html.TextBox("arrDomicilioDirEnv1","arrDomicilioiDirEnv" + i, direccion.Domicilio, new { @class = "textbox30" })%>
                                                                                 <%: Html.ValidationMessage("arrDomicilioDirEnv" + i, blnAddValmsg: true)%> 
-                                                                                <label for="arrNumeroDirEnv1" class="display-label required">Nº</label>  <%: Html.TextBox("arrNumeroDirEnv1", "arrNumeroDirEnv" + i, direccion.Numero, new { @class = "textbox5" })%>
+                                                                                <label for="arrNumeroDirEnv1" class="display-label required" id="arrlblNumeroDirEnv" + i >Nº</label>  <%: Html.TextBox("arrNumeroDirEnv1", "arrNumeroDirEnv" + i, direccion.Numero, new { @class = "textbox5" })%>
                                                                                 <%: Html.ValidationMessage("arrNumeroDirEnv" + i, blnAddValmsg: true)%> 
+                                                                                <%: Html.CheckBox("arrSinNumeroDirEnv" + i)%> <label id="arrSinNumeroDirEnv"+i>S/N</label>
                                                                                 <label for="arrPisoDirEnv1" class="display-label">Piso</label> <%: Html.TextBox("arrPisoDirEnv1", "arrPisoDirEnv"+i, direccion.Piso, new { @class = "textbox15" })%>
                                                                                 <%: Html.ValidationMessage("arrPisoDirEnv" + i, blnAddValmsg: true)%>
                                                                             </td>
@@ -969,8 +972,9 @@
                                             <%:Html.ValidationMessageFor(model => model.TipoDeViaFacturacion, true)%>
                                             <label for="DomicilioFacturacion" class="display-label required" >Nombre</label>  <%: Html.TextBoxFor(model => model.DomicilioFacturacion, new { @class = "textbox30" })%>
                                             <%:Html.ValidationMessageFor(model => model.DomicilioFacturacion, true)%>
-                                            <label for="NumeroFacturacion" class="display-label required">Nº</label>  <%: Html.TextBoxFor(model => model.NumeroFacturacion, new { @class = "textbox5" })%>
+                                            <label for="NumeroFacturacion" class="display-label required" id="lblNumeroFacturacion">Nº</label>  <%: Html.TextBoxFor(model => model.NumeroFacturacion, new { @class = "textbox5" })%>
                                             <%:Html.ValidationMessageFor(model => model.NumeroFacturacion, true)%>
+                                            <%: Html.CheckBoxFor(model => model.SinNumeroFacturacion)%> S/N
                                             <label for="PisoFacturacion" class="display-label">Piso</label> <%: Html.TextBoxFor(model => model.PisoFacturacion, new { @class = "textbox15" })%>
                                             <%:Html.ValidationMessageFor(model => model.PisoFacturacion, true)%>
                                         </td>
@@ -1047,11 +1051,11 @@
                         <td class="editor-field noborder td80">
                             <%: Html.TextBoxFor(model => model.IBANSIGLAS, new { @Size = "2", @Maxlength="2", @Value="ES", })%>
                             <%: Html.TextBoxFor(model => model.IBANCODE, new { @size = "2", @maxlength="2" })%>
+                            <%: Html.ValidationMessageFor(model => model.IBANCODE, true)%>
                             <%: Html.TextBoxFor(model => model.IBANENTIDAD, new { @size = "4", @maxlength="4" })%>
                             <%: Html.TextBoxFor(model => model.IBANSUCURSAL, new { @size = "4", @maxlength="4" })%>
                             <%: Html.TextBoxFor(model => model.IBANDC, new { @size = "2", @maxlength="2" })%>
                             <%: Html.TextBoxFor(model => model.IBANCCC, new { @size = "10", @maxlength="10" })%>
-                            <%: Html.ValidationMessageFor(model => model.IBANCODE, true)%>
                         </td>
                     </tr>
                     <tr id="Vencimientos">
@@ -1415,6 +1419,7 @@
             mostrarAgentes();
             mostrarPanelExposicion();
             asignarTipoDocumento();
+            asignarDatosPrevencion();
             mostrarPanelMails();
             mostrarPanelPersonaAutorizada();
             mostrarEmpresasVinculadas();
@@ -1426,6 +1431,8 @@
             noAdmiteFacturacionElectronica();
             mostrarVtosFijos();
             mostrarInstrumentosDePesaje();
+            mostrarNumeroFacturacion();
+            mostrarNumero();
 
             $('.MORAVAL').click(function () {
                 mostrarPanelExposicion();
@@ -1454,6 +1461,10 @@
 
             $('input[name=TipoDocumento]:radio').change(function () {
                 asignarTipoDocumento();
+            });
+
+            $('#SinNumero').change(function () {
+                mostrarNumero();
             });
 
             $('#CP').change(function () {
@@ -1492,6 +1503,10 @@
                 mostrarSocios();
             });
 
+            $("input[id^='arrSinNumeroDirEnv']").change(function () {
+                mostrarNumeroDirEnv($(this));
+            });
+
             $("input[id^='arrCPDirEnv']").change(function () {
 
                 cargarDatosCPDirEnv($(this));
@@ -1507,6 +1522,10 @@
 
             $('#TieneApartadoPostalFacturacion').change(function () {
                 mostrarDirEnvioFacturas();
+            });
+
+            $('#SinNumeroFacturacion').change(function(){
+                mostrarNumeroFacturacion();
             });
 
             $('#CPFacturacion').change(function () {
