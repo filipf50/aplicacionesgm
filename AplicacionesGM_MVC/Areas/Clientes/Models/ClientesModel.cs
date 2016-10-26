@@ -83,7 +83,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 command.Parameters.Add("CLDF2", OdbcType.Numeric, 2).Value = (objCliente.DiaVtoFijo2 ?? 0);
                 command.Parameters.Add("CLDF3", OdbcType.Numeric, 2).Value = (objCliente.DiaVtoFijo3 ?? 0);
                 command.Parameters.Add("CLZON", OdbcType.Numeric, 5).Value = (objCliente.Zona ?? 0);
-                command.Parameters.Add("CLFALC", OdbcType.Char, 1).Value = objCliente.FechaVolcadoQS.Value.ToString("yyyyMMdd");
+                command.Parameters.Add("CLFAL", OdbcType.Char, 8).Value = objCliente.FechaVolcadoQS.Value.ToString("yyyyMMdd");
                 
                 //Valores por defecto
                 if (objCliente.aspnet_FormasDePago.RequiereDocSEPA)
@@ -174,7 +174,7 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 command.Parameters.Add("CLDF2", OdbcType.Numeric, 2).Value = (objCliente.DiaVtoFijo2 ?? 0);
                 command.Parameters.Add("CLDF3", OdbcType.Numeric, 2).Value = (objCliente.DiaVtoFijo3 ?? 0);
                 command.Parameters.Add("CLZON", OdbcType.Numeric, 5).Value = (objCliente.Zona ?? 0);
-                command.Parameters.Add("CLFALC", OdbcType.Char, 1).Value = objCliente.FechaVolcadoQS.Value.ToString("yyyyMMdd");
+                command.Parameters.Add("CLFAL", OdbcType.Char, 8).Value = objCliente.FechaVolcadoQS.Value.ToString("yyyyMMdd");
 
                 //Valores por defecto
                 if (objCliente.aspnet_FormasDePago.RequiereDocSEPA)
@@ -376,8 +376,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                     #region PARAMETROS
                     command.Parameters.Add("OBPM1", OdbcType.Char, 60).Value = ("HORARIO: " + (objCliente.Horario ?? "").ToString()).ToUpper(); //OBPM1
                     command.Parameters.Add("OBPM2", OdbcType.Char, 60).Value = ("HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString()).ToUpper(); //OBPM2
-                    command.Parameters.Add("OBPM3", OdbcType.Char, 60).Value = ("M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? objCliente.ImportePortesPorEnvio.ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString()).ToUpper(); //OBPM3
-                    command.Parameters.Add("OBPM4", OdbcType.Char, 60).Value = ("M.DESCARGA: " + (objCliente.aspnet_MediosDeDescarga.Nombre ?? "") + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "NO PESA EL MATERIAL")).ToUpper(); //OBPM4
+                    command.Parameters.Add("OBPM3", OdbcType.Char, 60).Value = ("M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? (objCliente.ImportePortesPorEnvio??0).ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + (objCliente.aspnet_TiposDeVehiculo == null ? "" : (objCliente.aspnet_TiposDeVehiculo.Nombre??"").ToString()).ToUpper()); //OBPM3
+                    command.Parameters.Add("OBPM4", OdbcType.Char, 60).Value = ("M.DESCARGA: " + (objCliente.aspnet_MediosDeDescarga == null ? "" : (objCliente.aspnet_MediosDeDescarga.Nombre ?? "")).ToString() + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + (objCliente.aspnet_InstrumentosDePesaje == null ? "" : (objCliente.aspnet_InstrumentosDePesaje.Nombre??"")).ToString() : "NO PESA EL MATERIAL")).ToUpper(); //OBPM4
                     command.Parameters.Add("OBPM5", OdbcType.Char, 60).Value = ("OBLIG. CERT. CALIDAD:" + ((objCliente.RequerimientosDeCalidad ?? "").Contains('2') ? "SI" : "NO") + "/PRL: " + (objCliente.RequerimientosDePrevencion ?? "").ToString().Substring(0, ((objCliente.RequerimientosDePrevencion ?? "").Length > 30 ? 30 : (objCliente.RequerimientosDePrevencion ?? "").Length))).ToUpper();//OBPM5
                     if (objCliente.aspnet_PersonasRetiradaMat.Count > 0)
                     {
@@ -406,8 +406,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                     command.Parameters.Add("OBPO3", OdbcType.Char, 50).Value = ("CONTACTO DESCARGA:" + ((objCliente.PersonaDeDescarga ?? "").Length > 30 ? (objCliente.PersonaDeDescarga ?? "").ToString().Substring(0, 30) : (objCliente.PersonaDeDescarga ?? "").ToString())).ToUpper(); //OBPO3
                     command.Parameters.Add("OBAM1", OdbcType.Char, 60).Value = ("HORARIO: " + (objCliente.Horario ?? "").ToString()).ToUpper(); //OBAM1
                     command.Parameters.Add("OBAM2", OdbcType.Char, 60).Value = ("HORARIO VERANO: " + (objCliente.HorarioDeVerano ?? "").ToString()).ToUpper(); //OBAM2
-                    command.Parameters.Add("OBAM3", OdbcType.Char, 60).Value = ("M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? objCliente.ImportePortesPorEnvio.ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + objCliente.aspnet_TiposDeVehiculo.Nombre.ToString()).ToUpper(); //OBAM3
-                    command.Parameters.Add("OBAM4", OdbcType.Char, 60).Value = ("M.DESCARGA: " + (objCliente.aspnet_MediosDeDescarga.Nombre ?? "") + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + objCliente.aspnet_InstrumentosDePesaje.Nombre.ToString() : "NO PESA EL MATERIAL")).ToUpper(); //OBAM4
+                    command.Parameters.Add("OBAM3", OdbcType.Char, 60).Value = ("M.T.PROPIOS:" + (objCliente.MedioDeTransportePropio ? "SI" : "NO") + "/PORTES:" + (objCliente.CobroDePortesPorEnvio ? (objCliente.ImportePortesPorEnvio ?? 0).ToString() + "E" : "NO") + "/CAMION GRUA:" + (objCliente.NecesitaCamionConPluma ? "SI" : "NO") + "/VEHICULO:" + (objCliente.aspnet_TiposDeVehiculo == null ? "" : (objCliente.aspnet_TiposDeVehiculo.Nombre??"").ToString()).ToUpper()); //OBAM3
+                    command.Parameters.Add("OBAM4", OdbcType.Char, 60).Value = ("M.DESCARGA: " + (objCliente.aspnet_MediosDeDescarga == null ? "" : (objCliente.aspnet_MediosDeDescarga.Nombre ?? "")).ToString() + "/ " + (objCliente.PesaElMaterial ? "PESA CON " + (objCliente.aspnet_InstrumentosDePesaje == null ? "" : (objCliente.aspnet_InstrumentosDePesaje.Nombre??"")).ToString() : "NO PESA EL MATERIAL")).ToUpper(); //OBAM4
                     command.Parameters.Add("OBAM5", OdbcType.Char, 60).Value = ("OBLIG. CERT. CALIDAD:" + ((objCliente.RequerimientosDeCalidad ?? "").Contains('2') ? "SI" : "NO") + "/PRL: " + (objCliente.RequerimientosDePrevencion ?? "").ToString().Substring(0, ((objCliente.RequerimientosDePrevencion ?? "").Length > 30 ? 30 : (objCliente.RequerimientosDePrevencion ?? "").Length))).ToUpper();//OBAM5
                     if (objCliente.aspnet_PersonasRetiradaMat.Count > 0)
                     {

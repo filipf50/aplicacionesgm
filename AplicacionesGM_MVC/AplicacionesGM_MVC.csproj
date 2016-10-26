@@ -110,6 +110,8 @@
       <DependentUpon>BDPlanificacionTransportes.edmx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Clientes\Models\ZonasModel.cs" />
+    <Compile Include="Areas\Proveedores\Controllers\IncidenciasController.cs" />
+    <Compile Include="Areas\Proveedores\ProveedoresAreaRegistration.cs" />
     <Compile Include="Areas\Reuniones\ReunionesAreaRegistration.cs" />
     <Compile Include="Areas\Reuniones\Controllers\AccionesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -197,6 +199,9 @@
     <Content Include="Content\images\iconos\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\images\iconos\proveedores.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\images\logoGM.png" />
     <Content Include="Content\jquery-ui.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -280,6 +285,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Proveedores\Models\" />
+    <Folder Include="Areas\Proveedores\Views\Shared\" />
     <Folder Include="Areas\Reuniones\Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +318,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDPlanificacionTransportes.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Areas\Proveedores\Views\Web.config" />
     <None Include="Content\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>

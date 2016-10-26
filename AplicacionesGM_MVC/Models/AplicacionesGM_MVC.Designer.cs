@@ -41,6 +41,13 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Clientes_aspnet_Aseguradoras", "aspnet_Aseguradoras", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Aseguradoras), "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_ClientesDirEnv_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_ClientesDirEnv", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_ClientesDirEnv), true)]
 [assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_PersonasRetiradaMat_aspnet_Clientes", "aspnet_Clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Clientes), "aspnet_PersonasRetiradaMat", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_PersonasRetiradaMat), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_Areas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Areas), "aspnet_TiposDeIncidencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_TiposDeIncidencia), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Empresas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Empresas), "aspnet_Incidencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Incidencias), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_TiposDeIncidencia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_TiposDeIncidencia), "aspnet_Incidencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Incidencias), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Users), "aspnet_Incidencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Incidencias), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AplicacionesGM_MVC.Models.aspnet_Users), "aspnet_Incidencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Incidencias), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Users), "aspnet_Incidencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_Incidencias), true)]
+[assembly: EdmRelationshipAttribute("AplicacionesGM_MVCModel", "FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AplicacionesGM_MVC.Models.aspnet_Users), "aspnet_IncidenciaMotivoRechazo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AplicacionesGM_MVC.Models.aspnet_IncidenciaMotivoRechazo), true)]
 
 #endregion
 
@@ -507,6 +514,70 @@ namespace AplicacionesGM_MVC.Models
             }
         }
         private ObjectSet<aspnet_PersonasRetiradaMat> _aspnet_PersonasRetiradaMat;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_Areas> aspnet_Areas
+        {
+            get
+            {
+                if ((_aspnet_Areas == null))
+                {
+                    _aspnet_Areas = base.CreateObjectSet<aspnet_Areas>("aspnet_Areas");
+                }
+                return _aspnet_Areas;
+            }
+        }
+        private ObjectSet<aspnet_Areas> _aspnet_Areas;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_Incidencias> aspnet_Incidencias
+        {
+            get
+            {
+                if ((_aspnet_Incidencias == null))
+                {
+                    _aspnet_Incidencias = base.CreateObjectSet<aspnet_Incidencias>("aspnet_Incidencias");
+                }
+                return _aspnet_Incidencias;
+            }
+        }
+        private ObjectSet<aspnet_Incidencias> _aspnet_Incidencias;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_TiposDeIncidencia> aspnet_TiposDeIncidencia
+        {
+            get
+            {
+                if ((_aspnet_TiposDeIncidencia == null))
+                {
+                    _aspnet_TiposDeIncidencia = base.CreateObjectSet<aspnet_TiposDeIncidencia>("aspnet_TiposDeIncidencia");
+                }
+                return _aspnet_TiposDeIncidencia;
+            }
+        }
+        private ObjectSet<aspnet_TiposDeIncidencia> _aspnet_TiposDeIncidencia;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<aspnet_IncidenciaMotivoRechazo> aspnet_IncidenciaMotivoRechazo
+        {
+            get
+            {
+                if ((_aspnet_IncidenciaMotivoRechazo == null))
+                {
+                    _aspnet_IncidenciaMotivoRechazo = base.CreateObjectSet<aspnet_IncidenciaMotivoRechazo>("aspnet_IncidenciaMotivoRechazo");
+                }
+                return _aspnet_IncidenciaMotivoRechazo;
+            }
+        }
+        private ObjectSet<aspnet_IncidenciaMotivoRechazo> _aspnet_IncidenciaMotivoRechazo;
 
         #endregion
 
@@ -718,6 +789,38 @@ namespace AplicacionesGM_MVC.Models
         public void AddToaspnet_PersonasRetiradaMat(aspnet_PersonasRetiradaMat aspnet_PersonasRetiradaMat)
         {
             base.AddObject("aspnet_PersonasRetiradaMat", aspnet_PersonasRetiradaMat);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_Areas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_Areas(aspnet_Areas aspnet_Areas)
+        {
+            base.AddObject("aspnet_Areas", aspnet_Areas);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_Incidencias. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_Incidencias(aspnet_Incidencias aspnet_Incidencias)
+        {
+            base.AddObject("aspnet_Incidencias", aspnet_Incidencias);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_TiposDeIncidencia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_TiposDeIncidencia(aspnet_TiposDeIncidencia aspnet_TiposDeIncidencia)
+        {
+            base.AddObject("aspnet_TiposDeIncidencia", aspnet_TiposDeIncidencia);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet aspnet_IncidenciaMotivoRechazo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToaspnet_IncidenciaMotivoRechazo(aspnet_IncidenciaMotivoRechazo aspnet_IncidenciaMotivoRechazo)
+        {
+            base.AddObject("aspnet_IncidenciaMotivoRechazo", aspnet_IncidenciaMotivoRechazo);
         }
 
         #endregion
@@ -1412,6 +1515,113 @@ namespace AplicacionesGM_MVC.Models
         #endregion
 
     
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_Areas")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_Areas : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_Areas.
+        /// </summary>
+        /// <param name="iDArea">Valor inicial de la propiedad IDArea.</param>
+        public static aspnet_Areas Createaspnet_Areas(global::System.Int32 iDArea)
+        {
+            aspnet_Areas aspnet_Areas = new aspnet_Areas();
+            aspnet_Areas.IDArea = iDArea;
+            return aspnet_Areas;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDArea
+        {
+            get
+            {
+                return _IDArea;
+            }
+            set
+            {
+                if (_IDArea != value)
+                {
+                    OnIDAreaChanging(value);
+                    ReportPropertyChanging("IDArea");
+                    _IDArea = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDArea");
+                    OnIDAreaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IDArea;
+        partial void OnIDAreaChanging(global::System.Int32 value);
+        partial void OnIDAreaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Area
+        {
+            get
+            {
+                return _Area;
+            }
+            set
+            {
+                OnAreaChanging(value);
+                ReportPropertyChanging("Area");
+                _Area = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Area");
+                OnAreaChanged();
+            }
+        }
+        private global::System.String _Area;
+        partial void OnAreaChanging(global::System.String value);
+        partial void OnAreaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_TiposDeIncidencia")]
+        public EntityCollection<aspnet_TiposDeIncidencia> aspnet_TiposDeIncidencia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_TiposDeIncidencia>("AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_TiposDeIncidencia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_TiposDeIncidencia>("AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_TiposDeIncidencia", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -6327,6 +6537,28 @@ namespace AplicacionesGM_MVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Incidencias")]
+        public EntityCollection<aspnet_Incidencias> aspnet_Incidencias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Incidencias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Incidencias", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -6533,6 +6765,866 @@ namespace AplicacionesGM_MVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Clientes>("AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_FormasDePago", "aspnet_Clientes", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_IncidenciaMotivoRechazo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_IncidenciaMotivoRechazo : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_IncidenciaMotivoRechazo.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        /// <param name="iD_IDIncidencia">Valor inicial de la propiedad ID_IDIncidencia.</param>
+        public static aspnet_IncidenciaMotivoRechazo Createaspnet_IncidenciaMotivoRechazo(global::System.Int32 id, global::System.Int32 iD_IDIncidencia)
+        {
+            aspnet_IncidenciaMotivoRechazo aspnet_IncidenciaMotivoRechazo = new aspnet_IncidenciaMotivoRechazo();
+            aspnet_IncidenciaMotivoRechazo.ID = id;
+            aspnet_IncidenciaMotivoRechazo.ID_IDIncidencia = iD_IDIncidencia;
+            return aspnet_IncidenciaMotivoRechazo;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_IDIncidencia
+        {
+            get
+            {
+                return _ID_IDIncidencia;
+            }
+            set
+            {
+                OnID_IDIncidenciaChanging(value);
+                ReportPropertyChanging("ID_IDIncidencia");
+                _ID_IDIncidencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_IDIncidencia");
+                OnID_IDIncidenciaChanged();
+            }
+        }
+        private global::System.Int32 _ID_IDIncidencia;
+        partial void OnID_IDIncidenciaChanging(global::System.Int32 value);
+        partial void OnID_IDIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Motivo
+        {
+            get
+            {
+                return _Motivo;
+            }
+            set
+            {
+                OnMotivoChanging(value);
+                ReportPropertyChanging("Motivo");
+                _Motivo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Motivo");
+                OnMotivoChanged();
+            }
+        }
+        private global::System.String _Motivo;
+        partial void OnMotivoChanging(global::System.String value);
+        partial void OnMotivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaAltaMotivo
+        {
+            get
+            {
+                return _FechaAltaMotivo;
+            }
+            set
+            {
+                OnFechaAltaMotivoChanging(value);
+                ReportPropertyChanging("FechaAltaMotivo");
+                _FechaAltaMotivo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaAltaMotivo");
+                OnFechaAltaMotivoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaAltaMotivo;
+        partial void OnFechaAltaMotivoChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaAltaMotivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> UsuarioAltaMotivo
+        {
+            get
+            {
+                return _UsuarioAltaMotivo;
+            }
+            set
+            {
+                OnUsuarioAltaMotivoChanging(value);
+                ReportPropertyChanging("UsuarioAltaMotivo");
+                _UsuarioAltaMotivo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UsuarioAltaMotivo");
+                OnUsuarioAltaMotivoChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _UsuarioAltaMotivo;
+        partial void OnUsuarioAltaMotivoChanging(Nullable<global::System.Guid> value);
+        partial void OnUsuarioAltaMotivoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_Users")]
+        public aspnet_Users aspnet_Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_Users", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_Incidencias")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_Incidencias : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_Incidencias.
+        /// </summary>
+        /// <param name="iDIncidencia">Valor inicial de la propiedad IDIncidencia.</param>
+        /// <param name="empresa">Valor inicial de la propiedad Empresa.</param>
+        /// <param name="usuarioAlta">Valor inicial de la propiedad UsuarioAlta.</param>
+        public static aspnet_Incidencias Createaspnet_Incidencias(global::System.Int32 iDIncidencia, global::System.String empresa, global::System.Guid usuarioAlta)
+        {
+            aspnet_Incidencias aspnet_Incidencias = new aspnet_Incidencias();
+            aspnet_Incidencias.IDIncidencia = iDIncidencia;
+            aspnet_Incidencias.Empresa = empresa;
+            aspnet_Incidencias.UsuarioAlta = usuarioAlta;
+            return aspnet_Incidencias;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDIncidencia
+        {
+            get
+            {
+                return _IDIncidencia;
+            }
+            set
+            {
+                if (_IDIncidencia != value)
+                {
+                    OnIDIncidenciaChanging(value);
+                    ReportPropertyChanging("IDIncidencia");
+                    _IDIncidencia = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDIncidencia");
+                    OnIDIncidenciaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IDIncidencia;
+        partial void OnIDIncidenciaChanging(global::System.Int32 value);
+        partial void OnIDIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Empresa
+        {
+            get
+            {
+                return _Empresa;
+            }
+            set
+            {
+                OnEmpresaChanging(value);
+                ReportPropertyChanging("Empresa");
+                _Empresa = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Empresa");
+                OnEmpresaChanged();
+            }
+        }
+        private global::System.String _Empresa;
+        partial void OnEmpresaChanging(global::System.String value);
+        partial void OnEmpresaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> QSIDProveedor
+        {
+            get
+            {
+                return _QSIDProveedor;
+            }
+            set
+            {
+                OnQSIDProveedorChanging(value);
+                ReportPropertyChanging("QSIDProveedor");
+                _QSIDProveedor = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QSIDProveedor");
+                OnQSIDProveedorChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _QSIDProveedor;
+        partial void OnQSIDProveedorChanging(Nullable<global::System.Decimal> value);
+        partial void OnQSIDProveedorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Proveedor
+        {
+            get
+            {
+                return _Proveedor;
+            }
+            set
+            {
+                OnProveedorChanging(value);
+                ReportPropertyChanging("Proveedor");
+                _Proveedor = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Proveedor");
+                OnProveedorChanged();
+            }
+        }
+        private global::System.String _Proveedor;
+        partial void OnProveedorChanging(global::System.String value);
+        partial void OnProveedorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Albaran
+        {
+            get
+            {
+                return _Albaran;
+            }
+            set
+            {
+                OnAlbaranChanging(value);
+                ReportPropertyChanging("Albaran");
+                _Albaran = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Albaran");
+                OnAlbaranChanged();
+            }
+        }
+        private global::System.String _Albaran;
+        partial void OnAlbaranChanging(global::System.String value);
+        partial void OnAlbaranChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Importe
+        {
+            get
+            {
+                return _Importe;
+            }
+            set
+            {
+                OnImporteChanging(value);
+                ReportPropertyChanging("Importe");
+                _Importe = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Importe");
+                OnImporteChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Importe;
+        partial void OnImporteChanging(Nullable<global::System.Decimal> value);
+        partial void OnImporteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Factura
+        {
+            get
+            {
+                return _Factura;
+            }
+            set
+            {
+                OnFacturaChanging(value);
+                ReportPropertyChanging("Factura");
+                _Factura = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Factura");
+                OnFacturaChanged();
+            }
+        }
+        private global::System.String _Factura;
+        partial void OnFacturaChanging(global::System.String value);
+        partial void OnFacturaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FormaPago
+        {
+            get
+            {
+                return _FormaPago;
+            }
+            set
+            {
+                OnFormaPagoChanging(value);
+                ReportPropertyChanging("FormaPago");
+                _FormaPago = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormaPago");
+                OnFormaPagoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FormaPago;
+        partial void OnFormaPagoChanging(Nullable<global::System.Int32> value);
+        partial void OnFormaPagoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaVencimiento
+        {
+            get
+            {
+                return _FechaVencimiento;
+            }
+            set
+            {
+                OnFechaVencimientoChanging(value);
+                ReportPropertyChanging("FechaVencimiento");
+                _FechaVencimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaVencimiento");
+                OnFechaVencimientoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaVencimiento;
+        partial void OnFechaVencimientoChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaVencimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TipoIncidencia
+        {
+            get
+            {
+                return _TipoIncidencia;
+            }
+            set
+            {
+                OnTipoIncidenciaChanging(value);
+                ReportPropertyChanging("TipoIncidencia");
+                _TipoIncidencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TipoIncidencia");
+                OnTipoIncidenciaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TipoIncidencia;
+        partial void OnTipoIncidenciaChanging(Nullable<global::System.Int32> value);
+        partial void OnTipoIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Indicaciones
+        {
+            get
+            {
+                return _Indicaciones;
+            }
+            set
+            {
+                OnIndicacionesChanging(value);
+                ReportPropertyChanging("Indicaciones");
+                _Indicaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Indicaciones");
+                OnIndicacionesChanged();
+            }
+        }
+        private global::System.String _Indicaciones;
+        partial void OnIndicacionesChanging(global::System.String value);
+        partial void OnIndicacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PathDocumento
+        {
+            get
+            {
+                return _PathDocumento;
+            }
+            set
+            {
+                OnPathDocumentoChanging(value);
+                ReportPropertyChanging("PathDocumento");
+                _PathDocumento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PathDocumento");
+                OnPathDocumentoChanged();
+            }
+        }
+        private global::System.String _PathDocumento;
+        partial void OnPathDocumentoChanging(global::System.String value);
+        partial void OnPathDocumentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaAlta
+        {
+            get
+            {
+                return _FechaAlta;
+            }
+            set
+            {
+                OnFechaAltaChanging(value);
+                ReportPropertyChanging("FechaAlta");
+                _FechaAlta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaAlta");
+                OnFechaAltaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaAlta;
+        partial void OnFechaAltaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaAltaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaCierre
+        {
+            get
+            {
+                return _FechaCierre;
+            }
+            set
+            {
+                OnFechaCierreChanging(value);
+                ReportPropertyChanging("FechaCierre");
+                _FechaCierre = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaCierre");
+                OnFechaCierreChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaCierre;
+        partial void OnFechaCierreChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaCierreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid UsuarioAlta
+        {
+            get
+            {
+                return _UsuarioAlta;
+            }
+            set
+            {
+                OnUsuarioAltaChanging(value);
+                ReportPropertyChanging("UsuarioAlta");
+                _UsuarioAlta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UsuarioAlta");
+                OnUsuarioAltaChanged();
+            }
+        }
+        private global::System.Guid _UsuarioAlta;
+        partial void OnUsuarioAltaChanging(global::System.Guid value);
+        partial void OnUsuarioAltaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> UsuarioCierre
+        {
+            get
+            {
+                return _UsuarioCierre;
+            }
+            set
+            {
+                OnUsuarioCierreChanging(value);
+                ReportPropertyChanging("UsuarioCierre");
+                _UsuarioCierre = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UsuarioCierre");
+                OnUsuarioCierreChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _UsuarioCierre;
+        partial void OnUsuarioCierreChanging(Nullable<global::System.Guid> value);
+        partial void OnUsuarioCierreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ResponsablesSolucion
+        {
+            get
+            {
+                return _ResponsablesSolucion;
+            }
+            set
+            {
+                OnResponsablesSolucionChanging(value);
+                ReportPropertyChanging("ResponsablesSolucion");
+                _ResponsablesSolucion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ResponsablesSolucion");
+                OnResponsablesSolucionChanged();
+            }
+        }
+        private global::System.String _ResponsablesSolucion;
+        partial void OnResponsablesSolucionChanging(global::System.String value);
+        partial void OnResponsablesSolucionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaRechazo
+        {
+            get
+            {
+                return _FechaRechazo;
+            }
+            set
+            {
+                OnFechaRechazoChanging(value);
+                ReportPropertyChanging("FechaRechazo");
+                _FechaRechazo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaRechazo");
+                OnFechaRechazoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaRechazo;
+        partial void OnFechaRechazoChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaRechazoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Empresas")]
+        public aspnet_Empresas aspnet_Empresas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Empresas>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Empresas").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Empresas>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Empresas").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Empresas> aspnet_EmpresasReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Empresas>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Empresas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Empresas>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas", "aspnet_Empresas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_TiposDeIncidencia")]
+        public aspnet_TiposDeIncidencia aspnet_TiposDeIncidencia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_TiposDeIncidencia>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_TiposDeIncidencia").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_TiposDeIncidencia>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_TiposDeIncidencia").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_TiposDeIncidencia> aspnet_TiposDeIncidenciaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_TiposDeIncidencia>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_TiposDeIncidencia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_TiposDeIncidencia>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_TiposDeIncidencia", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users", "aspnet_Users")]
+        public aspnet_Users aspnet_Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users", "aspnet_Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Users")]
+        public aspnet_Users aspnet_Users1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_Users1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Users")]
+        public aspnet_Users aspnet_Users2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Users> aspnet_Users2Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Users>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Users", value);
                 }
             }
         }
@@ -8078,6 +9170,175 @@ namespace AplicacionesGM_MVC.Models
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_TiposDeIncidencia")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class aspnet_TiposDeIncidencia : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto aspnet_TiposDeIncidencia.
+        /// </summary>
+        /// <param name="iDIncidencia">Valor inicial de la propiedad IDIncidencia.</param>
+        public static aspnet_TiposDeIncidencia Createaspnet_TiposDeIncidencia(global::System.Int32 iDIncidencia)
+        {
+            aspnet_TiposDeIncidencia aspnet_TiposDeIncidencia = new aspnet_TiposDeIncidencia();
+            aspnet_TiposDeIncidencia.IDIncidencia = iDIncidencia;
+            return aspnet_TiposDeIncidencia;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDIncidencia
+        {
+            get
+            {
+                return _IDIncidencia;
+            }
+            set
+            {
+                if (_IDIncidencia != value)
+                {
+                    OnIDIncidenciaChanging(value);
+                    ReportPropertyChanging("IDIncidencia");
+                    _IDIncidencia = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IDIncidencia");
+                    OnIDIncidenciaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IDIncidencia;
+        partial void OnIDIncidenciaChanging(global::System.Int32 value);
+        partial void OnIDIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Incidencia
+        {
+            get
+            {
+                return _Incidencia;
+            }
+            set
+            {
+                OnIncidenciaChanging(value);
+                ReportPropertyChanging("Incidencia");
+                _Incidencia = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Incidencia");
+                OnIncidenciaChanged();
+            }
+        }
+        private global::System.String _Incidencia;
+        partial void OnIncidenciaChanging(global::System.String value);
+        partial void OnIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IDArea_Responsable
+        {
+            get
+            {
+                return _IDArea_Responsable;
+            }
+            set
+            {
+                OnIDArea_ResponsableChanging(value);
+                ReportPropertyChanging("IDArea_Responsable");
+                _IDArea_Responsable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDArea_Responsable");
+                OnIDArea_ResponsableChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IDArea_Responsable;
+        partial void OnIDArea_ResponsableChanging(Nullable<global::System.Int32> value);
+        partial void OnIDArea_ResponsableChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_Areas")]
+        public aspnet_Areas aspnet_Areas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Areas>("AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_Areas").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Areas>("AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_Areas").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<aspnet_Areas> aspnet_AreasReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<aspnet_Areas>("AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_Areas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Areas>("AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas", "aspnet_Areas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_Incidencias")]
+        public EntityCollection<aspnet_Incidencias> aspnet_Incidencias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_Incidencias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia", "aspnet_Incidencias", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="AplicacionesGM_MVCModel", Name="aspnet_TiposDeVehiculo")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -8602,6 +9863,94 @@ namespace AplicacionesGM_MVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<aspnet_Profile>("AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5", "aspnet_Profile", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users", "aspnet_Incidencias")]
+        public EntityCollection<aspnet_Incidencias> aspnet_Incidencias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users", "aspnet_Incidencias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users", "aspnet_Incidencias", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Incidencias")]
+        public EntityCollection<aspnet_Incidencias> aspnet_Incidencias1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Incidencias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta", "aspnet_Incidencias", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Incidencias")]
+        public EntityCollection<aspnet_Incidencias> aspnet_Incidencias2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Incidencias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_Incidencias>("AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre", "aspnet_Incidencias", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AplicacionesGM_MVCModel", "FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_IncidenciaMotivoRechazo")]
+        public EntityCollection<aspnet_IncidenciaMotivoRechazo> aspnet_IncidenciaMotivoRechazo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<aspnet_IncidenciaMotivoRechazo>("AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_IncidenciaMotivoRechazo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<aspnet_IncidenciaMotivoRechazo>("AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users", "aspnet_IncidenciaMotivoRechazo", value);
                 }
             }
         }
