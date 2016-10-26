@@ -9,6 +9,7 @@
           <EntitySet Name="aspnet_Accionariado" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Accionariado" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_Acciones" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Acciones" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_AplicacionesGM" EntityType="AplicacionesGM_MVCModel.Store.aspnet_AplicacionesGM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Areas" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Areas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_Aseguradoras" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Aseguradoras" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_BancosCliente" EntityType="AplicacionesGM_MVCModel.Store.aspnet_BancosCliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_Clientes" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Clientes" store:Type="Tables" Schema="dbo" />
@@ -18,6 +19,8 @@
           <EntitySet Name="aspnet_Departamentos" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Departamentos" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_Empresas" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Empresas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_FormasDePago" EntityType="AplicacionesGM_MVCModel.Store.aspnet_FormasDePago" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_IncidenciaMotivoRechazo" EntityType="AplicacionesGM_MVCModel.Store.aspnet_IncidenciaMotivoRechazo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Incidencias" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Incidencias" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_InstrumentosDePesaje" EntityType="AplicacionesGM_MVCModel.Store.aspnet_InstrumentosDePesaje" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_MaterialesEmpresa" EntityType="AplicacionesGM_MVCModel.Store.aspnet_MaterialesEmpresa" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_MediosDeDescarga" EntityType="AplicacionesGM_MVCModel.Store.aspnet_MediosDeDescarga" store:Type="Tables" Schema="dbo" />
@@ -29,6 +32,7 @@
           <EntitySet Name="aspnet_Roles" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Roles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_SociedadesVinculadas" EntityType="AplicacionesGM_MVCModel.Store.aspnet_SociedadesVinculadas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_TiposDeCliente" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeCliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_TiposDeIncidencia" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeIncidencia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_TiposDeVehiculo" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeVehiculo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_TiposDeVia" EntityType="AplicacionesGM_MVCModel.Store.aspnet_TiposDeVia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_Users" EntityType="AplicacionesGM_MVCModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
@@ -109,6 +113,30 @@
             <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
             <End Role="aspnet_ClientesHabituales" EntitySet="aspnet_ClientesHabituales" />
           </AssociationSet>
+          <AssociationSet Name="FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_IncidenciaMotivoRechazo" EntitySet="aspnet_IncidenciaMotivoRechazo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Empresas" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Incidencias_aspnet_Empresas">
+            <End Role="aspnet_Empresas" EntitySet="aspnet_Empresas" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_TiposDeIncidencia" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia">
+            <End Role="aspnet_TiposDeIncidencia" EntitySet="aspnet_TiposDeIncidencia" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Users" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Incidencias_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
           <AssociationSet Name="FK_aspnet_MaterialesEmpresa_aspnet_Empresas" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_MaterialesEmpresa_aspnet_Empresas">
             <End Role="aspnet_Empresas" EntitySet="aspnet_Empresas" />
             <End Role="aspnet_MaterialesEmpresa" EntitySet="aspnet_MaterialesEmpresa" />
@@ -124,6 +152,10 @@
           <AssociationSet Name="FK_aspnet_SociedadesVinculadas_aspnet_Clientes" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_SociedadesVinculadas_aspnet_Clientes">
             <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
             <End Role="aspnet_SociedadesVinculadas" EntitySet="aspnet_SociedadesVinculadas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_TiposDeIncidencia_aspnet_Areas" Association="AplicacionesGM_MVCModel.Store.FK_aspnet_TiposDeIncidencia_aspnet_Areas">
+            <End Role="aspnet_Areas" EntitySet="aspnet_Areas" />
+            <End Role="aspnet_TiposDeIncidencia" EntitySet="aspnet_TiposDeIncidencia" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="aspnet_Accionariado">
@@ -160,6 +192,13 @@
           <Property Name="AplicacionesGMID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
           <Property Name="Area" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Areas">
+          <Key>
+            <PropertyRef Name="IDArea" />
+          </Key>
+          <Property Name="IDArea" Type="int" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="aspnet_Aseguradoras">
           <Key>
@@ -373,6 +412,39 @@
           <Property Name="Visible" Type="bit" Nullable="false" />
           <Property Name="DisponibleParaExposicion" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="aspnet_IncidenciaMotivoRechazo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_IDIncidencia" Type="int" Nullable="false" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FechaAltaMotivo" Type="datetime" />
+          <Property Name="UsuarioAltaMotivo" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="aspnet_Incidencias">
+          <Key>
+            <PropertyRef Name="IDIncidencia" />
+          </Key>
+          <Property Name="IDIncidencia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="QSIDProveedor" Type="numeric" Precision="10" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="30" />
+          <Property Name="Albaran" Type="nvarchar" MaxLength="10" />
+          <Property Name="Importe" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="Factura" Type="nvarchar" MaxLength="10" />
+          <Property Name="FormaPago" Type="int" />
+          <Property Name="FechaVencimiento" Type="date" />
+          <Property Name="TipoIncidencia" Type="int" />
+          <Property Name="Indicaciones" Type="text" />
+          <Property Name="PathDocumento" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="FechaCierre" Type="datetime" />
+          <Property Name="ResponsablesSolucion" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UsuarioCierre" Type="uniqueidentifier" />
+          <Property Name="FechaRechazo" Type="datetime" />
+        </EntityType>
         <EntityType Name="aspnet_InstrumentosDePesaje">
           <Key>
             <PropertyRef Name="ID" />
@@ -463,6 +535,14 @@
           <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="1" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
           <Property Name="OrdenDeVisualizacion" Type="int" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeIncidencia">
+          <Key>
+            <PropertyRef Name="IDIncidencia" />
+          </Key>
+          <Property Name="IDIncidencia" Type="int" Nullable="false" />
+          <Property Name="Incidencia" Type="nvarchar" MaxLength="80" />
+          <Property Name="IDArea_Responsable" Type="int" />
         </EntityType>
         <EntityType Name="aspnet_TiposDeVehiculo">
           <Key>
@@ -734,6 +814,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="0..1" />
+          <End Role="aspnet_IncidenciaMotivoRechazo" Type="AplicacionesGM_MVCModel.Store.aspnet_IncidenciaMotivoRechazo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_IncidenciaMotivoRechazo">
+              <PropertyRef Name="UsuarioAltaMotivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Empresas">
+          <End Role="aspnet_Empresas" Type="AplicacionesGM_MVCModel.Store.aspnet_Empresas" Multiplicity="1" />
+          <End Role="aspnet_Incidencias" Type="AplicacionesGM_MVCModel.Store.aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Empresas">
+              <PropertyRef Name="QSID" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_TiposDeIncidencia">
+          <End Role="aspnet_TiposDeIncidencia" Type="AplicacionesGM_MVCModel.Store.aspnet_TiposDeIncidencia" Multiplicity="0..1" />
+          <End Role="aspnet_Incidencias" Type="AplicacionesGM_MVCModel.Store.aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeIncidencia">
+              <PropertyRef Name="IDIncidencia" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="TipoIncidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Users">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="0..1" />
+          <End Role="aspnet_Incidencias" Type="AplicacionesGM_MVCModel.Store.aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="UsuarioCierre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Incidencias" Type="AplicacionesGM_MVCModel.Store.aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="UsuarioAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre">
+          <End Role="aspnet_Users" Type="AplicacionesGM_MVCModel.Store.aspnet_Users" Multiplicity="0..1" />
+          <End Role="aspnet_Incidencias" Type="AplicacionesGM_MVCModel.Store.aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="UsuarioCierre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_aspnet_MaterialesEmpresa_aspnet_Empresas">
           <End Role="aspnet_Empresas" Type="AplicacionesGM_MVCModel.Store.aspnet_Empresas" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -787,6 +939,18 @@
             </Principal>
             <Dependent Role="aspnet_SociedadesVinculadas">
               <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_TiposDeIncidencia_aspnet_Areas">
+          <End Role="aspnet_Areas" Type="AplicacionesGM_MVCModel.Store.aspnet_Areas" Multiplicity="0..1" />
+          <End Role="aspnet_TiposDeIncidencia" Type="AplicacionesGM_MVCModel.Store.aspnet_TiposDeIncidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Areas">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="aspnet_TiposDeIncidencia">
+              <PropertyRef Name="IDArea_Responsable" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -909,6 +1073,38 @@
             <End Role="aspnet_Clientes" EntitySet="aspnet_Clientes" />
             <End Role="aspnet_PersonasRetiradaMat" EntitySet="aspnet_PersonasRetiradaMat" />
           </AssociationSet>
+          <EntitySet Name="aspnet_Areas" EntityType="AplicacionesGM_MVCModel.aspnet_Areas" />
+          <EntitySet Name="aspnet_Incidencias" EntityType="AplicacionesGM_MVCModel.aspnet_Incidencias" />
+          <EntitySet Name="aspnet_TiposDeIncidencia" EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeIncidencia" />
+          <AssociationSet Name="FK_aspnet_TiposDeIncidencia_aspnet_Areas" Association="AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas">
+            <End Role="aspnet_Areas" EntitySet="aspnet_Areas" />
+            <End Role="aspnet_TiposDeIncidencia" EntitySet="aspnet_TiposDeIncidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Empresas" Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas">
+            <End Role="aspnet_Empresas" EntitySet="aspnet_Empresas" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_TiposDeIncidencia" Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia">
+            <End Role="aspnet_TiposDeIncidencia" EntitySet="aspnet_TiposDeIncidencia" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Users" Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta" Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre" Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Incidencias" EntitySet="aspnet_Incidencias" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_IncidenciaMotivoRechazo" EntityType="AplicacionesGM_MVCModel.aspnet_IncidenciaMotivoRechazo" />
+          <AssociationSet Name="FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users" Association="AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_IncidenciaMotivoRechazo" EntitySet="aspnet_IncidenciaMotivoRechazo" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="aspnet_Acciones">
           <Key>
@@ -969,6 +1165,10 @@
           <NavigationProperty Name="aspnet_Clientes" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users" FromRole="aspnet_Users" ToRole="aspnet_Clientes" />
           <NavigationProperty Name="aspnet_Clientes1" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1" FromRole="aspnet_Users" ToRole="aspnet_Clientes" />
           <NavigationProperty Name="aspnet_Profile" Relationship="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+          <NavigationProperty Name="aspnet_Incidencias" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users" FromRole="aspnet_Users" ToRole="aspnet_Incidencias" />
+          <NavigationProperty Name="aspnet_Incidencias1" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta" FromRole="aspnet_Users" ToRole="aspnet_Incidencias" />
+          <NavigationProperty Name="aspnet_Incidencias2" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre" FromRole="aspnet_Users" ToRole="aspnet_Incidencias" />
+          <NavigationProperty Name="aspnet_IncidenciaMotivoRechazo" Relationship="AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users" FromRole="aspnet_Users" ToRole="aspnet_IncidenciaMotivoRechazo" />
         </EntityType>
         <Association Name="FK_aspnet_Acciones_aspnet_Departamentos">
           <End Role="aspnet_Departamentos" Type="AplicacionesGM_MVCModel.aspnet_Departamentos" Multiplicity="1" />
@@ -1187,6 +1387,7 @@
           <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="aspnet_MaterialesEmpresa" Relationship="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas" FromRole="aspnet_Empresas" ToRole="aspnet_MaterialesEmpresa" />
           <Property Type="Boolean" Name="Visible" Nullable="false" />
+          <NavigationProperty Name="aspnet_Incidencias" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas" FromRole="aspnet_Empresas" ToRole="aspnet_Incidencias" />
         </EntityType>
         <EntityType Name="aspnet_MaterialesEmpresa">
           <Key>
@@ -1574,6 +1775,147 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="aspnet_Areas">
+          <Key>
+            <PropertyRef Name="IDArea" />
+          </Key>
+          <Property Type="Int32" Name="IDArea" Nullable="false" />
+          <Property Type="String" Name="Area" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_TiposDeIncidencia" Relationship="AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas" FromRole="aspnet_Areas" ToRole="aspnet_TiposDeIncidencia" />
+        </EntityType>
+        <EntityType Name="aspnet_Incidencias">
+          <Key>
+            <PropertyRef Name="IDIncidencia" />
+          </Key>
+          <Property Type="Int32" Name="IDIncidencia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Empresa" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="QSIDProveedor" Precision="10" Scale="0" />
+          <Property Type="String" Name="Proveedor" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Albaran" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Importe" Precision="11" Scale="2" />
+          <Property Type="String" Name="Factura" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FormaPago" />
+          <Property Type="DateTime" Name="FechaVencimiento" />
+          <Property Type="Int32" Name="TipoIncidencia" />
+          <Property Type="String" Name="Indicaciones" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PathDocumento" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FechaAlta" />
+          <Property Type="DateTime" Name="FechaCierre" />
+          <Property Type="Guid" Name="UsuarioAlta" Nullable="false" />
+          <Property Type="Guid" Name="UsuarioCierre" />
+          <NavigationProperty Name="aspnet_Empresas" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas" FromRole="aspnet_Incidencias" ToRole="aspnet_Empresas" />
+          <NavigationProperty Name="aspnet_TiposDeIncidencia" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia" FromRole="aspnet_Incidencias" ToRole="aspnet_TiposDeIncidencia" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users" FromRole="aspnet_Incidencias" ToRole="aspnet_Users" />
+          <NavigationProperty Name="aspnet_Users1" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta" FromRole="aspnet_Incidencias" ToRole="aspnet_Users" />
+          <NavigationProperty Name="aspnet_Users2" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre" FromRole="aspnet_Incidencias" ToRole="aspnet_Users" />
+          <Property Type="String" Name="ResponsablesSolucion" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FechaRechazo" />
+        </EntityType>
+        <EntityType Name="aspnet_TiposDeIncidencia">
+          <Key>
+            <PropertyRef Name="IDIncidencia" />
+          </Key>
+          <Property Type="Int32" Name="IDIncidencia" Nullable="false" />
+          <Property Type="String" Name="Incidencia" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IDArea_Responsable" />
+          <NavigationProperty Name="aspnet_Areas" Relationship="AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas" FromRole="aspnet_TiposDeIncidencia" ToRole="aspnet_Areas" />
+          <NavigationProperty Name="aspnet_Incidencias" Relationship="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia" FromRole="aspnet_TiposDeIncidencia" ToRole="aspnet_Incidencias" />
+        </EntityType>
+        <Association Name="FK_aspnet_TiposDeIncidencia_aspnet_Areas">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Areas" Role="aspnet_Areas" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_TiposDeIncidencia" Role="aspnet_TiposDeIncidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Areas">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="aspnet_TiposDeIncidencia">
+              <PropertyRef Name="IDArea_Responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Empresas">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Empresas" Role="aspnet_Empresas" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Incidencias" Role="aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Empresas">
+              <PropertyRef Name="QSID" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_TiposDeIncidencia">
+          <End Type="AplicacionesGM_MVCModel.aspnet_TiposDeIncidencia" Role="aspnet_TiposDeIncidencia" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Incidencias" Role="aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_TiposDeIncidencia">
+              <PropertyRef Name="IDIncidencia" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="TipoIncidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Users">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Incidencias" Role="aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="UsuarioCierre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Incidencias" Role="aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="UsuarioAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_Incidencias" Role="aspnet_Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Incidencias">
+              <PropertyRef Name="UsuarioCierre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_IncidenciaMotivoRechazo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID_IDIncidencia" Nullable="false" />
+          <Property Type="String" Name="Motivo" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FechaAltaMotivo" />
+          <Property Type="Guid" Name="UsuarioAltaMotivo" />
+          <NavigationProperty Name="aspnet_Users" Relationship="AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users" FromRole="aspnet_IncidenciaMotivoRechazo" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users">
+          <End Type="AplicacionesGM_MVCModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+          <End Type="AplicacionesGM_MVCModel.aspnet_IncidenciaMotivoRechazo" Role="aspnet_IncidenciaMotivoRechazo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_IncidenciaMotivoRechazo">
+              <PropertyRef Name="UsuarioAltaMotivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1952,6 +2294,58 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Areas">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Areas">
+              <MappingFragment StoreEntitySet="aspnet_Areas">
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Incidencias">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_Incidencias">
+              <MappingFragment StoreEntitySet="aspnet_Incidencias">
+                <ScalarProperty Name="FechaRechazo" ColumnName="FechaRechazo" />
+                <ScalarProperty Name="ResponsablesSolucion" ColumnName="ResponsablesSolucion" />
+                <ScalarProperty Name="UsuarioCierre" ColumnName="UsuarioCierre" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="PathDocumento" ColumnName="PathDocumento" />
+                <ScalarProperty Name="Indicaciones" ColumnName="Indicaciones" />
+                <ScalarProperty Name="TipoIncidencia" ColumnName="TipoIncidencia" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Albaran" ColumnName="Albaran" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="QSIDProveedor" ColumnName="QSIDProveedor" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="IDIncidencia" ColumnName="IDIncidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_TiposDeIncidencia">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_TiposDeIncidencia">
+              <MappingFragment StoreEntitySet="aspnet_TiposDeIncidencia">
+                <ScalarProperty Name="IDArea_Responsable" ColumnName="IDArea_Responsable" />
+                <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
+                <ScalarProperty Name="IDIncidencia" ColumnName="IDIncidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_IncidenciaMotivoRechazo">
+            <EntityTypeMapping TypeName="AplicacionesGM_MVCModel.aspnet_IncidenciaMotivoRechazo">
+              <MappingFragment StoreEntitySet="aspnet_IncidenciaMotivoRechazo">
+                <ScalarProperty Name="UsuarioAltaMotivo" ColumnName="UsuarioAltaMotivo" />
+                <ScalarProperty Name="FechaAltaMotivo" ColumnName="FechaAltaMotivo" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="ID_IDIncidencia" ColumnName="ID_IDIncidencia" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1999,6 +2393,8 @@
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeCliente" Width="2.75" PointX="8.5" PointY="12.25" Height="1.7879850260416657" />
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_FormasDePago" >
           <ConnectorPoint PointX="11.25" PointY="1.9324446614583337" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="1.9324446614583326" />
+          <ConnectorPoint PointX="11.864583333333334" PointY="1.9324446614583337" />
           <ConnectorPoint PointX="12" PointY="1.9324446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeCliente" >
@@ -2006,22 +2402,30 @@
           <ConnectorPoint PointX="12" PointY="13.143992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users" >
-          <ConnectorPoint PointX="7.875" PointY="5.99301245361835" />
-          <ConnectorPoint PointX="12" PointY="5.99301245361835" />
+          <ConnectorPoint PointX="7.875" PointY="6.8515066703189458" />
+          <ConnectorPoint PointX="11.666666666666666" PointY="6.8515066703189449" />
+          <ConnectorPoint PointX="11.833333333333334" PointY="6.8515066703189458" />
+          <ConnectorPoint PointX="12" PointY="6.8515066703189458" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_Users1" >
-          <ConnectorPoint PointX="7.875" PointY="6.376053752850841" />
-          <ConnectorPoint PointX="12" PointY="6.376053752850841" />
+          <ConnectorPoint PointX="7.875" PointY="6.2307972804719727" />
+          <ConnectorPoint PointX="11.666666666666666" PointY="6.2307972804719718" />
+          <ConnectorPoint PointX="11.833333333333334" PointY="6.2307972804719727" />
+          <ConnectorPoint PointX="12" PointY="6.2307972804719727" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_MaterialesEmpresa_aspnet_Empresas" >
-          <ConnectorPoint PointX="4.875" PointY="13.206492513020834" />
-          <ConnectorPoint PointX="5.166666666666667" PointY="13.206492513020834" />
-          <ConnectorPoint PointX="5.333333333333333" PointY="13.206492513020834" />
-          <ConnectorPoint PointX="5.625" PointY="13.206492513020834" />
+          <ConnectorPoint PointX="4.875" PointY="13.139362492902766" />
+          <ConnectorPoint PointX="5.072916666666667" PointY="13.139362492902766" />
+          <ConnectorPoint PointX="5.239583333333333" PointY="13.139362492902766" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="13.139362492902766" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="13.139362492902766" />
+          <ConnectorPoint PointX="5.625" PointY="13.139362492902766" />
         </AssociationConnector>
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeVia" Width="1.5" PointX="8.25" PointY="8" Height="1.5956835937500031" />
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVia" >
           <ConnectorPoint PointX="9.75" PointY="8.7978417968750016" />
+          <ConnectorPoint PointX="11.666666666666666" PointY="8.7978417968750016" />
+          <ConnectorPoint PointX="11.833333333333334" PointY="8.7978417968750016" />
           <ConnectorPoint PointX="12" PointY="8.7978417968750016" />
         </AssociationConnector>
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Accionariado" Width="1.5" PointX="15.125" PointY="11.375" Height="1.9802864583333388" />
@@ -2062,9 +2466,11 @@
           <ConnectorPoint PointX="12" PointY="21.172841796875" />
         </AssociationConnector>
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Clientes_aspnet_TiposDeVehiculo" >
-          <ConnectorPoint PointX="5.25" PointY="9.845683593749996" />
-          <ConnectorPoint PointX="5.25" PointY="16.143992513020834" />
-          <ConnectorPoint PointX="12" PointY="16.143992513020834" />
+          <ConnectorPoint PointX="5.15625" PointY="9.845683593749996" />
+          <ConnectorPoint PointX="5.15625" PointY="16.240143229166666" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="16.240143229166666" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="16.240143229166666" />
+          <ConnectorPoint PointX="12" PointY="16.240143229166666" />
         </AssociationConnector>
         <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Profile" Width="1.5" PointX="2.875" PointY="3.5" Height="2.172587890624996" />
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK__aspnet_Pr__UserI__38996AB5" >
@@ -2091,6 +2497,74 @@
         <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_PersonasRetiradaMat_aspnet_Clientes" >
           <ConnectorPoint PointX="14.375" PointY="23.643992513020834" />
           <ConnectorPoint PointX="15.125" PointY="23.643992513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Areas" Width="2.875" PointX="24.875" PointY="12.25" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_Incidencias" Width="2.875" PointX="17.625" PointY="6.125" Height="5.4417122395833335" />
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_TiposDeIncidencia" Width="2.875" PointX="22.25" PointY="9.5" Height="1.9802864583333424" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_TiposDeIncidencia_aspnet_Areas" >
+          <ConnectorPoint PointX="26.4375005" PointY="12.25" />
+          <ConnectorPoint PointX="26.4375005" PointY="10.490143229166671" />
+          <ConnectorPoint PointX="25.125" PointY="10.490143229166671" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Empresas" >
+          <ConnectorPoint PointX="4.875" PointY="13.778576475618049" />
+          <ConnectorPoint PointX="5.072916666666667" PointY="13.778576475618049" />
+          <ConnectorPoint PointX="5.239583333333333" PointY="13.778576475618049" />
+          <ConnectorPoint PointX="5.375" PointY="13.778576475618049" />
+          <ConnectorPoint PointX="5.375" PointY="12" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="12" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="12" />
+          <ConnectorPoint PointX="11.75" PointY="12" />
+          <ConnectorPoint PointX="11.75" PointY="0.5" />
+          <ConnectorPoint PointX="17.375" PointY="0.5" />
+          <ConnectorPoint PointX="17.375" PointY="11.816712239583332" />
+          <ConnectorPoint PointX="19.265627000000002" PointY="11.816712239583332" />
+          <ConnectorPoint PointX="19.265627000000002" PointY="11.566712239583334" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_TiposDeIncidencia" >
+          <ConnectorPoint PointX="22.25" PointY="10.490143229166671" />
+          <ConnectorPoint PointX="20.5" PointY="10.490143229166671" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users" >
+          <ConnectorPoint PointX="6.5839844375" PointY="3.5" />
+          <ConnectorPoint PointX="6.5839844375" PointY="3.25" />
+          <ConnectorPoint PointX="11.625" PointY="3.25" />
+          <ConnectorPoint PointX="11.625" PointY="0.484375" />
+          <ConnectorPoint PointX="11.65286758974359" PointY="0.48437499999999944" />
+          <ConnectorPoint PointX="11.819534256410258" PointY="0.484375" />
+          <ConnectorPoint PointX="17.25" PointY="0.484375" />
+          <ConnectorPoint PointX="17.25" PointY="8.8834723179231716" />
+          <ConnectorPoint PointX="17.291666666666668" PointY="8.8834723179231716" />
+          <ConnectorPoint PointX="17.458333333333332" PointY="8.8834723179231716" />
+          <ConnectorPoint PointX="17.625" PointY="8.8834723179231716" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioAlta" >
+          <ConnectorPoint PointX="5.88574021875" PointY="3.5" />
+          <ConnectorPoint PointX="5.88574021875" PointY="3.234375" />
+          <ConnectorPoint PointX="11.78125" PointY="3.234375" />
+          <ConnectorPoint PointX="11.78125" PointY="0.46875" />
+          <ConnectorPoint PointX="17.125" PointY="0.46875" />
+          <ConnectorPoint PointX="17.125" PointY="7.4729841589615926" />
+          <ConnectorPoint PointX="17.166666666666668" PointY="7.4729841589615917" />
+          <ConnectorPoint PointX="17.458333333333332" PointY="7.4729841589615926" />
+          <ConnectorPoint PointX="17.625" PointY="7.4729841589615926" />
+        </AssociationConnector>
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_Incidencias_aspnet_Users_UsuarioCierre" >
+          <ConnectorPoint PointX="7.26074421875" PointY="3.5" />
+          <ConnectorPoint PointX="7.26074421875" PointY="3.21875" />
+          <ConnectorPoint PointX="11.6875" PointY="3.21875" />
+          <ConnectorPoint PointX="11.6875" PointY="0.453125" />
+          <ConnectorPoint PointX="17" PointY="0.453125" />
+          <ConnectorPoint PointX="17" PointY="10.256344278753247" />
+          <ConnectorPoint PointX="17.291666666666668" PointY="10.256344278753247" />
+          <ConnectorPoint PointX="17.458333333333332" PointY="10.256344278753247" />
+          <ConnectorPoint PointX="17.625" PointY="10.256344278753247" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AplicacionesGM_MVCModel.aspnet_IncidenciaMotivoRechazo" Width="1.5" PointX="8.625" PointY="26.375" Height="2.172587890624996" />
+        <AssociationConnector Association="AplicacionesGM_MVCModel.FK_aspnet_IncidenciaMotivoRetraso_aspnet_Users" >
+          <ConnectorPoint PointX="7.59375" PointY="7.40330078125" />
+          <ConnectorPoint PointX="7.59375" PointY="27.461293945312498" />
+          <ConnectorPoint PointX="8.625" PointY="27.461293945312498" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

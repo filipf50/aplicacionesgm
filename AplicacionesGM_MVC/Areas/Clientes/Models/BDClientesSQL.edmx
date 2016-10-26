@@ -127,12 +127,12 @@
           <Property Name="fpMoraval" Type="varchar" MaxLength="30" />
           <Property Name="fpHierros" Type="varchar" MaxLength="30" />
           <Property Name="fpAltamira" Type="varchar" MaxLength="30" />
-          <Property Name="opcAutMoraval" Type="bit" />
-          <Property Name="opcAutHierros" Type="bit" />
-          <Property Name="opcAutAltamira" Type="bit" />
-          <Property Name="opcAutBancoMoraval" Type="bit" />
-          <Property Name="opcAutBancoHierros" Type="bit" />
-          <Property Name="opcAutBancoAltamira" Type="bit" />
+          <Property Name="opcAutMoraval" Type="bit" Nullable="false" />
+          <Property Name="opcAutHierros" Type="bit" Nullable="false" />
+          <Property Name="opcAutAltamira" Type="bit" Nullable="false" />
+          <Property Name="opcAutBancoMoraval" Type="bit" Nullable="false" />
+          <Property Name="opcAutBancoHierros" Type="bit" Nullable="false" />
+          <Property Name="opcAutBancoAltamira" Type="bit" Nullable="false" />
           <Property Name="docAutMoraval" Type="image" />
           <Property Name="docAutHierros" Type="image" />
           <Property Name="docAutAltamira" Type="image" />
@@ -591,12 +591,12 @@
           <Property Name="fpMoraval" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="fpHierros" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="fpAltamira" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="opcAutMoraval" Type="Boolean" DefaultValue="false" />
-          <Property Name="opcAutHierros" Type="Boolean" />
-          <Property Name="opcAutAltamira" Type="Boolean" DefaultValue="false" />
-          <Property Name="opcAutBancoMoraval" Type="Boolean" DefaultValue="false" />
-          <Property Name="opcAutBancoHierros" Type="Boolean" DefaultValue="false" />
-          <Property Name="opcAutBancoAltamira" Type="Boolean" DefaultValue="false" />
+          <Property Name="opcAutMoraval" Type="Boolean" DefaultValue="false" Nullable="false" />
+          <Property Name="opcAutHierros" Type="Boolean" Nullable="false" />
+          <Property Name="opcAutAltamira" Type="Boolean" DefaultValue="false" Nullable="false" />
+          <Property Name="opcAutBancoMoraval" Type="Boolean" DefaultValue="false" Nullable="false" />
+          <Property Name="opcAutBancoHierros" Type="Boolean" DefaultValue="false" Nullable="false" />
+          <Property Name="opcAutBancoAltamira" Type="Boolean" DefaultValue="false" Nullable="false" />
           <Property Name="docAutMoraval" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutHierros" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="docAutAltamira" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -1303,7 +1303,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="BDClientesSQL" ZoomLevel="102">
+      <Diagram Name="BDClientesSQL" ZoomLevel="91">
         <EntityTypeShape EntityType="CLIENTESModel.ACCIONARIADO" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
         <EntityTypeShape EntityType="CLIENTESModel.ACCIONARIADO_detalle" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
         <EntityTypeShape EntityType="CLIENTESModel.CLIENTES_DAR_DE_ALTA_EN_MAC" Width="1.5" PointX="4.75" PointY="0.75" Height="50.055644531249996" IsExpanded="true" />

@@ -697,10 +697,12 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
         /// Crear un nuevo objeto CLIENTES_DAR_DE_ALTA_EN_MAC.
         /// </summary>
         /// <param name="nUEVO_CODIGO">Valor inicial de la propiedad NUEVO_CODIGO.</param>
-        public static CLIENTES_DAR_DE_ALTA_EN_MAC CreateCLIENTES_DAR_DE_ALTA_EN_MAC(global::System.Decimal nUEVO_CODIGO)
+        /// <param name="opcAutHierros">Valor inicial de la propiedad opcAutHierros.</param>
+        public static CLIENTES_DAR_DE_ALTA_EN_MAC CreateCLIENTES_DAR_DE_ALTA_EN_MAC(global::System.Decimal nUEVO_CODIGO, global::System.Boolean opcAutHierros)
         {
             CLIENTES_DAR_DE_ALTA_EN_MAC cLIENTES_DAR_DE_ALTA_EN_MAC = new CLIENTES_DAR_DE_ALTA_EN_MAC();
             cLIENTES_DAR_DE_ALTA_EN_MAC.NUEVO_CODIGO = nUEVO_CODIGO;
+            cLIENTES_DAR_DE_ALTA_EN_MAC.opcAutHierros = opcAutHierros;
             return cLIENTES_DAR_DE_ALTA_EN_MAC;
         }
 
@@ -2202,9 +2204,9 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> opcAutMoraval
+        public global::System.Boolean opcAutMoraval
         {
             get
             {
@@ -2219,16 +2221,16 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutMoravalChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutMoraval = false;
-        partial void OnopcAutMoravalChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _opcAutMoraval = false;
+        partial void OnopcAutMoravalChanging(global::System.Boolean value);
         partial void OnopcAutMoravalChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> opcAutHierros
+        public global::System.Boolean opcAutHierros
         {
             get
             {
@@ -2243,16 +2245,16 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutHierrosChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutHierros;
-        partial void OnopcAutHierrosChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _opcAutHierros;
+        partial void OnopcAutHierrosChanging(global::System.Boolean value);
         partial void OnopcAutHierrosChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> opcAutAltamira
+        public global::System.Boolean opcAutAltamira
         {
             get
             {
@@ -2267,16 +2269,16 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutAltamiraChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutAltamira = false;
-        partial void OnopcAutAltamiraChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _opcAutAltamira = false;
+        partial void OnopcAutAltamiraChanging(global::System.Boolean value);
         partial void OnopcAutAltamiraChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> opcAutBancoMoraval
+        public global::System.Boolean opcAutBancoMoraval
         {
             get
             {
@@ -2291,16 +2293,16 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutBancoMoravalChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutBancoMoraval = false;
-        partial void OnopcAutBancoMoravalChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _opcAutBancoMoraval = false;
+        partial void OnopcAutBancoMoravalChanging(global::System.Boolean value);
         partial void OnopcAutBancoMoravalChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> opcAutBancoHierros
+        public global::System.Boolean opcAutBancoHierros
         {
             get
             {
@@ -2315,16 +2317,16 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutBancoHierrosChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutBancoHierros = false;
-        partial void OnopcAutBancoHierrosChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _opcAutBancoHierros = false;
+        partial void OnopcAutBancoHierrosChanging(global::System.Boolean value);
         partial void OnopcAutBancoHierrosChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> opcAutBancoAltamira
+        public global::System.Boolean opcAutBancoAltamira
         {
             get
             {
@@ -2339,8 +2341,8 @@ namespace AplicacionesGM_MVC.Areas.Clientes.Models
                 OnopcAutBancoAltamiraChanged();
             }
         }
-        private Nullable<global::System.Boolean> _opcAutBancoAltamira = false;
-        partial void OnopcAutBancoAltamiraChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _opcAutBancoAltamira = false;
+        partial void OnopcAutBancoAltamiraChanging(global::System.Boolean value);
         partial void OnopcAutBancoAltamiraChanged();
     
         /// <summary>
